@@ -10,19 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to server via SSH
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: 46.34.163.250
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            set -e
-
             cd /var/www/flowsee-main
+            git pull origin main
+            echo "Deployment completed on $(date)"
 
-            git fetch origin
-            git reset --hard origin/main
-
-            echo "Deploy completed"
+            
