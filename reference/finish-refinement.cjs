@@ -1,0 +1,13 @@
+const fs=require('fs');
+const path='felosi-home.html';
+let html=fs.readFileSync(path,'utf8');
+html=html.replace('<br class="desktop-break">','');
+html=html.replace('.hero h1 em{font-style:normal;color:var(--accent-ink)}','.hero h1 em{font-style:normal;color:oklch(from var(--accent) calc(l - .045) c h)}');
+html=html.replace('@media(max-width:389px){','@media(max-width:479px){.service-grid{grid-template-columns:minmax(0,1fr)}.service-top{display:flex}.service-icon{margin-bottom:0}.service-card{min-height:190px;padding:22px}.service-category{font-size:12px}.service-title{font-size:26px}.service-bottom{font-size:12px}}\n@media(max-width:389px){');
+fs.writeFileSync(path,html);
+let brand=fs.readFileSync('brand-spec.md','utf8');
+brand=brand.replace('Three columns above 899px, two from 600–899px, one below 600px. Mobile navigation collapses below 900px. Content images use natural proportions and full-frame views, replacing source portfolio cropping.','Refined UI: services use three columns above 899px, two from 480–899px, and one below 480px. Portfolio uses one featured full-width project followed by two projects; below 650px all projects stack. Hero stacks below 650px; navigation collapses below 900px. Content images retain their complete natural frame.');
+brand=brand.replace('The homepage repeats three portfolio images across nine cards and one article across six cards. Article covers are grid placeholders in Figma. No live contact endpoints, social addresses, or complete articles were supplied; the local brief form downloads a draft and never claims to send it.','The Figma source repeats three portfolio images and one article. The refined homepage presents each once. The article uses a text-led layout instead of unsupplied cover imagery. Unconfigured social controls have been removed. No live contact endpoint or complete article was supplied; the brief form downloads a local draft and never claims to send it.');
+brand+='\n## UI refinement — requested by user\n\n- White background, original orange/blue tokens, PARADOX and IRANSansX fonts retained.\n- Original iridescent sculpture becomes the hero artwork.\n- Distinct portfolio, service, about, and editorial sections; duplicate entries removed.\n- Service selection opens the brief directly; email is optional.\n- Primary project action is in the hero and repeated once at the end.\n- Pre-change page preserved in felosi-home-v2.html.\n';
+fs.writeFileSync('brand-spec.md',brand);
+console.log('Refined heading wrapping, accent contrast, mobile service layout, and design-system notes.');

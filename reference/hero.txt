@@ -1,0 +1,35 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/858e88d2-c62e-47ed-a768-61b431e1f244";
+const imgImage6 = `${assetPathPrefix}/f8307.png`;
+const imgTitle = `${assetPathPrefix}/f4deb.svg`;
+const imgTitle1 = `${assetPathPrefix}/3c91a.svg`;
+
+export default function Hero() {
+  return (
+    <div className="relative size-full" data-node-id="1032:2080" data-name="Hero">
+      <div className="-translate-x-1/2 -translate-y-1/2 absolute h-[630px] left-1/2 top-[calc(50%+0.41px)] w-[1440px]" data-node-id="1032:2081" data-name="image 6">
+        <div aria-hidden className="absolute inset-0 pointer-events-none">
+          <img alt="" className="absolute max-w-none object-cover size-full" src={imgImage6} />
+          <div className="absolute bg-[rgba(255,255,255,0.7)] inset-0" />
+        </div>
+      </div>
+      <div className="absolute aspect-[1030/267.6932373046875] content-stretch flex flex-col gap-[23.948px] items-center left-[256px] right-[256px] top-[128px]" data-node-id="1032:2082" data-name="Container">
+        <div className="aspect-[694.8670043945312/111.74395751953125] relative shrink-0 w-full" data-node-id="1032:2083" data-name="Title">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgTitle} />
+        </div>
+        <div className="aspect-[902.389892578125/61.37598419189453] relative shrink-0 w-full" data-node-id="1032:2096" data-name="Title">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgTitle1} />
+        </div>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Dominant (60)/900: #1A1A1A, Primary (30)/500: #FE5400.
+Images and SVGs will be stored as constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.

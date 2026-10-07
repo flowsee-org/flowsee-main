@@ -1,0 +1,504 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="استودیو فلوسی؛ طراحی برای رشد، استراتژی برای ماندگاری. خدمات طراحی هویت بصری، دیجیتال مارکتینگ و توسعه نرم‌افزار.">
+<meta name="theme-color" content="#FE5400"><title>استودیو فلوسی — خلاقیت در دنیای دیجیتال</title>
+<link rel="icon" href="assets/header-imgFrame17.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:IRANSansX;src:url('assets/fonts/IRANSansX-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:IRANSansX;src:url('assets/fonts/IRANSansX-Medium.ttf') format('truetype');font-weight:500 900;font-display:swap}
+@font-face{font-family:IRANSansXFaNum;src:url('assets/fonts/IRANSansXFaNum-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:Montserrat;src:url('assets/fonts/Montserrat-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+:root{
+  --bg: oklch(100.0000% 0 0);
+  --surface: oklch(96.1151% 0 0);
+  --fg: oklch(21.7787% 0 0);
+  --muted: oklch(42.0237% 0 0);
+  --border: oklch(92.4940% 0 0);
+  --accent: oklch(67.3204% 0.21731 38.649);
+  --blue: oklch(44.1127% 0.06906 233.606);
+  --blue-deep: oklch(33.8445% 0.05014 231.981);
+  --blue-light: oklch(85.1015% 0.04397 231.036);
+  --blue-pale: oklch(92.6769% 0.02113 227.535);
+  --grid: oklch(39.9918% 0.03891 261.488);
+  --display:IRANSansX,sans-serif;--body:IRANSansXFaNum,IRANSansX,sans-serif;--latin:Montserrat,sans-serif;--mono:Consolas,monospace;
+  --accent-ink:oklch(from var(--accent) 46% c h);--accent-hover:oklch(from var(--accent) calc(l + .08) c h);--focus:var(--blue-deep);
+  --space:32px;--radius:16px;--content:1120px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:18px;line-height:1.8}button,input,textarea,select{font:inherit}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button,a,input,textarea,select{touch-action:manipulation}a{color:inherit;text-decoration:none}button{color:inherit}button:disabled{cursor:default}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--focus);outline-offset:5px}img{display:block;max-width:100%;height:auto}h1,h2,h3,p{margin:0}h2{font:400 clamp(28px,3vw,40px)/1.9 var(--display);text-wrap:balance}button{border:0}.container{width:min(var(--content),calc(100% - 48px));margin-inline:auto}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.skip-link{position:fixed;top:8px;right:16px;padding:10px 20px;background:var(--fg);color:var(--bg);z-index:20;transform:translateY(-160%)}.skip-link:focus{transform:none}
+dialog{width:min(660px,calc(100% - 32px));max-height:calc(100dvh - 40px);border:1px solid var(--border);border-radius:20px;padding:32px;background:var(--bg);color:var(--fg);box-shadow:0 24px 80px oklch(0% 0 0/.25)}dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}.dialog-head h2{font-size:30px;line-height:1.6}.close-dialog{width:44px;height:44px;border-radius:50%;background:var(--surface);color:var(--fg);font:28px/1 sans-serif;flex:0 0 44px}.close-dialog:hover{background:var(--border);color:var(--fg)}.dialog-note{font-size:15px;color:var(--muted);margin-bottom:20px}.form-grid{display:grid;gap:16px}.form-grid label{display:grid;gap:6px;font-size:15px}.form-grid input,.form-grid textarea,.form-grid select{width:100%;min-width:0;min-height:48px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);padding:10px 12px;font-size:16px}.form-grid textarea{resize:vertical;min-height:110px}.form-grid input:hover,.form-grid textarea:hover,.form-grid select:hover{border-color:var(--blue)}.form-grid .button{justify-self:start;margin-top:4px}.form-status{font-size:14px;color:var(--blue-deep);min-height:25px}.preview-dialog{width:min(1080px,calc(100% - 32px))}.preview-dialog img{max-height:70dvh;width:auto;max-width:100%;margin:auto}.preview-dialog h2{font-family:var(--latin);font-size:24px}.text-dialog p{line-height:1.9}.dialog-service-art{padding:24px;border-radius:12px;background:var(--blue);margin-bottom:20px}.dialog-service-art img{max-width:100%;height:auto}.text-link{display:inline-flex;align-items:center;min-height:44px;background:var(--surface);color:var(--fg);padding:8px 16px;border-radius:8px;margin-top:20px}.text-link:hover{background:var(--border);color:var(--fg)}
+
+/* UI refinement: existing Felosi palette, typography and source artwork. */
+:root{--content:1120px;--space:24px;--soft-blue:oklch(from var(--blue-pale) calc(l + .035) calc(c * .5) h);--focus:var(--blue);}
+html{scroll-padding-top:112px}body{font-size:16px;line-height:1.85}h2{font-size:clamp(28px,3.1vw,40px);line-height:1.7}.container{width:min(var(--content),calc(100% - 64px))}.eyebrow{display:block;color:var(--muted);font:400 13px/1.8 var(--body);margin-bottom:12px}.quiet-link{display:inline-flex;gap:16px;align-items:center;justify-content:center;min-height:48px;padding:8px 0;background:transparent;color:var(--fg);font:500 15px/1.8 IRANSansX,sans-serif}.quiet-link:hover{color:var(--fg);text-decoration:underline;text-underline-offset:6px}.quiet-link span{font-size:22px}.button{min-height:50px;padding:12px 24px;font:500 15px/1.7 IRANSansX,sans-serif;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;gap:28px;transition:background .2s,transform .2s}.button>span{font-size:22px;line-height:1}.primary{background:var(--fg);color:var(--bg)}.primary:hover{background:oklch(from var(--fg) calc(l + .1) c h);color:var(--bg);transform:translateY(-2px)}.secondary{background:transparent;border:1px solid var(--border);color:var(--fg)}.secondary:hover{border-color:var(--fg);background:transparent;color:var(--fg)}
+.site-header{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--border);background:oklch(from var(--bg) l c h / .94);backdrop-filter:blur(16px)}.header-inner{height:88px;display:flex;gap:40px;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}.brand img{width:44px;height:auto}.brand>span{font:400 22px/1.6 var(--display)}.nav{display:flex;align-items:center;gap:28px;margin-inline:auto}.nav a{position:relative;display:flex;align-items:center;min-height:48px;padding:6px 0;color:var(--muted);font-size:14px}.nav a:hover,.nav a[aria-current]{color:var(--fg)}.nav a[aria-current]::after{content:'';position:absolute;bottom:2px;right:0;left:0;height:2px;background:var(--fg)}.header-actions{flex-shrink:0}.header-actions .button{font-size:13px;min-height:44px;padding:10px 16px;gap:20px}.menu-toggle{display:none;background:transparent;color:var(--fg);width:44px;height:44px;font-size:24px;border-radius:8px}.menu-toggle:hover{background:var(--surface);color:var(--fg)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:64px;padding-block:68px 76px;min-height:650px}.hero-copy{min-width:0}.hero h1{font:400 clamp(40px,4.9vw,66px)/1.52 var(--display);letter-spacing:-.8px;text-wrap:balance}.hero h1 em{font-style:normal;color:oklch(from var(--accent) calc(l - .045) c h)}.hero-description{max-width:445px;font-size:16px;line-height:1.95;color:var(--muted);margin-top:22px;text-wrap:pretty}.hero-actions{display:flex;align-items:center;gap:28px;margin-top:30px;flex-wrap:wrap}.hero-disciplines{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;font-size:12px;color:var(--muted);margin-top:34px}.hero-disciplines>span+span{border-inline-start:1px solid var(--border);padding-inline-start:16px}.hero-art{margin:0;min-width:0;align-self:center;position:relative}.art-stage{position:relative;isolation:isolate;aspect-ratio:1;display:grid;place-items:center}.art-stage::before{content:'';position:absolute;z-index:-1;inset:8%;border-radius:50%;background:var(--soft-blue)}.sculpture{width:100%;height:auto;filter:drop-shadow(0 22px 16px oklch(from var(--blue) l c h / .09))}.hero-art figcaption{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--border);padding:14px 0;font-size:13px;color:var(--muted)}.hero-art figcaption>span:last-child{font:32px/1 var(--latin);color:var(--blue)}
+.main-stack{display:flex;flex-direction:column;gap:100px;padding-block:22px 96px}.section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:30px}.section-heading .eyebrow{margin-bottom:6px}.section-heading h2{font-size:clamp(28px,3.1vw,40px)}.section-description{max-width:270px;color:var(--muted);font-size:14px;line-height:1.9;text-wrap:pretty}.portfolio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.project-card{display:flex;flex-direction:column;min-width:0;background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:clip;padding:0;color:var(--fg);text-align:right;transition:transform .2s,border-color .2s,box-shadow .2s}.project-card:hover{transform:translateY(-4px);border-color:var(--blue);box-shadow:0 12px 28px oklch(from var(--fg) l c h / .07)}.project-visual{width:100%;display:flex;align-items:center;flex:1;background:var(--fg)}.project-image{width:100%;height:auto;object-fit:contain}.project-copy{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px;width:100%}.project-name{display:block;font:400 23px/1.4 var(--latin);text-align:right;letter-spacing:-.5px}.project-description{display:block;color:var(--muted);font-size:13px;margin-top:6px}.project-arrow{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--border);border-radius:50%;flex-shrink:0;font-size:24px}.featured-project{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,2.08fr) minmax(0,1fr);direction:ltr;background:var(--blue-deep);border-color:var(--blue-deep)}.featured-project .project-visual{align-self:stretch}.featured-project .project-copy{direction:rtl;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:32px;color:var(--bg);gap:0}.featured-project .project-category{font-size:12px;color:var(--blue-pale);margin-bottom:14px}.featured-project .project-name{font-size:32px;text-align:left;color:var(--bg)}.featured-project .project-description{font-size:16px;margin-top:12px;color:var(--blue-pale)}.project-action{display:flex;align-items:center;gap:32px;font-size:13px;border-top:1px solid oklch(from var(--blue-light) l c h / .25);width:100%;padding-top:22px;margin-top:38px}.project-action span{font-size:25px;margin-inline-start:auto}.featured-project:hover{border-color:var(--blue-light);background:var(--blue-deep)}.featured-project:focus-visible{outline-color:var(--blue)}
+.service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.service-card{display:flex;flex-direction:column;min-width:0;min-height:220px;padding:24px;border:1px solid var(--border);border-radius:14px;background:var(--bg);color:var(--fg);text-align:right;transition:transform .2s,border-color .2s,box-shadow .2s;container-type:inline-size}.service-top{display:flex;align-items:center;gap:12px}.service-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:11px;background:var(--blue);flex-shrink:0}.service-icon img{max-width:26px;max-height:26px;width:auto;height:auto}.service-category{font-size:12px;color:var(--muted)}.service-title{display:block;font:400 clamp(21px,2.05vw,27px)/1.65 var(--display);margin-top:22px;text-wrap:balance}.service-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px;padding-top:24px;margin-top:auto}.service-bottom>span:last-child{font-size:24px;line-height:1.4}.service-card:hover{transform:translateY(-3px);border-color:var(--blue);box-shadow:0 8px 20px oklch(from var(--fg) l c h / .05)}.service-featured{background:var(--blue-deep);border-color:var(--blue-deep);color:var(--bg)}.service-featured .service-category{color:var(--blue-pale)}.service-featured .service-icon{background:var(--blue)}.service-featured:hover{background:oklch(from var(--blue-deep) calc(l - .06) c h);color:var(--bg)}
+.intro{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start;border-block:1px solid var(--border);padding-block:48px}.about-heading h2{font-size:40px;line-height:1.7}.intro-copy p{color:var(--muted);font-size:16px;line-height:2.05;text-align:right;text-wrap:pretty}.intro-copy .quiet-link{margin-top:14px}.article-feature{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:64px;width:100%;border:1px solid var(--border);border-radius:16px;background:var(--surface);padding:40px;text-align:right;color:var(--fg);transition:border-color .2s,transform .2s}.article-feature:hover{border-color:var(--fg);transform:translateY(-3px)}.article-category{font-size:12px;display:block;margin-bottom:12px;color:var(--muted)}.article-title{display:block;font:400 34px/1.6 var(--display);text-wrap:balance}.article-meta{display:flex;gap:24px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:24px}.article-summary{display:flex;flex-direction:column;justify-content:space-between;gap:24px}.article-excerpt{font-size:14px;line-height:2;color:var(--muted);text-wrap:pretty}.article-action{display:flex;gap:24px;align-items:center;font-size:14px}.article-action>span{font-size:24px}
+.site-footer{background:var(--blue-deep);color:var(--bg)}.footer-cta{display:flex;justify-content:space-between;align-items:center;gap:32px;padding-block:56px}.footer-cta .eyebrow{color:var(--blue-pale);margin-bottom:4px}.footer-cta h2{font-size:44px}.footer-cta .button{font-size:14px}.footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:28px;border-top:1px solid oklch(from var(--blue-light) l c h / .25);padding-block:28px 32px}.footer-brand{display:flex;align-items:center;gap:14px}.footer-brand img{width:40px;height:auto}.footer-brand span{font:400 22px/1.6 var(--display)}.footer-nav{display:flex;gap:26px;align-items:center;flex-wrap:wrap}.footer-nav a{display:flex;align-items:center;min-height:44px;font-size:13px;color:var(--blue-pale)}.footer-nav a:hover{color:var(--bg);text-decoration:underline;text-underline-offset:5px}.site-footer :focus-visible{outline-color:var(--blue-light)}
+@container(max-width:245px){.service-title{font-size:23px}.service-top{gap:8px}.service-category{font-size:11px}}
+@media(max-width:1099px){.header-inner{gap:24px}.brand>span{font-size:20px}.nav{gap:22px}.hero{gap:32px;padding-block:52px;min-height:590px}.hero h1{font-size:clamp(42px,5vw,56px)}.featured-project .project-copy{padding:24px}.featured-project .project-name{font-size:28px}.project-action{margin-top:28px}.article-feature{gap:40px;padding:32px}.service-card{padding:20px}.service-title{font-size:24px}.section-description{max-width:250px}}
+@media(max-width:899px){.container{width:calc(100% - 48px)}.header-inner{height:76px;gap:18px}.header-actions{margin-inline-start:auto}.brand>span{font-size:21px}.menu-toggle{display:grid;place-items:center}.nav{display:none;position:absolute;top:calc(100% + 8px);right:24px;left:24px;margin:0;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);box-shadow:0 12px 28px oklch(from var(--fg) l c h / .1);gap:4px}.nav.open{display:grid;grid-template-columns:1fr 1fr}.nav a{font-size:15px;justify-content:center;padding:12px}.nav a[aria-current]::after{left:25%;right:25%}.hero{gap:24px;min-height:540px;padding-block:48px}.hero h1{font-size:clamp(36px,5.2vw,46px)}.hero-description{font-size:14px}.hero-actions{gap:14px}.hero-actions .button{padding-inline:18px;gap:20px}.quiet-link{font-size:13px;gap:12px}.hero-disciplines{gap:8px;font-size:10px;margin-top:26px}.hero-disciplines>span+span{padding-inline-start:8px}.hero-art figcaption{font-size:11px}.main-stack{gap:72px;padding-bottom:72px}.section-heading{gap:24px;align-items:flex-start}.section-heading h2{font-size:31px}.section-description{max-width:205px;font-size:12px}.featured-project{grid-template-columns:minmax(0,1.8fr) minmax(0,1fr)}.featured-project .project-copy{padding:20px}.featured-project .project-name{font-size:22px}.featured-project .project-description{font-size:13px}.project-action{padding-top:16px;margin-top:20px;font-size:11px}.project-copy{padding:20px}.project-name{font-size:20px}.project-description{font-size:12px}.service-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.service-title{font-size:26px}.intro{gap:32px;padding-block:36px;grid-template-columns:1fr 1.2fr}.about-heading h2{font-size:34px}.intro-copy p{font-size:14px}.article-feature{gap:28px;padding:28px}.article-title{font-size:28px}.article-excerpt{font-size:13px}.article-meta{gap:12px;font-size:11px}.footer-cta h2{font-size:36px}.footer-nav{gap:16px}.footer-nav a{font-size:12px}}
+@media(max-width:649px){.container{width:calc(100% - 40px)}.header-inner{height:70px;gap:10px}.brand{gap:8px}.brand img{width:34px}.brand>span{font-size:19px}.header-actions .button{font-size:11px;gap:8px;padding:8px 10px;min-height:44px}.header-actions .button>span{font-size:18px}.menu-toggle{flex:0 0 44px}.nav{right:20px;left:20px}.hero{grid-template-columns:minmax(0,1fr);padding-block:42px 34px;gap:26px;min-height:0}.hero-copy{max-width:520px}.hero .eyebrow{font-size:12px}.hero h1{font-size:clamp(39px,8.5vw,54px);line-height:1.55;letter-spacing:-.5px}.desktop-break{display:none}.hero-description{font-size:15px;line-height:1.95;max-width:460px;margin-top:18px}.hero-actions{margin-top:24px;gap:24px}.hero-actions .button{font-size:14px;padding-inline:22px;gap:26px}.hero-disciplines{font-size:11px;gap:10px;margin-top:26px}.hero-disciplines>span+span{padding-inline-start:10px}.hero-art{width:min(100%,350px);justify-self:center}.art-stage{max-width:310px;margin:auto}.hero-art figcaption{font-size:12px;padding-block:10px}.main-stack{padding-top:28px;gap:56px;padding-bottom:56px}.section-heading{display:block;margin-bottom:22px}.section-heading .eyebrow{font-size:12px}.section-heading h2{font-size:30px}.section-description{max-width:100%;font-size:13px;margin-top:8px}.portfolio-grid{grid-template-columns:minmax(0,1fr);gap:20px}.featured-project{display:flex;flex-direction:column;grid-column:auto}.featured-project .project-copy{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 16px;padding:20px}.featured-project .project-category{display:none}.featured-project .project-name{font-size:23px;grid-column:1}.featured-project .project-description{font-size:13px;margin:0;grid-column:1}.project-action{grid-column:2;grid-row:1/3;border:0;padding:0;margin:0;width:44px;height:44px;overflow:hidden;font-size:0;justify-content:center;gap:0;border:1px solid var(--blue);border-radius:50%}.project-action>span{font-size:24px;margin:0}.project-copy{padding:20px}.project-name{font-size:23px}.project-description{font-size:13px}.service-grid{gap:12px}.service-card{padding:18px;min-height:218px}.service-top{display:block}.service-icon{width:38px;height:38px;margin-bottom:12px}.service-category{font-size:11px}.service-title{font-size:23px;margin-top:12px;line-height:1.7}.service-bottom{font-size:11px;padding-top:16px}.service-bottom>span:last-child{font-size:21px}.intro{grid-template-columns:minmax(0,1fr);gap:20px;padding-block:32px}.about-heading h2{font-size:32px}.about-heading h2 br{display:none}.intro-copy p{font-size:15px}.article-feature{grid-template-columns:minmax(0,1fr);gap:22px;padding:24px}.article-title{font-size:31px}.article-title br{display:none}.article-meta{font-size:11px;gap:18px;margin-top:16px}.article-summary{gap:20px}.article-excerpt{font-size:14px}.footer-cta{display:block;padding-block:36px}.footer-cta h2{font-size:36px}.footer-cta .button{margin-top:20px;font-size:13px}.footer-bottom{align-items:flex-start;flex-direction:column;padding-block:24px;gap:20px}.footer-nav{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px;width:100%}.footer-nav a{font-size:13px}.footer-brand img{width:34px}.footer-brand span{font-size:21px}dialog{padding:24px 20px}.dialog-head h2{font-size:27px}.dialog-note{font-size:14px}.form-grid .button{width:100%;font-size:14px}.form-grid{gap:14px}}
+@media(max-width:479px){.service-grid{grid-template-columns:minmax(0,1fr)}.service-top{display:flex}.service-icon{margin-bottom:0}.service-card{min-height:190px;padding:22px}.service-category{font-size:12px}.service-title{font-size:26px}.service-bottom{font-size:12px}}
+@media(max-width:389px){.container{width:calc(100% - 32px)}.brand>span{font-size:17px}.header-inner{gap:6px}.header-actions .button{font-size:10px;padding-inline:8px}.header-actions .button>span{display:none}.hero h1{font-size:39px}.hero-actions{gap:20px}.service-grid{grid-template-columns:minmax(0,1fr)}.service-top{display:flex}.service-icon{margin-bottom:0}.service-card{min-height:190px;padding:22px}.service-category{font-size:12px}.service-title{font-size:26px}.service-bottom{font-size:12px}.hero-art{max-width:280px}.hero-disciplines{font-size:10px}.nav{right:16px;left:16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+</style>
+<style>
+/* Compact header action; scope its label independently of button icon spans. */
+.header-actions .consult{min-height:44px;padding:8px 12px;gap:8px;border-radius:8px;background:var(--fg);color:var(--bg);font-size:12px;line-height:1.5}
+.header-actions .consult:hover{background:oklch(from var(--fg) calc(l - .06) c h);color:var(--bg);transform:none}
+.header-actions .consult:active{background:oklch(from var(--fg) calc(l - .1) c h);color:var(--bg)}
+.header-actions .consult .ico-phone{display:grid;place-items:center;width:16px;height:20px;background:transparent;flex:0 0 16px}
+.header-actions .consult .ico-phone svg{width:16px;height:16px}
+.header-actions .consult .consult-label{display:block;font:500 12px/1.5 IRANSansX,sans-serif}
+/* icon set */
+.icon{display:inline-block;width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}
+button .icon,a .icon{pointer-events:none}
+.menu-toggle .i-close{display:none}
+.menu-toggle[aria-expanded="true"] .i-menu{display:none}
+.menu-toggle[aria-expanded="true"] .i-close{display:block}
+.close-dialog .icon{width:20px;height:20px}
+/* white-on-black actions; keep footer action legible on the dark band */
+.footer-cta .button.primary{background:transparent;border:1px solid oklch(from var(--blue-light) l c h / .55);color:var(--bg)}
+.footer-cta .button.primary:hover{background:oklch(from var(--bg) l c h / .12);color:var(--bg);transform:translateY(-2px)}
+@media(max-width:1099px){.portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:649px){.portfolio-grid{grid-template-columns:minmax(0,1fr);gap:20px}}
+/* case-study modal (single-page, portfolio opens in modal) */
+.case-dialog{width:min(1320px,calc(100% - 24px));max-width:none;height:calc(100dvh - 24px);max-height:calc(100dvh - 24px);padding:0;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:var(--bg)}
+.case-dialog[open]{display:flex;flex-direction:column}
+.case-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 16px;border-bottom:1px solid var(--border);background:oklch(from var(--bg) l c h / .96);backdrop-filter:blur(12px);z-index:2}
+.case-bar-title{font:400 16px/1.6 var(--display)}
+.case-scroll{flex:1;overflow-y:auto;overscroll-behavior:contain}
+.case-study .container{width:min(1120px,calc(100% - 64px));margin-inline:auto}
+.case-study .cs-hero{padding-block:34px 30px}
+.case-study .cs-title{font:400 clamp(38px,4.6vw,60px)/1.4 var(--display);letter-spacing:-.5px}
+.case-study .cs-lead{max-width:640px;margin-top:16px;color:var(--muted);font-size:17px;line-height:2;text-wrap:balance}
+.case-study .meta{list-style:none;display:flex;flex-wrap:wrap;gap:10px 34px;margin:24px 0 0;padding:0}
+.case-study .meta li{display:grid;gap:2px}
+.case-study .meta .k{font-size:12px;color:var(--muted)}
+.case-study .meta .v{font:400 16px/1.6 var(--display)}
+.case-study .band{display:block;width:100%;margin:0;padding:0;border:0;border-block:1px solid var(--border);background:var(--blue-deep);overflow:hidden;cursor:zoom-in}
+.case-study .band img{width:100%;height:clamp(140px,15vw,210px);object-fit:cover;object-position:center}
+.case-study .cs-sec>.container{padding-block:44px}
+.case-study .cs-head{max-width:760px;display:grid;gap:10px;margin-bottom:28px}
+.case-study .cs-head h3{font:400 clamp(24px,2.6vw,34px)/1.6 var(--display);text-wrap:balance}
+.case-study .cs-head p{color:var(--muted);font-size:15px;line-height:2;text-wrap:pretty}
+.case-study .cs-head .idx{color:var(--accent)}
+.case-study .trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.case-study .trio article{display:grid;gap:8px;padding-top:18px;border-top:2px solid var(--fg)}
+.case-study .trio h4{font:400 19px/1.6 var(--display)}
+.case-study .trio p{color:var(--muted);font-size:13.5px;line-height:2;text-wrap:pretty}
+.case-study .steps{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin:44px 0 0;padding:0}
+.case-study .steps li{display:grid;gap:6px}
+.case-study .steps .n{font:400 28px/1 var(--display);color:var(--accent)}
+.case-study .steps h4{font:400 16px/1.6 var(--display)}
+.case-study .steps p{color:var(--muted);font-size:12.5px;line-height:1.95;text-wrap:pretty}
+.case-study .fig-grid{display:grid;gap:16px}
+.case-study .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.case-study .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.case-study .wide{grid-column:1/-1}
+.case-study .fig{display:block;width:100%;padding:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface);cursor:zoom-in;transition:border-color .2s,box-shadow .2s}
+.case-study .fig:hover{border-color:var(--blue);box-shadow:0 10px 26px oklch(from var(--fg) l c h / .08)}
+.case-study .fig img{width:100%;height:auto}
+.case-study .palette{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin:0 0 32px;padding:0}
+.case-study .palette li{display:grid;gap:8px}
+.case-study .palette .sw{display:block;height:88px;border-radius:10px;background:var(--sw);border:1px solid oklch(from var(--fg) l c h / .12)}
+.case-study .palette b{font:400 13px/1.5 var(--display)}
+.case-study .palette code{font:400 11.5px/1.5 Montserrat,monospace;color:var(--muted);direction:ltr;text-align:right}
+.case-study .cover{border-block:1px solid var(--border);background:var(--blue-deep)}
+.case-study .cover img{width:100%;height:auto}
+.case-study .cover figcaption{margin:0;padding:12px 0;text-align:center;color:var(--blue-pale);font-size:12px;border-top:1px solid oklch(from var(--blue-light) l c h / .28)}
+.case-study .closing{border-block:1px solid var(--border);background:var(--blue-deep)}
+.case-study .closing img{width:100%;height:clamp(200px,30vw,460px);object-fit:cover;object-position:center}
+.case-study .cs-cta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;padding-block:48px}
+.case-study .cs-cta h3{font:400 clamp(26px,3vw,38px)/1.6 var(--display);text-wrap:balance}
+.case-study .cs-cta p{color:var(--muted);margin-top:10px;font-size:15px}
+.case-study .cs-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.lightbox{width:min(1280px,calc(100% - 28px));max-width:none;padding:18px}
+.lightbox .dialog-head{margin-bottom:12px}
+.lightbox h2{font:400 15px/1.6 var(--body);color:var(--muted)}
+.lightbox img{max-height:80dvh;width:auto;max-width:100%;margin:auto;border-radius:10px}
+@media(max-width:1099px){.case-study .palette{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:899px){.case-study .trio{grid-template-columns:1fr;gap:18px}.case-study .steps{grid-template-columns:repeat(2,minmax(0,1fr))}.case-study .cs-cta{grid-template-columns:1fr}}
+@media(max-width:649px){.case-study .g2,.case-study .g3{grid-template-columns:minmax(0,1fr)}.case-study .steps{grid-template-columns:1fr}.case-study .palette{grid-template-columns:repeat(2,minmax(0,1fr))}.case-dialog{width:calc(100% - 12px);height:calc(100dvh - 12px);max-height:calc(100dvh - 12px)}.case-study .container{width:calc(100% - 40px)}}
+</style>
+
+<style>
+/* Revision: white / black / orange theme, IRANSans headings, rebuilt services, creative about, Figma footer. */
+:root{--focus:var(--fg)}
+
+/* Ebrahimi full-width featured card */
+.featured-project{background:var(--fg);border-color:var(--fg)}
+.featured-project:hover{background:var(--fg);border-color:var(--accent)}
+.featured-project:focus-visible{outline-color:var(--fg)}
+.featured-project .project-category{color:oklch(from var(--bg) l c h/.62);margin-bottom:14px}
+.featured-project .project-description{color:oklch(from var(--bg) l c h/.72)}
+.featured-project .project-action{border-top:1px solid oklch(from var(--bg) l c h/.22)}
+.project-action .icon,.article-action .icon{width:22px;height:22px}
+.featured-project .project-action .icon{width:24px;height:24px}
+.project-arrow .icon{width:22px;height:22px}
+.button .icon{width:18px;height:18px}
+.quiet-link .icon{width:20px;height:20px}
+
+/* Services: rebuilt editorial list */
+.service-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--border)}
+.service-list>li{border-bottom:1px solid var(--border)}
+.service-row{display:grid;grid-template-columns:64px 56px minmax(0,1fr) 48px;align-items:center;gap:24px;width:100%;padding:26px 10px;background:transparent;color:var(--fg);text-align:right;border-radius:12px;transition:background .25s,color .25s,padding .25s}
+.service-num{font:400 15px/1 var(--latin);color:var(--muted);letter-spacing:.06em;transition:color .25s}
+.service-icon{display:grid;place-items:center;width:56px;height:56px;border-radius:15px;background:var(--surface);border:1px solid var(--border);flex-shrink:0;transition:background .25s,border-color .25s}
+.service-icon img{max-width:30px;max-height:30px;width:auto;height:auto}
+.service-name{display:flex;flex-direction:column;gap:4px;min-width:0}
+.service-title{font:400 clamp(22px,2.4vw,32px)/1.5 var(--display);text-wrap:balance}
+.service-category{font-size:13px;color:var(--muted);transition:color .25s}
+.service-arrow{display:grid;place-items:center;justify-self:end;width:48px;height:48px;border:1px solid var(--border);border-radius:50%;transition:background .25s,border-color .25s,color .25s,transform .25s}
+.service-arrow .icon{width:22px;height:22px}
+.service-row:hover,.service-row:focus-visible{background:var(--fg);color:var(--bg);padding-inline:24px 20px}
+.service-row:hover .service-num,.service-row:focus-visible .service-num{color:var(--accent)}
+.service-row:hover .service-category,.service-row:focus-visible .service-category{color:oklch(from var(--bg) l c h/.7)}
+.service-row:hover .service-icon,.service-row:focus-visible .service-icon{background:oklch(from var(--bg) l c h/.08);border-color:oklch(from var(--bg) l c h/.18)}
+.service-row:hover .service-arrow,.service-row:focus-visible .service-arrow{background:var(--accent);border-color:var(--accent);color:oklch(22% .06 40);transform:translate(-4px,-4px)}
+
+/* About: creative black panel */
+.about-panel{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;padding:56px;border-radius:22px;background:var(--fg);color:var(--bg);overflow:hidden}
+.about-panel::after{content:'';position:absolute;inset-block-start:-120px;inset-inline-start:-120px;width:320px;height:320px;border-radius:50%;background:var(--accent);opacity:.15;pointer-events:none}
+.about-lead{position:relative;z-index:1}
+.about-lead .eyebrow{color:oklch(from var(--bg) l c h/.6)}
+.about-lead h2{font-size:clamp(30px,3.4vw,46px);line-height:1.6;color:var(--bg)}
+.about-lead p{margin-top:20px;color:oklch(from var(--bg) l c h/.74);font-size:16px;line-height:2.1;text-wrap:pretty}
+.about-lead .quiet-link{margin-top:24px;color:var(--bg)}
+.about-lead .quiet-link:hover{color:var(--bg)}
+.about-values{list-style:none;margin:0;padding:0;display:grid;gap:2px;align-content:center;position:relative;z-index:1}
+.about-values li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 20px;padding:22px 0;border-top:1px solid oklch(from var(--bg) l c h/.16)}
+.about-values .n{font:400 15px/1.4 var(--latin);color:var(--accent);grid-row:1/3}
+.about-values b{font:400 22px/1.5 var(--display);color:var(--bg)}
+.about-values span{font-size:14px;color:oklch(from var(--bg) l c h/.66);line-height:1.9}
+
+/* Next-step CTA band */
+.next-step{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;padding-block:68px;border-top:1px solid var(--border)}
+.next-step h2{font-size:clamp(28px,3.4vw,44px)}
+.next-step .eyebrow{margin-bottom:8px}
+
+/* Figma footer */
+.site-footer{background:var(--fg);color:var(--bg)}
+.footer-inner{min-height:440px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:48px;padding-block:64px}
+.footer-brand{width:92px}
+.footer-brand img{width:92px}
+.footer-nav{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:center;align-items:center}
+.footer-nav a{padding:8px 20px;border-radius:8px;min-height:46px;display:inline-flex;align-items:center;font-size:17px;color:oklch(from var(--bg) l c h/.82)}
+.footer-nav a:hover{background:oklch(from var(--bg) l c h/.1);color:var(--bg);text-decoration:none}
+.socials{display:flex;direction:ltr;gap:24px}
+.social{position:relative;width:72px;height:72px;border:1.2px solid oklch(88% 0 0/.08);border-radius:50%;background:linear-gradient(135deg,oklch(99% .005 240/.05),transparent);overflow:clip;box-shadow:12px 6px 24px oklch(0% 0 0/.25);transition:transform .2s,border-color .2s}
+.social:hover{transform:translateY(-3px);border-color:var(--accent)}
+.social img{position:absolute;max-width:none}
+.social-glyph{top:11px;left:11px;width:auto;height:48px}
+.social-glow{left:50%;top:50%;transform:translate(-50%,-50%);mix-blend-mode:plus-lighter}
+.social-bottom{left:-9px;top:34px}
+.social-shine{left:-18px;top:-18px;mix-blend-mode:screen}
+.social-instagram{box-shadow:inset 0 0 12px oklch(58% .28 315/.32)}
+.social-whatsapp{box-shadow:inset 0 0 12px oklch(86% .28 145/.32)}
+.social-telegram{box-shadow:inset 0 0 12px oklch(74% .17 235/.32)}
+.social-gmail{box-shadow:inset 0 0 12px oklch(64% .2 30/.32)}
+.site-footer :focus-visible{outline-color:var(--accent)}
+
+/* Theme sweep: retire blue surfaces for black + orange */
+.hero-art figcaption>span:last-child{color:var(--accent)}
+.art-stage::before{background:oklch(from var(--accent) calc(l + .32) calc(c * .35) h)}
+.form-status{color:var(--accent-ink)}
+.form-grid input:hover,.form-grid textarea:hover,.form-grid select:hover{border-color:var(--accent)}
+.case-study .band,.case-study .cover,.case-study .closing{background:var(--fg)}
+.case-study .cover figcaption{color:oklch(from var(--bg) l c h/.66);border-top:1px solid oklch(from var(--bg) l c h/.2)}
+.case-study .fig:hover{border-color:var(--accent)}
+
+@media(max-width:1099px){
+  .featured-project .project-action .icon{width:22px;height:22px}
+}
+@media(max-width:899px){
+  .service-row{grid-template-columns:44px 48px minmax(0,1fr) 44px;gap:16px;padding-block:20px}
+  .service-num{font-size:13px}
+  .service-icon{width:48px;height:48px}
+  .service-icon img{max-width:26px;max-height:26px}
+  .about-panel{grid-template-columns:1fr;gap:36px;padding:40px}
+  .footer-inner{min-height:0;gap:36px;padding-block:52px}
+}
+@media(max-width:649px){
+  .service-row{grid-template-columns:minmax(0,1fr) 44px;gap:14px;padding-inline:6px}
+  .service-num,.service-icon{display:none}
+  .service-title{font-size:23px}
+  .about-panel{padding:32px 24px;border-radius:18px}
+  .about-values b{font-size:20px}
+  .next-step{display:block;padding-block:48px}
+  .next-step .button{margin-top:22px}
+  .footer-nav{gap:6px 10px}
+  .footer-nav a{font-size:15px;padding:6px 12px}
+  .socials{gap:16px}
+  .social{width:58px;height:58px}
+  .social-glyph{top:9px;left:9px;height:38px}
+}
+
+</style>
+<style>
+/* Homepage type rhythm: compact controls, measured headings, aligned copy. */
+.header-inner{height:76px}
+.hero h1{font-size:clamp(36px,3.8vw,52px);line-height:1.65;letter-spacing:0}
+.hero-description{max-width:440px;font-size:15px;line-height:2;margin-top:20px}
+.hero-actions{margin-top:24px}
+.section-heading{gap:32px;align-items:center;margin-bottom:24px}
+.section-heading>div{min-width:0;flex:1}
+.section-heading h2{font-size:clamp(26px,2.6vw,34px);line-height:1.65}
+.section-description{flex:0 1 280px;max-width:280px;font-size:13px;line-height:1.95;text-wrap:pretty}
+.service-row .service-name{gap:6px}
+.service-row .service-title{margin:0;font-size:clamp(21px,2vw,26px);line-height:1.6;text-wrap:pretty}
+.service-row .service-category{font-size:13px;line-height:1.8}
+.about-lead h2{font-size:clamp(28px,2.9vw,38px);line-height:1.65}
+.about-lead p{margin-top:16px;font-size:15px;line-height:2}
+.about-values b{font-size:20px;line-height:1.6}
+.about-values li{gap:8px 20px}
+.article-title{font-size:clamp(26px,2.4vw,32px);line-height:1.65}
+.article-title br{display:none}
+.article-meta{margin-top:16px;gap:16px;line-height:1.8}
+.article-excerpt{line-height:1.95}
+.next-step h2{font-size:clamp(28px,2.8vw,36px);line-height:1.65}
+.footer-nav a{font-size:14px;line-height:1.8}
+@media(min-width:650px) and (max-width:899px){
+  .hero h1{font-size:36px}
+  .section-description{flex-basis:230px}
+}
+@media(max-width:649px){
+  .header-inner{height:64px}
+  .header-actions .consult{padding:8px 10px}
+  .hero h1{font-size:clamp(32px,7.8vw,42px);line-height:1.65}
+  .hero-description{font-size:14px;line-height:1.95;margin-top:16px}
+  .section-heading{margin-bottom:20px}
+  .section-heading h2{font-size:27px}
+  .section-description{max-width:100%;margin-top:8px}
+  .service-row .service-title{font-size:21px}
+  .service-row .service-category{font-size:12px}
+  .about-lead p{font-size:14px}
+  .about-values b{font-size:19px}
+}
+/* Consistent portfolio captions and a slightly tighter section rhythm. */
+.portfolio-grid .project-copy{padding:20px;gap:16px;text-align:right}
+.portfolio-grid .project-card:not(.featured-project) .project-copy{display:grid;grid-template-columns:minmax(0,1fr) 44px;align-items:center}
+.portfolio-grid .project-copy>span{min-width:0}
+.portfolio-grid .project-name{width:100%;font-family:var(--latin);font-weight:400;font-size:20px;line-height:1.5;letter-spacing:0;text-align:right}
+.portfolio-grid .project-description{width:100%;font-size:13px;line-height:1.85;margin-top:6px;text-align:right;text-wrap:pretty}
+.portfolio-grid .project-card:not(.featured-project) .project-description{min-height:3.7em}
+.portfolio-grid .featured-project .project-copy{padding:28px;gap:0;align-items:flex-start}
+.portfolio-grid .featured-project .project-category{margin-bottom:12px}
+.hero{padding-block:56px 60px;min-height:600px}
+.main-stack{gap:80px;padding-block:16px 80px}
+.next-step{padding-block:56px}
+@media(max-width:1099px){
+  .hero{padding-block:44px;min-height:550px}
+}
+@media(max-width:899px){
+  .hero{padding-block:40px;min-height:500px}
+  .main-stack{gap:60px;padding-bottom:60px}
+  .portfolio-grid .featured-project .project-copy{padding:20px}
+}
+@media(max-width:649px){
+  .hero{padding-block:36px 28px;min-height:0}
+  .main-stack{gap:48px;padding-block:24px 48px}
+  .next-step{padding-block:40px}
+  .portfolio-grid .featured-project .project-copy{gap:0 16px;align-items:center}
+  .portfolio-grid .featured-project .project-description{margin-top:6px}
+}
+
+/* Single-page telephone banner. */
+html{scroll-padding-top:64px}
+.consultation-bar{position:sticky;top:0;z-index:10;background:var(--accent);color:var(--fg)}
+.consultation-call{display:flex;align-items:center;justify-content:center;min-height:44px;width:100%;padding:10px 20px;font:500 14px/1.7 IRANSansX,sans-serif;background:var(--accent);color:var(--fg);transition:background .18s}
+.consultation-call:hover{background:oklch(from var(--accent) calc(l + .08) c h);color:var(--fg)}
+.consultation-call:active{background:oklch(from var(--accent) calc(l + .04) c h);color:var(--fg)}
+.consultation-call:focus-visible{outline:2px solid var(--fg);outline-offset:-5px}
+.hero-actions .button,.hero-actions .quiet-link{gap:0}
+.portfolio-grid .project-card{transition:border-color .18s,box-shadow .18s}
+.portfolio-grid .project-card:hover{transform:none;border-color:var(--muted);box-shadow:0 3px 12px oklch(from var(--fg) l c h / .045)}
+.portfolio-grid .featured-project:hover{background:var(--fg);border-color:var(--muted)}
+.close-dialog{display:grid;place-items:center;padding:0;line-height:1}
+.close-dialog .icon{display:block;width:20px;height:20px;margin:0}
+.field-hint,.field-requirement{font-size:12px;color:var(--muted);line-height:1.8}
+.field-requirement{display:inline}
+.form-grid label:has(.field-requirement){display:flex;flex-wrap:wrap;gap:6px}
+.form-grid label:has(.field-requirement) input,.form-grid label:has(.field-requirement) .field-hint{flex-basis:100%}
+.project-details-field{position:relative;display:block}
+.project-details-field textarea{display:block;min-height:140px}
+.project-prompt{position:absolute;top:12px;right:13px;left:13px;pointer-events:none;font-size:14px;line-height:2;color:var(--muted)}
+.project-prompt[hidden],.project-details-field:focus-within .project-prompt{display:none}
+.service-word{display:inline-block;opacity:1;transform:translateY(0);transition:opacity .18s,transform .18s;color:var(--fg)}
+.service-word.is-changing{opacity:0;transform:translateY(4px)}
+.lightbox{width:min(1280px,calc(100% - 24px));height:calc(100dvh - 24px);max-height:calc(100dvh - 24px);padding:16px;overflow:hidden}
+.lightbox[open]{display:flex;flex-direction:column;gap:12px}
+.lightbox .dialog-head{margin:0;flex-shrink:0}
+.lightbox-tools{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.zoom-toggle{min-height:44px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--fg);padding:8px 16px;font-size:13px}
+.zoom-toggle:hover{background:var(--border);color:var(--fg)}
+.lightbox-viewport{flex:1;min-height:0;overflow:auto;background:var(--surface);border-radius:8px;direction:ltr;overscroll-behavior:contain}
+.lightbox-viewport:focus-visible{outline:3px solid var(--focus);outline-offset:-3px}
+.lightbox .lightbox-viewport img{width:auto;height:auto;max-width:100%;max-height:calc(100dvh - 180px);margin:auto;object-fit:contain;border-radius:0;cursor:zoom-in}
+.lightbox.is-zoomed .lightbox-viewport img{max-width:none;max-height:none;cursor:zoom-out}
+@media(max-width:649px){
+ .portfolio-grid .featured-project .project-action{grid-column:1/-1;grid-row:auto;width:auto;height:auto;min-height:44px;margin-top:8px;padding:8px 0 0;border:0;border-radius:0;font-size:12px;justify-content:flex-start;overflow:visible}
+ .project-prompt{font-size:13px}
+ .lightbox-tools{gap:8px}
+ .lightbox-tools .field-hint{display:none}
+}
+@media(prefers-reduced-motion:reduce){.service-word{transition:none}}
+
+/* White banner lettering, on a deeper orange for readable contrast. */
+.consultation-bar,.consultation-call{background:oklch(from var(--accent) 55% c h);color:var(--bg)}
+.consultation-call:hover{background:oklch(from var(--accent) 49% c h);color:var(--bg)}
+.consultation-call:active{background:oklch(from var(--accent) 46% c h);color:var(--bg)}
+.consultation-call:focus-visible{outline-color:var(--bg)}
+/* Translucent, asymmetric orange glass behind the sculpture. */
+.art-stage::before{inset:10% 7% 11% 8%;border-radius:38% 62% 56% 44% / 48% 34% 66% 52%;transform:rotate(-14deg);background:radial-gradient(ellipse at 24% 20%,oklch(from var(--bg) l c h / .95),transparent 58%),linear-gradient(145deg,oklch(from var(--accent) 96% .035 h / .48),oklch(from var(--accent) 86% .09 h / .6) 55%,oklch(from var(--accent) 77% .13 h / .24));border:1px solid oklch(from var(--bg) l c h / .85);box-shadow:inset 2px 3px 16px oklch(from var(--bg) l c h / .8),inset -8px -10px 26px oklch(from var(--accent) 76% .12 h / .1),0 12px 36px oklch(from var(--accent) 80% .09 h / .12);backdrop-filter:blur(16px)}
+.field-error{display:block;width:100%;font-size:12px;line-height:1.9;color:var(--accent-ink)}
+.field-error[hidden]{display:none}
+.form-grid [aria-invalid="true"]{border-color:var(--accent-ink);box-shadow:0 0 0 1px var(--accent-ink)}
+.form-grid [aria-invalid="true"]:focus-visible{outline-color:var(--accent-ink)}
+.gallery-nav{display:flex;align-items:center;gap:12px}
+.gallery-button{min-width:60px;min-height:44px;border:1px solid var(--border);border-radius:8px;padding:8px 14px;background:var(--bg);color:var(--fg);font-size:13px}
+.gallery-button:hover{background:var(--surface);color:var(--fg);border-color:var(--muted)}
+.gallery-button:disabled{opacity:.4;background:var(--bg);color:var(--fg);border-color:var(--border)}
+.gallery-count{min-width:60px;text-align:center;font-size:13px;color:var(--muted)}
+.lightbox-tools{justify-content:space-between}
+.gallery-status{font-size:13px;line-height:1.8;color:var(--muted);margin:0}
+.gallery-status[hidden]{display:none}
+@media(max-width:649px){.gallery-nav{gap:6px}.gallery-button{min-width:48px;padding-inline:8px}.gallery-count{min-width:44px}.lightbox-tools .zoom-toggle{padding-inline:10px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false"><defs><symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol><symbol id="i-arrow-ul" viewBox="0 0 24 24"><line x1="17" y1="17" x2="7" y2="7"/><polyline points="7 17 7 7 17 7"/></symbol><symbol id="i-arrow-down" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol></defs></svg>
+<a class="skip-link" href="#main" data-od-id="skip-navigation">رفتن به محتوای اصلی</a>
+<header class="consultation-bar" id="top" data-od-id="consultation-bar"><a class="consultation-call" href="tel:+989109027628" aria-label="تماس تلفنی برای مشاوره رایگان" data-od-id="free-consultation">مشاوره رایگان</a></header>
+<main id="main" data-od-id="main-content">
+<section class="hero container" aria-labelledby="hero-title" data-od-id="hero"><div class="hero-copy"><h1 id="hero-title" data-od-id="hero-title">طراحی برای <em>رشد،</em><br>استراتژی برای ماندگاری.</h1><p class="hero-description" data-od-id="hero-description">با ترکیب خلاقیت، طراحی و فناوری، به کسب‌وکار شما کمک می‌کنیم در دنیای دیجیتال متمایز شود.</p><div class="hero-actions"><button class="button primary" type="button" data-contact="project" data-od-id="start-project">شروع پروژه </button><a class="quiet-link" href="#portfolio" data-od-id="explore-projects">دیدن نمونه‌کارها </a></div><div class="hero-disciplines" aria-label="حوزه‌های فعالیت"><span>هویت بصری</span><span>تجربه دیجیتال</span><span>تولید محتوا</span></div></div><figure class="hero-art" data-od-id="hero-artwork"><div class="art-stage"><img src="assets/felosi-logo-sculpture.png" width="1254" height="1254" alt="نشان سه‌بعدی فلوسی با بافت مرواریدی و شیشه‌ای" class="sculpture" fetchpriority="high"></div><figcaption><span>خلاقیت در دنیای دیجیتال</span><span aria-hidden="true">∞</span></figcaption></figure></section>
+<div class="container main-stack"><section id="portfolio" aria-labelledby="portfolio-title" data-od-id="portfolio"><div class="section-heading" data-od-id="portfolio-heading"><div><span class="eyebrow">منتخب نمونه‌کارها</span><h2 id="portfolio-title" data-od-id="portfolio-title">طراحی را در عمل ببینید.</h2></div><p class="section-description">چهار پروژه، چهار تجربهٔ متفاوت از طراحی.</p></div><div class="portfolio-grid"><button class="project-card" type="button" data-project="shopero" data-od-id="project-shopero" aria-label="نمایش پروژه فروشگاهی SHOPERO"><span class="project-visual"><img src="assets/portfolio-imgShopero1.png" width="1278" height="639" alt="نمای کامل پروژه فروشگاهی SHOPERO" class="project-image" loading="lazy"></span><span class="project-copy"><span><span class="project-name" lang="en" dir="ltr">SHOPERO</span><span class="project-description">اپلیکیشن فروشگاهی</span></span><span class="project-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow-ul"></use></svg></span></span></button><button class="project-card" type="button" data-project="ima" data-od-id="project-ima" aria-label="نمایش پروژه IMA MOVIES"><span class="project-visual"><img src="assets/portfolio-imgIma2.png" width="1281" height="640" alt="نمای کامل پروژه IMA MOVIES" class="project-image" loading="lazy"></span><span class="project-copy"><span><span class="project-name" lang="en" dir="ltr">IMA MOVIES</span><span class="project-description">پلتفرم تماشای فیلم و ویدیو</span></span><span class="project-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow-ul"></use></svg></span></span></button><button class="project-card" type="button" data-project="exloot" data-od-id="project-exloot" aria-label="نمایش پروژه EXLOOT"><span class="project-visual"><img src="assets/portfolio-imgExloot2.png" width="1920" height="1080" alt="نمای کامل پروژه EXLOOT" class="project-image" loading="lazy"></span><span class="project-copy"><span><span class="project-name" lang="en" dir="ltr">EXLOOT</span><span class="project-description">بازار دارایی‌ها و آیتم‌های دیجیتال</span></span><span class="project-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow-ul"></use></svg></span></span></button><button class="project-card featured-project" type="button" data-case="ebrahimi" data-od-id="project-ebrahimi" aria-label="نمایش کیس‌استادی ابراهیمی"><span class="project-visual"><img src="16.jpg" width="1920" height="1080" alt="هویت بصری ابراهیمی در فضای کارگاه" class="project-image" loading="lazy"></span><span class="project-copy"><span class="project-category">کیس‌استادی</span><span class="project-name" lang="en" dir="ltr">EBRAHIMI</span><span class="project-description">طراحی لوگو و هویت بصری</span><span class="project-action">نمایش کیس‌استادی </span></span></button></div></section><section id="services" aria-labelledby="services-title" data-od-id="services"><div class="section-heading" data-od-id="services-heading"><div><span class="eyebrow">خدمات فلوسی</span><h2 id="services-title" data-od-id="services-title">برای قدم بعدیِ کسب‌وکارتان.</h2></div></div><ol class="service-list" data-od-id="service-list"><li><button class="service-row" type="button" data-service="branding" data-od-id="service-branding" aria-label="شروع پروژه طراحی هویت بصری"><span class="service-num" aria-hidden="true">۰۱</span><span class="service-icon"><img src="assets/services-img52837428315365567501.svg" width="36" height="36" alt=""></span><span class="service-name"><span class="service-title">طراحی هویت بصری</span><span class="service-category">برندسازی</span></span><span class="service-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow-ul"></use></svg></span></button></li><li><button class="service-row" type="button" data-service="marketing" data-od-id="service-marketing" aria-label="شروع پروژه دیجیتال مارکتینگ"><span class="service-num" aria-hidden="true">۰۲</span><span class="service-icon"><img src="assets/services-imgMarketingIconContainer.svg" width="32.5" height="32.5001" alt=""></span><span class="service-name"><span class="service-title">دیجیتال مارکتینگ</span><span class="service-category">سوشال مدیا</span></span><span class="service-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow-ul"></use></svg></span></button></li><li><button class="service-row" type="button" data-service="uiux" data-od-id="service-uiux" aria-label="شروع پروژه طراحی رابط و تجربه کاربری"><span class="service-num" aria-hidden="true">۰۳</span><span class="service-icon"><img src="assets/services-imgIconUiux.svg" width="36" height="36" alt=""></span><span class="service-name"><span class="service-title">طراحی رابط و تجربه کاربری</span><span class="service-category">توسعه نرم‌افزار</span></span><span class="service-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow-ul"></use></svg></span></button></li><li><button class="service-row" type="button" data-service="packaging" data-od-id="service-packaging" aria-label="شروع پروژه بسته‌بندی محصول"><span class="service-num" aria-hidden="true">۰۴</span><span class="service-icon"><img src="assets/services-imgIconPrint.svg" width="37.95" height="37.95" alt=""></span><span class="service-name"><span class="service-title">بسته‌بندی محصول</span><span class="service-category">طراحی و چاپ</span></span><span class="service-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow-ul"></use></svg></span></button></li><li><button class="service-row" type="button" data-service="video" data-od-id="service-video" aria-label="شروع پروژه تولید محتوای تبلیغاتی"><span class="service-num" aria-hidden="true">۰۵</span><span class="service-icon"><img src="assets/services-imgVideoIconContainer.svg" width="35.7" height="22.6231" alt=""></span><span class="service-name"><span class="service-title">تولید محتوای تبلیغاتی</span><span class="service-category">تدوین ویدیو</span></span><span class="service-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow-ul"></use></svg></span></button></li><li><button class="service-row" type="button" data-service="academy" data-od-id="service-academy" aria-label="شروع پروژه توسعه سرمایه انسانی"><span class="service-num" aria-hidden="true">۰۶</span><span class="service-icon"><img src="assets/services-imgAcademyIconContainer.svg" width="35.4167" height="26.9167" alt=""></span><span class="service-name"><span class="service-title">توسعه سرمایه انسانی</span><span class="service-category">آکادمی و آموزش</span></span><span class="service-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow-ul"></use></svg></span></button></li></ol></section><section class="about" id="about" aria-labelledby="about-title" data-od-id="about"><div class="about-panel"><div class="about-lead"><span class="eyebrow">دربارهٔ استودیو</span><h2 id="about-title" data-od-id="about-title">فلوسی؛ همراه برند شما</h2><p>در فلوسی، هویت بصری، تجربه‌های دیجیتال و محتوای برند را طراحی می‌کنیم. از تعریف مسیر تا اجرای جزئیات، طراحی را با نیاز کسب‌وکار شما هماهنگ می‌کنیم.</p><a class="quiet-link" href="tel:+989109027628" data-od-id="about-phone">مشاورهٔ تلفنی: ۰۹۱۰۹۰۲۷۶۲۸ <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg></a></div><ul class="about-values" aria-label="ارزش‌های استودیو"><li><span class="n" aria-hidden="true">۰۱</span><b>نوآوری</b><span>ایده‌هایی که از کلیشه فاصله می‌گیرند.</span></li><li><span class="n" aria-hidden="true">۰۲</span><b>دقت</b><span>جزئیاتی که کیفیت را می‌سازند.</span></li><li><span class="n" aria-hidden="true">۰۳</span><b>رشد</b><span>طراحی در خدمت نتیجهٔ کسب‌وکار.</span></li></ul></div></section><section id="articles" aria-labelledby="articles-title" data-od-id="articles"><div class="section-heading" data-od-id="articles-heading"><div><span class="eyebrow">یادداشت‌های فلوسی</span><h2 id="articles-title" data-od-id="articles-title">نگاهی به دنیای دیجیتال.</h2></div><p class="section-description">طراحی، فناوری و تجربه‌های تازه.</p></div><button class="article-feature" type="button" data-article="1" data-od-id="article-ai"><span class="article-heading"><span class="article-category">هوش مصنوعی</span><span class="article-title">ایجنت هوش مصنوعی چیست؟</span><span class="article-meta"><time datetime="2025-09-21">۳۰ شهریور ۱۴۰۴</time><span>۸ دقیقه مطالعه</span></span></span><span class="article-summary"><span class="article-excerpt">با پیشرفت فناوری و تغییرات سریع در سبک زندگی، نیازهای کاربران به خدمات دیجیتال به طور چشمگیری افزایش یافته است. این تحولات به آژانس‌های دیجیتال مارکتینگ این امکان را می‌دهد که به شیوه‌های جدیدی به مشتریان خود خدمات ارائه دهند.</span><span class="article-action">خواندن خلاصه <svg class="icon" aria-hidden="true"><use href="#i-arrow-ul"></use></svg></span></span></button></section></div>
+
+<section class="next-step container" aria-labelledby="next-step-title" data-od-id="next-step"><div><span class="eyebrow">قدم بعدی</span><h2 id="next-step-title" data-od-id="next-step-title">از ایده‌تان بگویید.</h2></div><button class="button primary" type="button" data-contact="project" data-od-id="next-step-start-project">آماده‌سازی خلاصه پروژه <svg class="icon" aria-hidden="true"><use href="#i-arrow-ul"></use></svg></button></section>
+</main>
+<footer class="site-footer" data-od-id="footer"><div class="container footer-inner"><a class="footer-brand" href="#top" aria-label="بازگشت به ابتدای صفحه" data-od-id="footer-brand"><img src="assets/footer-imgUnion.svg" width="92" height="93.8623" alt="فلوسی"></a><nav class="footer-nav" aria-label="پیوندهای پایین صفحه" data-od-id="footer-navigation"><a href="#top" data-od-id="footer-home">صفحه اصلی</a><a href="#services" data-od-id="footer-services">خدمات ما</a><a href="#about" data-od-id="footer-about">درباره ما</a><a href="#portfolio" data-od-id="footer-portfolio">نمونه‌کار</a><a href="tel:+989109027628" data-od-id="footer-phone">تماس: ۰۹۱۰۹۰۲۷۶۲۸</a></nav><div class="socials" data-od-id="social-links"><button type="button" class="social social-instagram" data-social="اینستاگرام" data-od-id="social-instagram" aria-label="اینستاگرام"><img src="assets/footer-imgInstagram.svg" width="78" height="78" alt="" class="social-glow"><img src="assets/footer-imgInstagram1.svg" width="48" height="48" alt="" class="social-glyph"><img src="assets/footer-imgEllipse1.svg" width="88.5" height="73.5" alt="" class="social-bottom"></button><button type="button" class="social social-whatsapp" data-social="واتساپ" data-od-id="social-whatsapp" aria-label="واتساپ"><img src="assets/footer-imgWhatsapp.svg" width="72" height="72" alt="" class="social-glow"><img src="assets/footer-imgWhatsapp1.svg" width="48" height="48" alt="" class="social-glyph"><img src="assets/footer-imgEllipse2.svg" width="88.5" height="73.5" alt="" class="social-bottom"><img src="assets/footer-imgEllipse3.svg" width="87" height="87" alt="" class="social-shine"></button><button type="button" class="social social-telegram" data-social="تلگرام" data-od-id="social-telegram" aria-label="تلگرام"><img src="assets/footer-imgTelegram.svg" width="60" height="57" alt="" class="social-glow"><img src="assets/footer-imgTelegram1.svg" width="48" height="48" alt="" class="social-glyph"><img src="assets/footer-imgEllipse4.svg" width="88.5" height="73.5" alt="" class="social-bottom"><img src="assets/footer-imgEllipse3.svg" width="87" height="87" alt="" class="social-shine"></button><button type="button" class="social social-gmail" data-social="ایمیل" data-od-id="social-gmail" aria-label="ایمیل"><img src="assets/footer-imgGmail.svg" width="96" height="85.5" alt="" class="social-glow"><img src="assets/footer-imgGmail1.svg" width="50.6469" height="48" alt="" class="social-glyph"><img src="assets/footer-imgEllipse5.svg" width="88.5" height="73.5" alt="" class="social-bottom"><img src="assets/footer-imgEllipse3.svg" width="87" height="87" alt="" class="social-shine"></button></div></div></footer>
+<dialog id="contact-dialog" aria-labelledby="contact-title" data-od-id="project-dialog"><div class="dialog-head"><h2 id="contact-title" data-od-id="contact-title">شروع پروژه</h2><button type="button" class="close-dialog" data-close="" aria-label="بستن" data-od-id="close-project-dialog"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div><p class="dialog-note">خلاصهٔ پروژه‌تان را آماده و دریافت کنید. اطلاعات این فرم برای کسی ارسال نمی‌شود.</p><form id="brief-form" class="form-grid" data-od-id="project-form" novalidate=""><label>نام شما<input name="name" autocomplete="name" required="" maxlength="100" data-od-id="brief-name" id="brief-name" aria-describedby="error-name"><span class="field-error" id="error-name" hidden="" aria-live="polite"></span></label><label>شمارهٔ تماس <span class="field-requirement">(الزامی)</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" dir="ltr" required="" minlength="7" maxlength="24" aria-describedby="phone-hint error-phone" data-od-id="brief-phone" id="brief-phone"><span id="phone-hint" class="field-hint">شماره‌ای که بتوانیم با شما تماس بگیریم.</span><span class="field-error" id="error-phone" hidden="" aria-live="polite"></span></label><label>ایمیل (اختیاری)<input type="email" name="email" autocomplete="email" dir="ltr" data-od-id="brief-email" id="brief-email" aria-describedby="error-email"><span class="field-error" id="error-email" hidden="" aria-live="polite"></span></label><label>خدمت موردنظر<select name="service" data-od-id="brief-service" aria-label="انتخاب خدمت" id="brief-service" aria-describedby="error-service"><option value="branding">طراحی هویت بصری</option><option value="marketing">دیجیتال مارکتینگ</option><option value="uiux">طراحی رابط و تجربه کاربری</option><option value="packaging">بسته‌بندی محصول</option><option value="video">تولید محتوای تبلیغاتی</option><option value="academy">توسعه سرمایه انسانی</option><option value="consultation">مشاوره</option></select><span class="field-error" id="error-service" hidden="" aria-live="polite"></span></label><label>دربارهٔ پروژه<span class="project-details-field"><textarea name="details" maxlength="5000" required="" data-od-id="brief-details" rows="4" id="brief-details" aria-describedby="details-hint error-details"></textarea><span class="project-prompt" aria-hidden="true">از <span id="rotating-service" class="service-word">طراحی هویت بصری</span> شروع کنیم…</span></span><span id="details-hint" class="sr-only">از خدمت موردنیازتان شروع کنید و توضیح کوتاهی دربارهٔ پروژه بنویسید.</span><span class="field-error" id="error-details" hidden="" aria-live="polite"></span></label><button type="submit" class="button primary" data-od-id="download-brief">دریافت خلاصه پروژه</button><p id="form-status" class="form-status" role="status" aria-live="polite"></p></form></dialog>
+<dialog id="preview-dialog" class="preview-dialog" aria-labelledby="preview-title" data-od-id="project-preview"><div class="dialog-head"><h2 id="preview-title" dir="ltr" data-od-id="preview-title"></h2><button class="close-dialog" type="button" data-close="" aria-label="بستن" data-od-id="close-preview"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="preview-image"></div></dialog>
+<dialog id="text-dialog" class="text-dialog" aria-labelledby="text-title" data-od-id="detail-dialog"><div class="dialog-head"><h2 id="text-title" data-od-id="detail-title"></h2><button class="close-dialog" type="button" data-close="" aria-label="بستن" data-od-id="close-details"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div id="text-content"></div></dialog>
+<dialog id="case-dialog" class="case-dialog" aria-labelledby="case-dialog-title" data-od-id="case-dialog"><div class="case-bar"><span class="case-bar-title" id="case-dialog-title" data-od-id="case-dialog-title">کیس‌استادی ابراهیمی</span><button class="close-dialog" type="button" data-close="" aria-label="بستن" data-od-id="close-case-dialog"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div class="case-scroll"><article class="case-study">
+<header class="cs-hero container" data-od-id="case-hero"><span class="eyebrow">کیس‌استادی · طراحی لوگو و هویت بصری</span><h2 class="cs-title" data-od-id="case-title">ابراهیمی</h2><p class="cs-lead">خلق هویتی لوکس، دقیق و متمایز برای یک مرکز تخصصی بازسازی، تیون ظاهری و نصب آپشن خودرو.</p><ul class="meta" aria-label="مشخصات پروژه"><li><span class="k">کارفرما</span><span class="v">ابراهیمی</span></li><li><span class="k">حوزه</span><span class="v">بازسازی، تیون و آپشن خودرو</span></li><li><span class="k">خدمات</span><span class="v" lang="en" dir="ltr">Branding · Graphic</span></li></ul></header>
+<figure class="cover"><img src="16.jpg" width="1920" height="1080" alt="صحنهٔ کارگاه با تابلوی EBRAHIMI بر دیوار و صندلی مسابقه‌ای" loading="lazy" decoding="async"><figcaption>هویت ابراهیمی در فضای کارگاه</figcaption></figure>
+<section class="cs-sec" aria-labelledby="cs-overview-title"><div class="container"><div class="cs-head"><span class="eyebrow"><span class="idx">۰۰</span> · درباره پروژه</span><h3 id="cs-overview-title">یک برند خودرویی، به‌دور از کلیشه.</h3></div><div class="trio"><article><h4>نگاه کلی</h4><p>ابراهیمی یک مرکز تخصصی بازسازی، تیون ظاهری و نصب آپشن خودرو است؛ مجموعه‌ای که مخاطبانش به کیفیت، جزئیات و ظاهر خودروی خود اهمیت ویژه‌ای می‌دهند.</p></article><article><h4>چالش</h4><p>کارفرما هویتی لوکس، دقیق و متمایز می‌خواست؛ برندی که در نگاه اول حس تخصص و کیفیت بدهد و در عین ارتباط با دنیای خودرو، از کلیشه‌های رایج این حوزه فاصله بگیرد.</p></article><article><h4>رویکرد</h4><p>از تحلیل بریف و تعریف مسیر بصری تا طراحی لوگو و توسعهٔ هویت، همراه برند بودیم؛ با تمرکز بر تبدیل دقت، کیفیت، جزئیات و لوکس‌بودن به یک زبان بصری کاربردی.</p></article></div><ol class="steps" aria-label="مراحل پروژه"><li><span class="n">۰۱</span><h4>تحلیل بریف</h4><p>شناخت مخاطب، رقبا و جایگاه برند.</p></li><li><span class="n">۰۲</span><h4>مسیر بصری</h4><p>تعریف یک زبان بصری متمایز و به‌دور از کلیشه.</p></li><li><span class="n">۰۳</span><h4>طراحی لوگو</h4><p>طراحی وردمارک و لترفرم با تناسبات طلایی.</p></li><li><span class="n">۰۴</span><h4>توسعهٔ هویت</h4><p>بسط سیستم بصری روی همهٔ نقاط تماس.</p></li></ol></div></section>
+<section class="cs-sec" aria-labelledby="cs-structure-title"><button class="band" type="button" data-lightbox="02.jpg" data-caption="بخش‌بندی: نسبت طلایی" aria-label="نمایش تصویر بخش نسبت طلایی"><img src="02.jpg" width="1920" height="1080" alt="صفحهٔ بخش‌بند «GOLDEN RATIO»" loading="lazy" decoding="async"></button><div class="container"><div class="cs-head"><span class="eyebrow"><span class="idx">۰۱</span> · لوگو و ساختار</span><h3 id="cs-structure-title">از حرف تا نشان، با هندسه‌ای دقیق.</h3><p>لوگو در قالب وردمارک و لترفرم طراحی شد؛ فرمی مینیمال و مرتبط با خودرو که حس دقت، خاص‌بودن و کیفیت را منتقل می‌کند. تناسبات لوگو با نسبت طلایی تنظیم شد و برای آن حاشیهٔ ایمن و اندازه‌های گوناگون تعریف شد.</p></div><div class="fig-grid g3"><button class="fig" type="button" data-lightbox="03.jpg" data-caption="ساختار هندسی لوگو بر پایهٔ نسبت طلایی" aria-label="نمایش ساختار هندسی لوگو"><img src="03.jpg" width="1920" height="1080" alt="سه ساختار هندسی لوگو بر پایهٔ مثلث و نسبت طلایی" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="05.jpg" data-caption="ساختار لوگو و نوشتار CAR RESTORATION CENTER" aria-label="نمایش ساختار لوگو و نوشتار"><img src="05.jpg" width="1920" height="1080" alt="ساختار نشان EB و عبارت CAR RESTORATION CENTER روی شبکهٔ نسبت طلایی" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="04.jpg" data-caption="حاشیهٔ ایمن لوگو (Safe Zone)" aria-label="نمایش حاشیهٔ ایمن لوگو"><img src="04.jpg" width="1920" height="1080" alt="نمودار حاشیهٔ ایمن لوگو با فاصلهٔ x و ارتفاع ۳x" loading="lazy" decoding="async"></button><button class="fig wide" type="button" data-lightbox="01.jpg" data-caption="جلد دفتر هویت برند" aria-label="نمایش جلد دفتر هویت برند"><img src="01.jpg" width="1920" height="1080" alt="جلد دفتر هویت برند با عنوان BRAND BOOK" loading="lazy" decoding="async"></button></div></div></section>
+<section class="cs-sec" aria-labelledby="cs-scale-title"><button class="band" type="button" data-lightbox="06.jpg" data-caption="بخش‌بندی: مقیاس" aria-label="نمایش تصویر بخش مقیاس"><img src="06.jpg" width="1920" height="1080" alt="صفحهٔ بخش‌بند «SCALE UP»" loading="lazy" decoding="async"></button><div class="container"><div class="cs-head"><span class="eyebrow"><span class="idx">۰۲</span> · مقیاس و خوانایی</span><h3 id="cs-scale-title">خوانا در هر اندازه‌ای.</h3><p>نشان و وردمارک در اندازه‌های گوناگون، از آیکون کوچک تا تابلوی بزرگ، متعادل و خوانا باقی می‌مانند.</p></div><div class="fig-grid g2"><button class="fig" type="button" data-lightbox="07.jpg" data-caption="مقیاس‌پذیری نشان" aria-label="نمایش مقیاس‌پذیری نشان"><img src="07.jpg" width="1920" height="1080" alt="نشان EB در ده اندازهٔ مختلف" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="08.jpg" data-caption="مقیاس‌پذیری وردمارک EBRAHIMI" aria-label="نمایش مقیاس‌پذیری وردمارک"><img src="08.jpg" width="1920" height="1080" alt="وردمارک EBRAHIMI در ده اندازهٔ مختلف" loading="lazy" decoding="async"></button></div></div></section>
+<section class="cs-sec" aria-labelledby="cs-color-title"><button class="band" type="button" data-lightbox="09.jpg" data-caption="بخش‌بندی: رنگ" aria-label="نمایش تصویر بخش رنگ"><img src="09.jpg" width="1920" height="1080" alt="صفحهٔ بخش‌بند «COLOR»" loading="lazy" decoding="async"></button><div class="container"><div class="cs-head"><span class="eyebrow"><span class="idx">۰۳</span> · رنگ</span><h3 id="cs-color-title">پالتی از عمق، انرژی و خنثی.</h3><p>پالت برند بر پایهٔ یک سرمه‌ای عمیق بنا شده است؛ رنگ تأکیدی زرد انرژی و توجه می‌آورد و آبی الکتریک حس مدرن‌بودن را تقویت می‌کند. نسخه‌های تک‌رنگ، کاربرد لوگو روی تصاویر و زمینه‌های رنگی را ممکن می‌کنند.</p></div><ul class="palette" aria-label="پالت رنگ برند"><li style="--sw:#012233"><span class="sw" aria-hidden="true"></span><span class="sw-meta"><b>سرمه‌ای عمیق</b><code>#012233</code></span></li><li style="--sw:#4140C0"><span class="sw" aria-hidden="true"></span><span class="sw-meta"><b>آبی الکتریک</b><code>#4140C0</code></span></li><li style="--sw:#FFBE00"><span class="sw" aria-hidden="true"></span><span class="sw-meta"><b>زرد تأکیدی</b><code>#FFBE00</code></span></li><li style="--sw:#000000"><span class="sw" aria-hidden="true"></span><span class="sw-meta"><b>مشکی</b><code>#000000</code></span></li><li style="--sw:#FFFFFF"><span class="sw" aria-hidden="true"></span><span class="sw-meta"><b>سفید</b><code>#FFFFFF</code></span></li><li style="--sw:#CCCCCC"><span class="sw" aria-hidden="true"></span><span class="sw-meta"><b>خاکستری</b><code>#CCCCCC</code></span></li></ul><div class="fig-grid g3"><button class="fig wide" type="button" data-lightbox="10.jpg" data-caption="نسبت رنگ‌های پالت (۶۰/۳۰/۱۰)" aria-label="نمایش نسبت رنگ‌های پالت"><img src="10.jpg" width="1920" height="1080" alt="نمودار نسبت رنگ ۶۰ و ۳۰ و ۱۰" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="11.jpg" data-caption="مقیاس خاکستری رنگ اصلی" aria-label="نمایش مقیاس خاکستری"><img src="11.jpg" width="1920" height="1080" alt="میله‌های مقیاس خاکستری از مشکی تا سفید" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="13.jpg" data-caption="نشان روی صفحهٔ گوشی و پالت رنگ" aria-label="نمایش نشان روی صفحهٔ گوشی"><img src="13.jpg" width="1920" height="1080" alt="نشان EB روی صفحهٔ گوشی همراه با پالت رنگ" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="14.jpg" data-caption="نسخه‌های رنگی نشان" aria-label="نمایش نسخه‌های رنگی نشان"><img src="14.jpg" width="1920" height="1080" alt="نشان EB و CAR RESTORATION CENTER در ترکیب‌های رنگی" loading="lazy" decoding="async"></button><button class="fig wide" type="button" data-lightbox="15.jpg" data-caption="نسخه‌های رنگی وردمارک EBRAHIMI" aria-label="نمایش نسخه‌های رنگی وردمارک"><img src="15.jpg" width="1920" height="1080" alt="وردمارک EBRAHIMI در ترکیب‌های رنگی مختلف" loading="lazy" decoding="async"></button></div></div></section>
+<section class="cs-sec" aria-labelledby="cs-type-title"><button class="band" type="button" data-lightbox="26.jpg" data-caption="بخش‌بندی: تایپوگرافی" aria-label="نمایش تصویر بخش تایپوگرافی"><img src="26.jpg" width="1920" height="1080" alt="صفحهٔ بخش‌بند «TYPOGRAPHY»" loading="lazy" decoding="async"></button><div class="container"><div class="cs-head"><span class="eyebrow"><span class="idx">۰۴</span> · تایپوگرافی</span><h3 id="cs-type-title">دو زبان، یک شخصیت.</h3><p>نوشتار لاتین برند با یک تایپ‌فیس هندسی و مینیمال همراه است؛ برای متون فارسی از IRANSans استفاده می‌شود تا خوانایی در کنار شخصیت بصری حفظ شود.</p></div><div class="fig-grid g2"><button class="fig" type="button" data-lightbox="27.jpg" data-caption="مقیاس تایپوگرافی لاتین برند" aria-label="نمایش مقیاس تایپوگرافی لاتین"><img src="27.jpg" width="1920" height="1080" alt="مقیاس اندازه‌های تایپوگرافی لاتین" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="28.jpg" data-caption="مقیاس تایپوگرافی فارسی با IRANSans" aria-label="نمایش مقیاس تایپوگرافی فارسی"><img src="28.jpg" width="1920" height="1080" alt="مقیاس اندازه‌های عنوان و متن فارسی با فونت IRANSans" loading="lazy" decoding="async"></button></div></div></section>
+<section class="cs-sec" aria-labelledby="cs-touch-title"><button class="band" type="button" data-lightbox="12.jpg" data-caption="بخش‌بندی: ماکاپ" aria-label="نمایش تصویر بخش ماکاپ"><img src="12.jpg" width="1920" height="1080" alt="صفحهٔ بخش‌بند «MOCKUP»" loading="lazy" decoding="async"></button><div class="container"><div class="cs-head"><span class="eyebrow"><span class="idx">۰۵</span> · نقاط تماس برند</span><h3 id="cs-touch-title">هویت در دنیای واقعی.</h3><p>هویت طراحی‌شده، شخصیت لوکس و کاریزماتیک برند را در نقاط تماس مختلف منتقل می‌کند. سیستم در کارت ویزیت، سربرگ، پاکت، فاکتور و دیگر اقلام توسعه یافت.</p></div><div class="fig-grid g2"><button class="fig wide" type="button" data-lightbox="17.jpg" data-caption="نشان روی بدنهٔ خودرو" aria-label="نمایش نشان روی بدنهٔ خودرو"><img src="17.jpg" width="1920" height="1080" alt="نشان EB روی بدنهٔ خودروی لوکس" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="18.jpg" data-caption="تابلو و سایناژ مرکز بازسازی" aria-label="نمایش تابلو و سایناژ مرکز"><img src="18.jpg" width="1920" height="1080" alt="تابلوی EBRAHIMI در فضای فروش و بازسازی خودرو" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="19.jpg" data-caption="تابلو و صندلی مسابقه‌ای با نشان برند" aria-label="نمایش تابلو و صندلی مسابقه‌ای"><img src="19.jpg" width="1920" height="1080" alt="تابلوی EBRAHIMI کنار صندلی مسابقه‌ای" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="20.jpg" data-caption="تابلوی کلاسیک با نشان و وردمارک" aria-label="نمایش تابلوی کلاسیک"><img src="20.jpg" width="1920" height="1080" alt="تابلوی ایستاده با نشان EB و وردمارک EBRAHIMI" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="21.jpg" data-caption="نشان سه‌بعدی نصب‌شده روی دیوار" aria-label="نمایش نشان سه‌بعدی روی دیوار"><img src="21.jpg" width="1920" height="1080" alt="نشان سه‌بعدی گرد زردرنگ EB روی دیوار تیره" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="22.jpg" data-caption="کارت ویزیت و پرچم تبلیغاتی" aria-label="نمایش کارت ویزیت و پرچم"><img src="22.jpg" width="1920" height="1080" alt="کارت ویزیت برند ابراهیمی و پرچم تبلیغاتی" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="23.jpg" data-caption="بروشور و پوشهٔ برند" aria-label="نمایش بروشور و پوشه"><img src="23.jpg" width="1920" height="1080" alt="بروشور و پوشهٔ برند با نشان و وردمارک ابراهیمی" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="25.jpg" data-caption="کلاه با نشان برند" aria-label="نمایش کلاه با نشان برند"><img src="25.jpg" width="1920" height="1080" alt="کلاه آبی‌رنگ با نشان زرد EB" loading="lazy" decoding="async"></button></div></div></section>
+<section class="cs-sec" aria-labelledby="cs-icon-title"><button class="band" type="button" data-lightbox="29.jpg" data-caption="بخش‌بندی: آیکون" aria-label="نمایش تصویر بخش آیکون"><img src="29.jpg" width="1920" height="1080" alt="صفحهٔ بخش‌بند «ICON»" loading="lazy" decoding="async"></button><div class="container"><div class="cs-head"><span class="eyebrow"><span class="idx">۰۶</span> · سیستم آیکون</span><h3 id="cs-icon-title">یک زبان، همهٔ نمادها.</h3><p>مجموعه‌ای از آیکون‌ها با زبان هندسی و هم‌خوان با لوگو طراحی شد تا در رابط‌های دیجیتال و اقلام چاپی یکدست بماند.</p></div><button class="fig" type="button" data-lightbox="30.jpg" data-caption="مجموعهٔ آیکون‌های برند" aria-label="نمایش مجموعهٔ آیکون‌ها"><img src="30.jpg" width="1920" height="1080" alt="شبکهٔ بزرگ آیکون‌های خطی برند" loading="lazy" decoding="async"></button></div></section>
+<section class="cs-sec" aria-labelledby="cs-guides-title"><button class="band" type="button" data-lightbox="33.jpg" data-caption="بخش‌بندی: راهنما" aria-label="نمایش تصویر بخش راهنما"><img src="33.jpg" width="1920" height="1080" alt="صفحهٔ بخش‌بند «GUIDES»" loading="lazy" decoding="async"></button><div class="container"><div class="cs-head"><span class="eyebrow"><span class="idx">۰۷</span> · راهنمای برند</span><h3 id="cs-guides-title">قواعدی که هویت را منسجم نگه می‌دارد.</h3><p>قواعد استفاده، رفتار نشان روی زمینه‌های رنگی و تصویری، و نسخه‌های تک‌رنگ لوگو تعریف شد.</p></div><div class="fig-grid g2"><button class="fig" type="button" data-lightbox="32.jpg" data-caption="رفتار نشان روی زمینه‌های رنگی و فرم‌های گرد" aria-label="نمایش رفتار نشان روی زمینه‌های رنگی"><img src="32.jpg" width="1920" height="1080" alt="شبکه‌ای از نشان EB روی زمینه‌ها و فرم‌های گرد رنگی" loading="lazy" decoding="async"></button><button class="fig" type="button" data-lightbox="34.jpg" data-caption="قواعد استفاده از نسخهٔ تک‌رنگ لوگو" aria-label="نمایش قواعد نسخهٔ تک‌رنگ"><img src="34.jpg" width="1920" height="1080" alt="چهار قاعدهٔ استفاده از لوگوی تک‌رنگ" loading="lazy" decoding="async"></button></div></div></section>
+<figure class="closing"><img src="35.jpg" width="1920" height="1080" alt="صفحهٔ پایانی دفتر هویت برند با عنوان THANKS" loading="lazy" decoding="async"></figure>
+<div class="container"><div class="cs-cta"><div><span class="eyebrow">قدم بعدی</span><h3>پروژهٔ بعدی شما، یک هویت ماندگار.</h3><p>از تحلیل بریف تا توسعهٔ هویت بصری، در کنار شما هستیم.</p></div><div class="cs-actions"><button class="button primary" type="button" data-contact="project" data-od-id="case-start-project">شروع پروژه <svg class="icon" aria-hidden="true"><use href="#i-arrow-ul"></use></svg></button><a class="quiet-link" href="tel:+989109027628" data-od-id="case-phone">۰۹۱۰۹۰۲۷۶۲۸ <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg></a></div></div></div>
+</article></div></dialog>
+<dialog id="lightbox" class="lightbox" aria-labelledby="lightbox-cap" data-od-id="lightbox"><div class="dialog-head"><h2 id="lightbox-cap"></h2><button class="close-dialog" type="button" data-close="" aria-label="بستن تصویر" data-od-id="close-lightbox"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div><div class="lightbox-tools"><div class="gallery-nav" aria-label="جابه‌جایی بین تصاویر"><button type="button" class="gallery-button" id="gallery-prev" data-od-id="gallery-previous">قبلی</button><span id="gallery-count" class="gallery-count" aria-live="polite" aria-atomic="true"></span><button type="button" class="gallery-button" id="gallery-next" data-od-id="gallery-next">بعدی</button></div><button class="zoom-toggle" id="zoom-toggle" type="button" aria-pressed="false" data-od-id="image-zoom-toggle">اندازهٔ واقعی</button></div><p id="gallery-status" class="gallery-status" role="status" aria-live="polite" hidden=""></p><div class="lightbox-viewport" id="lightbox-viewport" tabindex="0" aria-label="تصویر بزرگ‌شده؛ برای حرکت از کلیدهای جهت استفاده کنید" data-od-id="image-zoom-viewport"><img id="lightbox-img" alt=""></div></dialog>
+<script>
+(()=>{'use strict';
+const services=[{"id":"branding","index":2,"title":"برندسازی و","desc":"طراحی هویت بصری","icon":"img52837428315365567501"},{"id":"marketing","index":1,"title":"سوشال مدیا و","desc":"دیجیتال مارکتینگ","icon":"imgMarketingIconContainer","orange":true},{"id":"uiux","index":0,"title":"توسعه نرم‌افزار و","desc":"طراحی رابط و تجربه کاربری","icon":"imgIconUiux"},{"id":"packaging","index":5,"title":"طراحی، چاپ و","desc":"بسته‌بندی محصول","icon":"imgIconPrint","orange":true},{"id":"video","index":4,"title":"تدوین ویدیو و","desc":"تولید محتوای تبلیغاتی","icon":"imgVideoIconContainer"},{"id":"academy","index":3,"title":"آکادمی، آموزش و","desc":"توسعه سرمایه انسانی","icon":"imgAcademyIconContainer","orange":true}],projects=[{"name":"SHOPERO","asset":"imgShopero1","id":"shopero"},{"name":"IMA MOVIES","asset":"imgIma2","id":"ima"},{"name":"EXLOOT","asset":"imgExloot2","id":"exloot"}],excerpt="با پیشرفت فناوری و تغییرات سریع در سبک زندگی، نیازهای کاربران به خدمات دیجیتال به طور چشمگیری افزایش یافته است. این تحولات به آژانس‌های دیجیتال مارکتینگ این امکان را می‌دهد که به شیوه‌های جدیدی به مشتریان خود خدمات ارائه دهند.";
+const contact=document.getElementById('contact-dialog'),textDialog=document.getElementById('text-dialog'),preview=document.getElementById('preview-dialog'),caseDialog=document.getElementById('case-dialog'),lightbox=document.getElementById('lightbox'),form=document.getElementById('brief-form');
+function showModal(d){if(!d.open)d.showModal();document.body.style.overflow='hidden'}function openDialog(dialog){document.querySelectorAll('dialog[open]').forEach(d=>{if(d!==dialog)d.close()});showModal(dialog)}
+document.querySelectorAll('dialog').forEach(d=>{d.querySelector('[data-close]').addEventListener('click',()=>d.close());d.addEventListener('close',()=>{if(!document.querySelector('dialog[open]'))document.body.style.overflow=''});d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}})});
+function openContact(mode,service){document.getElementById('contact-title').textContent=mode==='consultation'?'مشاوره رایگان':'شروع پروژه';if(service)form.elements.service.value=service;else if(mode==='consultation')form.elements.service.value='consultation';document.getElementById('form-status').textContent='';openDialog(contact);startPrompt()}
+document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>openContact(b.dataset.contact)));
+document.querySelectorAll('[data-service]').forEach(b=>b.addEventListener('click',()=>openContact('project',b.dataset.service)));
+document.querySelectorAll('[data-project]').forEach(b=>b.addEventListener('click',()=>{const p=projects.find(x=>x.id===b.dataset.project);document.getElementById('preview-title').textContent=p.name;const source=b.querySelector('img'),image=source.cloneNode();image.className='';image.loading='eager';image.src=source.currentSrc||source.src;document.getElementById('preview-image').replaceChildren(image);openDialog(preview)}));
+document.querySelectorAll('[data-case]').forEach(b=>b.addEventListener('click',()=>openDialog(caseDialog)));
+document.querySelectorAll('[data-article]').forEach(b=>b.addEventListener('click',()=>{document.getElementById('text-title').textContent='ایجنت هوش مصنوعی چیست؟!';const box=document.getElementById('text-content');box.replaceChildren();const p=document.createElement('p');p.textContent=excerpt;box.append(p);const note=document.createElement('p');note.className='dialog-note';note.style.marginTop='20px';note.textContent='این متن، خلاصه موجود در فایل طراحی است. متن کامل مقاله و پیوند آن ارائه نشده است.';box.append(note);openDialog(textDialog)}));
+try{const saved=JSON.parse(localStorage.getItem('felosi-project-brief')||'null');if(saved)for(const key of ['name','phone','email','service','details'])if(typeof saved[key]==='string')form.elements[key].value=saved[key]}catch{}
+form.addEventListener('submit',e=>{e.preventDefault();if(!validateForm())return;const data=Object.fromEntries(new FormData(form)),service=form.elements.service.selectedOptions[0].textContent;const brief=['خلاصه پروژه — استودیو فلوسی','','نام: '+data.name,'شماره تماس: '+normalizePhone(data.phone),'ایمیل: '+data.email,'خدمت: '+service,'','توضیحات پروژه:',data.details].join('\n');try{localStorage.setItem('felosi-project-brief',JSON.stringify(data))}catch{}const url=URL.createObjectURL(new Blob(['\ufeff'+brief],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='felosi-project-brief.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);document.getElementById('form-status').textContent='خلاصه پروژه آماده شد. هیچ اطلاعاتی ارسال نشده است.'});
+
+// Keep the case study open beneath its image viewer, including its scroll position.
+const zoomToggle=document.getElementById('zoom-toggle'),zoomViewport=document.getElementById('lightbox-viewport'),zoomImage=document.getElementById('lightbox-img');
+function setZoom(zoomed){lightbox.classList.toggle('is-zoomed',zoomed);zoomToggle.setAttribute('aria-pressed',String(zoomed));zoomToggle.textContent=zoomed?'نمایش کامل':'اندازهٔ واقعی';zoomViewport.scrollTop=0;zoomViewport.scrollLeft=0}
+zoomToggle.addEventListener('click',()=>setZoom(!lightbox.classList.contains('is-zoomed')));
+zoomImage.addEventListener('click',()=>setZoom(!lightbox.classList.contains('is-zoomed')));
+const galleryButtons=[...document.querySelectorAll('#case-dialog [data-lightbox]')];
+const previousImage=document.getElementById('gallery-prev'),nextImage=document.getElementById('gallery-next'),imageCount=document.getElementById('gallery-count'),imageStatus=document.getElementById('gallery-status');
+let galleryIndex=0;
+function imageReady(){imageStatus.hidden=true;zoomViewport.removeAttribute('aria-busy')}
+zoomImage.addEventListener('load',imageReady);
+zoomImage.addEventListener('error',()=>{zoomViewport.removeAttribute('aria-busy');imageStatus.textContent='تصویر بارگذاری نشد. تصویر دیگری را انتخاب کنید یا دوباره این تصویر را باز کنید.';imageStatus.hidden=false});
+function showGalleryImage(index){
+  galleryIndex=Math.max(0,Math.min(galleryButtons.length-1,index));
+  const button=galleryButtons[galleryIndex],source=button.querySelector('img');
+  const resolvedSource=source.currentSrc||source.src;
+  source.loading='eager';zoomImage.loading='eager';zoomImage.decoding='async';
+  imageStatus.textContent='در حال بارگذاری تصویر…';imageStatus.hidden=false;zoomViewport.setAttribute('aria-busy','true');
+  zoomImage.alt=source.alt;zoomImage.width=Number(source.getAttribute('width'));zoomImage.height=Number(source.getAttribute('height'));
+  document.getElementById('lightbox-cap').textContent=button.dataset.caption||source.alt;
+  imageCount.textContent=(galleryIndex+1).toLocaleString('fa-IR')+' / '+galleryButtons.length.toLocaleString('fa-IR');
+  previousImage.disabled=galleryIndex===0;nextImage.disabled=galleryIndex===galleryButtons.length-1;
+  setZoom(false);zoomImage.src=resolvedSource;
+  if(zoomImage.complete&&zoomImage.naturalWidth)imageReady();
+}
+galleryButtons.forEach((button,index)=>button.addEventListener('click',()=>{showGalleryImage(index);showModal(lightbox)}));
+previousImage.addEventListener('click',()=>showGalleryImage(galleryIndex-1));
+nextImage.addEventListener('click',()=>showGalleryImage(galleryIndex+1));
+lightbox.addEventListener('keydown',event=>{if(event.altKey||event.ctrlKey||event.metaKey||lightbox.classList.contains('is-zoomed'))return;
+  if(event.key==='ArrowLeft'){event.preventDefault();if(!nextImage.disabled)showGalleryImage(galleryIndex+1)}
+  if(event.key==='ArrowRight'){event.preventDefault();if(!previousImage.disabled)showGalleryImage(galleryIndex-1)}
+});
+lightbox.addEventListener('close',()=>setZoom(false));
+// A rotating visual prompt never replaces the user's input or accessible field label.
+const details=form.elements.details,prompt=document.querySelector('.project-prompt'),serviceWord=document.getElementById('rotating-service');
+const serviceEntries=[...document.querySelectorAll('[data-service]')].map(button=>({id:button.dataset.service,title:button.querySelector('.service-title').textContent.trim()}));
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+let promptTimer,promptTransition,promptIndex=0;
+function syncPrompt(){prompt.hidden=details.value.length>0}
+function stopPrompt(){clearInterval(promptTimer);clearTimeout(promptTransition);serviceWord.classList.remove('is-changing')}
+function startPrompt(){stopPrompt();syncPrompt();if(!contact.open||details.value||document.activeElement===details)return;
+  promptIndex=Math.max(0,serviceEntries.findIndex(entry=>entry.id===form.elements.service.value));serviceWord.textContent=serviceEntries[promptIndex].title;
+  if(reducedMotion.matches)return;
+  promptTimer=setInterval(()=>{if(document.hidden||!contact.open||details.value||document.activeElement===details)return;
+    serviceWord.classList.add('is-changing');promptTransition=setTimeout(()=>{promptIndex=(promptIndex+1)%serviceEntries.length;serviceWord.textContent=serviceEntries[promptIndex].title;serviceWord.classList.remove('is-changing')},180);
+  },3200);
+}
+details.addEventListener('focus',stopPrompt);details.addEventListener('blur',startPrompt);
+details.addEventListener('input',()=>{syncPrompt();if(details.value)stopPrompt()});
+form.elements.service.addEventListener('change',startPrompt);
+contact.addEventListener('close',stopPrompt);reducedMotion.addEventListener('change',startPrompt);syncPrompt();
+function normalizePhone(value){return value.replace(/[۰-۹]/g,c=>String(c.charCodeAt(0)-1776)).replace(/[٠-٩]/g,c=>String(c.charCodeAt(0)-1632)).replace(/[\s()\-]/g,'')}
+function validatePhone(){const value=form.elements.phone.value;const clean=normalizePhone(value);form.elements.phone.setCustomValidity(!value||/^\+?[0-9]{7,15}$/.test(clean)?'':'شمارهٔ تماس معتبر وارد کنید؛ مثلاً ۰۹۱۲۳۴۵۶۷۸۹.')}
+form.elements.phone.addEventListener('input',validatePhone);
+
+
+const validatedFields=['name','phone','email','service','details'];
+function fieldMessage(field){
+  const value=field.value.trim();
+  if(field.name==='name'&&!value)return 'نام خود را وارد کنید.';
+  if(field.name==='phone'){
+    if(!value)return 'شمارهٔ تماس را وارد کنید.';
+    if(!/^\+?[0-9]{7,15}$/.test(normalizePhone(value)))return 'شمارهٔ تماس معتبر وارد کنید؛ مثلاً ۰۹۱۲۳۴۵۶۷۸۹.';
+  }
+  if(field.name==='email'&&value&&field.validity.typeMismatch)return 'ایمیل را به شکل name@example.com وارد کنید.';
+  if(field.name==='service'&&!value)return 'خدمت موردنظر را انتخاب کنید.';
+  if(field.name==='details'&&!value)return 'توضیح کوتاهی دربارهٔ پروژه بنویسید.';
+  if(field.maxLength>0&&value.length>field.maxLength)return 'متن واردشده بیش از حد طولانی است.';
+  return '';
+}
+function validateField(field){
+  const message=fieldMessage(field),error=document.getElementById('error-'+field.name);
+  error.textContent=message;error.hidden=!message;
+  field.setCustomValidity(message);
+  if(message)field.setAttribute('aria-invalid','true');else field.removeAttribute('aria-invalid');
+  return !message;
+}
+function validateForm(){
+  const invalid=validatedFields.map(name=>form.elements[name]).filter(field=>!validateField(field));
+  if(invalid.length){document.getElementById('form-status').textContent='لطفاً فیلدهای مشخص‌شده را اصلاح کنید.';invalid[0].focus();return false}
+  document.getElementById('form-status').textContent='';return true;
+}
+for(const name of validatedFields){const field=form.elements[name];
+  field.addEventListener('blur',()=>validateField(field));
+  field.addEventListener('input',()=>{if(field.hasAttribute('aria-invalid'))validateField(field)});
+  if(field.tagName==='SELECT')field.addEventListener('change',()=>validateField(field));
+}
+
+})();
+</script>
+</body></html>

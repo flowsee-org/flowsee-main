@@ -1,0 +1,25 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="96" height="85.5" viewBox="0 0 96 85.5" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="gmail" style="mix-blend-mode:plus-lighter" opacity="0.5" filter="url(#filter0_f_0_40)">
+<g clip-path="url(#clip0_0_40)">
+<g id="gmail_2">
+<path id="Vector" d="M61.3484 27.3594L48.1416 37.6662L34.6328 27.3594V27.3622L34.6491 27.3762V41.8085L47.9892 52.3381L61.3484 42.2152V27.3594Z" fill="#EA4335"/>
+<path id="Vector_2" d="M64.8165 24.8523L61.3482 27.3594V42.2151L72.2619 33.836V28.7884C72.2619 28.7884 70.9371 21.5792 64.8165 24.8523Z" fill="#FBBC05"/>
+<path id="Vector_3" d="M61.3482 42.2154V61.4836H69.713C69.713 61.4836 72.0932 61.2384 72.2646 58.5252V33.8362L61.3482 42.2154Z" fill="#34A853"/>
+<path id="Vector_4" d="M34.6497 61.4999V41.8083L34.6328 41.7944L34.6497 61.4999Z" fill="#C5221F"/>
+<path id="Vector_5" d="M34.6326 27.3624L31.1833 24.8692C25.0627 21.5961 23.7352 28.8025 23.7352 28.8025V33.8501L34.6326 41.7947V27.3624Z" fill="#C5221F"/>
+<path id="Vector_6" d="M34.6328 27.3622V41.7945L34.6497 41.8084V27.3761L34.6328 27.3622Z" fill="#C5221F"/>
+<path id="Vector_7" d="M23.7352 33.8527V58.5417C23.9039 61.2577 26.2868 61.5 26.2868 61.5H34.6516L34.6326 41.7945L23.7352 33.8527Z" fill="#4285F4"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_0_40" x="0" y="-4.5" width="96" height="96" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="12" result="effect1_foregroundBlur_0_40"/>
+</filter>
+<clipPath id="clip0_0_40">
+<rect width="48" height="48" fill="white" transform="translate(24 19.5)"/>
+</clipPath>
+</defs>
+</svg>

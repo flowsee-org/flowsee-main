@@ -1,0 +1,227 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/8c8ad1a1-f8af-4f15-b24c-aa4826e27193";
+const imgUnionIconGroup = `${assetPathPrefix}/d26c1.svg`;
+const imgServiceDescriptionText = `${assetPathPrefix}/bbfd4.svg`;
+const img = `${assetPathPrefix}/3127d.svg`;
+const imgIconUiux = `${assetPathPrefix}/f44c7.svg`;
+const imgServiceDescriptionText1 = `${assetPathPrefix}/84d67.svg`;
+const img1 = `${assetPathPrefix}/46338.svg`;
+const imgMarketingIconContainer = `${assetPathPrefix}/18e83.svg`;
+const imgServiceDescriptionText2 = `${assetPathPrefix}/4c744.svg`;
+const img2 = `${assetPathPrefix}/187e8.svg`;
+const img52837428315365567501 = `${assetPathPrefix}/a98ca.svg`;
+const imgServiceDescriptionText3 = `${assetPathPrefix}/723c3.svg`;
+const img3 = `${assetPathPrefix}/11cbb.svg`;
+const imgAcademyIconContainer = `${assetPathPrefix}/a43d7.svg`;
+const imgServiceDescriptionText4 = `${assetPathPrefix}/41fb6.svg`;
+const img4 = `${assetPathPrefix}/5b526.svg`;
+const imgVideoIconContainer = `${assetPathPrefix}/9470d.svg`;
+const imgServiceDescriptionText5 = `${assetPathPrefix}/f02a8.svg`;
+const img5 = `${assetPathPrefix}/8ea2b.svg`;
+const imgIconPrint = `${assetPathPrefix}/f8a63.svg`;
+
+export default function Services() {
+  return (
+    <div className="relative size-full" data-node-id="1032:1777" data-name="Services">
+      <div className="absolute content-stretch flex flex-col gap-[32px] items-center left-0 top-[108px] w-[1120px]" data-node-id="1032:1780" data-name="Services Section">
+        <div className="content-stretch flex gap-[32px] items-center relative shrink-0 w-full" data-node-id="1032:1781" data-name="row 1">
+          <div className="bg-[#265973] flex-[1_0_0] h-[256px] min-w-px overflow-clip relative rounded-[16px]" data-node-id="1032:1782" data-name="develope">
+            <div className="absolute contents left-[-62.5px] top-[131.82px]" data-node-id="1032:1783" data-name="Service Icon Container">
+              <div className="absolute contents left-[-62.5px] top-[132.07px]" data-node-id="1032:1784" data-name="Service Icon Group">
+                <div className="absolute bg-white left-[-41.5px] opacity-10 rounded-[1498.5px] size-[162px] top-[180.57px]" data-node-id="1032:1785" data-name="Service Icon Block" />
+                <div className="absolute left-[-62.5px] opacity-50 rounded-[24px] size-[118.5px] top-[132.07px]" data-node-id="1032:1786" style={{ backgroundImage: "linear-gradient(138.67505703013177deg, rgba(255, 255, 255, 0.3) 14.619%, rgba(255, 255, 255, 0.1) 102.85%)" }} data-name="Service Icon" />
+              </div>
+              <div className="absolute bottom-[4.18px] left-0 size-[120px]" data-node-id="1032:1787" data-name="Union Icon Group">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnionIconGroup} />
+              </div>
+            </div>
+            <div className="absolute content-stretch flex flex-col gap-[25px] items-end left-[32px] top-[19.82px] w-[288px]" data-node-id="1032:1792" data-name="Service Description Container">
+              <div className="h-[32.796px] relative shrink-0 w-[211.765px]" data-node-id="1032:1793" data-name="Service Description Text">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgServiceDescriptionText} />
+              </div>
+              <div className="aspect-[279.1360168457031/27.720069885253906] relative shrink-0 w-full" data-node-id="1032:1808" data-name="طراحی رابط و تجربه کاربری">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={img} />
+              </div>
+            </div>
+            <div className="absolute bg-[rgba(243,243,243,0.4)] border border-solid border-white bottom-[20.18px] left-[260px] overflow-clip rounded-[100px] size-[60px]" data-node-id="1032:1830" data-name="I">
+              <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-start left-1/2 top-1/2" data-node-id="1032:1831" data-name="Container">
+                <div className="relative shrink-0 size-[36px]" data-node-id="1032:1832" data-name="IconUIUX">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIconUiux} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-[#fe5400] flex-[1_0_0] h-[256px] min-w-px overflow-clip relative rounded-[16px]" data-node-id="1032:1840" data-name="uiux">
+            <div className="absolute contents left-[-62.5px] top-[131.82px]" data-node-id="1032:1841" data-name="Service Icon Container">
+              <div className="absolute contents left-[-62.5px] top-[132.07px]" data-node-id="1032:1842" data-name="Service Icon Group">
+                <div className="absolute bg-white left-[-41.5px] opacity-10 rounded-[1498.5px] size-[162px] top-[180.57px]" data-node-id="1032:1843" data-name="Service Icon Block" />
+                <div className="absolute left-[-62.5px] opacity-50 rounded-[24px] size-[118.5px] top-[132.07px]" data-node-id="1032:1844" style={{ backgroundImage: "linear-gradient(138.67505703013177deg, rgba(255, 255, 255, 0.3) 14.619%, rgba(255, 255, 255, 0.1) 102.85%)" }} data-name="Service Icon" />
+              </div>
+              <div className="absolute bottom-[4.18px] left-0 size-[120px]" data-node-id="1032:1845" data-name="Union Icon Group">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnionIconGroup} />
+              </div>
+            </div>
+            <div className="absolute content-stretch flex flex-col gap-[24px] items-end left-[32px] top-[19.82px] w-[288px]" data-node-id="1032:1850" data-name="Service Description Container">
+              <div className="h-[28.44px] relative shrink-0 w-[170.794px]" data-node-id="1032:1851" data-name="Service Description Text">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgServiceDescriptionText1} />
+              </div>
+              <div className="aspect-[214.85617065429688/31.75213623046875] relative shrink-0 w-full" data-node-id="1032:1862" data-name="دیجیتال مارکتینگ">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={img1} />
+              </div>
+            </div>
+            <div className="absolute bg-[rgba(243,243,243,0.4)] border border-solid border-white bottom-[20.18px] left-[260px] overflow-clip rounded-[100px] size-[60px]" data-node-id="1032:1878" data-name="I">
+              <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-start left-1/2 top-1/2" data-node-id="1032:1879" data-name="Container">
+                <div className="relative shrink-0 size-[36px]" data-node-id="1032:1880" data-name="IconMarketing">
+                  <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                    <div className="absolute inset-[5.56%_6.94%_6.94%_5.56%]" data-node-id="1032:1881" data-name="Marketing Icon Container">
+                      <div className="absolute inset-[-1.59%]">
+                        <img alt="" className="block max-w-none size-full" src={imgMarketingIconContainer} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-[#265973] flex-[1_0_0] h-[256px] min-w-px overflow-clip relative rounded-[16px]" data-node-id="1032:1885" data-name="develope">
+            <div className="absolute contents left-[-62.5px] top-[131.82px]" data-node-id="1032:1886" data-name="Service Icon Container">
+              <div className="absolute contents left-[-62.5px] top-[132.07px]" data-node-id="1032:1887" data-name="Service Icon Group">
+                <div className="absolute bg-white left-[-41.5px] opacity-10 rounded-[1498.5px] size-[162px] top-[180.57px]" data-node-id="1032:1888" data-name="Service Icon Block" />
+                <div className="absolute left-[-62.5px] opacity-50 rounded-[24px] size-[118.5px] top-[132.07px]" data-node-id="1032:1889" style={{ backgroundImage: "linear-gradient(138.67505703013177deg, rgba(255, 255, 255, 0.3) 14.619%, rgba(255, 255, 255, 0.1) 102.85%)" }} data-name="Service Icon" />
+              </div>
+              <div className="absolute bottom-[4.18px] left-0 size-[120px]" data-node-id="1032:1890" data-name="Union Icon Group">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnionIconGroup} />
+              </div>
+            </div>
+            <div className="absolute content-stretch flex flex-col gap-[24px] items-end left-[32px] top-[19.82px] w-[288px]" data-node-id="1032:1895" data-name="Service Description Container">
+              <div className="h-[28.44px] relative shrink-0 w-[137.129px]" data-node-id="1032:1896" data-name="Service Description Text">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgServiceDescriptionText2} />
+              </div>
+              <div className="aspect-[234.31277465820312/28.511873245239258] relative shrink-0 w-full" data-node-id="1032:1906" data-name="طراحی هویت بصری">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={img2} />
+              </div>
+            </div>
+            <div className="absolute bg-[rgba(243,243,243,0.4)] border border-solid border-white bottom-[20.18px] left-[260px] overflow-clip rounded-[100px] size-[60px]" data-node-id="1032:1920" data-name="I">
+              <div className="-translate-x-1/2 -translate-y-1/2 absolute left-[calc(50%+0.5px)] size-[36px] top-1/2" data-node-id="1032:1921" data-name="5283742831536556750 1">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={img52837428315365567501} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex gap-[32px] items-center relative shrink-0 w-full" data-node-id="1032:1923" data-name="row 2">
+          <div className="bg-[#fe5400] flex-[1_0_0] h-[256px] min-w-px overflow-clip relative rounded-[16px]" data-node-id="1032:1924" data-name="Branding">
+            <div className="absolute contents left-[-62.5px] top-[131.82px]" data-node-id="1032:1925" data-name="Service Icon Container">
+              <div className="absolute contents left-[-62.5px] top-[132.07px]" data-node-id="1032:1926" data-name="Service Icon Group">
+                <div className="absolute bg-white left-[-41.5px] opacity-10 rounded-[1498.5px] size-[162px] top-[180.57px]" data-node-id="1032:1927" data-name="Service Icon Block" />
+                <div className="absolute left-[-62.5px] opacity-50 rounded-[24px] size-[118.5px] top-[132.07px]" data-node-id="1032:1928" style={{ backgroundImage: "linear-gradient(138.67505703013177deg, rgba(255, 255, 255, 0.3) 14.619%, rgba(255, 255, 255, 0.1) 102.85%)" }} data-name="Service Icon" />
+              </div>
+              <div className="absolute bottom-[4.18px] left-0 size-[120px]" data-node-id="1032:1929" data-name="Union Icon Group">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnionIconGroup} />
+              </div>
+            </div>
+            <div className="absolute content-stretch flex flex-col gap-[24px] items-end left-[32px] top-[19.82px] w-[288px]" data-node-id="1032:1934" data-name="Service Description Container">
+              <div className="h-[32.94px] relative shrink-0 w-[203.467px]" data-node-id="1032:1935" data-name="Service Description Text">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgServiceDescriptionText3} />
+              </div>
+              <div className="aspect-[266.4331359863281/28.548006057739258] relative shrink-0 w-full" data-node-id="1032:1949" data-name="توسعه سرمایه انسانی">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={img3} />
+              </div>
+            </div>
+            <div className="absolute bg-[rgba(243,243,243,0.4)] border border-solid border-white bottom-[20.18px] left-[260px] overflow-clip rounded-[100px] size-[60px]" data-node-id="1032:1967" data-name="I">
+              <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-start left-1/2 top-1/2" data-node-id="1032:1968" data-name="Container">
+                <div className="relative shrink-0 size-[36px]" data-node-id="1032:1969" data-name="IconAcademy">
+                  <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                    <div className="absolute inset-[14.58%_2.78%]" data-node-id="1032:1970" data-name="Academy Icon Container">
+                      <div className="absolute inset-[-2.78%_-2.08%]">
+                        <img alt="" className="block max-w-none size-full" src={imgAcademyIconContainer} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-[#265973] flex-[1_0_0] h-[256px] min-w-px overflow-clip relative rounded-[16px]" data-node-id="1032:1975" data-name="Marketing">
+            <div className="absolute contents left-[-62.5px] top-[131.82px]" data-node-id="1032:1976" data-name="Service Icon Container">
+              <div className="absolute contents left-[-62.5px] top-[132.07px]" data-node-id="1032:1977" data-name="Service Icon Group">
+                <div className="absolute bg-white left-[-41.5px] opacity-10 rounded-[1498.5px] size-[162px] top-[180.57px]" data-node-id="1032:1978" data-name="Service Icon Block" />
+                <div className="absolute left-[-62.5px] opacity-50 rounded-[24px] size-[118.5px] top-[132.07px]" data-node-id="1032:1979" style={{ backgroundImage: "linear-gradient(138.67505703013177deg, rgba(255, 255, 255, 0.3) 14.619%, rgba(255, 255, 255, 0.1) 102.85%)" }} data-name="Service Icon" />
+              </div>
+              <div className="absolute bottom-[4.18px] left-0 size-[120px]" data-node-id="1032:1980" data-name="Union Icon Group">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnionIconGroup} />
+              </div>
+            </div>
+            <div className="absolute content-stretch flex flex-col gap-[24px] items-end left-[32px] top-[19.82px] w-[288px]" data-node-id="1032:1985" data-name="Service Description Container">
+              <div className="h-[25.596px] relative shrink-0 w-[171.968px]" data-node-id="1032:1986" data-name="Service Description Text">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgServiceDescriptionText4} />
+              </div>
+              <div className="aspect-[265.8003234863281/28.511873245239258] relative shrink-0 w-full" data-node-id="1032:1998" data-name="تولید محتوای تبلیغاتی">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={img4} />
+              </div>
+            </div>
+            <div className="absolute bg-[rgba(243,243,243,0.4)] border border-solid border-white bottom-[20.18px] left-[260px] overflow-clip rounded-[100px] size-[60px]" data-node-id="1032:2018" data-name="I">
+              <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-start left-1/2 top-1/2" data-node-id="1032:2019" data-name="Container">
+                <div className="relative shrink-0 size-[36px]" data-node-id="1032:2020" data-name="IconVideo">
+                  <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                    <div className="absolute inset-[22.22%_2.78%_19.66%_2.78%]" data-node-id="1032:2021" data-name="Video Icon Container">
+                      <div className="absolute inset-[-4.06%_-2.5%]">
+                        <img alt="" className="block max-w-none size-full" src={imgVideoIconContainer} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-[#fe5400] flex-[1_0_0] h-[256px] min-w-px overflow-clip relative rounded-[16px]" data-node-id="1032:2025" data-name="Branding">
+            <div className="absolute contents left-[-62.5px] top-[131.82px]" data-node-id="1032:2026" data-name="Service Icon Container">
+              <div className="absolute contents left-[-62.5px] top-[132.07px]" data-node-id="1032:2027" data-name="Service Icon Group">
+                <div className="absolute bg-white left-[-41.5px] opacity-10 rounded-[1498.5px] size-[162px] top-[180.57px]" data-node-id="1032:2028" data-name="Service Icon Block" />
+                <div className="absolute left-[-62.5px] opacity-50 rounded-[24px] size-[118.5px] top-[132.07px]" data-node-id="1032:2029" style={{ backgroundImage: "linear-gradient(138.67505703013177deg, rgba(255, 255, 255, 0.3) 14.619%, rgba(255, 255, 255, 0.1) 102.85%)" }} data-name="Service Icon" />
+              </div>
+              <div className="absolute bottom-[4.18px] left-0 size-[120px]" data-node-id="1032:2030" data-name="Union Icon Group">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnionIconGroup} />
+              </div>
+            </div>
+            <div className="absolute content-stretch flex flex-col gap-[24px] items-end left-[32px] top-[19.82px] w-[288px]" data-node-id="1032:2035" data-name="Service Description Container">
+              <div className="h-[31.968px] relative shrink-0 w-[158.109px]" data-node-id="1032:2036" data-name="Service Description Text">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgServiceDescriptionText5} />
+              </div>
+              <div className="aspect-[236.48001098632812/28.44005012512207] relative shrink-0 w-full" data-node-id="1032:2047" data-name="بسته‌بندی محصول">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={img5} />
+              </div>
+            </div>
+            <div className="absolute bg-[rgba(243,243,243,0.4)] border border-solid border-white bottom-[20.18px] left-[260px] overflow-clip rounded-[100px] size-[60px]" data-node-id="1032:2061" data-name="I">
+              <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-start left-1/2 top-1/2" data-node-id="1032:2062" data-name="Container">
+                <div className="relative shrink-0 size-[36px]" data-node-id="1032:2063" data-name="IconPrint">
+                  <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
+                    <div className="absolute inset-[-2.71%]">
+                      <img alt="" className="block max-w-none size-full" src={imgIconPrint} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="[word-break:break-word] absolute content-stretch flex gap-[32px] items-center justify-end leading-[1.9] left-0 text-[#1a1a1a] text-right top-0 w-[1120px]" data-node-id="1032:2069" data-name="Section Header">
+        <p className="font-['Montserrat:Regular'] font-normal opacity-50 relative shrink-0 text-[24px] uppercase whitespace-nowrap" dir="auto" data-node-id="1032:2070">
+          main services
+        </p>
+        <p className="flex-[1_0_0] font-['PARADOX:Regular'] min-w-px not-italic relative text-[40px]" dir="auto" data-node-id="1032:2071">
+          خدمات اصلی
+        </p>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Accent (10)/200: #B2D4E6, Glass/10: Effect(type: GLASS, radius: 10), Accent (10)/100: #D9EAF2, Accent (10)/700: #265973, Primary (30)/500: #FE5400, Dominant (60)/900: #1A1A1A.
+Images and SVGs will be stored as constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.

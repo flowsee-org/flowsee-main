@@ -1,0 +1,200 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/61fbf0df-1c5f-4d59-a023-7d7c448d12b1";
+const imgVuesaxOutlineClock = `${assetPathPrefix}/1efbb.svg`;
+const img169 = `${assetPathPrefix}/77983.svg`;
+const img170 = `${assetPathPrefix}/57fb4.svg`;
+
+export default function BlogCart() {
+  return (
+    <div className="border border-[#f2f2f2] border-solid overflow-clip relative rounded-[12px] size-full" data-node-id="1032:1195" data-name="Blog Cart">
+      <div className="-translate-x-1/2 [word-break:break-word] absolute content-stretch flex flex-col font-['IRANSansXFaNum:Regular'] gap-[4px] items-end justify-center left-1/2 not-italic top-[213px] w-[328px]" data-node-id="1032:1196" data-name="text">
+        <p className="h-[42px] leading-[1.5] overflow-hidden relative shrink-0 text-[#1a1a1a] text-[14px] text-ellipsis text-right w-full whitespace-nowrap" dir="auto" data-node-id="1032:1197">
+          ایجنت هوش مصنوعی چیست؟!
+        </p>
+        <div className="flex flex-col justify-center leading-[0] overflow-hidden relative shrink-0 text-[#4d4d4d] text-[12px] text-ellipsis text-justify w-full" data-node-id="1032:1198">
+          <p className="leading-[1.5]" dir="rtl">
+            با پیشرفت فناوری و تغییرات سریع در سبک زندگی، نیازهای کاربران به خدمات دیجیتال به طور چشمگیری افزایش یافته است. این تحولات به آژانس‌های دیجیتال مارکتینگ این امکان را می‌دهد که به شیوه‌های جدیدی به مشتریان خود خدمات ارائه دهند.
+          </p>
+        </div>
+      </div>
+      <div className="-translate-x-1/2 absolute content-stretch flex items-center justify-between left-1/2 top-[311px] w-[328px]" data-node-id="1032:1199" data-name="content">
+        <div className="content-stretch flex gap-[2px] items-center justify-center relative shrink-0" data-node-id="1032:1200" data-name="Publish Time">
+          <p className="[word-break:break-word] font-['IRANSansXFaNum:Regular'] leading-[1.5] not-italic relative shrink-0 text-[#333] text-[12px] text-right whitespace-nowrap" dir="auto" data-node-id="1032:1201">
+            30 شهریور 1404
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[2px] items-center justify-center relative shrink-0" data-node-id="1032:1209" data-name="Reading Time">
+          <p className="[word-break:break-word] font-['IRANSansXFaNum:Regular'] leading-[1.5] not-italic relative shrink-0 text-[#333] text-[12px] text-right whitespace-nowrap" dir="auto" data-node-id="1032:1210">
+            8 دقیقه
+          </p>
+          <div className="relative shrink-0 size-[18px]" data-node-id="1032:1211" data-name="vuesax/outline/clock">
+            <div className="absolute contents inset-0" data-node-id="1032:1212" data-name="vuesax/outline/clock">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVuesaxOutlineClock} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute h-[198px] left-[-1px] overflow-clip top-[-1px] w-[352px]" data-node-id="1032:1217" data-name="16:9">
+        <div className="absolute contents inset-0" data-node-id="1032:1218" data-name="Grid">
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[0_93.75%_88.89%_0]" data-node-id="1032:1219" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[0_87.5%_88.89%_6.25%]" data-node-id="1032:1220" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[0_81.25%_88.89%_12.5%]" data-node-id="1032:1221" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[88.89%] left-[18.75%] right-3/4 top-0" data-node-id="1032:1222" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[88.89%] left-1/4 right-[68.75%] top-0" data-node-id="1032:1223" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[0_62.5%_88.89%_31.25%]" data-node-id="1032:1224" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[0_56.25%_88.89%_37.5%]" data-node-id="1032:1225" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[88.89%] left-[43.75%] right-1/2 top-0" data-node-id="1032:1226" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[88.89%] left-1/2 right-[43.75%] top-0" data-node-id="1032:1227" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[0_37.5%_88.89%_56.25%]" data-node-id="1032:1228" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[0_31.25%_88.89%_62.5%]" data-node-id="1032:1229" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[88.89%] left-[68.75%] right-1/4 top-0" data-node-id="1032:1230" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[88.89%] left-3/4 right-[18.75%] top-0" data-node-id="1032:1231" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[0_12.5%_88.89%_81.25%]" data-node-id="1032:1232" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[0_6.25%_88.89%_87.5%]" data-node-id="1032:1233" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[0_0_88.89%_93.75%]" data-node-id="1032:1234" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[11.11%_93.75%_77.78%_0]" data-node-id="1032:1235" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[11.11%_87.5%_77.78%_6.25%]" data-node-id="1032:1236" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[11.11%_81.25%_77.78%_12.5%]" data-node-id="1032:1237" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[77.78%] left-[18.75%] right-3/4 top-[11.11%]" data-node-id="1032:1238" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[77.78%] left-1/4 right-[68.75%] top-[11.11%]" data-node-id="1032:1239" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[11.11%_62.5%_77.78%_31.25%]" data-node-id="1032:1240" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[11.11%_56.25%_77.78%_37.5%]" data-node-id="1032:1241" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[77.78%] left-[43.75%] right-1/2 top-[11.11%]" data-node-id="1032:1242" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[77.78%] left-1/2 right-[43.75%] top-[11.11%]" data-node-id="1032:1243" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[11.11%_37.5%_77.78%_56.25%]" data-node-id="1032:1244" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[11.11%_31.25%_77.78%_62.5%]" data-node-id="1032:1245" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[77.78%] left-[68.75%] right-1/4 top-[11.11%]" data-node-id="1032:1246" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[77.78%] left-3/4 right-[18.75%] top-[11.11%]" data-node-id="1032:1247" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[11.11%_12.5%_77.78%_81.25%]" data-node-id="1032:1248" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[11.11%_6.25%_77.78%_87.5%]" data-node-id="1032:1249" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[11.11%_0_77.78%_93.75%]" data-node-id="1032:1250" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[22.22%_93.75%_66.67%_0]" data-node-id="1032:1251" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[22.22%_87.5%_66.67%_6.25%]" data-node-id="1032:1252" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[22.22%_81.25%_66.67%_12.5%]" data-node-id="1032:1253" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[66.67%] left-[18.75%] right-3/4 top-[22.22%]" data-node-id="1032:1254" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[66.67%] left-1/4 right-[68.75%] top-[22.22%]" data-node-id="1032:1255" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[22.22%_62.5%_66.67%_31.25%]" data-node-id="1032:1256" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[22.22%_56.25%_66.67%_37.5%]" data-node-id="1032:1257" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[66.67%] left-[43.75%] right-1/2 top-[22.22%]" data-node-id="1032:1258" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[66.67%] left-1/2 right-[43.75%] top-[22.22%]" data-node-id="1032:1259" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[22.22%_37.5%_66.67%_56.25%]" data-node-id="1032:1260" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[22.22%_31.25%_66.67%_62.5%]" data-node-id="1032:1261" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[66.67%] left-[68.75%] right-1/4 top-[22.22%]" data-node-id="1032:1262" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[66.67%] left-3/4 right-[18.75%] top-[22.22%]" data-node-id="1032:1263" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[22.22%_12.5%_66.67%_81.25%]" data-node-id="1032:1264" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[22.22%_6.25%_66.67%_87.5%]" data-node-id="1032:1265" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[22.22%_0_66.67%_93.75%]" data-node-id="1032:1266" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[33.33%_93.75%_55.56%_0]" data-node-id="1032:1267" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[33.33%_87.5%_55.56%_6.25%]" data-node-id="1032:1268" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[33.33%_81.25%_55.56%_12.5%]" data-node-id="1032:1269" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[55.56%] left-[18.75%] right-3/4 top-[33.33%]" data-node-id="1032:1270" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[55.56%] left-1/4 right-[68.75%] top-[33.33%]" data-node-id="1032:1271" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[33.33%_62.5%_55.56%_31.25%]" data-node-id="1032:1272" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[33.33%_56.25%_55.56%_37.5%]" data-node-id="1032:1273" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[55.56%] left-[43.75%] right-1/2 top-[33.33%]" data-node-id="1032:1274" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[55.56%] left-1/2 right-[43.75%] top-[33.33%]" data-node-id="1032:1275" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[33.33%_37.5%_55.56%_56.25%]" data-node-id="1032:1276" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[33.33%_31.25%_55.56%_62.5%]" data-node-id="1032:1277" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[55.56%] left-[68.75%] right-1/4 top-[33.33%]" data-node-id="1032:1278" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[55.56%] left-3/4 right-[18.75%] top-[33.33%]" data-node-id="1032:1279" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[33.33%_12.5%_55.56%_81.25%]" data-node-id="1032:1280" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[33.33%_6.25%_55.56%_87.5%]" data-node-id="1032:1281" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[33.33%_0_55.56%_93.75%]" data-node-id="1032:1282" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[44.44%_93.75%_44.44%_0]" data-node-id="1032:1283" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[44.44%_87.5%_44.44%_6.25%]" data-node-id="1032:1284" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[44.44%_81.25%_44.44%_12.5%]" data-node-id="1032:1285" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[44.44%] left-[18.75%] right-3/4 top-[44.44%]" data-node-id="1032:1286" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[44.44%] left-1/4 right-[68.75%] top-[44.44%]" data-node-id="1032:1287" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[44.44%_62.5%_44.44%_31.25%]" data-node-id="1032:1288" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[44.44%_56.25%_44.44%_37.5%]" data-node-id="1032:1289" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[44.44%] left-[43.75%] right-1/2 top-[44.44%]" data-node-id="1032:1290" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[44.44%] left-1/2 right-[43.75%] top-[44.44%]" data-node-id="1032:1291" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[44.44%_37.5%_44.44%_56.25%]" data-node-id="1032:1292" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[44.44%_31.25%_44.44%_62.5%]" data-node-id="1032:1293" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[44.44%] left-[68.75%] right-1/4 top-[44.44%]" data-node-id="1032:1294" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[44.44%] left-3/4 right-[18.75%] top-[44.44%]" data-node-id="1032:1295" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[44.44%_12.5%_44.44%_81.25%]" data-node-id="1032:1296" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[44.44%_6.25%_44.44%_87.5%]" data-node-id="1032:1297" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[44.44%_0_44.44%_93.75%]" data-node-id="1032:1298" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[55.56%_93.75%_33.33%_0]" data-node-id="1032:1299" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[55.56%_87.5%_33.33%_6.25%]" data-node-id="1032:1300" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[55.56%_81.25%_33.33%_12.5%]" data-node-id="1032:1301" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[33.33%] left-[18.75%] right-3/4 top-[55.56%]" data-node-id="1032:1302" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[33.33%] left-1/4 right-[68.75%] top-[55.56%]" data-node-id="1032:1303" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[55.56%_62.5%_33.33%_31.25%]" data-node-id="1032:1304" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[55.56%_56.25%_33.33%_37.5%]" data-node-id="1032:1305" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[33.33%] left-[43.75%] right-1/2 top-[55.56%]" data-node-id="1032:1306" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[33.33%] left-1/2 right-[43.75%] top-[55.56%]" data-node-id="1032:1307" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[55.56%_37.5%_33.33%_56.25%]" data-node-id="1032:1308" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[55.56%_31.25%_33.33%_62.5%]" data-node-id="1032:1309" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[33.33%] left-[68.75%] right-1/4 top-[55.56%]" data-node-id="1032:1310" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[33.33%] left-3/4 right-[18.75%] top-[55.56%]" data-node-id="1032:1311" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[55.56%_12.5%_33.33%_81.25%]" data-node-id="1032:1312" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[55.56%_6.25%_33.33%_87.5%]" data-node-id="1032:1313" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[55.56%_0_33.33%_93.75%]" data-node-id="1032:1314" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[66.67%_93.75%_22.22%_0]" data-node-id="1032:1315" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[66.67%_87.5%_22.22%_6.25%]" data-node-id="1032:1316" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[66.67%_81.25%_22.22%_12.5%]" data-node-id="1032:1317" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[22.22%] left-[18.75%] right-3/4 top-[66.67%]" data-node-id="1032:1318" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[22.22%] left-1/4 right-[68.75%] top-[66.67%]" data-node-id="1032:1319" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[66.67%_62.5%_22.22%_31.25%]" data-node-id="1032:1320" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[66.67%_56.25%_22.22%_37.5%]" data-node-id="1032:1321" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[22.22%] left-[43.75%] right-1/2 top-[66.67%]" data-node-id="1032:1322" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[22.22%] left-1/2 right-[43.75%] top-[66.67%]" data-node-id="1032:1323" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[66.67%_37.5%_22.22%_56.25%]" data-node-id="1032:1324" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[66.67%_31.25%_22.22%_62.5%]" data-node-id="1032:1325" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[22.22%] left-[68.75%] right-1/4 top-[66.67%]" data-node-id="1032:1326" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[22.22%] left-3/4 right-[18.75%] top-[66.67%]" data-node-id="1032:1327" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[66.67%_12.5%_22.22%_81.25%]" data-node-id="1032:1328" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[66.67%_6.25%_22.22%_87.5%]" data-node-id="1032:1329" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[66.67%_0_22.22%_93.75%]" data-node-id="1032:1330" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[77.78%_93.75%_11.11%_0]" data-node-id="1032:1331" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[77.78%_87.5%_11.11%_6.25%]" data-node-id="1032:1332" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[77.78%_81.25%_11.11%_12.5%]" data-node-id="1032:1333" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[11.11%] left-[18.75%] right-3/4 top-[77.78%]" data-node-id="1032:1334" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[11.11%] left-1/4 right-[68.75%] top-[77.78%]" data-node-id="1032:1335" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[77.78%_62.5%_11.11%_31.25%]" data-node-id="1032:1336" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[77.78%_56.25%_11.11%_37.5%]" data-node-id="1032:1337" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[11.11%] left-[43.75%] right-1/2 top-[77.78%]" data-node-id="1032:1338" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[11.11%] left-1/2 right-[43.75%] top-[77.78%]" data-node-id="1032:1339" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[77.78%_37.5%_11.11%_56.25%]" data-node-id="1032:1340" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[77.78%_31.25%_11.11%_62.5%]" data-node-id="1032:1341" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[11.11%] left-[68.75%] right-1/4 top-[77.78%]" data-node-id="1032:1342" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-[11.11%] left-3/4 right-[18.75%] top-[77.78%]" data-node-id="1032:1343" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[77.78%_12.5%_11.11%_81.25%]" data-node-id="1032:1344" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[77.78%_6.25%_11.11%_87.5%]" data-node-id="1032:1345" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[77.78%_0_11.11%_93.75%]" data-node-id="1032:1346" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[88.89%_93.75%_0_0]" data-node-id="1032:1347" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[88.89%_87.5%_0_6.25%]" data-node-id="1032:1348" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[88.89%_81.25%_0_12.5%]" data-node-id="1032:1349" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-0 left-[18.75%] right-3/4 top-[88.89%]" data-node-id="1032:1350" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-0 left-1/4 right-[68.75%] top-[88.89%]" data-node-id="1032:1351" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[88.89%_62.5%_0_31.25%]" data-node-id="1032:1352" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[88.89%_56.25%_0_37.5%]" data-node-id="1032:1353" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-0 left-[43.75%] right-1/2 top-[88.89%]" data-node-id="1032:1354" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-0 left-1/2 right-[43.75%] top-[88.89%]" data-node-id="1032:1355" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[88.89%_37.5%_0_56.25%]" data-node-id="1032:1356" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[88.89%_31.25%_0_62.5%]" data-node-id="1032:1357" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-0 left-[68.75%] right-1/4 top-[88.89%]" data-node-id="1032:1358" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid bottom-0 left-3/4 right-[18.75%] top-[88.89%]" data-node-id="1032:1359" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[88.89%_12.5%_0_81.25%]" data-node-id="1032:1360" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[88.89%_6.25%_0_87.5%]" data-node-id="1032:1361" data-name="Cell" />
+          <div className="absolute border-[#3c485d] border-[1.467px] border-solid inset-[88.89%_0_0_93.75%]" data-node-id="1032:1362" data-name="Cell" />
+        </div>
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={img169} />
+        <div className="absolute inset-[-0.74%_-0.42%]">
+          <img alt="" className="block max-w-none size-full" src={img170} />
+        </div>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Dominant (60)/900: #1A1A1A, Dominant (60)/700: #4D4D4D, Dominant (60)/800: #333333, RTL/caption: Font(family: "IRANSansXFaNum", style: Regular, size: 12, weight: 400, lineHeight: 1.5, letterSpacing: 0), Dominant (60)/50: #F2F2F2.
+Images and SVGs will be stored as constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.

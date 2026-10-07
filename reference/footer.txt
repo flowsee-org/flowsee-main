@@ -1,0 +1,154 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/c3e26b44-070f-44b1-88c1-1e4d08c0a081";
+const imgUnion = `${assetPathPrefix}/8ec0e.svg`;
+const imgInstagram = `${assetPathPrefix}/d204d.svg`;
+const imgInstagram1 = `${assetPathPrefix}/b5669.svg`;
+const imgEllipse1 = `${assetPathPrefix}/07a31.svg`;
+const imgWhatsapp = `${assetPathPrefix}/4493b.svg`;
+const imgWhatsapp1 = `${assetPathPrefix}/84eb5.svg`;
+const imgEllipse2 = `${assetPathPrefix}/7dd8a.svg`;
+const imgEllipse3 = `${assetPathPrefix}/760bf.svg`;
+const imgTelegram = `${assetPathPrefix}/7d306.svg`;
+const imgTelegram1 = `${assetPathPrefix}/59a99.svg`;
+const imgEllipse4 = `${assetPathPrefix}/ec0ea.svg`;
+const imgGmail = `${assetPathPrefix}/91b08.svg`;
+const imgGmail1 = `${assetPathPrefix}/b8540.svg`;
+const imgEllipse5 = `${assetPathPrefix}/92f44.svg`;
+
+export default function Footer() {
+  return (
+    <div className="bg-[#1a1a1a] relative size-full" data-node-id="1032:1112" data-name="Footer">
+      <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col h-[504px] items-center justify-between left-1/2 overflow-clip py-[64px] top-1/2 w-[1120px]" data-node-id="1032:1113">
+        <div className="h-[93.862px] relative shrink-0 w-[92px]" data-node-id="1032:1114" data-name="Union">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgUnion} />
+        </div>
+        <div className="content-stretch flex gap-[32px] items-center justify-center py-[16px] relative shrink-0 w-full" data-node-id="1032:1118">
+          <div className="content-stretch flex items-center justify-end px-[24px] py-[8px] relative rounded-[12px] shrink-0" data-node-id="1032:1119" data-name="Nav Item">
+            <p className="[word-break:break-word] font-['IRANSansXFaNum:Regular'] leading-[normal] not-italic relative shrink-0 text-[#f2f2f2] text-[20px] text-center whitespace-nowrap" dir="auto" data-node-id="1032:1120">
+              نمونه کار
+            </p>
+          </div>
+          <div className="content-stretch flex items-center justify-end px-[24px] py-[8px] relative rounded-[12px] shrink-0" data-node-id="1032:1121" data-name="Nav Item">
+            <p className="[word-break:break-word] font-['IRANSansXFaNum:Regular'] leading-[normal] not-italic relative shrink-0 text-[#f2f2f2] text-[20px] text-center whitespace-nowrap" dir="auto" data-node-id="1032:1122">
+              درباره ما
+            </p>
+          </div>
+          <div className="content-stretch flex items-center justify-end px-[24px] py-[8px] relative rounded-[12px] shrink-0" data-node-id="1032:1123" data-name="Nav Item">
+            <p className="[word-break:break-word] font-['IRANSansXFaNum:Regular'] leading-[normal] not-italic relative shrink-0 text-[#f2f2f2] text-[20px] text-center whitespace-nowrap" dir="auto" data-node-id="1032:1124">
+              خدمات ما
+            </p>
+          </div>
+          <div className="content-stretch flex items-center justify-end px-[24px] py-[8px] relative rounded-[12px] shrink-0" data-node-id="1032:1125" data-name="Nav Item">
+            <p className="[word-break:break-word] font-['IRANSansXFaNum:Regular'] leading-[normal] not-italic relative shrink-0 text-[#f2f2f2] text-[20px] text-center whitespace-nowrap" dir="auto" data-node-id="1032:1126">
+              صفحه اصلی
+            </p>
+          </div>
+        </div>
+        <div className="content-stretch flex gap-[24px] items-start relative shrink-0" data-node-id="1032:1127">
+          <div className="content-stretch flex gap-[13.5px] items-center relative shrink-0" data-node-id="1032:1128" data-name="Instagram">
+            <div className="border-[1.2px] border-[rgba(216,216,216,0.05)] border-solid content-stretch flex gap-[15px] items-start overflow-clip p-[12px] relative rounded-[999px] shadow-[12px_6px_24px_0px_rgba(0,0,0,0.08)] shrink-0" data-node-id="1032:1129" data-name="Elemento">
+              <div aria-hidden className="absolute backdrop-blur-[15px] inset-0 pointer-events-none rounded-[999px]" style={{ backgroundImage: "linear-gradient(135deg, rgba(248, 251, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%)" }} />
+              <div className="mix-blend-plus-lighter relative shrink-0 size-[48px]" data-node-id="1032:1130" data-name="instagram">
+                <div className="absolute inset-[-31.25%]">
+                  <img alt="" className="block max-w-none size-full" src={imgInstagram} />
+                </div>
+              </div>
+              <div className="absolute left-[11.4px] size-[48px] top-[11.4px]" data-node-id="1032:1135" data-name="instagram">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgInstagram1} />
+              </div>
+              <div className="absolute h-[19.5px] left-[18.9px] top-[60.9px] w-[34.5px]" data-node-id="1032:1140">
+                <div className="absolute inset-[-138.46%_-78.26%]">
+                  <img alt="" className="block max-w-none size-full" src={imgEllipse1} />
+                </div>
+              </div>
+              <div className="absolute inset-[-0.6px] pointer-events-none rounded-[inherit] shadow-[inset_0px_0px_12px_0px_rgba(190,13,252,0.32)]" />
+            </div>
+          </div>
+          <div className="content-stretch flex gap-[13.5px] items-center relative shrink-0" data-node-id="1032:1142" data-name="Whatsapp">
+            <div className="border-[1.2px] border-[rgba(216,216,216,0.05)] border-solid content-stretch flex gap-[15px] items-start overflow-clip p-[12px] relative rounded-[999px] shadow-[12px_6px_24px_0px_rgba(0,0,0,0.08)] shrink-0" data-node-id="1032:1143" data-name="Elemento">
+              <div aria-hidden className="absolute backdrop-blur-[15px] inset-0 pointer-events-none rounded-[999px]" style={{ backgroundImage: "linear-gradient(135deg, rgba(248, 251, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%)" }} />
+              <div className="mix-blend-plus-lighter relative shrink-0 size-[48px]" data-node-id="1032:1144" data-name="whatsapp">
+                <div className="absolute inset-[-25%]">
+                  <img alt="" className="block max-w-none size-full" src={imgWhatsapp} />
+                </div>
+              </div>
+              <div className="absolute left-[11.4px] size-[48px] top-[11.4px]" data-node-id="1032:1149" data-name="whatsapp">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgWhatsapp1} />
+              </div>
+              <div className="absolute h-[19.5px] left-[18.9px] top-[60.9px] w-[34.5px]" data-node-id="1032:1154">
+                <div className="absolute inset-[-138.46%_-78.26%]">
+                  <img alt="" className="block max-w-none size-full" src={imgEllipse2} />
+                </div>
+              </div>
+              <div className="absolute inset-[-0.6px] pointer-events-none rounded-[inherit] shadow-[inset_0px_0px_12px_0px_rgba(13,252,37,0.32)]" />
+            </div>
+            <div className="absolute left-[12px] mix-blend-screen size-[27px] top-[12px]" data-node-id="1032:1155">
+              <div className="absolute inset-[-111.11%]">
+                <img alt="" className="block max-w-none size-full" src={imgEllipse3} />
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex gap-[13.5px] items-center relative shrink-0" data-node-id="1032:1156" data-name="Telegram">
+            <div className="border-[1.2px] border-[rgba(216,216,216,0.05)] border-solid content-stretch flex gap-[15px] items-start overflow-clip p-[12px] relative rounded-[999px] shadow-[12px_6px_24px_0px_rgba(0,0,0,0.08)] shrink-0" data-node-id="1032:1157" data-name="Elemento">
+              <div aria-hidden className="absolute backdrop-blur-[15px] inset-0 pointer-events-none rounded-[999px]" style={{ backgroundImage: "linear-gradient(135deg, rgba(248, 251, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%)" }} />
+              <div className="mix-blend-plus-lighter relative shrink-0 size-[48px]" data-node-id="1032:1158" data-name="telegram">
+                <div className="absolute inset-[-9.38%_-9.38%_-9.38%_-15.63%]">
+                  <img alt="" className="block max-w-none size-full" src={imgTelegram} />
+                </div>
+              </div>
+              <div className="absolute left-[11.4px] size-[48px] top-[11.4px]" data-node-id="1032:1161" data-name="telegram">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgTelegram1} />
+              </div>
+              <div className="absolute h-[19.5px] left-[18.9px] top-[60.9px] w-[34.5px]" data-node-id="1032:1164">
+                <div className="absolute inset-[-138.46%_-78.26%]">
+                  <img alt="" className="block max-w-none size-full" src={imgEllipse4} />
+                </div>
+              </div>
+              <div className="absolute inset-[-0.6px] pointer-events-none rounded-[inherit] shadow-[inset_0px_0px_12px_0px_rgba(13,180,252,0.32)]" />
+            </div>
+            <div className="absolute left-[12px] mix-blend-screen size-[27px] top-[12px]" data-node-id="1032:1165">
+              <div className="absolute inset-[-111.11%]">
+                <img alt="" className="block max-w-none size-full" src={imgEllipse3} />
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex gap-[13.5px] items-center relative shrink-0" data-node-id="1032:1166" data-name="Gmail">
+            <div className="border-[1.2px] border-[rgba(216,216,216,0.05)] border-solid content-stretch flex gap-[15px] items-start overflow-clip p-[12px] relative rounded-[999px] shadow-[12px_6px_24px_0px_rgba(0,0,0,0.08)] shrink-0" data-node-id="1032:1167" data-name="Elemento">
+              <div aria-hidden className="absolute backdrop-blur-[15px] inset-0 pointer-events-none rounded-[999px]" style={{ backgroundImage: "linear-gradient(135deg, rgba(248, 251, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%)" }} />
+              <div className="mix-blend-plus-lighter relative shrink-0 size-[48px]" data-node-id="1032:1168" data-name="gmail">
+                <div className="absolute inset-[-40.63%_-50%_-37.5%_-50%]">
+                  <img alt="" className="block max-w-none size-full" src={imgGmail} />
+                </div>
+              </div>
+              <div className="absolute left-[11.4px] size-[48px] top-[11.4px]" data-node-id="1032:1178" data-name="gmail">
+                <div className="absolute inset-[0_-2.76%]">
+                  <img alt="" className="block max-w-none size-full" src={imgGmail1} />
+                </div>
+              </div>
+              <div className="absolute h-[19.5px] left-[18.9px] top-[60.9px] w-[34.5px]" data-node-id="1032:1188">
+                <div className="absolute inset-[-138.46%_-78.26%]">
+                  <img alt="" className="block max-w-none size-full" src={imgEllipse5} />
+                </div>
+              </div>
+              <div className="absolute inset-[-0.6px] pointer-events-none rounded-[inherit] shadow-[inset_0px_0px_12px_0px_rgba(235,74,60,0.32)]" />
+            </div>
+            <div className="absolute left-[12px] mix-blend-screen size-[27px] top-[12px]" data-node-id="1032:1189">
+              <div className="absolute inset-[-111.11%]">
+                <img alt="" className="block max-w-none size-full" src={imgEllipse3} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Accent (10)/200: #B2D4E6, Dominant (60)/50: #F2F2F2, Dominant (60)/900: #1A1A1A.
+Images and SVGs will be stored as constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.

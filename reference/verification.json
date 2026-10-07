@@ -1,0 +1,101 @@
+{
+  "result": "PASS",
+  "checks": [
+    "Script syntax and DOM initialization",
+    "Mobile menu open/close and anchor selection",
+    "Project dialog validation and local brief download",
+    "Direct service selection opens prefilled brief",
+    "Project image preview and modal close",
+    "One article and three unique projects; unavailable social links removed",
+    "Optional email field",
+    "Local storage draft persistence",
+    "Unique IDs and valid anchor targets",
+    "Non-empty local images/fonts and intrinsic dimensions",
+    "No external asset dependencies or template placeholders"
+  ],
+  "responsiveAudit": {
+    "method": "Static grid, gutter, min-width and breakpoint review; not browser measurements",
+    "widths": [
+      {
+        "viewport": 360,
+        "content": 328,
+        "columns": 1,
+        "card": 328,
+        "navigation": "collapsed",
+        "hero": "stacked"
+      },
+      {
+        "viewport": 390,
+        "content": 350,
+        "columns": 1,
+        "card": 350,
+        "navigation": "collapsed",
+        "hero": "stacked"
+      },
+      {
+        "viewport": 430,
+        "content": 390,
+        "columns": 1,
+        "card": 390,
+        "navigation": "collapsed",
+        "hero": "stacked"
+      },
+      {
+        "viewport": 600,
+        "content": 560,
+        "columns": 2,
+        "card": 274,
+        "navigation": "collapsed",
+        "hero": "stacked"
+      },
+      {
+        "viewport": 768,
+        "content": 720,
+        "columns": 2,
+        "card": 352,
+        "navigation": "collapsed",
+        "hero": "split"
+      },
+      {
+        "viewport": 820,
+        "content": 772,
+        "columns": 2,
+        "card": 378,
+        "navigation": "collapsed",
+        "hero": "split"
+      },
+      {
+        "viewport": 1024,
+        "content": 960,
+        "columns": 3,
+        "card": 308,
+        "navigation": "inline",
+        "hero": "split"
+      },
+      {
+        "viewport": 1366,
+        "content": 1120,
+        "columns": 3,
+        "card": 361,
+        "navigation": "inline",
+        "hero": "split"
+      },
+      {
+        "viewport": 1440,
+        "content": 1120,
+        "columns": 3,
+        "card": 361,
+        "navigation": "inline",
+        "hero": "split"
+      },
+      {
+        "viewport": 1920,
+        "content": 1120,
+        "columns": 3,
+        "card": 361,
+        "navigation": "inline",
+        "hero": "split"
+      }
+    ]
+  }
+}
