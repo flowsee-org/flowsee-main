@@ -1,26 +1,41 @@
-# Flowsee
+# Flowsee — Laravel
 
-The live static site is https://flowsee.ir. The homepage source is
-`felosi-home-before-about-v2.html`; deployment publishes it as `index.html`.
+Laravel 13 / PHP 8.4+. The existing Flowsee design, portfolio, dialogs, and Instagram
+link are preserved, with a dedicated mobile layout layer.
 
-## Publishing
+- `resources/views/home.blade.php`: homepage content
+- `resources/views/layouts/site.blade.php`: document layout and asset loading
+- `resources/views/case-study.blade.php`: standalone case study
+- `public/assets/css/site.css`: original design styles
+- `public/assets/css/mobile.css`: responsive layout and touch controls
+- `public/assets/js/site.js`: dialog, gallery, and brief-download behavior
+- `routes/web.php`: public routes and legacy URL redirects
+- `reference/legacy`: archived HTML source, never exposed by the web server
 
-Edit this repository, commit your changes, and push to `main`. GitHub Actions
-validates the deployment code, sends a signed HTTPS request, and checks that the
-public site serves the exact pushed commit. You can also use **Run workflow**.
+## Local development
 
-The existing organization secret `SSH_PRIVATE_KEY` signs requests. Its matching
-public key is installed in `/opt/flowsee-deploy/allowed_signers` on the server.
-No private key is included in this repository or sent in the HTTPS request.
+```sh
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan serve
+php vendor/bin/phpunit
+```
 
-The server fetches this repository, creates a release in `/var/www/flowsee-releases`,
-and atomically changes `/var/www/flowsee-live`. A failed local health check restores
-the previous release. `/deployment.txt` identifies the currently published commit.
-Old releases are retained for manual rollback. The old direct-push webhook does
-not deploy independently of Actions.
+Use the web root `public/`. Do not serve the repository root. Node/npm is not
+required for these existing CSS and JavaScript assets.
 
-Server deployment code is installed separately in `/opt/flowsee-deploy`; changes
-to `ops/deploy.py` or `ops/webhook.py` need a deliberate server update.
+## Deployment
 
-This repository currently publishes static files. Form storage requires a separate
-backend and is not provided by this deployment workflow.
+Push to `main` to run PHP tests and send the existing signed HTTPS deployment
+request. The server creates a Laravel release, installs production dependencies,
+runs migrations, caches configuration/routes/views, then atomically activates
+the release. Failed HTTP health checks restore the previous release.
+
+Runtime configuration and data live outside releases in `/var/www/flowsee-shared`.
+Never commit `.env`, vendor packages, or the SQLite database. Back up this shared
+directory separately. Schema migrations must remain backward compatible with the
+previous release; code rollback does not undo a database migration.
+
+The form currently downloads a project brief, as before. It does not yet store
+submissions or notify the owner. Laravel is ready for implementing that separately.

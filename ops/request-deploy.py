@@ -28,7 +28,7 @@ def main():
         signature = base64.b64encode(Path(str(message) + '.sig').read_bytes()).decode()
         request = urllib.request.Request('https://flowsee.ir/github-webhook', data=payload,
             headers={'Content-Type': 'application/json', 'X-Flowsee-Signature': signature})
-        with urllib.request.urlopen(request, timeout=240) as response:
+        with urllib.request.urlopen(request, timeout=660) as response:
             result = json.load(response)
         if result.get('sha') != sha:
             raise RuntimeError('Server did not publish the requested commit')

@@ -1,29 +1,35 @@
 name: Deploy to Server
-
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
-
 concurrency:
   group: flowsee-production
   cancel-in-progress: false
-
 jobs:
   deploy:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
           persist-credentials: false
-      - name: Check site and deployment code
+      - name: Set up PHP
+        uses: shivammathur/setup-php@d52fc211a0436f8839a587b3b5b8efddab4744ea # v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, intl, pdo_sqlite, zip
+          coverage: none
+          tools: composer:v2
+      - name: Install and test Laravel
         run: |
-          test -s felosi-home-before-about-v2.html
-          test -d assets
+          composer install --prefer-dist --no-interaction --no-progress
+          cp .env.example .env
+          php artisan key:generate
+          php artisan view:cache
+          php vendor/bin/phpunit
           python3 -m py_compile ops/deploy.py ops/webhook.py ops/request-deploy.py
           python3 -m unittest discover -s ops -p 'test_*.py'
       - name: Publish and verify flowsee.ir

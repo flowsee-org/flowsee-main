@@ -56,7 +56,7 @@ class Handler(BaseHTTPRequestHandler):
             if not valid_payload(payload, time.time()) or not verify(body, signature):
                 return self.reply(403, {'error': 'Invalid or expired signature'})
             result = subprocess.run(['python3', '/opt/flowsee-deploy/deploy.py', payload['sha']],
-                                    capture_output=True, text=True, timeout=180)
+                                    capture_output=True, text=True, timeout=600)
             if result.returncode:
                 print(result.stderr, flush=True)
                 return self.reply(500, {'error': 'Deployment failed; see server journal'})
