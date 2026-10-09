@@ -130,3 +130,19 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .case-dialog[open] { animation:case-dialog-arrive .38s cubic-bezier(.2,.8,.2,1) both; }
 @keyframes case-dialog-arrive { from { opacity:0; transform:translateY(22px) scale(.985); } to { opacity:1; transform:translateY(0) scale(1); } }
 @media (prefers-reduced-motion:reduce) { .case-dialog[open] { animation:none!important; } }
+@media (max-width:649px) {
+  .service-list .service-row { grid-template-columns:minmax(0,1fr) 30px; min-height:126px; height:100%; gap:8px; padding:14px 12px; }
+  .service-list .service-row .service-icon, .service-list .service-row .service-num { display:none; }
+  .service-list .service-row .service-name { grid-column:1; min-width:0; }
+  .service-list .service-row .service-title { font-size:clamp(15px,4vw,18px); line-height:1.55; }
+  .service-list .service-row .service-category { font-size:11px; line-height:1.7; }
+  .service-list .service-row .service-arrow { grid-column:2; width:30px; height:30px; }
+  .portfolio-grid .featured-project { position:relative; display:flex; flex-direction:column; min-height:0; }
+  .portfolio-grid .featured-project::after { display:none; }
+  .portfolio-grid .featured-project .project-visual { position:relative; inset:auto; aspect-ratio:16/9; min-height:0; }
+  .portfolio-grid .featured-project .project-image { position:static; width:100%; height:100%; object-fit:cover; }
+  .portfolio-grid .featured-project .project-copy { width:100%; min-height:0; margin:0; padding:16px; background:var(--fg); }
+}
+@media (max-width:359px) {
+  .service-list .service-row { min-height:118px; padding:12px 9px; }
+}

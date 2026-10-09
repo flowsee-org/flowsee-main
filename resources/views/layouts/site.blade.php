@@ -14,5 +14,6 @@
 
 <body>
 @yield('content')
+<script defer src="{{ asset('assets/js/lottie.min.js') }}?v={{ filemtime(public_path('assets/js/lottie.min.js')) }}"></script>
 <script defer src="{{ asset('assets/js/site.js') }}?v={{ filemtime(public_path('assets/js/site.js')) }}"></script>
 </body></html>

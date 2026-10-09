@@ -133,3 +133,13 @@ for(const name of validatedFields){const field=form.elements[name];
 }
 
 })();
+
+const heroAnimationContainer=document.querySelector('.hero-lottie');
+if(heroAnimationContainer&&window.lottie&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const heroAnimation=window.lottie.loadAnimation({container:heroAnimationContainer,renderer:'svg',loop:true,autoplay:false,path:heroAnimationContainer.dataset.lottie,rendererSettings:{preserveAspectRatio:'xMidYMid meet',progressiveLoad:true,hideOnTransparent:true}});
+  heroAnimation.setSubframe(true);
+  heroAnimation.addEventListener('loaded_images',()=>heroAnimationContainer.closest('.art-stage')?.classList.add('lottie-ready'));
+  heroAnimation.addEventListener('data_failed',()=>heroAnimation.destroy());
+  const heroVisibility=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)heroAnimation.play();else heroAnimation.pause()}),{threshold:.05});
+  heroVisibility.observe(heroAnimationContainer);
+}
