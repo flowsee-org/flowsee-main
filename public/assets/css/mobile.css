@@ -146,3 +146,8 @@ button, a, input, select, textarea { touch-action: manipulation; }
 @media (max-width:359px) {
   .service-list .service-row { min-height:118px; padding:12px 9px; }
 }
+
+@media (max-width:649px) {
+  .socials .social { width:44px; height:44px; flex:0 0 44px; border-radius:50%; }
+  .socials .social-glyph { top:7px; left:7px; height:28px; }
+}
