@@ -76,7 +76,7 @@ button, a, input, select, textarea { touch-action: manipulation; }
 }
 
 /* Flowsee responsive refinement */
-@media (max-width: 649px) {
+@media (max-width:649px) {
   .hero { display:flex; flex-direction:column; align-items:stretch; gap:18px; }
   .hero-art { display:contents; }
   .hero-art > .art-stage { display:grid; order:-2; width:min(100%,300px); margin-inline:auto; }
@@ -89,11 +89,10 @@ button, a, input, select, textarea { touch-action: manipulation; }
   .portfolio-grid > .project-card:not(.featured-project) .project-name { font-size:17px; line-height:1.6; }
   .portfolio-grid > .project-card:not(.featured-project) .project-description { font-size:11px; line-height:1.6; }
   .portfolio-grid > .project-card:not(.featured-project) .project-arrow { width:32px; height:32px; font-size:19px; }
-  .featured-project .project-copy { display:grid; grid-template-columns:minmax(0,1fr); gap:4px; padding:16px; }
+  .featured-project .project-copy { padding:16px; }
   .featured-project .project-name { font-size:clamp(20px,5.2vw,25px); line-height:1.55; }
   .featured-project .project-description { font-size:12px; margin-top:4px; }
-  .portfolio-grid > .featured-project .project-copy .project-action { display:none !important; }
-  .featured-project { cursor:pointer; }
+  .portfolio-grid > .featured-project .project-copy .project-action { display:none!important; }
   .case-dialog { position:fixed; inset:0; width:100vw; max-width:none; height:100dvh; max-height:100dvh; margin:0; padding:0; border:0; border-radius:0; }
   .case-dialog::backdrop { background:rgba(9,12,20,.7); backdrop-filter:blur(8px); }
   .case-bar { min-height:58px; padding:10px 16px; }
@@ -107,20 +106,18 @@ button, a, input, select, textarea { touch-action: manipulation; }
   .case-study .cover img { max-height:56vh; object-fit:cover; }
   .case-study .fig-grid { gap:12px; }
   .case-study .case-cta, .case-study .cs-cta, .case-study a.button, .case-study .cs-hero .button, .case-study .cs-head + .button { width:100%; justify-content:center; }
-  .about-panel { position:relative; display:grid; grid-template-columns:minmax(0,1fr); align-items:start; gap:20px; isolation:isolate; overflow:hidden; min-height:0; height:auto; padding:28px 20px; border:1px solid color-mix(in srgb,var(--blue) 24%,var(--border)); border-radius:16px; background:linear-gradient(145deg,var(--fg),#222 75%); color:var(--bg); box-shadow:0 16px 44px oklch(from var(--fg) l c h / .12); }
-  .about-panel::before { content:"F"; position:absolute; z-index:-1; inset:auto auto -45px -6px; color:oklch(from var(--bg) l c h / .05); font:700 220px/1 Montserrat,sans-serif; pointer-events:none; }
-  .about-lead { position:relative; min-width:0; }
-  .about-lead .eyebrow, .about-lead h2, .about-lead p { color:var(--bg); }
-  .about-lead h2 { max-width:none; text-wrap:balance; font-size:28px; line-height:1.55; }
-  .about-lead p { text-align:justify; text-justify:inter-word; font-size:14px; line-height:1.95; color:oklch(from var(--bg) l c h / .78); }
-  .about-lead .about-consultation { margin-top:18px; }
-  .about-panel > .about-lead { grid-column:1/-1; grid-row:auto; height:auto; min-height:0; }
-  .about-panel > .about-values { grid-column:1/-1; grid-row:auto; height:auto; min-height:0; }
-  .about-values { position:relative; display:grid; gap:0; width:100%; margin:0; padding:0; list-style:none; }
-  .about-values li { display:grid; grid-template-columns:30px minmax(0,1fr); align-items:baseline; gap:4px 10px; padding:14px 0; border-top:1px solid oklch(from var(--bg) l c h / .16); }
-  .about-values .n { grid-row:span 2; color:var(--accent); }
-  .about-values b { color:var(--bg); font-size:16px; }
-  .about-values li > span:last-child { grid-column:2; color:oklch(from var(--bg) l c h / .72); font-size:13px; line-height:1.8; }
+  .about .about-panel { position:relative; display:grid; grid-template-columns:minmax(0,1fr); grid-template-rows:auto auto; align-content:start; align-items:start; gap:20px; isolation:isolate; overflow:hidden; height:auto; min-height:0; padding:28px 20px; border:1px solid color-mix(in srgb,var(--blue) 24%,var(--border)); border-radius:16px; background:linear-gradient(145deg,var(--fg),#222 75%); color:var(--bg); box-shadow:0 16px 44px oklch(from var(--fg) l c h / .12); }
+  .about .about-panel::before { content:"F"; position:absolute; z-index:-1; inset:auto auto -45px -6px; color:oklch(from var(--bg) l c h / .05); font:700 220px/1 Montserrat,sans-serif; pointer-events:none; }
+  .about .about-panel > .about-lead { grid-area:1/1/2/2; position:relative; min-width:0; height:auto; min-height:0; align-self:start; }
+  .about .about-panel > .about-values { grid-area:2/1/3/2; position:relative; display:grid; gap:0; width:100%; height:auto; min-height:0; margin:0; padding:0; list-style:none; align-self:start; }
+  .about .about-lead .eyebrow, .about .about-lead h2 { color:var(--bg); }
+  .about .about-lead h2 { max-width:none; font-size:28px; line-height:1.55; text-wrap:balance; }
+  .about .about-lead p { color:oklch(from var(--bg) l c h / .78); font-size:14px; line-height:1.95; text-align:justify; text-justify:inter-word; }
+  .about .about-lead .about-consultation { margin-top:18px; }
+  .about .about-values li { display:grid; grid-template-columns:30px minmax(0,1fr); align-items:baseline; gap:4px 10px; min-height:0; padding:14px 0; border-top:1px solid oklch(from var(--bg) l c h / .16); }
+  .about .about-values .n { grid-row:span 2; color:var(--accent); }
+  .about .about-values b { color:var(--bg); font-size:16px; }
+  .about .about-values li>span:last-child { grid-column:2; color:oklch(from var(--bg) l c h / .72); font-size:13px; line-height:1.8; }
   .footer-inner { align-items:center; }
   .footer-brand { align-self:center; width:36px; flex:0 0 36px; margin-inline:auto; }
   .footer-brand img, .site-footer .footer-brand img { display:block; width:36px; height:auto; }
@@ -128,24 +125,8 @@ button, a, input, select, textarea { touch-action: manipulation; }
   .footer-nav a { justify-content:center; }
   .socials { width:100%; display:flex; flex-wrap:nowrap; align-items:center; justify-content:center; gap:16px; margin-inline:auto; }
   .socials .social { flex:0 0 58px; }
-  .footer-nav a[href^="tel:"] { display:none; }
 }
-@media (min-width:650px) {
-  .about-lead p { text-align:justify; text-justify:inter-word; }
-  .case-dialog { width:min(1320px,calc(100% - 48px)); max-width:1320px; height:min(900px,calc(100dvh - 48px)); max-height:calc(100dvh - 48px); margin:auto; border-radius:18px; }
-  .case-dialog[open] { animation:case-dialog-arrive .32s cubic-bezier(.2,.8,.2,1) both; }
-  .featured-project .project-name { font-size:clamp(22px,2vw,28px); }
-  .featured-project .project-action { padding-top:12px; margin-top:18px; font-size:12px; }
-  .featured-project .project-action-label { font-size:12px!important; }
-}
-.case-dialog[open] { animation:case-dialog-arrive .42s cubic-bezier(.2,.8,.2,1) both; }
+@media (min-width:650px) { .about-lead p { text-align:justify; text-justify:inter-word; } }
+.case-dialog[open] { animation:case-dialog-arrive .38s cubic-bezier(.2,.8,.2,1) both; }
 @keyframes case-dialog-arrive { from { opacity:0; transform:translateY(22px) scale(.985); } to { opacity:1; transform:translateY(0) scale(1); } }
-@keyframes footer-mark-color { 0%,100% { filter:drop-shadow(0 0 0 transparent) hue-rotate(0deg); } 50% { filter:drop-shadow(0 0 7px color-mix(in srgb,var(--blue) 65%,transparent)) hue-rotate(24deg); } }
-@media (prefers-reduced-motion:reduce) { .case-dialog[open], .footer-brand img { animation:none !important; } }
-@media (max-width:649px) {
-  .about .about-panel { grid-template-columns:minmax(0,1fr); grid-template-rows:auto auto; height:auto; min-height:0; align-content:start; }
-  .about .about-panel > .about-lead { grid-area:1 / 1 / 2 / 2; height:auto; min-height:0; align-self:start; }
-  .about .about-panel > .about-values { grid-area:2 / 1 / 3 / 2; height:auto; min-height:0; align-self:start; }
-  .about .about-panel .about-values li { min-height:0; }
-  .portfolio-grid > .featured-project .project-copy .project-action { display:none !important; }
-}
+@media (prefers-reduced-motion:reduce) { .case-dialog[open] { animation:none!important; } }
