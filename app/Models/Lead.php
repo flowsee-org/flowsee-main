@@ -9,6 +9,23 @@ class Lead extends Model
 {
     use HasFactory;
 
+    public const STATUSES = [
+        'new' => 'جدید',
+        'contacted' => 'تماس‌گرفته‌شده',
+        'negotiating' => 'در حال مذاکره',
+        'archived' => 'بایگانی',
+    ];
+
+    public const SERVICES = [
+        'branding' => 'طراحی هویت بصری',
+        'marketing' => 'دیجیتال مارکتینگ',
+        'uiux' => 'طراحی رابط و تجربه کاربری',
+        'packaging' => 'بسته‌بندی محصول',
+        'video' => 'تولید محتوای تبلیغاتی',
+        'academy' => 'توسعه سرمایه انسانی',
+        'consultation' => 'مشاوره',
+    ];
+
     protected $fillable = [
         'name',
         'phone',
@@ -18,6 +35,7 @@ class Lead extends Model
         'ip_address',
         'user_agent',
         'is_read',
+        'status',
     ];
 
     protected function casts(): array

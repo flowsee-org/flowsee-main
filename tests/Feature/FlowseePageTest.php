@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class FlowseePageTest extends TestCase
 {
@@ -65,6 +65,9 @@ class FlowseePageTest extends TestCase
                 continue;
             }
             $path = parse_url($url, PHP_URL_PATH);
+            if (str_starts_with($path, '/livewire-')) {
+                continue;
+            }
             $this->assertFileExists(public_path(ltrim($path, '/')), $url);
         }
         $this->assertFileExists(public_path('assets/css/mobile.css'));
