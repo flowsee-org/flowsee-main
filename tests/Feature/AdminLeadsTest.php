@@ -20,7 +20,7 @@ class AdminLeadsTest extends TestCase
     {
         $this->get('/admin/login')
             ->assertOk()
-            ->assertSee('/vendor/livewire/livewire.min.js?id=', false);
+            ->assertSee('/vendor/livewire/livewire.js?id=', false);
         $this->get('/admin/leads')->assertRedirect('/admin/login');
 
         $user = User::create([
