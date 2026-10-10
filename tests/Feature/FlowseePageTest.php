@@ -3,9 +3,12 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class FlowseePageTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_homepage_preserves_content_and_instagram_and_loads_mobile_styles(): void
     {
         $this->get('/')->assertOk()->assertSee('طراحی برای')->assertSee('https://www.instagram.com/flowsee.ir/', false)
@@ -19,6 +22,33 @@ class FlowseePageTest extends TestCase
         $this->get('/projects/ebrahimi')->assertOk();
         $this->get('/up')->assertOk();
         $this->get('/not-a-page')->assertNotFound();
+    }
+
+    public function test_project_lead_api_route_is_registered_and_validates_empty_requests(): void
+    {
+        $this->postJson('/api/leads', [])
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors(['name', 'phone', 'service', 'details']);
+    }
+
+    public function test_project_lead_api_persists_a_valid_submission(): void
+    {
+        $this->postJson('/api/leads', [
+            'name' => 'تست CI',
+            'phone' => '09123456789',
+            'email' => null,
+            'service' => 'branding',
+            'details' => 'درخواست آزمایشی در دیتابیس موقت تست.',
+        ])
+            ->assertOk()
+            ->assertJsonPath('success', true);
+
+        $this->assertDatabaseHas('leads', [
+            'name' => 'تست CI',
+            'phone' => '09123456789',
+            'service' => 'branding',
+            'details' => 'درخواست آزمایشی در دیتابیس موقت تست.',
+        ]);
     }
 
     public function test_homepage_local_images_and_styles_are_present_in_public_directory(): void
