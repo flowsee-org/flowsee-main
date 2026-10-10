@@ -14,7 +14,10 @@ class FlowseePageTest extends TestCase
         $this->get('/')->assertOk()->assertSee('طراحی برای')->assertSee('https://www.instagram.com/flowsee.ir/', false)
             ->assertSee('اطلاعات پروژه برای پیگیری در پایگاه دادهٔ فلوسی ثبت می‌شود.')
             ->assertSee('ارسال درخواست')
+            ->assertSee('پیام شما با موفقیت ارسال شد')
+            ->assertSee('class="required-marker"', false)
             ->assertSee('assets/css/mobile.css', false)->assertSee('assets/js/site.js', false);
+        $this->assertStringNotContainsString('localStorage', file_get_contents(public_path('assets/js/site.js')));
     }
 
     public function test_legacy_addresses_redirect_and_case_study_renders(): void
