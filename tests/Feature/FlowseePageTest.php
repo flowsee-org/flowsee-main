@@ -12,6 +12,8 @@ class FlowseePageTest extends TestCase
     public function test_homepage_preserves_content_and_instagram_and_loads_mobile_styles(): void
     {
         $this->get('/')->assertOk()->assertSee('طراحی برای')->assertSee('https://www.instagram.com/flowsee.ir/', false)
+            ->assertSee('اطلاعات پروژه برای پیگیری در پایگاه دادهٔ فلوسی ثبت می‌شود.')
+            ->assertSee('ارسال درخواست')
             ->assertSee('assets/css/mobile.css', false)->assertSee('assets/js/site.js', false);
     }
 
