@@ -1,41 +1,72 @@
-# Flowsee — Laravel
+[فارسی](README.fa.md)
 
-Laravel 13 / PHP 8.4+. The existing Flowsee design, portfolio, dialogs, and Instagram
-link are preserved, with a dedicated mobile layout layer.
+# Flowsee Studio
 
-- `resources/views/home.blade.php`: homepage content
-- `resources/views/layouts/site.blade.php`: document layout and asset loading
-- `resources/views/case-study.blade.php`: standalone case study
-- `public/assets/css/site.css`: original design styles
-- `public/assets/css/mobile.css`: responsive layout and touch controls
-- `public/assets/js/site.js`: dialog, gallery, and brief-download behavior
-- `routes/web.php`: public routes and legacy URL redirects
-- `reference/legacy`: archived HTML source, never exposed by the web server
+The Persian, right-to-left website for Flowsee Studio, built with Laravel and PHP to showcase the studio's services, portfolio, and a standalone case study.
+
+[Read the full project documentation in the GitHub Wiki](https://github.com/flowsee-org/flowsee-main/wiki).
+
+## Features
+
+- Responsive homepage introducing the studio, its services, portfolio, and contact options
+- Project previews and the Ebrahimi case study, including an image gallery and lightbox
+- Project-brief form with browser-side validation and a downloadable text summary
+- Self-hosted fonts, images, and frontend scripts
+- Laravel health endpoint at `/up` and permanent redirects from legacy URLs
+
+> The project-brief form does not submit data to a server. The browser stores entered values locally and downloads a text file when the form is completed.
+
+## Tech stack
+
+- PHP 8.3 or later (CI and production deployment use PHP 8.4)
+- Laravel 13
+- Blade, CSS, and JavaScript; no frontend build step
+- Composer for PHP dependencies; Node.js and npm are not required to run the site
 
 ## Local development
 
+Prerequisites: PHP 8.3+ with Laravel's required extensions, Composer, and Git.
+
+From the repository root:
+
 ```sh
 composer install
-cp .env.example .env
+test -f .env || cp .env.example .env
 php artisan key:generate
 php artisan serve
-php vendor/bin/phpunit
 ```
 
-Use the web root `public/`. Do not serve the repository root. Node/npm is not
-required for these existing CSS and JavaScript assets.
+The site is available at `http://127.0.0.1:8000`. Run the test suite with:
 
-## Deployment
+```sh
+composer test
+```
 
-Push to `main` to run PHP tests and send the existing signed HTTPS deployment
-request. The server creates a Laravel release, installs production dependencies,
-runs migrations, caches configuration/routes/views, then atomically activates
-the release. Failed HTTP health checks restore the previous release.
+If `.env` already exists, do not replace it. Keep local settings in `.env` and never commit that file. For development, architecture, content, deployment, and troubleshooting guides, see the [project Wiki](https://github.com/flowsee-org/flowsee-main/wiki).
 
-Runtime configuration and data live outside releases in `/var/www/flowsee-shared`.
-Never commit `.env`, vendor packages, or the SQLite database. Back up this shared
-directory separately. Schema migrations must remain backward compatible with the
-previous release; code rollback does not undo a database migration.
+## Routes
 
-The form currently downloads a project brief, as before. It does not yet store
-submissions or notify the owner. Laravel is ready for implementing that separately.
+| URL | Description |
+| --- | --- |
+| `/` | Homepage |
+| `/projects/ebrahimi` | Ebrahimi case study |
+| `/up` | Laravel health check |
+| Legacy HTML URLs | Permanent redirects to the homepage or case study |
+
+## Project structure
+
+```text
+app/                         Laravel application code
+routes/web.php               Web routes and legacy redirects
+resources/views/             Homepage and case-study templates
+public/assets/css/           Main and responsive stylesheets
+public/assets/js/site.js     Page interactions, gallery, and brief form
+public/assets/               Images, fonts, and frontend libraries
+tests/Feature/               Route, content, and local-asset tests
+ops/                         Deployment tools and webhook tests
+.github/workflows/deploy.yml CI and deployment workflow
+wiki/                        Source files for project documentation
+reference/                   Design references and archived resources
+```
+
+The Wiki source pages are also kept in `wiki/`. Read the published guides on the [GitHub Wiki](https://github.com/flowsee-org/flowsee-main/wiki).
