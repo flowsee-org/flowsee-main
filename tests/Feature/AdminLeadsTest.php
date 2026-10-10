@@ -2,10 +2,12 @@
 
 namespace Tests\Feature;
 
+use App\Filament\Auth\Login;
 use App\Filament\Resources\Leads\Pages\ListLeads;
 use App\Models\Lead;
 use App\Models\User;
 use Carbon\CarbonImmutable;
+use Filament\Notifications\Notification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
@@ -27,6 +29,19 @@ class AdminLeadsTest extends TestCase
         ]);
 
         $this->actingAs($user)->get('/admin/leads')->assertForbidden();
+    }
+
+    public function test_failed_admin_login_shows_a_clear_persian_error(): void
+    {
+        Livewire::test(Login::class)
+            ->fillForm([
+                'email' => 'flowseeadmin@gmail.com',
+                'password' => 'an-incorrect-password',
+            ])
+            ->call('authenticate')
+            ->assertHasFormErrors(['email']);
+
+        Notification::assertNotified('ورود ناموفق بود');
     }
 
     public function test_admin_can_open_lead_list_with_service_and_status_filters(): void
