@@ -15,7 +15,7 @@ class StudioWebsiteMessagesTest extends TestCase
     {
         Http::fake([
             'studio.flowsee.ir/api/apps/flowsee-preview/entities/User/me' => Http::response([
-                'email' => 'studio-superadmin@example.test',
+                'email' => 'ceo@flowsee.local',
                 'role' => 'superadmin',
             ], 200),
         ]);
@@ -40,11 +40,25 @@ class StudioWebsiteMessagesTest extends TestCase
         ])->assertForbidden();
     }
 
+    public function test_other_studio_superadmin_is_denied(): void
+    {
+        Http::fake([
+            'studio.flowsee.ir/api/apps/flowsee-preview/entities/User/me' => Http::response([
+                'email' => 'google.demo@flowsee.local',
+                'role' => 'superadmin',
+            ], 200),
+        ]);
+
+        $this->getJson('/api/studio/website-messages', [
+            'Authorization' => 'Bearer studio-session-token',
+        ])->assertForbidden();
+    }
+
     public function test_admin_can_read_filtered_messages_without_private_tracking_fields(): void
     {
         Http::fake([
             'studio.flowsee.ir/api/apps/flowsee-preview/entities/User/me' => Http::response([
-                'email' => 'admin@example.test',
+                'email' => 'ceo@flowsee.local',
                 'role' => 'superadmin',
             ], 200),
         ]);
