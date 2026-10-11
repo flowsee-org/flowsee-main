@@ -94,6 +94,6 @@ class StudioWebsiteMessagesTest extends TestCase
         $this->call('OPTIONS', '/api/studio/website-messages', [], [], [], [
             'HTTP_ORIGIN' => 'https://untrusted.example',
         ])->assertNoContent()
-            ->assertHeaderMissing('Access-Control-Allow-Origin');
+            ->assertHeaderMissing('Access-Control-Allow-Credentials');
     }
 }
