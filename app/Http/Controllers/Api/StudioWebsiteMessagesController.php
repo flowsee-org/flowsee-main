@@ -8,22 +8,51 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class StudioWebsiteMessagesController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $claims = $this->verifiedClaims($request->bearerToken());
-        if (! $claims || ($claims['scope'] ?? null) !== 'website-messages:read'
-            || (int) ($claims['exp'] ?? 0) <= now()->timestamp) {
-            return response()->json(['message' => 'Studio access expired or invalid.'], 401);
+        $token = $request->bearerToken();
+        if (! $token) {
+            return response()->json(['message' => 'Studio sign-in required.'], 401);
         }
 
-        // Re-check the issuing account on every request so removing admin access
-        // immediately revokes access, even while the short-lived token exists.
-        $user = User::find($claims['sub'] ?? null);
-        if (! $user?->is_admin) {
-            return response()->json(['message' => 'Admin access required.'], 403);
+        // Verify the current Studio session server-side; never trust client-supplied roles.
+        try {
+            $identityResponse = Http::connectTimeout(3)
+                ->timeout(6)
+                ->acceptJson()
+                ->withToken($token)
+                ->get('https://studio.flowsee.ir/api/apps/flowsee-preview/entities/User/me');
+        } catch (\Throwable $exception) {
+            report($exception);
+
+            return response()->json(['message' => 'Could not verify Studio session.'], 503);
+        }
+
+        if ($identityResponse->status() === 401 || $identityResponse->status() === 403) {
+            return response()->json(['message' => 'Studio session expired or invalid.'], 401);
+        }
+
+        if (! $identityResponse->successful()) {
+            return response()->json(['message' => 'Could not verify Studio session.'], 503);
+        }
+
+        $identity = $identityResponse->json();
+        if (! is_array($identity) || ($identity['role'] ?? null) !== 'superadmin'
+            || ! is_string($identity['email'] ?? null)) {
+            return response()->json(['message' => 'Studio superadmin access required.'], 403);
+        }
+
+        $user = User::query()
+            ->whereRaw('LOWER(email) = ?', [mb_strtolower($identity['email'])])
+            ->where('is_admin', true)
+            ->first();
+
+        if (! $user) {
+            return response()->json(['message' => 'Matching Flowsee admin account required.'], 403);
         }
 
         $query = Lead::query()->select([
@@ -68,28 +97,5 @@ class StudioWebsiteMessagesController extends Controller
             'statuses' => Lead::STATUSES,
             'services' => Lead::SERVICES,
         ])->header('Cache-Control', 'private, no-store');
-    }
-
-    /** @return array<string, mixed>|null */
-    private function verifiedClaims(?string $token): ?array
-    {
-        if (! $token || ! str_contains($token, '.')) {
-            return null;
-        }
-
-        [$payload, $signature] = explode('.', $token, 2);
-        $expected = hash_hmac('sha256', $payload, (string) config('app.key'));
-        if (! hash_equals($expected, $signature)) {
-            return null;
-        }
-
-        $decoded = base64_decode(strtr($payload, '-_', '+/'), true);
-        if ($decoded === false) {
-            return null;
-        }
-
-        $claims = json_decode($decoded, true);
-
-        return is_array($claims) ? $claims : null;
     }
 }
