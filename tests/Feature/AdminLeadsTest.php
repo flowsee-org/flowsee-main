@@ -33,6 +33,14 @@ class AdminLeadsTest extends TestCase
         $this->actingAs($user)->get('/admin/leads')->assertForbidden();
     }
 
+    public function test_admin_login_can_only_be_embedded_by_the_studio_subdomain(): void
+    {
+        $this->get('/admin/login')
+            ->assertOk()
+            ->assertHeader('Content-Security-Policy', "frame-ancestors 'self' https://studio.flowsee.ir")
+            ->assertHeaderMissing('X-Frame-Options');
+    }
+
     public function test_failed_admin_login_shows_a_clear_persian_error(): void
     {
         Livewire::test(Login::class)
