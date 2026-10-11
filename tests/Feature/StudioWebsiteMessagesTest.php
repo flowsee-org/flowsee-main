@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\Lead;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
@@ -12,18 +11,11 @@ class StudioWebsiteMessagesTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_only_matching_studio_superadmin_and_flowsee_admin_can_read_messages(): void
+    public function test_studio_superadmin_can_read_messages_without_a_separate_flowsee_account(): void
     {
-        User::create([
-            'name' => 'مدیر سایت',
-            'email' => 'admin@example.test',
-            'password' => 'a-secure-test-password',
-            'is_admin' => true,
-        ]);
-
         Http::fake([
             'studio.flowsee.ir/api/apps/flowsee-preview/entities/User/me' => Http::response([
-                'email' => 'admin@example.test',
+                'email' => 'ceo@flowsee.local',
                 'role' => 'superadmin',
             ], 200),
         ]);
@@ -34,15 +26,8 @@ class StudioWebsiteMessagesTest extends TestCase
         ])->assertOk();
     }
 
-    public function test_non_superadmin_and_unmatched_accounts_are_denied(): void
+    public function test_non_superadmin_is_denied(): void
     {
-        User::create([
-            'name' => 'مدیر سایت',
-            'email' => 'admin@example.test',
-            'password' => 'a-secure-test-password',
-            'is_admin' => true,
-        ]);
-
         Http::fake([
             'studio.flowsee.ir/api/apps/flowsee-preview/entities/User/me' => Http::response([
                 'email' => 'admin@example.test',
@@ -53,10 +38,13 @@ class StudioWebsiteMessagesTest extends TestCase
         $this->getJson('/api/studio/website-messages', [
             'Authorization' => 'Bearer studio-session-token',
         ])->assertForbidden();
+    }
 
+    public function test_other_studio_superadmin_is_denied(): void
+    {
         Http::fake([
             'studio.flowsee.ir/api/apps/flowsee-preview/entities/User/me' => Http::response([
-                'email' => 'unmatched@example.test',
+                'email' => 'google.demo@flowsee.local',
                 'role' => 'superadmin',
             ], 200),
         ]);
@@ -68,16 +56,9 @@ class StudioWebsiteMessagesTest extends TestCase
 
     public function test_admin_can_read_filtered_messages_without_private_tracking_fields(): void
     {
-        User::create([
-            'name' => 'مدیر سایت',
-            'email' => 'admin@example.test',
-            'password' => 'a-secure-test-password',
-            'is_admin' => true,
-        ]);
-
         Http::fake([
             'studio.flowsee.ir/api/apps/flowsee-preview/entities/User/me' => Http::response([
-                'email' => 'admin@example.test',
+                'email' => 'ceo@flowsee.local',
                 'role' => 'superadmin',
             ], 200),
         ]);

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lead;
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +11,8 @@ use Illuminate\Support\Facades\Http;
 
 class StudioWebsiteMessagesController extends Controller
 {
+    private const PRIMARY_STUDIO_ADMIN_EMAIL = 'ceo@flowsee.local';
+
     public function index(Request $request): JsonResponse
     {
         $token = $request->bearerToken();
@@ -20,6 +21,8 @@ class StudioWebsiteMessagesController extends Controller
         }
 
         // Verify the current Studio session server-side; never trust client-supplied roles.
+        // Only the primary Studio superadmin identity is allowed. A separate
+        // Flowsee account would force the user to sign in twice.
         try {
             $identityResponse = Http::connectTimeout(3)
                 ->timeout(6)
@@ -42,17 +45,9 @@ class StudioWebsiteMessagesController extends Controller
 
         $identity = $identityResponse->json();
         if (! is_array($identity) || ($identity['role'] ?? null) !== 'superadmin'
-            || ! is_string($identity['email'] ?? null)) {
+            || ! is_string($identity['email'] ?? null)
+            || mb_strtolower($identity['email']) !== self::PRIMARY_STUDIO_ADMIN_EMAIL) {
             return response()->json(['message' => 'Studio superadmin access required.'], 403);
-        }
-
-        $user = User::query()
-            ->whereRaw('LOWER(email) = ?', [mb_strtolower($identity['email'])])
-            ->where('is_admin', true)
-            ->first();
-
-        if (! $user) {
-            return response()->json(['message' => 'Matching Flowsee admin account required.'], 403);
         }
 
         $query = Lead::query()->select([
