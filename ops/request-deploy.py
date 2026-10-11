@@ -23,8 +23,15 @@ def main():
         key.chmod(0o600)
         message = Path(directory) / 'request'
         message.write_bytes(payload)
-        subprocess.run(['ssh-keygen', '-Y', 'sign', '-f', str(key), '-n',
-                        'flowsee-deploy', str(message)], check=True, capture_output=True)
+        signing = subprocess.run(['ssh-keygen', '-Y', 'sign', '-f', str(key), '-n',
+                                  'flowsee-deploy', str(message)], capture_output=True, text=True)
+        if signing.returncode:
+            # ssh-keygen diagnostics are safe to expose here: they contain key paths and
+            # parser errors, never private-key material. Without stderr the Action only
+            # reports a generic CalledProcessError and cannot distinguish a bad secret
+            # from a changed OpenSSH environment.
+            raise RuntimeError('ssh-keygen could not sign the deployment request: '
+                               + signing.stderr.strip())
         signature = base64.b64encode(Path(str(message) + '.sig').read_bytes()).decode()
         request = urllib.request.Request('https://flowsee.ir/github-webhook', data=payload,
             headers={'Content-Type': 'application/json', 'X-Flowsee-Signature': signature})
