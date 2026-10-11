@@ -18,6 +18,20 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        \Illuminate\Support\Facades\Schema::disableForeignKeyConstraints();
+        \App\Models\ContactMessage::query()->delete();
+        \App\Models\Lead::query()->delete();
+        \App\Models\SiteSetting::query()->delete();
+        \App\Models\SocialLink::query()->delete();
+        \App\Models\ColorPalette::query()->delete();
+        \App\Models\GalleryImage::query()->delete();
+        \App\Models\CaseStudyStep::query()->delete();
+        \App\Models\CaseStudySection::query()->delete();
+        \App\Models\CaseStudy::query()->delete();
+        \App\Models\Project::query()->delete();
+        \App\Models\Service::query()->delete();
+        \Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
+
         $this->seedServices();
         $this->seedProjects();
         $this->seedCaseStudy();
@@ -43,11 +57,14 @@ class DatabaseSeeder extends Seeder
 
     private function seedProjects(): void
     {
+        $brandingService = Service::where('slug', 'branding')->first();
+        $marketingService = Service::where('slug', 'marketing')->first();
+
         $projects = [
-            ['slug' => 'shopero', 'name' => 'SHOPERO', 'cover_image' => 'imgShopero1', 'asset_id' => 'imgShopero1', 'sort_order' => 0],
-            ['slug' => 'ima', 'name' => 'IMA MOVIES', 'cover_image' => 'imgIma2', 'asset_id' => 'imgIma2', 'sort_order' => 1],
-            ['slug' => 'exloot', 'name' => 'EXLOOT', 'cover_image' => 'imgExloot2', 'asset_id' => 'imgExloot2', 'sort_order' => 2],
-            ['slug' => 'ebrahimi', 'name' => 'EBRAHIMI', 'cover_image' => '16.jpg', 'asset_id' => '16', 'is_featured' => true, 'has_case_study' => true, 'sort_order' => 3],
+            ['slug' => 'shopero', 'name' => 'SHOPERO', 'cover_image' => 'imgShopero1', 'asset_id' => 'imgShopero1', 'service_id' => $marketingService?->id, 'sort_order' => 0],
+            ['slug' => 'ima', 'name' => 'IMA MOVIES', 'cover_image' => 'imgIma2', 'asset_id' => 'imgIma2', 'service_id' => $marketingService?->id, 'sort_order' => 1],
+            ['slug' => 'exloot', 'name' => 'EXLOOT', 'cover_image' => 'imgExloot2', 'asset_id' => 'imgExloot2', 'service_id' => $marketingService?->id, 'sort_order' => 2],
+            ['slug' => 'ebrahimi', 'name' => 'EBRAHIMI', 'cover_image' => '16.jpg', 'asset_id' => '16', 'service_id' => $brandingService?->id, 'is_featured' => true, 'has_case_study' => true, 'sort_order' => 3],
         ];
 
         foreach ($projects as $project) {

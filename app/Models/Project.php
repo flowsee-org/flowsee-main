@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Project extends Model
@@ -16,6 +18,7 @@ class Project extends Model
         'description',
         'cover_image',
         'asset_id',
+        'service_id',
         'is_featured',
         'has_case_study',
         'sort_order',
@@ -34,5 +37,15 @@ class Project extends Model
     public function caseStudy(): HasOne
     {
         return $this->hasOne(CaseStudy::class);
+    }
+
+    public function service(): BelongsTo
+    {
+        return $this->belongsTo(Service::class);
+    }
+
+    public function galleryImages(): HasMany
+    {
+        return $this->hasMany(GalleryImage::class)->orderBy('sort_order');
     }
 }

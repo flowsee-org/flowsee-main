@@ -12,6 +12,7 @@ class GalleryImage extends Model
 
     protected $fillable = [
         'section_id',
+        'project_id',
         'path',
         'caption',
         'alt',
@@ -32,5 +33,10 @@ class GalleryImage extends Model
     public function section(): BelongsTo
     {
         return $this->belongsTo(CaseStudySection::class);
+    }
+
+    public function project(): BelongsTo
+    {
+        return $this->belongsTo(Project::class);
     }
 }

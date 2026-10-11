@@ -4,13 +4,12 @@ namespace App\Filament\Resources\Leads;
 
 use App\Filament\Resources\Leads\Pages\ListLeads;
 use App\Models\Lead;
-use Filament\Forms\Components\DatePicker;
+use Filament\Schemas;
+use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
-use Filament\Tables\Columns\SelectColumn;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\Filter;
-use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\DatePicker;
 use Illuminate\Database\Eloquent\Builder;
 
 class LeadResource extends Resource
@@ -25,51 +24,82 @@ class LeadResource extends Resource
 
     protected static ?string $pluralModelLabel = 'درخواست‌ها';
 
+    public static function form(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Schemas\Components\TextInput::make('name')
+                    ->label('نام')
+                    ->required()
+                    ->maxLength(100),
+                Schemas\Components\TextInput::make('phone')
+                    ->label('شماره تماس')
+                    ->required()
+                    ->maxLength(24),
+                Schemas\Components\TextInput::make('email')
+                    ->label('ایمیل')
+                    ->email()
+                    ->maxLength(255),
+                Schemas\Components\Select::make('service')
+                    ->label('خدمت درخواستی')
+                    ->options(Lead::SERVICES)
+                    ->required(),
+                Schemas\Components\Textarea::make('details')
+                    ->label('درباره پروژه')
+                    ->rows(3)
+                    ->maxLength(5000),
+                Schemas\Components\Select::make('status')
+                    ->label('وضعیت پیگیری')
+                    ->options(Lead::STATUSES)
+                    ->default('new'),
+            ]);
+    }
+
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('name')
+                Tables\Columns\TextColumn::make('name')
                     ->label('نام')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('phone')
+                Tables\Columns\TextColumn::make('phone')
                     ->label('شماره تماس')
                     ->searchable()
                     ->copyable(),
-                TextColumn::make('email')
+                Tables\Columns\TextColumn::make('email')
                     ->label('ایمیل')
                     ->searchable()
                     ->toggleable(),
-                TextColumn::make('service')
+                Tables\Columns\TextColumn::make('service')
                     ->label('خدمت درخواستی')
                     ->formatStateUsing(fn (string $state): string => Lead::SERVICES[$state] ?? $state)
                     ->badge()
                     ->sortable(),
-                TextColumn::make('details')
+                Tables\Columns\TextColumn::make('details')
                     ->label('درباره پروژه')
                     ->wrap()
                     ->limit(100)
                     ->tooltip(fn (Lead $record): string => $record->details),
-                SelectColumn::make('status')
+                Tables\Columns\SelectColumn::make('status')
                     ->label('وضعیت پیگیری')
                     ->options(Lead::STATUSES)
                     ->selectablePlaceholder(false),
-                TextColumn::make('created_at')
+                Tables\Columns\TextColumn::make('created_at')
                     ->label('تاریخ ثبت')
                     ->dateTime('Y/m/d H:i')
                     ->sortable(),
             ])
             ->filters([
-                SelectFilter::make('service')
+                Tables\Filters\SelectFilter::make('service')
                     ->label('خدمت درخواستی')
                     ->options(Lead::SERVICES),
-                SelectFilter::make('status')
+                Tables\Filters\SelectFilter::make('status')
                     ->label('وضعیت پیگیری')
                     ->options(Lead::STATUSES),
-                Filter::make('created_at')
+                Tables\Filters\Filter::make('created_at')
                     ->label('بازهٔ تاریخ ثبت')
-                    ->schema([
+                    ->form([
                         DatePicker::make('from')->label('از تاریخ')->native(false),
                         DatePicker::make('until')->label('تا تاریخ')->native(false),
                     ])

@@ -10,6 +10,8 @@ class ColorPalette extends Model
 {
     use HasFactory;
 
+    protected $table = 'color_palette';
+
     protected $fillable = [
         'case_study_id',
         'name',

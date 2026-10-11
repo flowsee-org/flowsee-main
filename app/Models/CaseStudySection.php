@@ -30,11 +30,11 @@ class CaseStudySection extends Model
 
     public function steps(): HasMany
     {
-        return $this->hasMany(CaseStudyStep::class)->orderBy('sort_order');
+        return $this->hasMany(CaseStudyStep::class, 'section_id')->orderBy('sort_order');
     }
 
     public function images(): HasMany
     {
-        return $this->hasMany(GalleryImage::class)->orderBy('sort_order');
+        return $this->hasMany(GalleryImage::class, 'section_id')->orderBy('sort_order');
     }
 }
