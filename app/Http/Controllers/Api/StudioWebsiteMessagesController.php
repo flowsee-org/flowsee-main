@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Http;
 
 class StudioWebsiteMessagesController extends Controller
 {
+    private const PRIMARY_STUDIO_ADMIN_EMAIL = 'ceo@flowsee.local';
+
     public function index(Request $request): JsonResponse
     {
         $token = $request->bearerToken();
@@ -19,8 +21,8 @@ class StudioWebsiteMessagesController extends Controller
         }
 
         // Verify the current Studio session server-side; never trust client-supplied roles.
-        // The authenticated Studio superadmin is the sole authorization source; a
-        // separate Flowsee account would force the user to sign in twice.
+        // Only the primary Studio superadmin identity is allowed. A separate
+        // Flowsee account would force the user to sign in twice.
         try {
             $identityResponse = Http::connectTimeout(3)
                 ->timeout(6)
@@ -43,7 +45,8 @@ class StudioWebsiteMessagesController extends Controller
 
         $identity = $identityResponse->json();
         if (! is_array($identity) || ($identity['role'] ?? null) !== 'superadmin'
-            || ! is_string($identity['email'] ?? null)) {
+            || ! is_string($identity['email'] ?? null)
+            || mb_strtolower($identity['email']) !== self::PRIMARY_STUDIO_ADMIN_EMAIL) {
             return response()->json(['message' => 'Studio superadmin access required.'], 403);
         }
 
