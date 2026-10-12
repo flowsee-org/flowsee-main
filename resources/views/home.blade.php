@@ -112,7 +112,7 @@
 <section class="form-success" id="form-success" tabindex="-1" hidden>
 <svg class="form-success-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29"/><path d="m18 33 9 9 19-20"/></svg>
 <h3>درخواست شما ثبت شد</h3>
-<p>ممنون که فلوسی را برای همراهی انتخاب کردید. به‌زودی با شما تماس می‌گیریم.</p>
+<p>پیام شما با موفقیت ارسال شد. ممنون که فلوسی را برای همراهی انتخاب کردید؛ به‌زودی با شما تماس می‌گیریم.</p>
 <button class="button primary" type="button" id="success-close">بستن</button>
 </section>
 </dialog>
