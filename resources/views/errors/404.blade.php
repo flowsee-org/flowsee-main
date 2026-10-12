@@ -10,14 +10,17 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="{{ asset('assets/css/site.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/mobile.css') }}">
-  <script type="application/ld+json">@json([
-    '@context' => 'https://schema.org',
-    '@type' => 'BreadcrumbList',
-    'itemListElement' => [
-      ['@type' => 'ListItem', 'position' => 1, 'name' => 'خانه', 'item' => 'https://flowsee.ir/'],
-      ['@type' => 'ListItem', 'position' => 2, 'name' => 'صفحه پیدا نشد', 'item' => request()->url()],
-    ],
-  ])</script>
+  @php
+    $notFoundBreadcrumbs = [
+      '@context' => 'https://schema.org',
+      '@type' => 'BreadcrumbList',
+      'itemListElement' => [
+        ['@type' => 'ListItem', 'position' => 1, 'name' => 'خانه', 'item' => 'https://flowsee.ir/'],
+        ['@type' => 'ListItem', 'position' => 2, 'name' => 'صفحه پیدا نشد', 'item' => request()->url()],
+      ],
+    ];
+  @endphp
+  <script type="application/ld+json">@json($notFoundBreadcrumbs)</script>
   <style>
     body{min-height:100vh;display:grid;place-items:center;margin:0;padding:32px;background:#17191c;color:#f7f7f7;font-family:IRANSansX,Arial,sans-serif}
     .error-page{width:min(760px,100%);padding:clamp(28px,6vw,64px);border:1px solid #ffffff24;border-radius:24px;background:radial-gradient(circle at 90% 5%,#fe540026,transparent 35%),#202226;text-align:center}
