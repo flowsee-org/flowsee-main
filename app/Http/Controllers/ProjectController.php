@@ -90,6 +90,6 @@ class ProjectController extends Controller
             abort(404);
         }
 
-        return view('case-study', compact('project', 'caseStudy'));
+        return redirect()->to('/?case=' . urlencode($project->slug) . '#portfolio');
     }
 }

@@ -42,7 +42,8 @@ class StudioSiteContentTest extends TestCase
         (new LegacyPortfolioSeeder())->run();
 
         $this->assertDatabaseHas('case_studies', ['slug' => 'ebrahimi', 'title' => 'ویرایش حفظ‌شده در Studio']);
-        $this->get('/projects/ebrahimi')->assertOk()->assertSee('ویرایش حفظ‌شده در Studio');
+        $this->get('/projects/ebrahimi')->assertRedirect('/?case=ebrahimi#portfolio');
+        $this->get('/?case=ebrahimi')->assertOk()->assertSee('ویرایش حفظ‌شده در Studio');
     }
 
     public function test_site_content_api_is_limited_to_the_primary_studio_superadmin(): void

@@ -90,7 +90,8 @@ class FlowseePageTest extends TestCase
         $this->seedCaseStudyData();
         $this->get('/felosi-home-before-about-v2.html')->assertRedirect('/');
         $this->get('/ebrahimi-case-study.html')->assertRedirect('/projects/ebrahimi');
-        $this->get('/projects/ebrahimi')->assertOk();
+        $this->get('/projects/ebrahimi')->assertRedirect('/?case=ebrahimi#portfolio');
+        $this->get('/?case=ebrahimi')->assertOk()->assertSee('window.projectsData', false);
         $this->get('/up')->assertOk();
         $this->get('/not-a-page')->assertNotFound();
     }
