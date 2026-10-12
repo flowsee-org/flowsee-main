@@ -5,7 +5,7 @@
 <a class="skip-link" href="#main" data-od-id="skip-navigation">رفتن به محتوای اصلی</a>
 <header class="consultation-bar" id="top" data-od-id="consultation-bar"><a class="consultation-call" href="tel:+989109027628" target="_top" aria-label="تماس تلفنی برای مشاوره رایگان" data-od-id="free-consultation"><span class="consultation-advice-word">مشاوره</span> <span class="consultation-free-word">رایگان</span></a></header>
 <main id="main" data-od-id="main-content">
-<section class="hero container" aria-labelledby="hero-title" data-od-id="hero"><div class="hero-copy"><h1 id="hero-title" data-od-id="hero-title">طراحی برای <em>رشد،</em><br>استراتژی برای ماندگاری.</h1><p class="hero-description" data-od-id="hero-description">با ترکیب خلاقیت، طراحی و فناوری، به کسب‌وکار شما کمک می‌کنیم در دنیای دیجیتال متمایز شود.</p><div class="hero-actions"><button class="button primary" type="button" data-contact="project" data-od-id="start-project">شروع پروژه </button><a class="quiet-link" href="#portfolio" data-od-id="explore-projects">دیدن نمونه‌کارها </a></div><div class="hero-disciplines" aria-label="حوزه‌های فعالیت"><span>هویت بصری</span><span>تجربه دیجیتال</span><span>تولید محتوا</span></div></div><figure class="hero-art" data-od-id="hero-artwork"><div class="art-stage"><img src="/assets/felosi-logo-sculpture.png" alt="مجسمه لوگوی فلوسی" width="500" height="500"></div></figure></section>
+<section class="hero container" aria-labelledby="hero-title" data-od-id="hero"><div class="hero-copy"><h1 id="hero-title" data-od-id="hero-title">طراحی برای <em>رشد،</em><br>استراتژی برای ماندگاری.</h1><p class="hero-description" data-od-id="hero-description">از خلق هویت برند تا زیرساخت دیجیتال و تولید محتوا؛ تمام نقاط تماس کسب‌وکارتان را طوری می‌سازیم که در نگاه اول اعتماد بسازد و بفروشد.</p><div class="hero-actions"><button class="button primary" type="button" data-contact="project" data-od-id="start-project">شروع پروژه </button><a class="quiet-link" href="#portfolio" data-od-id="explore-projects">دیدن نمونه‌کارها </a></div><div class="hero-disciplines" aria-label="حوزه‌های فعالیت"><span>هویت بصری</span><span>تجربه دیجیتال</span><span>تولید محتوا</span></div></div><figure class="hero-art" data-od-id="hero-artwork"><div class="art-stage"><img class="sculpture" src="/assets/felosi-logo-sculpture.png" alt="نشان سه‌بعدی فلوسی با بافت مرواریدی و شیشه‌ای" width="500" height="500" fetchpriority="high"><div class="hero-lottie" data-lottie="/assets/animations/hero-float.json" aria-hidden="true"></div></div></figure></section>
 
 <div class="container main-stack">
 <section id="portfolio" aria-labelledby="portfolio-title" data-od-id="portfolio">
@@ -107,9 +107,14 @@
 </label>
 <button class="button primary" type="submit" data-od-id="submit-project">ارسال درخواست</button>
 <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
-<p class="sr-only" id="form-success-message">پیام شما با موفقیت ارسال شد</p>
 </form>
 </div>
+<section class="form-success" id="form-success" tabindex="-1" hidden>
+<svg class="form-success-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29"/><path d="m18 33 9 9 19-20"/></svg>
+<h3>درخواست شما ثبت شد</h3>
+<p>ممنون که فلوسی را برای همراهی انتخاب کردید. به‌زودی با شما تماس می‌گیریم.</p>
+<button class="button primary" type="button" id="success-close">بستن</button>
+</section>
 </dialog>
 
 <dialog id="preview-dialog" class="preview-dialog" aria-labelledby="preview-title" data-od-id="project-preview">

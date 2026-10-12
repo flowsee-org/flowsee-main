@@ -61,10 +61,10 @@ class DatabaseSeeder extends Seeder
         $marketingService = Service::where('slug', 'marketing')->first();
 
         $projects = [
-            ['slug' => 'shopero', 'name' => 'SHOPERO', 'cover_image' => 'assets/portfolio-imgShopero1.png', 'asset_id' => 'imgShopero1', 'service_id' => $marketingService?->id, 'sort_order' => 0],
+            ['slug' => 'shopero', 'name' => 'شاپیرو', 'cover_image' => 'assets/portfolio-imgShopero1.png', 'asset_id' => 'imgShopero1', 'service_id' => $marketingService?->id, 'sort_order' => 0],
             ['slug' => 'ima', 'name' => 'ایما موویز', 'cover_image' => 'assets/portfolio-imgIma2.png', 'asset_id' => 'imgIma2', 'service_id' => $marketingService?->id, 'sort_order' => 1],
             ['slug' => 'exloot', 'name' => 'اکسلوت', 'cover_image' => 'assets/portfolio-imgExloot2.png', 'asset_id' => 'imgExloot2', 'service_id' => $marketingService?->id, 'sort_order' => 2],
-            ['slug' => 'ebrahimi', 'name' => 'EBRAHIMI', 'cover_image' => '16.jpg', 'asset_id' => '16', 'service_id' => $brandingService?->id, 'is_featured' => true, 'has_case_study' => true, 'sort_order' => 3],
+            ['slug' => 'ebrahimi', 'name' => 'مرکز بازسازی خودرو ابراهیمی', 'cover_image' => '16.jpg', 'asset_id' => '16', 'service_id' => $brandingService?->id, 'is_featured' => true, 'has_case_study' => true, 'sort_order' => 3],
         ];
 
         foreach ($projects as $project) {
