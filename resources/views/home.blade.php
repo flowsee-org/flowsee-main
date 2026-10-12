@@ -3,7 +3,7 @@
 
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false"><defs><symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></symbol><symbol id="i-arrow-ul" viewBox="0 0 24 24"><line x1="17" y1="17" x2="7" y2="7"></line><polyline points="7 17 7 7 17 7"></polyline></symbol><symbol id="i-arrow-down" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></symbol><symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></symbol><symbol id="i-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></symbol></defs></svg>
 <a class="skip-link" href="#main" data-od-id="skip-navigation">رفتن به محتوای اصلی</a>
-<header class="consultation-bar" id="top" data-od-id="consultation-bar"><a class="consultation-call" href="tel:+989109027628" target="_top" aria-label="تماس تلفنی برای مشاوره رایگان" data-od-id="free-consultation">مشاوره <span class="consultation-free-word">رایگان</span></a></header>
+<header class="consultation-bar" id="top" data-od-id="consultation-bar"><a class="consultation-call" href="tel:+989109027628" target="_top" aria-label="تماس تلفنی برای مشاوره رایگان" data-od-id="free-consultation"><span class="consultation-advice-word">مشاوره</span> <span class="consultation-free-word">رایگان</span></a></header>
 <main id="main" data-od-id="main-content">
 <section class="hero container" aria-labelledby="hero-title" data-od-id="hero"><div class="hero-copy"><h1 id="hero-title" data-od-id="hero-title">طراحی برای <em>رشد،</em><br>استراتژی برای ماندگاری.</h1><p class="hero-description" data-od-id="hero-description">با ترکیب خلاقیت، طراحی و فناوری، به کسب‌وکار شما کمک می‌کنیم در دنیای دیجیتال متمایز شود.</p><div class="hero-actions"><button class="button primary" type="button" data-contact="project" data-od-id="start-project">شروع پروژه </button><a class="quiet-link" href="#portfolio" data-od-id="explore-projects">دیدن نمونه‌کارها </a></div><div class="hero-disciplines" aria-label="حوزه‌های فعالیت"><span>هویت بصری</span><span>تجربه دیجیتال</span><span>تولید محتوا</span></div></div><figure class="hero-art" data-od-id="hero-artwork"><div class="art-stage"><img src="/assets/felosi-logo-sculpture.png" alt="مجسمه لوگوی فلوسی" width="500" height="500"></div></figure></section>
 
@@ -11,19 +11,18 @@
 <section id="portfolio" aria-labelledby="portfolio-title" data-od-id="portfolio">
 <div class="section-heading" data-od-id="portfolio-heading">
 <div><span class="eyebrow">منتخب نمونه‌کارها</span><h2 id="portfolio-title" data-od-id="portfolio-title">طراحی را در عمل ببینید.</h2></div>
-<p class="section-description">{{ $projects->count() }} پروژه، {{ $projects->count() }} تجربهٔ متفاوت از طراحی.</p>
+<a class="portfolio-view-all" href="#portfolio-grid">مشاهده همه <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
 </div>
-<div class="portfolio-grid">
+<div class="portfolio-grid" id="portfolio-grid">
 @foreach($projects as $project)
-<button class="project-card {{ $project->is_featured ? 'featured-project' : '' }}" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="مشاهدهٔ {{ $project->has_case_study ? 'کیس‌استادی' : 'پروژهٔ' }} {{ $project->name }}">
+<button class="project-card {{ $project->is_featured ? 'featured-project' : '' }}" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->name }}">
 <span class="project-visual">
 <img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" alt="{{ $project->name }}" loading="lazy">
 </span>
 <span class="project-copy">
-<span class="project-category">{{ trim(($project->service?->title ?? '') . ' ' . ($project->service?->description ?? '')) ?: 'نمونه‌کار فلوسی' }}</span>
+@if($project->is_featured)<span class="project-category">{{ trim(($project->service?->title ?? '') . ' ' . ($project->service?->description ?? '')) ?: 'نمونه‌کار فلوسی' }}</span>@endif
 <span class="project-name">{{ $project->name }}</span>
-<span class="project-description">{{ $project->description ?: ($project->caseStudy?->lead ?? $project->service?->description ?? '') }}</span>
-<span class="project-action"><span class="project-action-label">{{ $project->has_case_study ? 'مشاهدهٔ کیس‌استادی' : 'مشاهدهٔ پروژه' }}</span><span aria-hidden="true">↖</span></span>
+@if($project->is_featured)<span class="project-description">{{ $project->description ?: ($project->caseStudy?->lead ?? $project->service?->description ?? '') }}</span>@endif
 </span>
 </button>
 @endforeach
@@ -34,10 +33,11 @@
 <div class="section-heading" data-od-id="services-heading">
 <div><span class="eyebrow">خدمات ما</span><h2 id="services-title" data-od-id="services-title">از ایده تا اجرا، در کنار شما.</h2></div>
 </div>
-<div class="services-grid">
+<div class="service-grid">
 @foreach(App\Models\Service::where('is_active', true)->orderBy('sort_order')->get() as $service)
 <article class="service-card {{ $service->is_highlighted ? 'highlighted' : '' }}" data-od-id="service-{{ $service->slug }}">
-<h3>{{ $service->title }}{{ $service->description }}</h3>
+<div class="service-top"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="{{ match($service->slug) {'branding' => 'M12 3 3.5 7.5 12 12l8.5-4.5L12 3Zm-8.5 9L12 16.5l8.5-4.5M3.5 16.5 12 21l8.5-4.5', 'marketing' => 'M3 10v4h4l5 4V6l-5 4H3Zm9-1 5-3v12l-5-3m7-4a4 4 0 0 1 0 4m1.5-7a7 7 0 0 1 0 10', 'video' => 'M4 6h16v12H4zM10 9l5 3-5 3V9Z', 'packaging' => 'M6 8V3h12v5M6 17H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2m-12-4h12v8H6z', 'uiux' => 'm8 8-4 4 4 4m8-8 4 4-4 4m-3-11-2 14', default => 'M12 3a9 9 0 1 0 9 9h-9V3Zm3-1v6h6a7 7 0 0 0-6-6Z' }}"/></svg></span><span class="service-category">{{ $service->title }}</span></div>
+<h3 class="service-title">{{ $service->description }}</h3>
 </article>
 @endforeach
 </div>
@@ -51,11 +51,6 @@
 </div>
 </section>
 
-<section id="articles" aria-labelledby="articles-title" data-od-id="articles">
-<div class="section-heading" data-od-id="articles-heading">
-<div><span class="eyebrow">یادداشت‌ها</span><h2 id="articles-title" data-od-id="articles-title">نوشته‌های تازه.</h2></div>
-</div>
-</section>
 </div>
 </main>
 
@@ -68,9 +63,13 @@
 <a href="#portfolio">نمونه‌کارها</a>
 <a href="#services">خدمات</a>
 <a href="#about">درباره ما</a>
-<a href="#articles">یادداشت‌ها</a>
-<a href="https://www.instagram.com/flowsee.ir/" target="_blank" rel="noopener">اینستاگرام</a>
 </nav>
+<div class="socials" aria-label="راه‌های ارتباطی">
+<a class="social social-instagram" href="https://www.instagram.com/flowsee.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام فلوسی"><img src="/assets/footer-imgInstagram1.svg" alt="" loading="lazy"></a>
+<a class="social social-telegram" href="https://t.me/flowseeadmin" target="_blank" rel="noopener noreferrer" aria-label="تلگرام فلوسی"><img src="/assets/footer-imgTelegram1.svg" alt="" loading="lazy"></a>
+<a class="social social-whatsapp" href="https://wa.me/989109027628" target="_blank" rel="noopener noreferrer" aria-label="واتساپ فلوسی"><img src="/assets/footer-imgWhatsapp1.svg" alt="" loading="lazy"></a>
+<a class="social social-gmail" href="mailto:flowseeadmin@gmail.com" aria-label="ایمیل فلوسی"><img src="/assets/footer-imgGmail1.svg" alt="" loading="lazy"></a>
+</div>
 </div>
 </footer>
 
