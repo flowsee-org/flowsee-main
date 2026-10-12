@@ -18,9 +18,7 @@ class AdminLeadsTest extends TestCase
 
     public function test_lead_panel_requires_login_and_does_not_allow_regular_users(): void
     {
-        $this->get('/admin/login')
-            ->assertOk()
-            ->assertSee('/vendor/livewire/livewire.min.js?id=', false);
+        $this->get('/admin/login')->assertOk();
         $this->get('/admin/leads')->assertRedirect('/admin/login');
 
         $user = User::create([

@@ -557,3 +557,19 @@ html{scroll-padding-top:64px}
   .portfolio-grid > .project-card:not(.featured-project) .project-copy { padding:9px; }
   .service-row { min-height:118px; padding:12px 9px; }
 }
+
+/* Flowsee visual polish: monochrome consultation strip, glass brand mark, and section motion. */
+.consultation-bar,.consultation-call{background:#1a1a1a;color:#f5f5f5}
+.consultation-call:hover,.consultation-call:active{background:#242424;color:#f5f5f5}
+.consultation-call:focus-visible{outline-color:#f5f5f5}
+.consultation-free-word{display:inline-block;margin-inline-start:.28em;color:#f5f5f5;font-weight:700;animation:consultation-free-blink 1.15s ease-in-out infinite alternate}
+@keyframes consultation-free-blink{from{color:#f5f5f5}to{color:#fe5400}}
+.about-panel{isolation:isolate}
+.about-mark{position:absolute;z-index:0;inset-inline-end:-8px;inset-block-end:-44px;width:clamp(220px,38%,390px);height:auto;opacity:.72;filter:drop-shadow(0 0 10px rgb(245 245 245/.16));pointer-events:none;user-select:none}
+#contact-dialog{opacity:0;transform:translateY(8px) scale(.99);transition:opacity 180ms ease,transform 180ms ease;transition:opacity 180ms ease,transform 180ms ease,display 180ms allow-discrete,overlay 180ms allow-discrete}
+#contact-dialog[open]{opacity:1;transform:translateY(0) scale(1)}
+#contact-dialog::backdrop{background:oklch(10% .01 240/0);transition:background-color 180ms ease,display 180ms allow-discrete,overlay 180ms allow-discrete}
+#contact-dialog[open]::backdrop{background:oklch(10% .01 240/.62)}
+@starting-style{#contact-dialog[open]{opacity:0;transform:translateY(8px) scale(.99)}#contact-dialog[open]::backdrop{background:oklch(10% .01 240/0)}}
+@media(prefers-reduced-motion:no-preference){.section-motion{opacity:0;transform:translateY(18px);transition:opacity 420ms ease,transform 420ms cubic-bezier(.2,.65,.3,1)}.section-motion.is-in-view{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.consultation-free-word{animation:none;color:#fe5400}}

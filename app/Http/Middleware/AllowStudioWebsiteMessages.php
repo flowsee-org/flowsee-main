@@ -18,8 +18,8 @@ class AllowStudioWebsiteMessages
 
         if ($request->headers->get('Origin') === 'https://studio.flowsee.ir') {
             $response->headers->set('Access-Control-Allow-Origin', 'https://studio.flowsee.ir');
-            $response->headers->set('Access-Control-Allow-Methods', 'GET, OPTIONS');
-            $response->headers->set('Access-Control-Allow-Headers', 'Authorization, Content-Type');
+            $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+            $response->headers->set('Access-Control-Allow-Headers', 'Authorization, Content-Type, Accept');
             $response->headers->set('Access-Control-Max-Age', '600');
             $response->headers->set('Vary', 'Origin');
         }

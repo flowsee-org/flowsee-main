@@ -151,3 +151,8 @@ button, a, input, select, textarea { touch-action: manipulation; }
   .socials .social { width:44px; height:44px; flex:0 0 44px; border-radius:50%; }
   .socials .social-glyph { top:7px; left:7px; height:28px; }
 }
+
+@media(max-width:649px){
+  .about .about-panel::before{content:none}
+  .about .about-panel>.about-mark{inset-inline-end:-10px;inset-block-end:-22px;width:min(245px,64vw);opacity:.64}
+}

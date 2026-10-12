@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\LeadController;
+use App\Http\Controllers\Api\StudioSiteContentController;
 use App\Http\Controllers\Api\StudioWebsiteMessagesController;
 use App\Http\Middleware\AllowStudioWebsiteMessages;
 use Illuminate\Support\Facades\Route;
@@ -12,4 +13,13 @@ Route::post('/leads', [LeadController::class, 'store'])
 Route::middleware(AllowStudioWebsiteMessages::class)->group(function (): void {
     Route::options('/studio/website-messages', fn () => response()->noContent());
     Route::get('/studio/website-messages', [StudioWebsiteMessagesController::class, 'index']);
+
+    Route::options('/studio/site-content/{path?}', fn () => response()->noContent())->where('path', '.*');
+    Route::get('/studio/site-content', [StudioSiteContentController::class, 'index']);
+    Route::post('/studio/site-content/projects', [StudioSiteContentController::class, 'storeProject']);
+    Route::put('/studio/site-content/projects/{project}', [StudioSiteContentController::class, 'updateProject']);
+    Route::delete('/studio/site-content/projects/{project}', [StudioSiteContentController::class, 'destroyProject']);
+    Route::put('/studio/site-content/projects/{project}/case-study', [StudioSiteContentController::class, 'saveCaseStudy']);
+    Route::delete('/studio/site-content/projects/{project}/case-study', [StudioSiteContentController::class, 'deleteCaseStudy']);
+    Route::post('/studio/site-content/images', [StudioSiteContentController::class, 'uploadImage']);
 });

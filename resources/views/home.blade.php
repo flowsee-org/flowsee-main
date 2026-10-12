@@ -3,7 +3,7 @@
 
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false"><defs><symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></symbol><symbol id="i-arrow-ul" viewBox="0 0 24 24"><line x1="17" y1="17" x2="7" y2="7"></line><polyline points="7 17 7 7 17 7"></polyline></symbol><symbol id="i-arrow-down" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></symbol><symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></symbol><symbol id="i-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></symbol></defs></svg>
 <a class="skip-link" href="#main" data-od-id="skip-navigation">رفتن به محتوای اصلی</a>
-<header class="consultation-bar" id="top" data-od-id="consultation-bar"><a class="consultation-call" href="tel:+989109027628" target="_top" aria-label="تماس تلفنی برای مشاوره رایگان" data-od-id="free-consultation">مشاوره رایگان</a></header>
+<header class="consultation-bar" id="top" data-od-id="consultation-bar"><a class="consultation-call" href="tel:+989109027628" target="_top" aria-label="تماس تلفنی برای مشاوره رایگان" data-od-id="free-consultation">مشاوره <span class="consultation-free-word">رایگان</span></a></header>
 <main id="main" data-od-id="main-content">
 <section class="hero container" aria-labelledby="hero-title" data-od-id="hero"><div class="hero-copy"><h1 id="hero-title" data-od-id="hero-title">طراحی برای <em>رشد،</em><br>استراتژی برای ماندگاری.</h1><p class="hero-description" data-od-id="hero-description">با ترکیب خلاقیت، طراحی و فناوری، به کسب‌وکار شما کمک می‌کنیم در دنیای دیجیتال متمایز شود.</p><div class="hero-actions"><button class="button primary" type="button" data-contact="project" data-od-id="start-project">شروع پروژه </button><a class="quiet-link" href="#portfolio" data-od-id="explore-projects">دیدن نمونه‌کارها </a></div><div class="hero-disciplines" aria-label="حوزه‌های فعالیت"><span>هویت بصری</span><span>تجربه دیجیتال</span><span>تولید محتوا</span></div></div><figure class="hero-art" data-od-id="hero-artwork"><div class="art-stage"><img src="/assets/felosi-logo-sculpture.png" alt="مجسمه لوگوی فلوسی" width="500" height="500"></div></figure></section>
 
@@ -41,10 +41,11 @@
 </div>
 </section>
 
-<section id="about" aria-labelledby="about-title" data-od-id="about">
-<div class="section-heading" data-od-id="about-heading">
-<div><span class="eyebrow">درباره ما</span><h2 id="about-title" data-od-id="about-title">استودیو فلوسی</h2></div>
-<p class="section-description">خلاقیت در دنیای دیجیتال</p>
+<section class="about" id="about" aria-labelledby="about-title" data-od-id="about">
+<div class="about-panel">
+<img class="about-mark" src="/assets/about-flowsee-mark.svg" alt="" aria-hidden="true" loading="lazy">
+<div class="about-lead"><span class="eyebrow">دربارهٔ استودیو</span><h2 id="about-title" data-od-id="about-title">فلوسی؛ همراه برند شما</h2><p>از اولین ایده تا آخرین جزئیات، کنار برند شما هستیم. هویت بصری، تجربهٔ دیجیتال و محتوا را به یک مسیر منسجم تبدیل می‌کنیم؛ مسیری که هم به‌یادماندنی است و هم به رشد واقعی کسب‌وکار کمک می‌کند.</p></div>
+<ul class="about-values" aria-label="ارزش‌های استودیو"><li><span class="n" aria-hidden="true">۰۱</span><b>نوآوری</b><span>ایده‌هایی که از کلیشه فاصله می‌گیرند.</span></li><li><span class="n" aria-hidden="true">۰۲</span><b>دقت</b><span>جزئیاتی که کیفیت را می‌سازند.</span></li><li><span class="n" aria-hidden="true">۰۳</span><b>رشد</b><span>طراحی در خدمت نتیجهٔ کسب‌وکار.</span></li></ul>
 </div>
 </section>
 

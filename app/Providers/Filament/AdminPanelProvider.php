@@ -3,6 +3,10 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Auth\Login;
+use App\Filament\Resources\Leads\LeadResource;
+use App\Filament\Resources\Services\ServiceResource;
+use App\Filament\Resources\SiteSettings\SiteSettingResource;
+use App\Filament\Resources\SocialLinks\SocialLinkResource;
 use App\Http\Middleware\AllowStudioAdminEmbedding;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -31,7 +35,12 @@ class AdminPanelProvider extends PanelProvider
             ->brandName('فلوسی | پنل مدیریت')
             ->colors(['primary' => Color::Orange])
             ->maxContentWidth('full')
-            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
+            ->resources([
+                LeadResource::class,
+                ServiceResource::class,
+                SiteSettingResource::class,
+                SocialLinkResource::class,
+            ])
             ->pages([Dashboard::class])
             ->middleware([
                 EncryptCookies::class,
