@@ -149,7 +149,7 @@ class FlowseePageTest extends TestCase
             ->getContent();
 
         $this->assertStringContainsString('function renderCaseStudy(project)', file_get_contents(public_path('assets/js/site.js')));
-        $this->assertStringContainsString('aria-label="EBRAHIMI"', $html);
+        $this->assertStringContainsString('aria-label="مشاهدهٔ کیس‌استادی EBRAHIMI"', $html);
     }
 
     public function test_legacy_addresses_redirect_and_case_study_renders(): void
