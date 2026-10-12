@@ -31,7 +31,7 @@
 <link rel="preload" href="{{ asset('assets/css/site.css') }}?v={{ filemtime(public_path('assets/css/site.css')) }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" href="{{ asset('assets/css/mobile.css') }}?v={{ filemtime(public_path('assets/css/mobile.css')) }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="{{ asset('assets/css/site.css') }}"><link rel="stylesheet" href="{{ asset('assets/css/mobile.css') }}"></noscript>
-<script type="application/ld+json">@json(['@context' => 'https://schema.org', '@graph' => [['@type' => 'Organization', '@id' => 'https://flowsee.ir/#organization', 'name' => 'استودیو فلوسی', 'url' => 'https://flowsee.ir/', 'logo' => ['@type' => 'ImageObject', 'url' => 'https://flowsee.ir/assets/header-imgFrame17.svg'], 'email' => 'flowseeadmin@gmail.com', 'telephone' => '+989109027628', 'sameAs' => ['https://www.instagram.com/flowsee.ir/']], ['@type' => 'WebSite', '@id' => 'https://flowsee.ir/#website', 'url' => 'https://flowsee.ir/', 'name' => 'استودیو فلوسی', 'publisher' => ['@id' => 'https://flowsee.ir/#organization'], 'inLanguage' => 'fa-IR']]])</script>
+<script type="application/ld+json">@json($structuredData)</script>
 </head>
 
 <body>
