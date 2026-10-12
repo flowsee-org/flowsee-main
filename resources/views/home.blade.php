@@ -20,7 +20,7 @@
 <img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" width="1200" height="630" alt="{{ $project->name }}" loading="lazy" decoding="async">
 </span>
 <span class="project-copy">
-@if($project->is_featured)<span class="project-category">{{ trim(($project->service?->title ?? '') . ' ' . ($project->service?->description ?? '')) ?: 'نمونه‌کار فلوسی' }}</span>@endif
+
 <span class="project-name">{{ $project->name }}</span>
 @if($project->is_featured)<span class="project-description">{{ $project->description ?: ($project->caseStudy?->lead ?? $project->service?->description ?? '') }}</span>@endif
 </span>
