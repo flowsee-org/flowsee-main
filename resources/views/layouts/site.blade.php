@@ -28,7 +28,7 @@
 <meta name="twitter:description" content="استودیو فلوسی؛ طراحی برای رشد، استراتژی برای ماندگاری. خدمات طراحی هویت بصری، دیجیتال مارکتینگ و توسعه نرم‌افزار.">
 <meta name="twitter:image" content="https://flowsee.ir/assets/flowsee-social.jpg">
 <meta name="theme-color" content="#FE5400"><title>استودیو فلوسی — خلاقیت در دنیای دیجیتال</title>
-<link rel="icon" href="/assets/header-imgFrame17.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" as="image" href="/assets/felosi-logo-sculpture.png" fetchpriority="high">
 
 
@@ -43,6 +43,5 @@
 
 <body>
 @yield('content')
-<script defer src="{{ asset('assets/js/lottie.min.js') }}?v={{ filemtime(public_path('assets/js/lottie.min.js')) }}"></script>
 <script defer src="{{ asset('assets/js/site.js') }}?v={{ filemtime(public_path('assets/js/site.js')) }}"></script>
 </body></html>

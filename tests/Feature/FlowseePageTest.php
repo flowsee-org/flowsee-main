@@ -82,8 +82,14 @@ class FlowseePageTest extends TestCase
             ->assertSee('name="google-site-verification" content="UAQcvYOs7dLeVV987bTILlMz0EU8I0LTdyOlBlKpfeA"', false)
             ->assertSee('<link rel="canonical" href="https://flowsee.ir/">', false)
             ->assertSee('application/ld+json', false)
+            ->assertSee('ProfessionalService', false)
+            ->assertSee('<h1 id="hero-title"', false)
+            ->assertSee('rel="icon" href="/favicon.svg"', false)
             ->assertSee('width="1200" height="630"', false)
             ->assertSee('id="lightbox-img" width="1920" height="1080"', false);
+        $this->assertFileExists(public_path('favicon.svg'));
+        $this->assertFileExists(public_path('llm.txt'));
+        $this->assertFileExists(public_path('llms.txt'));
     }
 
     public function test_ima_movies_case_study_and_refined_service_cards_are_available(): void
@@ -126,6 +132,7 @@ class FlowseePageTest extends TestCase
     public function test_portfolio_cards_keep_the_original_layout_and_open_database_case_studies(): void
     {
         $this->seedCaseStudyData();
+        app(\Database\Seeders\ExlootCaseStudySeeder::class)->run();
 
         $html = $this->get('/')->assertOk()
             ->assertSee('class="project-copy"', false)
@@ -134,7 +141,9 @@ class FlowseePageTest extends TestCase
             ->assertSee('class="portfolio-view-all"', false)
             ->assertSee('class="service-grid"', false)
             ->assertSee('class="service-icon"', false)
-            ->assertDontSee('مشاهدهٔ کیس‌استادی EBRAHIMI')
+            ->assertSee(route('projects.show', 'exloot'), false)
+            ->assertSee('aria-label="مشاهدهٔ کیس‌استادی اکسلوت"', false)
+            ->assertSee('مشاهدهٔ کیس‌استادی EBRAHIMI')
             ->assertDontSee('id="articles"', false)
             ->assertSee('window.projectsData', false)
             ->getContent();
@@ -146,12 +155,30 @@ class FlowseePageTest extends TestCase
     public function test_legacy_addresses_redirect_and_case_study_renders(): void
     {
         $this->seedCaseStudyData();
+        app(\Database\Seeders\ExlootCaseStudySeeder::class)->run();
         $this->get('/felosi-home-before-about-v2.html')->assertRedirect('/');
         $this->get('/ebrahimi-case-study.html')->assertRedirect('/projects/ebrahimi');
-        $this->get('/projects/ebrahimi')->assertRedirect('/?case=ebrahimi#portfolio');
+        $this->get('/projects/ebrahimi')->assertOk()
+            ->assertViewIs('case-study')
+            ->assertSee('مرکز بازسازی خودرو ابراهیمی')
+            ->assertSee('<link rel="canonical" href="https://flowsee.ir/projects/ebrahimi">', false)
+            ->assertSee('name="robots" content="index,follow,max-image-preview:large"', false)
+            ->assertSee('BreadcrumbList', false)
+            ->assertSee('aria-label="مسیر صفحه"', false);
         $this->get('/?case=ebrahimi')->assertOk()->assertSee('window.projectsData', false);
+        $this->get('/projects/exloot')->assertOk()
+            ->assertViewIs('case-study')
+            ->assertSee('اکسلوت؛ خریدوفروش امن‌تر در بازار آیتم‌های بازی')
+            ->assertSee('assets/exloot-case-study/exloot-cover.jpg')
+            ->assertSee('پرداخت امانی را به مراحلی قابل‌فهم تبدیل کردیم.')
+            ->assertSee('آزادسازی مبلغ')
+            ->assertSee('assets/exloot-case-study/exloot-7.jpg');
         $this->get('/up')->assertOk();
-        $this->get('/not-a-page')->assertNotFound();
+        $this->get('/not-a-page')->assertNotFound()
+            ->assertSee('<title>صفحه پیدا نشد | استودیو فلوسی</title>', false)
+            ->assertSee('name="robots" content="noindex,follow"', false)
+            ->assertSee('این صفحه پیدا نشد.')
+            ->assertSee('href="/#portfolio"', false);
     }
 
     public function test_project_lead_api_route_is_registered_and_validates_empty_requests(): void

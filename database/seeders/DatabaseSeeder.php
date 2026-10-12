@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
         $this->seedProjects();
         $this->seedCaseStudy();
         $this->call(ImaMoviesCaseStudySeeder::class);
+        $this->call(ExlootCaseStudySeeder::class);
         $this->seedSocialLinks();
         $this->seedSiteSettings();
     }

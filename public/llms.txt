@@ -1,0 +1,20 @@
+# استودیو فلوسی
+
+> استودیو فلوسی در زمینهٔ طراحی هویت بصری، تجربهٔ دیجیتال، بازاریابی و توسعهٔ محصول فعالیت می‌کند.
+
+- وب‌سایت: https://flowsee.ir/
+- نمونه‌کارها: https://flowsee.ir/#portfolio
+- خدمات: https://flowsee.ir/#services
+- دربارهٔ استودیو: https://flowsee.ir/#about
+- نقشهٔ سایت: https://flowsee.ir/sitemap.xml
+- اطلاعات خزنده‌ها: https://flowsee.ir/robots.txt
+- ایمیل: mailto:flowseeadmin@gmail.com
+- تلفن: +98 910 902 7628
+
+## کیس‌استادی‌های منتشرشده
+
+- اکسلوت: https://flowsee.ir/projects/exloot
+- ایما موویز: https://flowsee.ir/projects/ima
+- مرکز بازسازی خودرو ابراهیمی: https://flowsee.ir/projects/ebrahimi
+
+محتوای سایت به زبان فارسی منتشر می‌شود. برای استناد، به صفحهٔ اصلی و صفحهٔ هر پروژه مراجعه کنید.

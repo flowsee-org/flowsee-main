@@ -5,7 +5,7 @@
 <a class="skip-link" href="#main" data-od-id="skip-navigation">رفتن به محتوای اصلی</a>
 <header class="consultation-bar" id="top" data-od-id="consultation-bar"><a class="consultation-call" href="tel:+989109027628" target="_top" aria-label="تماس تلفنی برای مشاوره رایگان" data-od-id="free-consultation"><span class="consultation-advice-word">مشاوره</span> <span class="consultation-free-word">رایگان</span></a></header>
 <main id="main" data-od-id="main-content">
-<section class="hero container" aria-labelledby="hero-title" data-od-id="hero"><div class="hero-copy"><h1 id="hero-title" data-od-id="hero-title">طراحی برای <em>رشد،</em><br>استراتژی برای ماندگاری.</h1><p class="hero-description" data-od-id="hero-description">از خلق هویت برند تا زیرساخت دیجیتال و تولید محتوا؛ تمام نقاط تماس کسب‌وکارتان را طوری می‌سازیم که در نگاه اول اعتماد بسازد و بفروشد.</p><div class="hero-actions"><button class="button primary" type="button" data-contact="project" data-od-id="start-project">شروع پروژه </button><a class="quiet-link" href="#portfolio" data-od-id="explore-projects">دیدن نمونه‌کارها </a></div><div class="hero-disciplines" aria-label="حوزه‌های فعالیت"><span>هویت بصری</span><span>تجربه دیجیتال</span><span>تولید محتوا</span></div></div><figure class="hero-art" data-od-id="hero-artwork"><div class="art-stage"><img class="sculpture" src="/assets/felosi-logo-sculpture.png" alt="نشان سه‌بعدی فلوسی با بافت مرواریدی و شیشه‌ای" width="500" height="500" fetchpriority="high"><div class="hero-lottie" data-lottie="/assets/animations/hero-float.json" aria-hidden="true"></div></div></figure></section>
+<section class="hero container" aria-labelledby="hero-title" data-od-id="hero"><div class="hero-copy"><h1 id="hero-title" data-od-id="hero-title">طراحی برای <em>رشد،</em><br>استراتژی برای ماندگاری.</h1><p class="hero-description" data-od-id="hero-description">از خلق هویت برند تا زیرساخت دیجیتال و تولید محتوا؛ تمام نقاط تماس کسب‌وکارتان را طوری می‌سازیم که در نگاه اول اعتماد بسازد و بفروشد.</p><div class="hero-actions"><button class="button primary" type="button" data-contact="project" data-od-id="start-project">شروع پروژه </button><a class="quiet-link" href="#portfolio" data-od-id="explore-projects">دیدن نمونه‌کارها </a></div><div class="hero-disciplines" aria-label="حوزه‌های فعالیت"><span>هویت بصری</span><span>تجربه دیجیتال</span><span>تولید محتوا</span></div></div><figure class="hero-art" data-od-id="hero-artwork"><div class="art-stage"><img class="sculpture" src="/assets/felosi-logo-sculpture.png" alt="نشان سه‌بعدی فلوسی با بافت مرواریدی و شیشه‌ای" width="500" height="500" fetchpriority="high"><div class="hero-lottie" data-lottie="/assets/animations/hero-float.json" data-lottie-player="{{ asset('assets/js/lottie.min.js') }}?v={{ filemtime(public_path('assets/js/lottie.min.js')) }}" aria-hidden="true"></div></div></figure></section>
 
 <div class="container main-stack">
 <section id="portfolio" aria-labelledby="portfolio-title" data-od-id="portfolio">
@@ -15,16 +15,15 @@
 </div>
 <div class="portfolio-grid" id="portfolio-grid">
 @foreach($projects as $project)
-<button class="project-card {{ $project->is_featured ? 'featured-project' : '' }}" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->name }}">
+@if($project->has_case_study)<a class="project-card {{ $project->is_featured ? 'featured-project' : '' }}" href="{{ route('projects.show', $project->slug) }}" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="مشاهدهٔ کیس‌استادی {{ $project->name }}">@else<button class="project-card {{ $project->is_featured ? 'featured-project' : '' }}" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->name }}">@endif
 <span class="project-visual">
-<img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" width="1200" height="630" alt="{{ $project->name }}" loading="lazy" decoding="async">
+<img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async">
 </span>
 <span class="project-copy">
-
 <span class="project-name">{{ $project->name }}</span>
 @if($project->is_featured)<span class="project-description">{{ $project->description ?: ($project->caseStudy?->lead ?? $project->service?->description ?? '') }}</span>@endif
 </span>
-</button>
+@if($project->has_case_study)</a>@else</button>@endif
 @endforeach
 </div>
 </section>

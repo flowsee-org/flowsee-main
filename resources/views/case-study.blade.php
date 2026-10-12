@@ -3,10 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="{{ $caseStudy->meta_description ?? $caseStudy->lead }}">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="description" content="{{ $pageDescription }}">
 <meta name="theme-color" content="{{ $caseStudy->theme_color }}">
-<title>{{ $caseStudy->meta_title ?? $caseStudy->title . ' | استودیو فلوسی' }}</title>
-<link rel="icon" href="/assets/header-imgFrame17.svg" type="image/svg+xml">
+<title>{{ $pageTitle }}</title>
+<link rel="canonical" href="{{ $pageUrl }}">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:site_name" content="استودیو فلوسی">
+<meta property="og:url" content="{{ $pageUrl }}">
+<meta property="og:title" content="{{ $pageTitle }}">
+<meta property="og:description" content="{{ $pageDescription }}">
+<meta property="og:image" content="{{ \App\Support\WebsiteMediaUrl::for($caseStudy->cover_image) }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $pageTitle }}">
+<meta name="twitter:description" content="{{ $pageDescription }}">
+<meta name="twitter:image" content="{{ \App\Support\WebsiteMediaUrl::for($caseStudy->cover_image) }}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">@json($structuredData)</script>
 <style>
 @font-face{font-family:IRANSansX;src:url('/assets/fonts/IRANSansX-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
 @font-face{font-family:IRANSansX;src:url('/assets/fonts/IRANSansX-Medium.ttf') format('truetype');font-weight:500 900;font-display:swap}
@@ -28,6 +42,8 @@
   --content:1120px;--space:24px;--radius:16px;--focus:var(--blue);
   --brand-navy: {{ $caseStudy->theme_color }};
 }
+body[data-project="exloot"]{--bg:#151b2d;--surface:#202a3d;--fg:#f7f8fb;--muted:#d0d4dd;--border:#ffffff32;--accent:#ffca05;--blue:#ffca05;--blue-deep:#111827;--blue-light:#ffe477;--blue-pale:#fff2ad;color:var(--fg);background:var(--bg)}
+body[data-project="exloot"] .case-hero h1{letter-spacing:0}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:112px}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.85}
@@ -147,7 +163,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 </style>
 </head>
-<body>
+<body data-project="{{ $project->slug }}">
 <a class="skip-link" href="#main">رفتن به محتوای اصلی</a>
 <header class="site-header" id="top" data-od-id="site-header">
 <div class="container header-inner">
@@ -160,7 +176,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
 <main id="main" data-od-id="main-content">
 <article class="case-flow">
   <header class="case-hero container" data-od-id="case-hero">
-    <nav class="breadcrumb" aria-label="مسیر صفحه"><a href="/#portfolio" data-od-id="breadcrumb-portfolio">نمونه‌کارها</a><span aria-hidden="true">/</span><span aria-current="page">{{ $project->name }}</span></nav>
+    <nav class="breadcrumb" aria-label="مسیر صفحه"><a href="/" data-od-id="breadcrumb-home">خانه</a><span aria-hidden="true">/</span><a href="/#portfolio" data-od-id="breadcrumb-portfolio">نمونه‌کارها</a><span aria-hidden="true">/</span><span aria-current="page">{{ $project->name }}</span></nav>
     <span class="eyebrow">{{ $caseStudy->eyebrow }}</span>
     <h1 data-od-id="case-title">{{ $caseStudy->title }}</h1>
     <p class="hero-lead">{{ $caseStudy->lead }}</p>
@@ -177,7 +193,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
 
   @if($caseStudy->cover_image)
   <figure class="cover" data-od-id="case-cover">
-    <img src="{{ \App\Support\WebsiteMediaUrl::for($caseStudy->cover_image) }}" width="1920" height="1080" alt="{{ $caseStudy->cover_caption }}" fetchpriority="high" decoding="async">
+    <img src="{{ \App\Support\WebsiteMediaUrl::for($caseStudy->cover_image) }}" width="1920" height="1080" alt="{{ $caseStudy->cover_caption ?: 'تصویر اصلی پروژهٔ ' . $caseStudy->title }}" fetchpriority="high" decoding="async">
     @if($caseStudy->cover_caption)
     <figcaption>{{ $caseStudy->cover_caption }}</figcaption>
     @endif
@@ -187,7 +203,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
   @foreach($caseStudy->sections as $section)
   <section class="case-section" id="{{ $section->slug }}" aria-labelledby="{{ $section->slug }}-title">
     @if($section->band_image)
-    <button class="band" type="button" data-lightbox="{{ \App\Support\WebsiteMediaUrl::for($section->band_image) }}" data-caption="{{ $section->band_caption }}" aria-label="نمایش تصویر بخش {{ $section->title }}"><img src="{{ \App\Support\WebsiteMediaUrl::for($section->band_image) }}" width="1920" height="1080" alt="{{ $section->band_caption }}" loading="lazy" decoding="async"></button>
+    <button class="band" type="button" data-lightbox="{{ \App\Support\WebsiteMediaUrl::for($section->band_image) }}" data-caption="{{ $section->band_caption ?: $section->title }}" aria-label="نمایش تصویر بخش {{ $section->title }}"><img src="{{ \App\Support\WebsiteMediaUrl::for($section->band_image) }}" width="1920" height="1080" alt="{{ $section->band_caption ?: 'تصویر بخش ' . $section->title }}" loading="lazy" decoding="async"></button>
     @endif
     <div class="container inner">
       <div class="sec-head" data-od-id="{{ $section->slug }}-head">
@@ -209,7 +225,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
       @if($section->images->isNotEmpty())
       <div class="fig-grid {{ $section->images->count() == 2 ? 'g2' : 'g3' }}">
         @foreach($section->images as $image)
-        <button class="fig {{ $image->layout == 'full' ? 'wide' : '' }}" type="button" data-lightbox="{{ \App\Support\WebsiteMediaUrl::for($image->path) }}" data-caption="{{ $image->caption }}" aria-label="نمایش {{ $image->caption }}"><img src="{{ \App\Support\WebsiteMediaUrl::for($image->path) }}" width="1920" height="1080" alt="{{ $image->alt }}" loading="lazy" decoding="async"></button>
+        <button class="fig {{ $image->layout == 'full' ? 'wide' : '' }}" type="button" data-lightbox="{{ \App\Support\WebsiteMediaUrl::for($image->path) }}" data-caption="{{ $image->caption ?: ($image->alt ?: $caseStudy->title) }}" aria-label="نمایش {{ $image->caption ?: ($image->alt ?: $caseStudy->title) }}"><img src="{{ \App\Support\WebsiteMediaUrl::for($image->path) }}" width="1920" height="1080" alt="{{ $image->alt ?: ($image->caption ?: 'تصویر پروژهٔ ' . $caseStudy->title) }}" loading="lazy" decoding="async"></button>
         @endforeach
       </div>
       @endif
@@ -234,7 +250,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
   @endif
 
   <figure class="closing-cover" data-od-id="case-thanks">
-    <img src="{{ asset('storage/' . $caseStudy->cover_image) }}" width="1920" height="1080" alt="صفحهٔ پایانی" loading="lazy" decoding="async">
+    <img src="{{ \App\Support\WebsiteMediaUrl::for($caseStudy->cover_image) }}" width="1920" height="1080" alt="{{ $caseStudy->cover_caption ?: $caseStudy->title }}" loading="lazy" decoding="async">
   </figure>
 
   <section class="container" aria-labelledby="cta-title">

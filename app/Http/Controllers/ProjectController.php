@@ -90,11 +90,37 @@ class ProjectController extends Controller
                     'sameAs' => ['https://www.instagram.com/flowsee.ir/'],
                 ],
                 [
+                    '@type' => 'ProfessionalService',
+                    '@id' => 'https://flowsee.ir/#local-business',
+                    'name' => 'استودیو فلوسی',
+                    'url' => 'https://flowsee.ir/',
+                    'image' => 'https://flowsee.ir/assets/flowsee-social.jpg',
+                    'logo' => 'https://flowsee.ir/assets/header-imgFrame17.svg',
+                    'email' => 'flowseeadmin@gmail.com',
+                    'telephone' => '+989109027628',
+                    'areaServed' => [
+                        '@type' => 'Country',
+                        'name' => 'Iran',
+                        'identifier' => 'IR',
+                    ],
+                    'sameAs' => ['https://www.instagram.com/flowsee.ir/'],
+                ],
+                [
                     '@type' => 'WebSite',
                     '@id' => 'https://flowsee.ir/#website',
                     'url' => 'https://flowsee.ir/',
                     'name' => 'استودیو فلوسی',
                     'publisher' => ['@id' => 'https://flowsee.ir/#organization'],
+                    'inLanguage' => 'fa-IR',
+                ],
+                [
+                    '@type' => 'WebPage',
+                    '@id' => 'https://flowsee.ir/#webpage',
+                    'url' => 'https://flowsee.ir/',
+                    'name' => 'استودیو فلوسی — خلاقیت در دنیای دیجیتال',
+                    'description' => 'استودیو فلوسی؛ طراحی برای رشد، استراتژی برای ماندگاری. خدمات طراحی هویت بصری، دیجیتال مارکتینگ و توسعه نرم‌افزار.',
+                    'isPartOf' => ['@id' => 'https://flowsee.ir/#website'],
+                    'about' => ['@id' => 'https://flowsee.ir/#local-business'],
                     'inLanguage' => 'fa-IR',
                 ],
             ],
@@ -127,6 +153,78 @@ class ProjectController extends Controller
             abort(404);
         }
 
-        return redirect()->to('/?case=' . urlencode($project->slug) . '#portfolio');
+        $pageUrl = 'https://flowsee.ir' . route('projects.show', $project->slug, false);
+        $pageTitle = $caseStudy->meta_title ?: $caseStudy->title . ' | استودیو فلوسی';
+        $pageDescription = $caseStudy->meta_description ?: $caseStudy->lead;
+        $imageUrl = \App\Support\WebsiteMediaUrl::for($caseStudy->cover_image);
+        $structuredData = [
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'Organization',
+                    '@id' => 'https://flowsee.ir/#organization',
+                    'name' => 'استودیو فلوسی',
+                    'url' => 'https://flowsee.ir/',
+                    'logo' => ['@type' => 'ImageObject', 'url' => 'https://flowsee.ir/assets/header-imgFrame17.svg'],
+                    'email' => 'flowseeadmin@gmail.com',
+                    'telephone' => '+989109027628',
+                    'sameAs' => ['https://www.instagram.com/flowsee.ir/'],
+                ],
+                [
+                    '@type' => 'ProfessionalService',
+                    '@id' => 'https://flowsee.ir/#local-business',
+                    'name' => 'استودیو فلوسی',
+                    'url' => 'https://flowsee.ir/',
+                    'image' => 'https://flowsee.ir/assets/flowsee-social.jpg',
+                    'email' => 'flowseeadmin@gmail.com',
+                    'telephone' => '+989109027628',
+                    'areaServed' => ['@type' => 'Country', 'name' => 'Iran', 'identifier' => 'IR'],
+                    'sameAs' => ['https://www.instagram.com/flowsee.ir/'],
+                ],
+                [
+                    '@type' => 'WebSite',
+                    '@id' => 'https://flowsee.ir/#website',
+                    'url' => 'https://flowsee.ir/',
+                    'name' => 'استودیو فلوسی',
+                    'publisher' => ['@id' => 'https://flowsee.ir/#organization'],
+                    'inLanguage' => 'fa-IR',
+                ],
+                [
+                    '@type' => 'BreadcrumbList',
+                    '@id' => $pageUrl . '#breadcrumb',
+                    'itemListElement' => [
+                        ['@type' => 'ListItem', 'position' => 1, 'name' => 'خانه', 'item' => 'https://flowsee.ir/'],
+                        ['@type' => 'ListItem', 'position' => 2, 'name' => 'نمونه‌کارها', 'item' => 'https://flowsee.ir/#portfolio'],
+                        ['@type' => 'ListItem', 'position' => 3, 'name' => $caseStudy->title, 'item' => $pageUrl],
+                    ],
+                ],
+                [
+                    '@type' => 'WebPage',
+                    '@id' => $pageUrl . '#webpage',
+                    'url' => $pageUrl,
+                    'name' => $pageTitle,
+                    'description' => $pageDescription,
+                    'isPartOf' => ['@id' => 'https://flowsee.ir/#website'],
+                    'breadcrumb' => ['@id' => $pageUrl . '#breadcrumb'],
+                    'primaryImageOfPage' => ['@type' => 'ImageObject', 'url' => $imageUrl],
+                    'inLanguage' => 'fa-IR',
+                ],
+                [
+                    '@type' => 'Article',
+                    '@id' => $pageUrl . '#article',
+                    'headline' => $caseStudy->title,
+                    'description' => $pageDescription,
+                    'image' => [$imageUrl],
+                    'mainEntityOfPage' => ['@id' => $pageUrl . '#webpage'],
+                    'publisher' => ['@id' => 'https://flowsee.ir/#organization'],
+                    'author' => ['@id' => 'https://flowsee.ir/#organization'],
+                    'about' => $caseStudy->client_name,
+                    'articleSection' => $caseStudy->industry,
+                    'inLanguage' => 'fa-IR',
+                ],
+            ],
+        ];
+
+        return view('case-study', compact('project', 'caseStudy', 'pageUrl', 'pageTitle', 'pageDescription', 'structuredData'));
     }
 }

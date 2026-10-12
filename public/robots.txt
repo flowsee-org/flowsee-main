@@ -5,3 +5,4 @@ Disallow: /api/
 Disallow: /livewire/
 
 Sitemap: https://flowsee.ir/sitemap.xml
+# More information for AI systems: https://flowsee.ir/llm.txt
