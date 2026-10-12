@@ -70,6 +70,43 @@ class FlowseePageTest extends TestCase
         $this->assertStringNotContainsString('localStorage', file_get_contents(public_path('assets/js/site.js')));
     }
 
+    public function test_ima_movies_case_study_and_refined_service_cards_are_available(): void
+    {
+        Service::create([
+            'slug' => 'marketing',
+            'title' => 'بازاریابی شبکه‌های اجتماعی',
+            'description' => 'تولید محتوا و ارتباط مؤثر با مخاطبان در شبکه‌های اجتماعی.',
+            'icon' => 'marketing',
+            'sort_order' => 1,
+        ]);
+        Service::create([
+            'slug' => 'uiux',
+            'title' => 'طراحی رابط و تجربه کاربری',
+            'description' => 'طراحی تجربه‌های دیجیتال ساده، روان و هدفمند.',
+            'icon' => 'uiux',
+            'sort_order' => 0,
+        ]);
+
+        app(\Database\Seeders\ImaMoviesCaseStudySeeder::class)->run();
+
+        $this->get('/')->assertOk()
+            ->assertSee('طراحی رابط و تجربه کاربری')
+            ->assertSee('طراحی تجربه‌های دیجیتال ساده، روان و هدفمند.')
+            ->assertSee('بازاریابی شبکه‌های اجتماعی')
+            ->assertSee('/assets/ima-case-study/ima-movies.webp')
+            ->assertDontSee('class="about-values"', false);
+
+        $project = Project::with('caseStudy.sections.steps', 'caseStudy.sections.images')
+            ->where('slug', 'ima')
+            ->firstOrFail();
+
+        $this->assertTrue($project->has_case_study);
+        $this->assertTrue($project->caseStudy->is_published);
+        $this->assertCount(3, $project->caseStudy->sections);
+        $this->assertCount(5, $project->caseStudy->sections->flatMap->images);
+        $this->assertFileExists(public_path('assets/ima-case-study/ima-account-flow.webp'));
+    }
+
     public function test_portfolio_cards_keep_the_original_layout_and_open_database_case_studies(): void
     {
         $this->seedCaseStudyData();

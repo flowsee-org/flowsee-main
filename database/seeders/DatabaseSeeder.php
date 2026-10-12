@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
         $this->seedServices();
         $this->seedProjects();
         $this->seedCaseStudy();
+        $this->call(ImaMoviesCaseStudySeeder::class);
         $this->seedSocialLinks();
         $this->seedSiteSettings();
     }
@@ -42,16 +43,16 @@ class DatabaseSeeder extends Seeder
     protected function seedServices(): void
     {
         $services = [
-            ['slug' => 'branding', 'title' => 'برندسازی و', 'description' => 'طراحی هویت بصری', 'icon' => 'img52837428315365567501', 'sort_order' => 2],
-            ['slug' => 'marketing', 'title' => 'سوشال مدیا و', 'description' => 'دیجیتال مارکتینگ', 'icon' => 'imgMarketingIconContainer', 'sort_order' => 1, 'is_highlighted' => true],
-            ['slug' => 'uiux', 'title' => 'توسعه نرم‌افزار و', 'description' => 'طراحی رابط و تجربه کاربری', 'icon' => 'imgIconUiux', 'sort_order' => 0],
-            ['slug' => 'packaging', 'title' => 'طراحی، چاپ و', 'description' => 'بسته‌بندی محصول', 'icon' => 'imgIconPrint', 'sort_order' => 5, 'is_highlighted' => true],
-            ['slug' => 'video', 'title' => 'تدوین ویدیو و', 'description' => 'تولید محتوای تبلیغاتی', 'icon' => 'imgVideoIconContainer', 'sort_order' => 4],
-            ['slug' => 'academy', 'title' => 'آکادمی، آموزش و', 'description' => 'توسعه سرمایه انسانی', 'icon' => 'imgAcademyIconContainer', 'sort_order' => 3, 'is_highlighted' => true],
+            ['slug' => 'branding', 'title' => 'هویت بصری و برندسازی', 'description' => 'ساخت چهره‌ای متمایز و منسجم برای برند شما.', 'icon' => 'img52837428315365567501', 'sort_order' => 2],
+            ['slug' => 'marketing', 'title' => 'بازاریابی شبکه‌های اجتماعی', 'description' => 'تولید محتوا و ارتباط مؤثر با مخاطبان در شبکه‌های اجتماعی.', 'icon' => 'imgMarketingIconContainer', 'sort_order' => 1, 'is_highlighted' => true],
+            ['slug' => 'uiux', 'title' => 'طراحی رابط و تجربه کاربری', 'description' => 'طراحی تجربه‌های دیجیتال ساده، روان و هدفمند.', 'icon' => 'imgIconUiux', 'sort_order' => 0],
+            ['slug' => 'packaging', 'title' => 'طراحی بسته‌بندی محصول', 'description' => 'تبدیل شخصیت برند به بسته‌بندی متمایز و آمادهٔ تولید.', 'icon' => 'imgIconPrint', 'sort_order' => 5, 'is_highlighted' => true],
+            ['slug' => 'video', 'title' => 'تدوین و تولید ویدیو', 'description' => 'ساخت محتوای ویدیویی برای معرفی و رشد برند.', 'icon' => 'imgVideoIconContainer', 'sort_order' => 4],
+            ['slug' => 'academy', 'title' => 'آموزش و توسعه سرمایه انسانی', 'description' => 'توانمندسازی تیم‌ها با آموزش‌های کاربردی و هدفمند.', 'icon' => 'imgAcademyIconContainer', 'sort_order' => 3, 'is_highlighted' => true],
         ];
 
         foreach ($services as $service) {
-            Service::firstOrCreate(['slug' => $service['slug']], $service);
+            Service::updateOrCreate(['slug' => $service['slug']], $service);
         }
     }
 

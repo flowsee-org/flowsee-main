@@ -382,7 +382,7 @@ html{scroll-padding-top:64px}
 .form-success .button{min-width:140px;margin-top:28px}
 @keyframes success-pop{from{opacity:0;transform:scale(.72)}to{opacity:1;transform:scale(1)}}
 @keyframes success-draw{to{stroke-dashoffset:0}}
-@media(max-width:649px){#contact-dialog{width:calc(100% - 24px)}.form-grid{grid-template-columns:minmax(0,1fr)}.form-success{min-height:300px;padding:28px 12px}.form-success h3{font-size:21px}}
+@media(max-width:649px){#contact-dialog{width:calc(100% - 24px)}.form-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.form-grid label{font-size:13px}.form-grid input,.form-grid textarea,.form-grid select{padding:9px 10px;font-size:14px}.form-grid>.field-details,.form-grid>.button,.form-grid>.form-status{grid-column:1/-1}.form-success{min-height:300px;padding:28px 12px}.form-success h3{font-size:21px}}
 @media(prefers-reduced-motion:reduce){.success-check,.success-check svg{animation:none}.success-check svg{stroke-dashoffset:0}}
 
 /* Separate script directions and hierarchies; never mix names on one line. */
@@ -608,9 +608,18 @@ html{scroll-padding-top:64px}
 @keyframes consultation-synced-blink{from{color:#f5f5f5}to{color:#fe5400}}
 .service-grid .service-card:hover{transform:translateY(-4px);border-color:#fe5400;box-shadow:0 12px 28px rgb(26 26 26/.08)}
 .service-grid .service-card:active{transform:translateY(-1px) scale(.995)}
+.service-grid .service-card{justify-content:flex-start;gap:14px}
+.service-grid .service-top{width:100%;align-items:center;gap:14px}
+.service-grid .service-title{margin:0;font:500 clamp(16px,1.55vw,21px)/1.65 var(--display);text-wrap:balance}
+.service-grid .service-description{margin:0;padding-inline-start:60px;font-size:14px;line-height:1.9;color:var(--muted);text-wrap:pretty}
+.service-grid .service-category{display:none}
+.about-panel{display:block}
+.about-lead{max-width:850px;position:relative;z-index:1}
+.about .about-panel>.about-mark{opacity:.09!important}
 .about-panel::after{animation:about-orbit 9s ease-in-out infinite alternate;transform-origin:center}
 .about .about-panel>.about-mark{animation:about-mark-drift 12s ease-in-out infinite alternate;opacity:.12!important}
 @keyframes about-orbit{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-12px,15px,0) scale(1.08)}}
 @keyframes about-mark-drift{from{transform:translate3d(0,0,0) rotate(-2deg)}to{transform:translate3d(5px,-8px,0) rotate(1deg)}}
-@media(max-width:649px){.service-grid .service-card:hover{transform:translateY(-2px)}}
+@media(max-width:649px){.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.service-grid .service-card{min-height:142px;gap:10px}.service-grid .service-top{gap:9px;align-items:flex-start}.service-grid .service-title{font-size:clamp(13px,3.7vw,16px);line-height:1.55}.service-grid .service-description{padding-inline-start:45px;font-size:12px;line-height:1.75}.service-grid .service-card:hover{transform:translateY(-2px)}.about-panel{padding:32px 24px}}
+@media(max-width:359px){.form-grid{gap:8px}.form-grid label{font-size:12px}.form-grid input,.form-grid textarea,.form-grid select{padding:8px;font-size:13px}.service-grid .service-card{padding:10px}.service-grid .service-icon{width:32px;height:32px}.service-grid .service-icon svg{width:18px;height:18px}.service-grid .service-description{padding-inline-start:41px;font-size:11px}}
 @media(prefers-reduced-motion:reduce){.consultation-advice-word,.consultation-free-word{animation:none;color:#f5f5f5}.service-grid .service-card,.about-panel::after,.about .about-panel>.about-mark{animation:none;transition:none}}

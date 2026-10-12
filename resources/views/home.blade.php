@@ -36,8 +36,8 @@
 <div class="service-grid">
 @foreach(App\Models\Service::where('is_active', true)->orderBy('sort_order')->get() as $service)
 <article class="service-card {{ $service->is_highlighted ? 'highlighted' : '' }}" data-od-id="service-{{ $service->slug }}">
-<div class="service-top"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="{{ $serviceIconPaths[$service->slug] ?? $serviceIconPaths['academy'] }}"/></svg></span><span class="service-category">{{ $service->title }}</span></div>
-<h3 class="service-title">{{ $service->description }}</h3>
+<div class="service-top"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="{{ $serviceIconPaths[$service->slug] ?? $serviceIconPaths['academy'] }}"/></svg></span><h3 class="service-title">{{ $service->title }}</h3></div>
+<p class="service-description">{{ $service->description }}</p>
 </article>
 @endforeach
 </div>
@@ -47,7 +47,6 @@
 <div class="about-panel">
 <img class="about-mark" src="/assets/about-flowsee-mark.svg" alt="" aria-hidden="true" loading="lazy">
 <div class="about-lead"><span class="eyebrow">دربارهٔ استودیو</span><h2 id="about-title" data-od-id="about-title">فلوسی؛ همراه برند شما</h2><p>از اولین ایده تا آخرین جزئیات، کنار برند شما هستیم. هویت بصری، تجربهٔ دیجیتال و محتوا را به یک مسیر منسجم تبدیل می‌کنیم؛ مسیری که هم به‌یادماندنی است و هم به رشد واقعی کسب‌وکار کمک می‌کند.</p></div>
-<ul class="about-values" aria-label="ارزش‌های استودیو"><li><span class="n" aria-hidden="true">۰۱</span><b>نوآوری</b><span>ایده‌هایی که از کلیشه فاصله می‌گیرند.</span></li><li><span class="n" aria-hidden="true">۰۲</span><b>دقت</b><span>جزئیاتی که کیفیت را می‌سازند.</span></li><li><span class="n" aria-hidden="true">۰۳</span><b>رشد</b><span>طراحی در خدمت نتیجهٔ کسب‌وکار.</span></li></ul>
 </div>
 </section>
 
@@ -101,7 +100,7 @@
 @endforeach
 </select>
 </label>
-<label>درباره پروژه
+<label class="field-details">درباره پروژه
 <textarea name="details" rows="4" maxlength="5000" placeholder="پروژهٔ خود را توضیح دهید..." data-od-id="brief-details" aria-describedby="error-details"></textarea>
 <span class="field-error" id="error-details" hidden aria-live="polite"></span>
 </label>
