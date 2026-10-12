@@ -15,13 +15,15 @@
 </div>
 <div class="portfolio-grid">
 @foreach($projects as $project)
-<button class="project-card {{ $project->is_featured ? 'featured-project' : '' }}" type="button" data-case="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="مشاهدهٔ کیس‌استادی {{ $project->name }}">
+<button class="project-card {{ $project->is_featured ? 'featured-project' : '' }}" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="مشاهدهٔ {{ $project->has_case_study ? 'کیس‌استادی' : 'پروژهٔ' }} {{ $project->name }}">
 <span class="project-visual">
-<img src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" alt="{{ $project->name }}" loading="lazy">
+<img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" alt="{{ $project->name }}" loading="lazy">
 </span>
-<span class="project-meta">
+<span class="project-copy">
+<span class="project-category">{{ trim(($project->service?->title ?? '') . ' ' . ($project->service?->description ?? '')) ?: 'نمونه‌کار فلوسی' }}</span>
 <span class="project-name">{{ $project->name }}</span>
-<span class="project-service">{{ $project->service?->title ?? '' }}</span>
+<span class="project-description">{{ $project->description ?: ($project->caseStudy?->lead ?? $project->service?->description ?? '') }}</span>
+<span class="project-action"><span class="project-action-label">{{ $project->has_case_study ? 'مشاهدهٔ کیس‌استادی' : 'مشاهدهٔ پروژه' }}</span><span aria-hidden="true">↖</span></span>
 </span>
 </button>
 @endforeach

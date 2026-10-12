@@ -70,6 +70,21 @@ class FlowseePageTest extends TestCase
         $this->assertStringNotContainsString('localStorage', file_get_contents(public_path('assets/js/site.js')));
     }
 
+    public function test_portfolio_cards_keep_the_original_layout_and_open_database_case_studies(): void
+    {
+        $this->seedCaseStudyData();
+
+        $html = $this->get('/')->assertOk()
+            ->assertSee('class="project-copy"', false)
+            ->assertSee('class="project-image"', false)
+            ->assertSee('data-project-slug="ebrahimi"', false)
+            ->assertSee('window.projectsData', false)
+            ->getContent();
+
+        $this->assertStringContainsString('function renderCaseStudy(project)', file_get_contents(public_path('assets/js/site.js')));
+        $this->assertStringContainsString('مشاهدهٔ کیس‌استادی EBRAHIMI', $html);
+    }
+
     public function test_legacy_addresses_redirect_and_case_study_renders(): void
     {
         $this->seedCaseStudyData();
