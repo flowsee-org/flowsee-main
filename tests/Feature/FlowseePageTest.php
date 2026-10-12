@@ -61,12 +61,13 @@ class FlowseePageTest extends TestCase
 
     public function test_homepage_preserves_content_and_instagram_and_loads_mobile_styles(): void
     {
-        $this->get('/')->assertOk()->assertSee('طراحی برای')->assertSee('https://www.instagram.com/flowsee.ir/', false)
+        $response = $this->get('/')->assertOk()->assertSee('طراحی برای')->assertSee('https://www.instagram.com/flowsee.ir/', false)
             ->assertSee('اطلاعات پروژه برای پیگیری در پایگاه دادهٔ فلوسی ثبت می‌شود.')
             ->assertSee('ارسال درخواست')
             ->assertSee('پیام شما با موفقیت ارسال شد')
             ->assertSee('class="required-marker"', false)
             ->assertSee('assets/css/mobile.css', false)->assertSee('assets/js/site.js', false);
+        $this->assertSame(1, substr_count($response->getContent(), 'assets/js/site.js'));
         $this->assertStringNotContainsString('localStorage', file_get_contents(public_path('assets/js/site.js')));
     }
 
