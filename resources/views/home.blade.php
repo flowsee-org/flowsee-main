@@ -17,7 +17,7 @@
 @foreach($projects as $project)
 <button class="project-card {{ $project->is_featured ? 'featured-project' : '' }}" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->name }}">
 <span class="project-visual">
-<img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" alt="{{ $project->name }}" loading="lazy">
+<img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" width="1200" height="630" alt="{{ $project->name }}" loading="lazy" decoding="async">
 </span>
 <span class="project-copy">
 @if($project->is_featured)<span class="project-category">{{ trim(($project->service?->title ?? '') . ' ' . ($project->service?->description ?? '')) ?: 'نمونه‌کار فلوسی' }}</span>@endif
@@ -45,7 +45,7 @@
 
 <section class="about" id="about" aria-labelledby="about-title" data-od-id="about">
 <div class="about-panel">
-<img class="about-mark" src="/assets/about-flowsee-mark.svg" alt="" aria-hidden="true" loading="lazy">
+<img class="about-mark" src="/assets/about-flowsee-mark.svg" width="500" height="500" alt="" aria-hidden="true" loading="lazy" decoding="async">
 <div class="about-lead"><span class="eyebrow">دربارهٔ استودیو</span><h2 id="about-title" data-od-id="about-title">فلوسی؛ همراه برند شما</h2><p>از اولین ایده تا آخرین جزئیات، کنار برند شما هستیم. هویت بصری، تجربهٔ دیجیتال و محتوا را به یک مسیر منسجم تبدیل می‌کنیم؛ مسیری که هم به‌یادماندنی است و هم به رشد واقعی کسب‌وکار کمک می‌کند.</p></div>
 </div>
 </section>
@@ -64,10 +64,10 @@
 <a href="#about">درباره ما</a>
 </nav>
 <div class="socials" aria-label="راه‌های ارتباطی">
-<a class="social social-instagram" href="https://www.instagram.com/flowsee.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام فلوسی"><img src="/assets/footer-imgInstagram1.svg" alt="" loading="lazy"></a>
-<a class="social social-telegram" href="https://t.me/flowseeadmin" target="_blank" rel="noopener noreferrer" aria-label="تلگرام فلوسی"><img src="/assets/footer-imgTelegram1.svg" alt="" loading="lazy"></a>
-<a class="social social-whatsapp" href="https://wa.me/989109027628" target="_blank" rel="noopener noreferrer" aria-label="واتساپ فلوسی"><img src="/assets/footer-imgWhatsapp1.svg" alt="" loading="lazy"></a>
-<a class="social social-gmail" href="mailto:flowseeadmin@gmail.com" aria-label="ایمیل فلوسی"><img src="/assets/footer-imgGmail1.svg" alt="" loading="lazy"></a>
+<a class="social social-instagram" href="https://www.instagram.com/flowsee.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام فلوسی"><img src="/assets/footer-imgInstagram1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
+<a class="social social-telegram" href="https://t.me/flowseeadmin" target="_blank" rel="noopener noreferrer" aria-label="تلگرام فلوسی"><img src="/assets/footer-imgTelegram1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
+<a class="social social-whatsapp" href="https://wa.me/989109027628" target="_blank" rel="noopener noreferrer" aria-label="واتساپ فلوسی"><img src="/assets/footer-imgWhatsapp1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
+<a class="social social-gmail" href="mailto:flowseeadmin@gmail.com" aria-label="ایمیل فلوسی"><img src="/assets/footer-imgGmail1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
 </div>
 </div>
 </footer>
@@ -158,7 +158,7 @@
 <button class="zoom-toggle" id="zoom-toggle" type="button" aria-pressed="false" data-od-id="image-zoom-toggle">اندازهٔ واقعی</button>
 </div>
 <p id="gallery-status" class="gallery-status" role="status" aria-live="polite" hidden></p>
-<div class="lightbox-viewport" id="lightbox-viewport" tabindex="0" aria-label="تصویر بزرگ‌شده؛ برای حرکت از کلیدهای جهت استفاده کنید" data-od-id="image-zoom-viewport"><img id="lightbox-img" alt=""></div>
+<div class="lightbox-viewport" id="lightbox-viewport" tabindex="0" aria-label="تصویر بزرگ‌شده؛ برای حرکت از کلیدهای جهت استفاده کنید" data-od-id="image-zoom-viewport"><img id="lightbox-img" width="1920" height="1080" alt=""></div>
 </dialog>
 
 <script>

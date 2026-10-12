@@ -70,6 +70,21 @@ class FlowseePageTest extends TestCase
         $this->assertStringNotContainsString('localStorage', file_get_contents(public_path('assets/js/site.js')));
     }
 
+    public function test_search_engine_files_and_homepage_metadata_are_available(): void
+    {
+        $this->assertFileExists(public_path('robots.txt'));
+        $this->assertFileExists(public_path('sitemap.xml'));
+        $this->assertStringContainsString('Sitemap: https://flowsee.ir/sitemap.xml', file_get_contents(public_path('robots.txt')));
+        $this->assertStringContainsString('<loc>https://flowsee.ir/</loc>', file_get_contents(public_path('sitemap.xml')));
+
+        $this->get('/')->assertOk()
+            ->assertSee('name="google-site-verification" content="UAQcvYOs7dLeVV987bTILlMz0EU8I0LTdyOlBlKpfeA"', false)
+            ->assertSee('<link rel="canonical" href="https://flowsee.ir/">', false)
+            ->assertSee('application/ld+json', false)
+            ->assertSee('width="1200" height="630"', false)
+            ->assertSee('id="lightbox-img" width="1920" height="1080"', false);
+    }
+
     public function test_ima_movies_case_study_and_refined_service_cards_are_available(): void
     {
         Service::create([

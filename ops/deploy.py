@@ -76,7 +76,7 @@ def main(sha):
         previous = LIVE.resolve(strict=True)
         switch(release / 'public')
         try:
-            for path in ['/up', '/', '/assets/css/mobile.css', '/vendor/livewire/livewire.min.js']:
+            for path in ['/up', '/', '/robots.txt', '/sitemap.xml', '/assets/css/mobile.css', '/vendor/livewire/livewire.min.js']:
                 run('curl', '--fail', '--silent', '--show-error', '--max-time', '30',
                     '--resolve', 'flowsee.ir:443:127.0.0.1', 'https://flowsee.ir' + path)
             revision = run('curl', '--fail', '--silent', '--max-time', '20',
