@@ -110,6 +110,6 @@ class StudioWebsiteMessagesTest extends TestCase
             'HTTP_ACCESS_CONTROL_REQUEST_METHOD' => 'GET',
             'HTTP_ACCESS_CONTROL_REQUEST_HEADERS' => 'authorization',
         ])->assertNoContent()
-            ->assertHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+            ->assertHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     }
 }
