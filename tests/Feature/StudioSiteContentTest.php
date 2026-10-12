@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Project;
 use App\Models\Service;
+use Database\Seeders\LegacyPortfolioSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
@@ -24,6 +25,24 @@ class StudioSiteContentTest extends TestCase
     {
         $this->get('/admin/projects')->assertNotFound();
         $this->get('/admin/case-studies')->assertNotFound();
+    }
+
+    public function test_original_portfolio_and_ebrahimi_case_study_are_restored_once(): void
+    {
+        (new LegacyPortfolioSeeder())->run();
+
+        $this->assertDatabaseCount('projects', 4);
+        $this->assertDatabaseHas('projects', ['slug' => 'ebrahimi', 'is_active' => true, 'has_case_study' => true]);
+        $this->assertDatabaseHas('case_studies', ['slug' => 'ebrahimi', 'is_published' => true]);
+        $this->assertDatabaseCount('case_study_sections', 8);
+
+        $caseStudy = \App\Models\CaseStudy::query()->where('slug', 'ebrahimi')->firstOrFail();
+        $caseStudy->update(['title' => 'ویرایش حفظ‌شده در Studio']);
+
+        (new LegacyPortfolioSeeder())->run();
+
+        $this->assertDatabaseHas('case_studies', ['slug' => 'ebrahimi', 'title' => 'ویرایش حفظ‌شده در Studio']);
+        $this->get('/projects/ebrahimi')->assertOk()->assertSee('ویرایش حفظ‌شده در Studio');
     }
 
     public function test_site_content_api_is_limited_to_the_primary_studio_superadmin(): void

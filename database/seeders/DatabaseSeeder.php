@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         $this->seedSiteSettings();
     }
 
-    private function seedServices(): void
+    protected function seedServices(): void
     {
         $services = [
             ['slug' => 'branding', 'title' => 'برندسازی و', 'description' => 'طراحی هویت بصری', 'icon' => 'img52837428315365567501', 'sort_order' => 2],
@@ -51,33 +51,32 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($services as $service) {
-            Service::create($service);
+            Service::firstOrCreate(['slug' => $service['slug']], $service);
         }
     }
 
-    private function seedProjects(): void
+    protected function seedProjects(): void
     {
         $brandingService = Service::where('slug', 'branding')->first();
         $marketingService = Service::where('slug', 'marketing')->first();
 
         $projects = [
-            ['slug' => 'shopero', 'name' => 'SHOPERO', 'cover_image' => 'imgShopero1', 'asset_id' => 'imgShopero1', 'service_id' => $marketingService?->id, 'sort_order' => 0],
-            ['slug' => 'ima', 'name' => 'IMA MOVIES', 'cover_image' => 'imgIma2', 'asset_id' => 'imgIma2', 'service_id' => $marketingService?->id, 'sort_order' => 1],
-            ['slug' => 'exloot', 'name' => 'EXLOOT', 'cover_image' => 'imgExloot2', 'asset_id' => 'imgExloot2', 'service_id' => $marketingService?->id, 'sort_order' => 2],
+            ['slug' => 'shopero', 'name' => 'SHOPERO', 'cover_image' => 'assets/portfolio-imgShopero1.png', 'asset_id' => 'imgShopero1', 'service_id' => $marketingService?->id, 'sort_order' => 0],
+            ['slug' => 'ima', 'name' => 'IMA MOVIES', 'cover_image' => 'assets/portfolio-imgIma2.png', 'asset_id' => 'imgIma2', 'service_id' => $marketingService?->id, 'sort_order' => 1],
+            ['slug' => 'exloot', 'name' => 'EXLOOT', 'cover_image' => 'assets/portfolio-imgExloot2.png', 'asset_id' => 'imgExloot2', 'service_id' => $marketingService?->id, 'sort_order' => 2],
             ['slug' => 'ebrahimi', 'name' => 'EBRAHIMI', 'cover_image' => '16.jpg', 'asset_id' => '16', 'service_id' => $brandingService?->id, 'is_featured' => true, 'has_case_study' => true, 'sort_order' => 3],
         ];
 
         foreach ($projects as $project) {
-            Project::create($project);
+            Project::firstOrCreate(['slug' => $project['slug']], $project);
         }
     }
 
-    private function seedCaseStudy(): void
+    protected function seedCaseStudy(): void
     {
         $ebrahimi = Project::where('slug', 'ebrahimi')->first();
 
-        $caseStudy = CaseStudy::create([
-            'project_id' => $ebrahimi->id,
+        $caseStudy = CaseStudy::firstOrCreate(['project_id' => $ebrahimi->id], [
             'slug' => 'ebrahimi',
             'title' => 'مرکز بازسازی خودرو ابراهیمی',
             'lead' => 'خلق هویتی لوکس، دقیق و متمایز برای یک مرکز تخصصی بازسازی، تیون ظاهری و نصب آپشن خودرو.',
@@ -102,13 +101,21 @@ class DatabaseSeeder extends Seeder
             ['name' => 'خاکستری', 'hex' => '#CCCCCC'],
         ];
 
-        foreach ($colors as $i => $color) {
-            ColorPalette::create([
-                'case_study_id' => $caseStudy->id,
-                'name' => $color['name'],
-                'hex' => $color['hex'],
-                'sort_order' => $i,
-            ]);
+        if (! $caseStudy->colors()->exists()) {
+            foreach ($colors as $i => $color) {
+                ColorPalette::create([
+                    'case_study_id' => $caseStudy->id,
+                    'name' => $color['name'],
+                    'hex' => $color['hex'],
+                    'sort_order' => $i,
+                ]);
+            }
+        }
+
+        // Preserve existing edits. The archived section-by-section content is
+        // restored only when this case study has no sections yet.
+        if ($caseStudy->sections()->exists()) {
+            return;
         }
 
         // Section: Overview

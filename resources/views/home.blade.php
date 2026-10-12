@@ -17,7 +17,7 @@
 @foreach($projects as $project)
 <button class="project-card {{ $project->is_featured ? 'featured-project' : '' }}" type="button" data-case="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="مشاهدهٔ کیس‌استادی {{ $project->name }}">
 <span class="project-visual">
-<img src="{{ asset('storage/' . $project->cover_image) }}" alt="{{ $project->name }}" loading="lazy">
+<img src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" alt="{{ $project->name }}" loading="lazy">
 </span>
 <span class="project-meta">
 <span class="project-name">{{ $project->name }}</span>

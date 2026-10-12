@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Support\WebsiteMediaUrl;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -22,7 +23,7 @@ class ProjectController extends Controller
                 'slug' => $p->slug,
                 'name' => $p->name,
                 'description' => $p->description,
-                'cover_image' => $p->cover_image ? asset('storage/' . $p->cover_image) : '',
+                'cover_image' => WebsiteMediaUrl::for($p->cover_image),
                 'service' => $p->service?->title ?? '',
                 'is_featured' => $p->is_featured,
                 'has_case_study' => $p->has_case_study,
@@ -33,7 +34,7 @@ class ProjectController extends Controller
                     'client_name' => $p->caseStudy->client_name,
                     'industry' => $p->caseStudy->industry,
                     'services_provided' => $p->caseStudy->services_provided,
-                    'cover_image' => $p->caseStudy->cover_image ? asset('storage/' . $p->caseStudy->cover_image) : '',
+                    'cover_image' => WebsiteMediaUrl::for($p->caseStudy->cover_image),
                     'cover_caption' => $p->caseStudy->cover_caption,
                     'theme_color' => $p->caseStudy->theme_color,
                     'colors' => $p->caseStudy->colors->map(fn($c) => ['name' => $c->name, 'hex' => $c->hex]),
@@ -42,11 +43,11 @@ class ProjectController extends Controller
                         'lead' => $s->lead,
                         'eyebrow' => $s->eyebrow,
                         'index_label' => $s->index_label,
-                        'band_image' => $s->band_image ? asset('storage/' . $s->band_image) : '',
+                        'band_image' => WebsiteMediaUrl::for($s->band_image),
                         'band_caption' => $s->band_caption,
                         'steps' => $s->steps->map(fn($st) => ['title' => $st->title, 'description' => $st->description, 'step_number' => $st->step_number]),
                         'images' => $s->images->map(fn($img) => [
-                            'path' => $img->path ? asset('storage/' . $img->path) : '',
+                            'path' => WebsiteMediaUrl::for($img->path),
                             'caption' => $img->caption,
                             'alt' => $img->alt,
                             'layout' => $img->layout,
@@ -54,7 +55,7 @@ class ProjectController extends Controller
                     ]),
                 ] : null,
                 'gallery_images' => $p->galleryImages->map(fn($img) => [
-                    'path' => $img->path ? asset('storage/' . $img->path) : '',
+                    'path' => WebsiteMediaUrl::for($img->path),
                     'caption' => $img->caption,
                     'alt' => $img->alt,
                     'layout' => $img->layout,

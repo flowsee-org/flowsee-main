@@ -177,7 +177,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
 
   @if($caseStudy->cover_image)
   <figure class="cover" data-od-id="case-cover">
-    <img src="{{ asset('storage/' . $caseStudy->cover_image) }}" width="1920" height="1080" alt="{{ $caseStudy->cover_caption }}" fetchpriority="high" decoding="async">
+    <img src="{{ \App\Support\WebsiteMediaUrl::for($caseStudy->cover_image) }}" width="1920" height="1080" alt="{{ $caseStudy->cover_caption }}" fetchpriority="high" decoding="async">
     @if($caseStudy->cover_caption)
     <figcaption>{{ $caseStudy->cover_caption }}</figcaption>
     @endif
@@ -187,7 +187,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
   @foreach($caseStudy->sections as $section)
   <section class="case-section" id="{{ $section->slug }}" aria-labelledby="{{ $section->slug }}-title">
     @if($section->band_image)
-    <button class="band" type="button" data-lightbox="{{ asset('storage/' . $section->band_image) }}" data-caption="{{ $section->band_caption }}" aria-label="نمایش تصویر بخش {{ $section->title }}"><img src="{{ asset('storage/' . $section->band_image) }}" width="1920" height="1080" alt="{{ $section->band_caption }}" loading="lazy" decoding="async"></button>
+    <button class="band" type="button" data-lightbox="{{ \App\Support\WebsiteMediaUrl::for($section->band_image) }}" data-caption="{{ $section->band_caption }}" aria-label="نمایش تصویر بخش {{ $section->title }}"><img src="{{ \App\Support\WebsiteMediaUrl::for($section->band_image) }}" width="1920" height="1080" alt="{{ $section->band_caption }}" loading="lazy" decoding="async"></button>
     @endif
     <div class="container inner">
       <div class="sec-head" data-od-id="{{ $section->slug }}-head">
@@ -209,7 +209,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
       @if($section->images->isNotEmpty())
       <div class="fig-grid {{ $section->images->count() == 2 ? 'g2' : 'g3' }}">
         @foreach($section->images as $image)
-        <button class="fig {{ $image->layout == 'full' ? 'wide' : '' }}" type="button" data-lightbox="{{ asset('storage/' . $image->path) }}" data-caption="{{ $image->caption }}" aria-label="نمایش {{ $image->caption }}"><img src="{{ asset('storage/' . $image->path) }}" width="1920" height="1080" alt="{{ $image->alt }}" loading="lazy" decoding="async"></button>
+        <button class="fig {{ $image->layout == 'full' ? 'wide' : '' }}" type="button" data-lightbox="{{ \App\Support\WebsiteMediaUrl::for($image->path) }}" data-caption="{{ $image->caption }}" aria-label="نمایش {{ $image->caption }}"><img src="{{ \App\Support\WebsiteMediaUrl::for($image->path) }}" width="1920" height="1080" alt="{{ $image->alt }}" loading="lazy" decoding="async"></button>
         @endforeach
       </div>
       @endif

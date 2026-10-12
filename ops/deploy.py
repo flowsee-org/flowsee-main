@@ -60,6 +60,7 @@ def main(sha):
                 run(PHP, '/usr/bin/composer', 'install', '--no-dev', '--prefer-dist',
                     '--no-interaction', '--optimize-autoloader', cwd=release)
                 run(PHP, 'artisan', 'migrate', '--force', cwd=release)
+                run(PHP, 'artisan', 'db:seed', '--class=LegacyPortfolioSeeder', '--force', cwd=release)
                 run(PHP, 'artisan', 'config:cache', cwd=release)
                 run(PHP, 'artisan', 'route:cache', cwd=release)
                 run(PHP, 'artisan', 'view:cache', cwd=release)
