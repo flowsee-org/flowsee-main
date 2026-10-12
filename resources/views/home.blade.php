@@ -165,6 +165,4 @@
 window.projectsData = {!! $projectsData !!};
 </script>
 
-<script src="{{ asset('assets/js/site.js') }}?v={{ filemtime(public_path('assets/js/site.js')) }}" defer></script>
-
 @endsection

@@ -130,9 +130,9 @@ const details=form.elements.details,prompt=document.querySelector('.project-prom
 const serviceEntries=[...document.querySelectorAll('[data-service]')].map(button=>({id:button.dataset.service,title:button.querySelector('.service-title').textContent.trim()}));
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let promptTimer,promptTransition,promptIndex=0;
-function syncPrompt(){prompt.hidden=details.value.length>0}
-function stopPrompt(){clearInterval(promptTimer);clearTimeout(promptTransition);serviceWord.classList.remove('is-changing')}
-function startPrompt(){stopPrompt();syncPrompt();if(!contact.open||details.value||document.activeElement===details)return;
+function syncPrompt(){if(prompt)prompt.hidden=details.value.length>0}
+function stopPrompt(){clearInterval(promptTimer);clearTimeout(promptTransition);serviceWord?.classList.remove('is-changing')}
+function startPrompt(){stopPrompt();syncPrompt();if(!prompt||!serviceWord||!contact.open||details.value||document.activeElement===details)return;
   promptIndex=Math.max(0,serviceEntries.findIndex(entry=>entry.id===form.elements.service.value));serviceWord.textContent=serviceEntries[promptIndex].title;
   if(reducedMotion.matches)return;
   promptTimer=setInterval(()=>{if(document.hidden||!contact.open||details.value||document.activeElement===details)return;
