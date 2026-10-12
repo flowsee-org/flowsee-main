@@ -36,7 +36,7 @@
 <div class="service-grid">
 @foreach(App\Models\Service::where('is_active', true)->orderBy('sort_order')->get() as $service)
 <article class="service-card {{ $service->is_highlighted ? 'highlighted' : '' }}" data-od-id="service-{{ $service->slug }}">
-<div class="service-top"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="{{ match($service->slug) {'branding' => 'M12 3 3.5 7.5 12 12l8.5-4.5L12 3Zm-8.5 9L12 16.5l8.5-4.5M3.5 16.5 12 21l8.5-4.5', 'marketing' => 'M3 10v4h4l5 4V6l-5 4H3Zm9-1 5-3v12l-5-3m7-4a4 4 0 0 1 0 4m1.5-7a7 7 0 0 1 0 10', 'video' => 'M4 6h16v12H4zM10 9l5 3-5 3V9Z', 'packaging' => 'M6 8V3h12v5M6 17H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2m-12-4h12v8H6z', 'uiux' => 'm8 8-4 4 4 4m8-8 4 4-4 4m-3-11-2 14', default => 'M12 3a9 9 0 1 0 9 9h-9V3Zm3-1v6h6a7 7 0 0 0-6-6Z' }}"/></svg></span><span class="service-category">{{ $service->title }}</span></div>
+<div class="service-top"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="{{ $serviceIconPaths[$service->slug] ?? $serviceIconPaths['academy'] }}"/></svg></span><span class="service-category">{{ $service->title }}</span></div>
 <h3 class="service-title">{{ $service->description }}</h3>
 </article>
 @endforeach
