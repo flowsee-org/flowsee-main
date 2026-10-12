@@ -73,7 +73,7 @@ function renderProjectPreview(project){
   document.getElementById('preview-position').textContent='';document.getElementById('preview-prev').hidden=true;document.getElementById('preview-next').hidden=true;
   openDialog(preview);preview.querySelector('.preview-scroll').scrollTop=0;
 }
-document.querySelectorAll('[data-project-slug]').forEach(button=>button.addEventListener('click',()=>{const project=projectBySlug.get(button.dataset.projectSlug);if(!project)return;if(button.tagName==='A'&&project.case_study)return;if(project.case_study){renderCaseStudy(project);openDialog(caseDialog);caseDialog.querySelector('.case-scroll').scrollTop=0}else renderProjectPreview(project)}));
+document.querySelectorAll('[data-project-slug]').forEach(button=>button.addEventListener('click',()=>{const project=projectBySlug.get(button.dataset.projectSlug);if(!project)return;if(project.case_study){renderCaseStudy(project);openDialog(caseDialog);caseDialog.querySelector('.case-scroll').scrollTop=0}else renderProjectPreview(project)}));
 const requestedCase=new URLSearchParams(window.location.search).get('case');if(requestedCase){const project=projectBySlug.get(requestedCase);if(project?.case_study){renderCaseStudy(project);openDialog(caseDialog)}}
 contact.addEventListener('close',clearContactForm);
 document.getElementById('success-close').addEventListener('click',()=>contact.close());
@@ -200,7 +200,8 @@ if(heroModelViewer){
       document.head.appendChild(viewerScript);
     };
     trySource(0);
-  };  if('IntersectionObserver'in window){
+  };
+  if('IntersectionObserver'in window){
     const viewerLoader=new IntersectionObserver(entries=>entries.forEach(entry=>{
       if(entry.isIntersecting){viewerLoader.disconnect();loadModelViewer()}
     }),{rootMargin:'160px'});

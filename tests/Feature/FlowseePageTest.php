@@ -66,7 +66,7 @@ class FlowseePageTest extends TestCase
             ->assertSee('ارسال درخواست')
             ->assertSee('پیام شما با موفقیت ارسال شد')
             ->assertSee('class="required-marker"', false)
-            ->assertSee('assets/css/mobile.css', false)->assertSee('assets/js/site.js', false);
+            ->assertSee('assets/css/mobile.css', false)->assertSee('assets/js/site.js', false)->assertSee('class="hero-logo-3d"', false)->assertSee('orientation="90deg 0deg 0deg"', false)->assertSee('felosi-logo-sculpture.png', false);
         $this->assertSame(1, substr_count($response->getContent(), 'assets/js/site.js'));
         $this->assertStringNotContainsString('localStorage', file_get_contents(public_path('assets/js/site.js')));
     }
@@ -141,7 +141,8 @@ class FlowseePageTest extends TestCase
             ->assertSee('class="portfolio-view-all"', false)
             ->assertSee('class="service-grid"', false)
             ->assertSee('class="service-icon"', false)
-            ->assertSee(route('projects.show', 'exloot'), false)
+            ->assertSee('<button class="project-card', false)
+            ->assertDontSee('<a class="project-card', false)
             ->assertSee('aria-label="مشاهدهٔ کیس‌استادی اکسلوت"', false)
             ->assertSee('مشاهدهٔ کیس‌استادی EBRAHIMI')
             ->assertDontSee('id="articles"', false)
