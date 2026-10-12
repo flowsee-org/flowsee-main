@@ -34,9 +34,9 @@ class StudioSiteContentTest extends TestCase
         $this->assertDatabaseCount('projects', 4);
         $this->assertDatabaseHas('projects', ['slug' => 'ebrahimi', 'is_active' => true, 'has_case_study' => true]);
         $this->assertDatabaseHas('case_studies', ['slug' => 'ebrahimi', 'is_published' => true]);
-        $this->assertDatabaseCount('case_study_sections', 8);
-
         $caseStudy = \App\Models\CaseStudy::query()->where('slug', 'ebrahimi')->firstOrFail();
+        $this->assertSame(8, $caseStudy->sections()->count());
+        $this->assertDatabaseCount('case_study_sections', 11);
         $caseStudy->update(['title' => 'ویرایش حفظ‌شده در Studio']);
 
         (new LegacyPortfolioSeeder())->run();
