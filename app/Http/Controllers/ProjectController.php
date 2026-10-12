@@ -73,7 +73,34 @@ class ProjectController extends Controller
             'academy' => 'M12 3a9 9 0 1 0 9 9h-9V3Zm3-1v6h6a7 7 0 0 0-6-6Z',
         ];
 
-        return view('home', compact('projects', 'projectsData', 'serviceIconPaths'));
+        $structuredData = [
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'Organization',
+                    '@id' => 'https://flowsee.ir/#organization',
+                    'name' => 'استودیو فلوسی',
+                    'url' => 'https://flowsee.ir/',
+                    'logo' => [
+                        '@type' => 'ImageObject',
+                        'url' => 'https://flowsee.ir/assets/header-imgFrame17.svg',
+                    ],
+                    'email' => 'flowseeadmin@gmail.com',
+                    'telephone' => '+989109027628',
+                    'sameAs' => ['https://www.instagram.com/flowsee.ir/'],
+                ],
+                [
+                    '@type' => 'WebSite',
+                    '@id' => 'https://flowsee.ir/#website',
+                    'url' => 'https://flowsee.ir/',
+                    'name' => 'استودیو فلوسی',
+                    'publisher' => ['@id' => 'https://flowsee.ir/#organization'],
+                    'inLanguage' => 'fa-IR',
+                ],
+            ],
+        ];
+
+        return view('home', compact('projects', 'projectsData', 'serviceIconPaths', 'structuredData'));
     }
 
     /**

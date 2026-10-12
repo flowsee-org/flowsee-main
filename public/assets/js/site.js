@@ -37,7 +37,7 @@ if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion
 const websiteProjects=Array.isArray(window.projectsData)?window.projectsData:[];
 const projectBySlug=new Map(websiteProjects.map(project=>[project.slug,project]));
 const textNode=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;node.textContent=text||'';return node};
-const imageNode=(src,alt,loading='lazy')=>{const image=document.createElement('img');image.src=src||'';image.alt=alt||'';image.loading=loading;image.decoding='async';return image};
+const imageNode=(src,alt,loading='lazy')=>{const image=document.createElement('img');image.src=src||'';image.alt=alt||'';image.width=1920;image.height=1080;image.loading=loading;image.decoding='async';return image};
 function addCaseImage(container,image,layout='third'){
   const button=document.createElement('button');button.type='button';button.className='fig'+(layout==='full'?' wide':'');button.dataset.lightbox=image.path||'';button.dataset.caption=image.caption||image.alt||'';button.setAttribute('aria-label','نمایش '+(image.caption||image.alt||'تصویر'));
   button.append(imageNode(image.path,image.alt||image.caption));container.append(button);
