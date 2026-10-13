@@ -36,5 +36,21 @@ class LegacyPortfolioSeeder extends DatabaseSeeder
                 'updated_at' => now(),
             ]);
         });
+
+        $shoperoMarker = 'shopero-case-study-v1';
+
+        DB::transaction(function () use ($shoperoMarker): void {
+            if (DB::table('website_content_seed_markers')->where('key', $shoperoMarker)->exists()) {
+                return;
+            }
+
+            $this->call(ShoperoCaseStudySeeder::class);
+
+            DB::table('website_content_seed_markers')->insert([
+                'key' => $shoperoMarker,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        });
     }
 }

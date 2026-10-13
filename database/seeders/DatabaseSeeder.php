@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
         $this->seedCaseStudy();
         $this->call(ImaMoviesCaseStudySeeder::class);
         $this->call(ExlootCaseStudySeeder::class);
+        $this->call(ShoperoCaseStudySeeder::class);
         $this->seedSocialLinks();
         $this->seedSiteSettings();
     }

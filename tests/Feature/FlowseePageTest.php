@@ -182,6 +182,37 @@ class FlowseePageTest extends TestCase
             ->assertSee('href="/#portfolio"', false);
     }
 
+    public function test_shopero_case_study_renders_with_its_images_and_unique_metadata(): void
+    {
+        Service::create([
+            'slug' => 'marketing',
+            'title' => 'بازاریابی شبکه‌های اجتماعی',
+            'description' => 'تولید محتوا و ارتباط مؤثر با مخاطبان در شبکه‌های اجتماعی.',
+            'icon' => 'marketing',
+            'sort_order' => 1,
+        ]);
+        app(\Database\Seeders\ShoperoCaseStudySeeder::class)->run();
+
+        $project = Project::with('caseStudy.sections.images')->where('slug', 'shopero')->firstOrFail();
+        $images = $project->caseStudy->sections->flatMap->images;
+
+        $this->assertTrue($project->has_case_study);
+        $this->assertTrue($project->caseStudy->is_published);
+        $this->assertCount(8, $project->caseStudy->sections);
+        $this->assertCount(10, $images);
+        $this->assertSame(3747, $images->firstWhere('path', 'assets/shopero-case-study/shopero-11.jpg')->height);
+        $this->assertFileExists(public_path('assets/shopero-case-study/shopero-cover.jpg'));
+        $this->assertFileExists(public_path('assets/shopero-case-study/shopero-11.jpg'));
+
+        $this->get('/projects/shopero')->assertOk()
+            ->assertViewIs('case-study')
+            ->assertSee('شاپیرو؛ طراحی فروشگاه آنلاین برای تجربه‌ای ساده‌تر')
+            ->assertSee('<link rel="canonical" href="https://flowsee.ir/projects/shopero">', false)
+            ->assertSee('کیس‌استادی شاپیرو — طراحی فروشگاه اینترنتی وب و موبایل', false)
+            ->assertSee('نمایش فروشگاه محصولات شاپیرو روی لپ‌تاپ', false)
+            ->assertSee('BreadcrumbList', false);
+    }
+
     public function test_project_lead_api_route_is_registered_and_validates_empty_requests(): void
     {
         $this->postJson('/api/leads', [])
