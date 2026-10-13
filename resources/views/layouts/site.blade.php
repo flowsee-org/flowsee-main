@@ -28,6 +28,15 @@
 <meta name="twitter:description" content="استودیو فلوسی؛ طراحی برای رشد، استراتژی برای ماندگاری. خدمات طراحی هویت بصری، دیجیتال مارکتینگ و توسعه نرم‌افزار.">
 <meta name="twitter:image" content="https://flowsee.ir/assets/flowsee-social.jpg">
 <meta name="theme-color" content="#FE5400"><title>استودیو فلوسی — خلاقیت در دنیای دیجیتال</title>
+<script>
+try {
+  const savedTheme = localStorage.getItem('flowsee-theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.dataset.theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+} catch (error) {
+  document.documentElement.dataset.theme = 'light';
+}
+</script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" as="image" href="/assets/felosi-logo-sculpture.png" fetchpriority="high">
 

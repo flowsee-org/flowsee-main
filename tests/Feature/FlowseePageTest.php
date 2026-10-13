@@ -66,9 +66,11 @@ class FlowseePageTest extends TestCase
             ->assertSee('ارسال درخواست')
             ->assertSee('پیام شما با موفقیت ارسال شد')
             ->assertSee('class="required-marker"', false)
+            ->assertSee('data-theme-toggle', false)
+            ->assertSee('flowsee-theme', false)
             ->assertSee('assets/css/mobile.css', false)->assertSee('assets/js/site.js', false)->assertSee('hero-logo-glass', false)->assertDontSee('<model-viewer', false)->assertSee('felosi-logo-sculpture.png', false);
         $this->assertSame(1, substr_count($response->getContent(), 'assets/js/site.js'));
-        $this->assertStringNotContainsString('localStorage', file_get_contents(public_path('assets/js/site.js')));
+        $this->assertStringContainsString('flowsee-theme', file_get_contents(public_path('assets/js/site.js')));
     }
 
     public function test_search_engine_files_and_homepage_metadata_are_available(): void
