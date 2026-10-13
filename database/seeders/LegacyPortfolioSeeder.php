@@ -37,7 +37,7 @@ class LegacyPortfolioSeeder extends DatabaseSeeder
             ]);
         });
 
-        $shoperoMarker = 'shopero-case-study-v1';
+        $shoperoMarker = 'shopero-case-study-v2';
 
         DB::transaction(function () use ($shoperoMarker): void {
             if (DB::table('website_content_seed_markers')->where('key', $shoperoMarker)->exists()) {

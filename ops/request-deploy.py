@@ -42,6 +42,10 @@ def main():
     with urllib.request.urlopen('https://flowsee.ir/deployment.txt?sha=' + sha, timeout=30) as response:
         if response.read().decode().strip() != sha:
             raise RuntimeError('Public site does not match the requested commit')
+    with urllib.request.urlopen('https://flowsee.ir/projects/shopero', timeout=30) as response:
+        case_study = response.read().decode()
+        if '<link rel="canonical" href="https://flowsee.ir/projects/shopero">' not in case_study:
+            raise RuntimeError('Shopero case study did not render after deployment')
     print('Verified deployment: ' + sha + ' https://flowsee.ir')
     with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
         summary.write('### Published successfully\n\nhttps://flowsee.ir\n\nCommit: `' + sha + '`\n')
