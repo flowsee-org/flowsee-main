@@ -6,7 +6,30 @@ from pathlib import Path
 import subprocess
 import tempfile
 import time
+import urllib.error
 import urllib.request
+
+
+def verify_shopero_case_study(sha):
+    """Allow the public route a short propagation window after atomic deploy."""
+    expected = '<link rel="canonical" href="https://flowsee.ir/projects/shopero">'
+    last_error = None
+    for attempt in range(6):
+        url = 'https://flowsee.ir/projects/shopero?deploy-check=' + sha + '-' + str(attempt)
+        request = urllib.request.Request(url, headers={'Cache-Control': 'no-cache'})
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                page = response.read().decode()
+            if expected in page:
+                return
+            last_error = RuntimeError('response did not contain the expected canonical URL')
+        except urllib.error.HTTPError as error:
+            if error.code not in (404, 502, 503, 504):
+                raise
+            last_error = error
+        if attempt < 5:
+            time.sleep(5)
+    raise RuntimeError('Shopero case study was not available after deployment: ' + str(last_error))
 
 
 def main():
@@ -42,13 +65,10 @@ def main():
     with urllib.request.urlopen('https://flowsee.ir/deployment.txt?sha=' + sha, timeout=30) as response:
         if response.read().decode().strip() != sha:
             raise RuntimeError('Public site does not match the requested commit')
-    with urllib.request.urlopen('https://flowsee.ir/projects/shopero', timeout=30) as response:
-        case_study = response.read().decode()
-        if '<link rel="canonical" href="https://flowsee.ir/projects/shopero">' not in case_study:
-            raise RuntimeError('Shopero case study did not render after deployment')
+    verify_shopero_case_study(sha)
     print('Verified deployment: ' + sha + ' https://flowsee.ir')
     with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
-        summary.write('### Published successfully\n\nhttps://flowsee.ir\n\nCommit: `' + sha + '`\n')
+        summary.write('### Published successfully\n\nhttps://flowsee.ir\n\nCommit: ' + sha + '\n')
 
 
 if __name__ == '__main__':
