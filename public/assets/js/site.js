@@ -181,30 +181,3 @@ for(const name of validatedFields){const field=form.elements[name];
 }
 
 })();
-
-const heroModelViewer=document.querySelector('.hero-logo-3d');
-if(heroModelViewer){
-  const artStage=heroModelViewer.closest('.art-stage');
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)heroModelViewer.removeAttribute('auto-rotate');
-  heroModelViewer.addEventListener('load',()=>artStage?.classList.add('model-ready'),{once:true});
-  const loadModelViewer=()=>{
-    if(window.customElements?.get('model-viewer'))return;
-    const sources=[heroModelViewer.dataset.viewerSrc,heroModelViewer.dataset.viewerFallbackSrc].filter(Boolean);
-    const trySource=index=>{
-      if(index>=sources.length){artStage?.classList.add('model-unavailable');return}
-      const viewerScript=document.createElement('script');
-      viewerScript.type='module';
-      viewerScript.src=sources[index];
-      viewerScript.async=true;
-      viewerScript.addEventListener('error',()=>trySource(index+1),{once:true});
-      document.head.appendChild(viewerScript);
-    };
-    trySource(0);
-  };
-  if('IntersectionObserver'in window){
-    const viewerLoader=new IntersectionObserver(entries=>entries.forEach(entry=>{
-      if(entry.isIntersecting){viewerLoader.disconnect();loadModelViewer()}
-    }),{rootMargin:'160px'});
-    viewerLoader.observe(heroModelViewer);
-  }else loadModelViewer();
-}
