@@ -29,7 +29,7 @@
 @endif
 @if($projects->contains(fn($item) => !$item->is_featured))
 <div class="project-carousel" role="region" aria-label="نمونه‌کارهای بیشتر">
-<div class="project-carousel-controls"><span>نمونه‌کارهای بیشتر</span><div><button type="button" data-carousel-step="-1" aria-label="نمونه‌کار قبلی">‹</button><button type="button" data-carousel-step="1" aria-label="نمونه‌کار بعدی">›</button></div></div>
+<div class="project-carousel-controls"><span>نمونه‌کارهای بیشتر</span><div><button type="button" data-carousel-step="-1" aria-label="نمونه‌کارهای قبلی"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button><button type="button" data-carousel-step="1" aria-label="نمونه‌کارهای بعدی"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button></div></div>
 <div class="project-carousel-track" id="project-carousel-track" tabindex="0" aria-label="برای دیدن نمونه‌کارهای بیشتر پیمایش کنید">
 @foreach($projects as $project)
 @if(!$project->is_featured)
@@ -92,9 +92,10 @@
 </footer>
 
 <dialog id="service-dialog" class="service-dialog" aria-labelledby="service-dialog-title">
+<div class="service-dialog-kicker"><span class="service-dialog-icon" id="service-dialog-icon" aria-hidden="true"></span><span>FLOWSEE <i></i> SERVICE <b id="service-dialog-number">01</b></span></div>
 <div class="dialog-head"><h2 id="service-dialog-title"></h2><button type="button" class="close-dialog" data-close aria-label="بستن"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
 <p id="service-dialog-description" class="service-dialog-description"></p>
-<h3>زیرخدمات</h3><ul id="service-dialog-items" class="service-dialog-items"></ul>
+<ul id="service-dialog-items" class="service-dialog-items" aria-label="جزئیات خدمت"></ul>
 <button class="button primary" type="button" data-service-contact>گفت‌وگو دربارهٔ این خدمت</button>
 </dialog>
 
