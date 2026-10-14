@@ -363,10 +363,6 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .service-dialog[open] { animation:service-dialog-enter 240ms cubic-bezier(.2,.75,.25,1) both; }
 @media(prefers-reduced-motion:reduce) { .service-dialog[open] { animation:none; } }
 
-/* Service detail rows use the full dialog width after their number badges are removed. */
-.service-dialog .service-dialog-items li { display:block;width:100%;grid-template-columns:minmax(0,1fr); }
-.service-dialog .service-detail-label { display:block;width:100%;min-width:0;text-align:right;white-space:normal;overflow-wrap:anywhere; }
-
 /* Center the footer into a simple brand, navigation, and contact stack. */
 .site-footer .footer-inner { display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:22px;padding-block:42px; }
 .site-footer .footer-brand { order:0;align-self:center;width:48px;height:48px;margin:0; }
@@ -454,3 +450,8 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .service-dialog [data-service-contact] { position:relative;z-index:1; }
 @media(max-width:649px) { .service-dialog { padding:24px 20px; } .service-dialog-description { font-size:14px; } .service-dialog-items li { min-height:48px; } }
 @media(prefers-reduced-motion:reduce) { .service-dialog[open] { animation:none; } }
+
+/* Keep each service detail on a full-width row after the number badges are removed. */
+.service-dialog .service-dialog-items { display:flex!important;flex-direction:column;width:100%; }
+.service-dialog .service-dialog-items li { display:flex!important;align-items:center;width:100%;min-width:0;box-sizing:border-box; }
+.service-dialog .service-dialog-items li>.service-detail-label { display:block;flex:1 1 auto;width:auto!important;min-width:0;text-align:right;white-space:normal;overflow-wrap:anywhere; }
