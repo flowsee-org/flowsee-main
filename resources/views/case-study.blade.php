@@ -138,7 +138,7 @@ h1,h2,h3,p{margin:0}
 .footer-nav a{display:flex;align-items:center;min-height:44px;font-size:13px;color:var(--blue-pale)}
 .footer-nav a:hover{color:var(--bg);text-decoration:underline;text-underline-offset:5px}
 .footer-social-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;direction:ltr}
-.footer-social-links a{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--border);border-radius:50%;color:var(--fg);font-weight:700;text-decoration:none}
+.footer-social-links a{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--border);border-radius:50%;color:inherit;font-size:13px;font-weight:700;text-decoration:none}
 .footer-social-links a:hover{border-color:var(--blue-light);color:var(--blue-light)}
 .site-footer :focus-visible{outline-color:var(--blue-light)}
 dialog{width:min(660px,calc(100% - 32px));max-height:calc(100dvh - 40px);border:1px solid var(--border);border-radius:20px;padding:32px;background:var(--bg);color:var(--fg);box-shadow:0 24px 80px oklch(0% 0 0/.25)}
@@ -280,8 +280,8 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
 <div class="footer-social-links" aria-label="پروفایل‌ها و موقعیت استودیو فلوسی">
 <a href="https://www.instagram.com/flowsee.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام فلوسی">◎</a>
 <a href="https://x.com/flowseeir" target="_blank" rel="noopener noreferrer" aria-label="ایکس فلوسی">𝕏</a>
-<a href="https://maps.app.goo.gl/kN2kZ9AkS6nGbnoC7" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در گوگل‌مپ">⌖</a>
-<a href="https://balad.ir/p/46T1JAasDQclgV" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در بلد">ب</a>
+<a href="https://maps.app.goo.gl/kN2kZ9AkS6nGbnoC7" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در گوگل‌مپ">G</a>
+<a href="https://balad.ir/p/46T1JAasDQclgV" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در بلد">بلد</a>
 <a href="https://bilbooard.ir/qazvin/b/flossy-studio" target="_blank" rel="noopener noreferrer" aria-label="پروفایل استودیو فلوسی در بیلبورد">B</a>
 <a href="https://rubika.ir/Flowseeadmin" target="_blank" rel="noopener noreferrer" aria-label="روبیکای فلوسی">ر</a>
 </div>
