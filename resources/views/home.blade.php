@@ -77,7 +77,6 @@
 <nav class="footer-nav" aria-label="پیوندهای پایین صفحه" data-od-id="footer-navigation">
 <a href="#portfolio">نمونه‌کارها</a>
 <a href="#services">خدمات</a>
-<a href="#contact-dialog" data-contact="consultation">دریافت مشاوره رایگان</a>
 </nav>
 <div class="socials" aria-label="راه‌های ارتباطی">
 <a class="social social-instagram" href="https://www.instagram.com/flowsee.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام فلوسی"><img src="/assets/footer-imgInstagram1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
@@ -92,8 +91,8 @@
 </footer>
 
 <dialog id="service-dialog" class="service-dialog" aria-labelledby="service-dialog-title">
-<div class="service-dialog-kicker"><span class="service-dialog-icon" id="service-dialog-icon" aria-hidden="true"></span><span>FLOWSEE <i></i> SERVICE <b id="service-dialog-number">01</b></span></div>
 <div class="dialog-head"><h2 id="service-dialog-title"></h2><button type="button" class="close-dialog" data-close aria-label="بستن"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+<div class="service-dialog-kicker"><span class="service-dialog-icon" id="service-dialog-icon" aria-hidden="true"></span><span>FLOWSEE <i></i> SERVICE <b id="service-dialog-number">01</b></span></div>
 <p id="service-dialog-description" class="service-dialog-description"></p>
 <ul id="service-dialog-items" class="service-dialog-items" aria-label="جزئیات خدمت"></ul>
 <button class="button primary" type="button" data-service-contact>گفت‌وگو دربارهٔ این خدمت</button>
