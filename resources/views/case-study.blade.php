@@ -276,7 +276,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
 <footer class="site-footer" data-od-id="footer">
 <div class="container footer-bottom">
 <a class="footer-brand" href="/" aria-label="بازگشت به صفحهٔ اصلی استودیو فلوسی" data-od-id="footer-brand"><img src="/assets/footer-imgUnion.svg" width="92" height="93.8623" alt="فلوسی"><span>استودیو فلوسی</span></a>
-<nav class="footer-nav" aria-label="پیوندهای پایین صفحه" data-od-id="footer-navigation"><a href="/#portfolio">نمونه‌کارها</a><a href="/#services">خدمات</a><a href="/#about">درباره ما</a><a href="#top" data-od-id="footer-top">بازگشت به بالا ↑</a></nav>
+<nav class="footer-nav" aria-label="پیوندهای پایین صفحه" data-od-id="footer-navigation"><a href="/#portfolio">نمونه‌کارها</a><a href="/#services">خدمات</a><a href="/#contact-dialog" data-contact="consultation">دریافت مشاوره رایگان</a><a href="#top" data-od-id="footer-top">بازگشت به بالا ↑</a></nav>
 <div class="footer-social-links" aria-label="پروفایل‌ها و موقعیت استودیو فلوسی">
 <a href="https://www.instagram.com/flowsee.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام فلوسی">◎</a>
 <a href="https://x.com/flowseeir" target="_blank" rel="noopener noreferrer" aria-label="ایکس فلوسی">𝕏</a>
@@ -290,8 +290,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
 <p class="dialog-note">خلاصهٔ پروژه‌تان را آماده و دریافت کنید. اطلاعات این فرم برای کسی ارسال نمی‌شود.</p>
 <form id="brief-form" class="form-grid" data-od-id="project-form">
 <label>نام شما<input name="name" autocomplete="name" required maxlength="100" data-od-id="brief-name"></label>
-<label>ایمیل (اختیاری)<input type="email" name="email" autocomplete="email" dir="ltr" data-od-id="brief-email"></label>
-<label>خدمت موردنظر<select name="service" data-od-id="brief-service">@foreach(App\Models\Service::where('is_active', true)->orderBy('sort_order')->get() as $service)<option value="{{ $service->slug }}">{{ $service->title }} {{ $service->description }}</option>@endforeach</select></label>
+<label>شمارهٔ تماس<input type="tel" name="phone" autocomplete="tel" inputmode="tel" dir="ltr" required minlength="7" maxlength="24" data-od-id="brief-phone"></label>
 <label>درباره پروژه<textarea name="details" maxlength="5000" required rows="4" placeholder="چه چیزی می‌خواهید طراحی کنیم؟" data-od-id="brief-details"></textarea></label>
 <button type="submit" class="button solid" data-od-id="download-brief">دریافت خلاصه پروژه</button>
 <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
@@ -313,10 +312,10 @@ window.matchMedia('(min-width:900px)').addEventListener('change',e=>{if(e.matche
 const contact=document.getElementById('contact-dialog'),lightbox=document.getElementById('lightbox'),form=document.getElementById('brief-form');
 function openDialog(dialog){document.querySelectorAll('dialog[open]').forEach(d=>d.close());dialog.showModal();document.body.style.overflow='hidden'}
 document.querySelectorAll('dialog').forEach(d=>{d.querySelector('[data-close]').addEventListener('click',()=>d.close());d.addEventListener('close',()=>{document.body.style.overflow=''});d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}})});
-document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>{const t=document.getElementById('contact-title');t.textContent='شروع پروژه';document.getElementById('form-status').textContent='';openDialog(contact)}));
+document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>{const t=document.getElementById('contact-title');t.textContent=b.dataset.contact==='consultation'?'مشاوره رایگان':'شروع پروژه';document.getElementById('form-status').textContent='';openDialog(contact)}));
 document.querySelectorAll('[data-lightbox]').forEach(b=>b.addEventListener('click',()=>{const img=document.getElementById('lightbox-img');img.src=b.dataset.lightbox;img.alt=b.querySelector('img').alt;document.getElementById('lightbox-cap').textContent=b.dataset.caption||'';openDialog(lightbox)}));
-try{const saved=JSON.parse(localStorage.getItem('felosi-project-brief')||'null');if(saved)for(const key of ['name','email','service','details'])if(typeof saved[key]==='string')form.elements[key].value=saved[key]}catch{}
-form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;const data=Object.fromEntries(new FormData(form)),service=form.elements.service.selectedOptions[0].textContent;const brief=['خلاصه پروژه — استودیو فلوسی','','نام: '+data.name,'ایمیل: '+data.email,'خدمت: '+service,'','توضیحات پروژه:',data.details].join('\n');try{localStorage.setItem('felosi-project-brief',JSON.stringify(data))}catch{}const url=URL.createObjectURL(new Blob(['\ufeff'+brief],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='felosi-project-brief.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);document.getElementById('form-status').textContent='خلاصه پروژه آماده شد. هیچ اطلاعاتی ارسال نشده است.'});
+try{const saved=JSON.parse(localStorage.getItem('felosi-project-brief')||'null');if(saved)for(const key of ['name','phone','details'])if(typeof saved[key]==='string')form.elements[key].value=saved[key]}catch{}
+form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;const data=Object.fromEntries(new FormData(form));const brief=['خلاصه پروژه — استودیو فلوسی','','نام: '+data.name,'شماره تماس: '+data.phone,'','توضیحات پروژه:',data.details].join('\n');try{localStorage.setItem('felosi-project-brief',JSON.stringify(data))}catch{}const url=URL.createObjectURL(new Blob(['\ufeff'+brief],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='felosi-project-brief.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);document.getElementById('form-status').textContent='خلاصه پروژه آماده شد. هیچ اطلاعاتی ارسال نشده است.'});
 })();
 </script>
 </body>

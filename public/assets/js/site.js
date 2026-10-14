@@ -7,7 +7,7 @@ const services=[{"id":"branding","index":2,"title":"برندسازی و","desc":
 const contact=document.getElementById('contact-dialog'),preview=document.getElementById('preview-dialog'),caseDialog=document.getElementById('case-dialog'),lightbox=document.getElementById('lightbox'),form=document.getElementById('brief-form'),serviceDialog=document.getElementById('service-dialog');
 function showModal(d){if(!d.open)d.showModal();document.body.style.overflow='hidden'}function openDialog(dialog){document.querySelectorAll('dialog[open]').forEach(d=>{if(d!==dialog)d.close()});showModal(dialog)}
 document.querySelectorAll('dialog').forEach(d=>{d.querySelector('[data-close]').addEventListener('click',()=>d.close());d.addEventListener('close',()=>{if(!document.querySelector('dialog[open]'))document.body.style.overflow=''});d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}})});
-function clearContactForm(){form.reset();document.getElementById('contact-form-content').hidden=false;document.getElementById('form-success').hidden=true;document.getElementById('form-status').textContent='';for(const name of ['name','phone','email','service','details']){const field=form.elements[name];field.setCustomValidity('');field.removeAttribute('aria-invalid');const error=document.getElementById('error-'+name);if(error){error.textContent='';error.hidden=true}}}
+function clearContactForm(){form.reset();document.getElementById('contact-form-content').hidden=false;document.getElementById('form-success').hidden=true;document.getElementById('form-status').textContent='';form.elements.service.value='consultation';for(const name of ['name','phone','details']){const field=form.elements[name];field.setCustomValidity('');field.removeAttribute('aria-invalid');const error=document.getElementById('error-'+name);if(error){error.textContent='';error.hidden=true}}}
 function openContact(mode,service){clearContactForm();document.getElementById('contact-title').textContent=mode==='consultation'?'مشاوره رایگان':'شروع پروژه';if(service)form.elements.service.value=service;else if(mode==='consultation')form.elements.service.value='consultation';openDialog(contact);startPrompt()}
 document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>openContact(b.dataset.contact)));
 document.querySelectorAll('[data-service]').forEach(b=>b.addEventListener('click',()=>openContact('project',b.dataset.service)));
@@ -81,6 +81,14 @@ function renderProjectPreview(project){
   openDialog(preview);preview.querySelector('.preview-scroll').scrollTop=0;
 }
 document.querySelectorAll('[data-project-slug]').forEach(button=>button.addEventListener('click',()=>{const project=projectBySlug.get(button.dataset.projectSlug);if(!project)return;if(project.case_study){renderCaseStudy(project);openDialog(caseDialog);caseDialog.querySelector('.case-scroll').scrollTop=0}else renderProjectPreview(project)}));
+const projectTrack=document.getElementById('project-carousel-track');
+if(projectTrack){
+  const slides=[...projectTrack.querySelectorAll('.project-card')],controls=[...document.querySelectorAll('[data-carousel-step]')];
+  const activeIndex=()=>{const middle=projectTrack.getBoundingClientRect().left+projectTrack.clientWidth/2;return slides.reduce((best,slide,index)=>Math.abs(slide.getBoundingClientRect().left+slide.offsetWidth/2-middle)<Math.abs(slides[best].getBoundingClientRect().left+slides[best].offsetWidth/2-middle)?index:best,0)};
+  const updateControls=()=>{const index=activeIndex();controls.forEach(button=>{const step=Number(button.dataset.carouselStep);button.disabled=step<0?index===0:index===slides.length-1})};
+  controls.forEach(button=>button.addEventListener('click',()=>{const target=slides[Math.max(0,Math.min(slides.length-1,activeIndex()+Number(button.dataset.carouselStep)))];target?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest',inline:'center'})}));
+  projectTrack.addEventListener('scroll',()=>requestAnimationFrame(updateControls),{passive:true});window.addEventListener('resize',updateControls);updateControls();
+}
 const requestedCase=new URLSearchParams(window.location.search).get('case');if(requestedCase){const project=projectBySlug.get(requestedCase);if(project?.case_study){renderCaseStudy(project);openDialog(caseDialog)}}
 contact.addEventListener('close',clearContactForm);
 document.getElementById('success-close').addEventListener('click',()=>contact.close());
@@ -155,7 +163,7 @@ function validatePhone(){const value=form.elements.phone.value;const clean=norma
 form.elements.phone.addEventListener('input',validatePhone);
 
 
-const validatedFields=['name','phone','email','service','details'];
+const validatedFields=['name','phone','details'];
 function fieldMessage(field){
   const value=field.value.trim();
   if(field.name==='name'&&!value)return 'نام خود را وارد کنید.';
@@ -163,8 +171,6 @@ function fieldMessage(field){
     if(!value)return 'شمارهٔ تماس را وارد کنید.';
     if(!/^\+?[0-9]{7,15}$/.test(normalizePhone(value)))return 'شمارهٔ تماس معتبر وارد کنید؛ مثلاً ۰۹۱۲۳۴۵۶۷۸۹.';
   }
-  if(field.name==='email'&&value&&field.validity.typeMismatch)return 'ایمیل را به شکل name@example.com وارد کنید.';
-  if(field.name==='service'&&!value)return 'خدمت موردنظر را انتخاب کنید.';
   if(field.name==='details'&&!value)return 'توضیح کوتاهی دربارهٔ پروژه بنویسید.';
   if(field.maxLength>0&&value.length>field.maxLength)return 'متن واردشده بیش از حد طولانی است.';
   return '';

@@ -131,7 +131,7 @@ class FlowseePageTest extends TestCase
         $this->assertFileExists(public_path('assets/ima-case-study/ima-account-flow.webp'));
     }
 
-    public function test_portfolio_cards_keep_the_original_layout_and_open_database_case_studies(): void
+    public function test_portfolio_uses_a_carousel_and_keeps_database_case_studies_openable(): void
     {
         $this->seedCaseStudyData();
         app(\Database\Seeders\ExlootCaseStudySeeder::class)->run();
@@ -141,8 +141,15 @@ class FlowseePageTest extends TestCase
             ->assertSee('class="project-image"', false)
             ->assertSee('data-project-slug="ebrahimi"', false)
             ->assertSee('class="portfolio-view-all"', false)
+            ->assertSee('id="project-carousel-track"', false)
+            ->assertSee('data-carousel-step="1"', false)
             ->assertSee('class="service-grid"', false)
             ->assertSee('class="service-icon"', false)
+            ->assertSee('data-contact="consultation"', false)
+            ->assertSee('name="service" value="consultation"', false)
+            ->assertDontSee('name="email"', false)
+            ->assertDontSee('id="phone-hint"', false)
+            ->assertDontSee('<select name="service"', false)
             ->assertSee('<button class="project-card', false)
             ->assertDontSee('<a class="project-card', false)
             ->assertSee('aria-label="مشاهدهٔ کیس‌استادی اکسلوت"', false)

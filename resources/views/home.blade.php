@@ -14,17 +14,34 @@
 <a class="portfolio-view-all" href="#portfolio-grid">مشاهده همه <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
 </div>
 <div class="portfolio-grid" id="portfolio-grid">
-@foreach($projects as $project)
-<button class="project-card {{ $project->is_featured ? 'featured-project' : '' }}" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? 'مشاهدهٔ کیس‌استادی ' . $project->name : $project->name }}">
+@php($featuredProject = $projects->firstWhere('is_featured', true))
+@if($featuredProject)
+@php($project = $featuredProject)
+<button class="project-card featured-project" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? 'مشاهدهٔ کیس‌استادی ' . $project->name : $project->name }}">
 <span class="project-visual">
 <img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async">
 </span>
 <span class="project-copy">
 <span class="project-name">{{ $project->name }}</span>
-@if($project->is_featured)<span class="project-description">{{ $project->description ?: ($project->caseStudy?->lead ?? $project->service?->description ?? '') }}</span>@endif
+<span class="project-description">{{ $project->description ?: ($project->caseStudy?->lead ?? $project->service?->description ?? '') }}</span>
 </span>
 </button>
+@endif
+@if($projects->contains(fn($item) => !$item->is_featured))
+<div class="project-carousel" role="region" aria-label="نمونه‌کارهای بیشتر">
+<div class="project-carousel-controls"><span>نمونه‌کارهای بیشتر</span><div><button type="button" data-carousel-step="-1" aria-label="نمونه‌کار قبلی">‹</button><button type="button" data-carousel-step="1" aria-label="نمونه‌کار بعدی">›</button></div></div>
+<div class="project-carousel-track" id="project-carousel-track" tabindex="0" aria-label="برای دیدن نمونه‌کارهای بیشتر پیمایش کنید">
+@foreach($projects as $project)
+@if(!$project->is_featured)
+<button class="project-card" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? 'مشاهدهٔ کیس‌استادی ' . $project->name : $project->name }}">
+<span class="project-visual"><img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async"></span>
+<span class="project-copy"><span class="project-name">{{ $project->name }}</span></span>
+</button>
+@endif
 @endforeach
+</div>
+</div>
+@endif
 </div>
 </section>
 
@@ -60,7 +77,7 @@
 <nav class="footer-nav" aria-label="پیوندهای پایین صفحه" data-od-id="footer-navigation">
 <a href="#portfolio">نمونه‌کارها</a>
 <a href="#services">خدمات</a>
-<a href="#about">درباره ما</a>
+<a href="#contact-dialog" data-contact="consultation">دریافت مشاوره رایگان</a>
 </nav>
 <div class="socials" aria-label="راه‌های ارتباطی">
 <a class="social social-instagram" href="https://www.instagram.com/flowsee.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام فلوسی"><img src="/assets/footer-imgInstagram1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
@@ -94,23 +111,12 @@
 <span class="field-error" id="error-name" hidden aria-live="polite"></span>
 </label>
 <label>شمارهٔ تماس <span class="required-marker" aria-hidden="true">*</span><span class="sr-only">(الزامی)</span>
-<input type="tel" name="phone" inputmode="tel" dir="ltr" required minlength="7" maxlength="24" aria-describedby="phone-hint error-phone" data-od-id="brief-phone" id="brief-phone">
-<span id="phone-hint" class="field-hint">شماره‌ای که بتوانیم با شما تماس بگیریم.</span>
+<input type="tel" name="phone" inputmode="tel" dir="ltr" required minlength="7" maxlength="24" aria-describedby="error-phone" data-od-id="brief-phone" id="brief-phone">
 <span class="field-error" id="error-phone" hidden aria-live="polite"></span>
 </label>
-<label>ایمیل (اختیاری)
-<input type="email" name="email" dir="ltr" data-od-id="brief-email" id="brief-email" aria-describedby="error-email">
-<span class="field-error" id="error-email" hidden aria-live="polite"></span>
-</label>
-<label>خدمت موردنظر
-<select name="service" data-od-id="brief-service" aria-label="انتخاب خدمت" id="brief-service" aria-describedby="error-service">
-@foreach(App\Models\Service::where('is_active', true)->orderBy('sort_order')->get() as $service)
-<option value="{{ $service->slug }}">{{ $service->title }} {{ $service->description }}</option>
-@endforeach
-</select>
-</label>
-<label class="field-details">درباره پروژه
-<textarea name="details" rows="4" maxlength="5000" placeholder="پروژهٔ خود را توضیح دهید..." data-od-id="brief-details" aria-describedby="error-details"></textarea>
+<input type="hidden" name="service" value="consultation" id="brief-service">
+<label class="field-details">درباره پروژه <span class="required-marker" aria-hidden="true">*</span><span class="sr-only">(الزامی)</span>
+<textarea name="details" rows="4" maxlength="5000" required placeholder="پروژهٔ خود را توضیح دهید..." data-od-id="brief-details" aria-describedby="error-details"></textarea>
 <span class="field-error" id="error-details" hidden aria-live="polite"></span>
 </label>
 <button class="button primary" type="submit" data-od-id="submit-project">ارسال درخواست</button>
