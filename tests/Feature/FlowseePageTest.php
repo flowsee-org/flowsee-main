@@ -146,7 +146,8 @@ class FlowseePageTest extends TestCase
             ->assertSee('<svg viewBox="0 0 24 24" aria-hidden="true"><path', false)
             ->assertSee('class="service-grid"', false)
             ->assertSee('class="service-icon"', false)
-            ->assertSee('id="service-dialog-icon"', false)
+            ->assertDontSee('class="service-dialog-kicker"', false)
+            ->assertDontSee('id="service-dialog-icon"', false)
             ->assertDontSee('زیرخدمات')
             ->assertDontSee('href="#contact-dialog" data-contact="consultation"', false)
             ->assertSee('name="service" value="consultation"', false)
@@ -161,7 +162,6 @@ class FlowseePageTest extends TestCase
             ->assertSee('window.projectsData', false)
             ->getContent();
 
-        $this->assertLessThan(strpos($html, 'class="service-dialog-kicker"'), strpos($html, 'id="service-dialog-title"'));
         $this->assertStringContainsString('function renderCaseStudy(project)', file_get_contents(public_path('assets/js/site.js')));
         $this->assertStringContainsString('aria-label="مشاهدهٔ کیس‌استادی EBRAHIMI"', $html);
     }
