@@ -280,10 +280,8 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
 <div class="footer-social-links" aria-label="پروفایل‌ها و موقعیت استودیو فلوسی">
 <a href="https://www.instagram.com/flowsee.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام فلوسی">◎</a>
 <a href="https://x.com/flowseeir" target="_blank" rel="noopener noreferrer" aria-label="ایکس فلوسی">𝕏</a>
-<a href="https://maps.app.goo.gl/kN2kZ9AkS6nGbnoC7" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در گوگل‌مپ">G</a>
-<a href="https://balad.ir/p/46T1JAasDQclgV" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در بلد">بلد</a>
-<a href="https://bilbooard.ir/qazvin/b/flossy-studio" target="_blank" rel="noopener noreferrer" aria-label="پروفایل استودیو فلوسی در بیلبورد">B</a>
-<a href="https://rubika.ir/Flowseeadmin" target="_blank" rel="noopener noreferrer" aria-label="روبیکای فلوسی">ر</a>
+<a href="https://maps.app.goo.gl/kN2kZ9AkS6nGbnoC7" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در گوگل‌مپ"><img src="/assets/google-maps-logo.png" width="28" height="28" alt="" loading="lazy"></a>
+<a href="https://balad.ir/p/46T1JAasDQclgV" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در بلد"><img src="/assets/balad-logo.png" width="28" height="28" alt="" loading="lazy"></a>
 </div>
 </div>
 </footer>

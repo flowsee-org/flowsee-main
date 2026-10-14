@@ -34,7 +34,7 @@
 </div>
 <div class="service-grid">
 @foreach(App\Models\Service::where('is_active', true)->orderBy('sort_order')->get() as $service)
-<article class="service-card {{ $service->is_highlighted ? 'highlighted' : '' }}" data-od-id="service-{{ $service->slug }}">
+<article class="service-card {{ $service->is_highlighted ? 'highlighted' : '' }}" data-service-card data-service-slug="{{ $service->slug }}" data-service-title="{{ $service->title }}" data-service-description="{{ $service->description }}" data-od-id="service-{{ $service->slug }}" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="service-dialog" aria-label="جزئیات {{ $service->title }}">
 <div class="service-top"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="{{ $serviceIconPaths[$service->slug] ?? $serviceIconPaths['academy'] }}"/></svg></span><h3 class="service-title">{{ $service->title }}</h3></div>
 <p class="service-description">{{ $service->description }}</p>
 </article>
@@ -45,7 +45,7 @@
 <section class="about" id="about" aria-labelledby="about-title" data-od-id="about">
 <div class="about-panel">
 <img class="about-mark" src="/assets/about-flowsee-mark.svg" width="500" height="500" alt="" aria-hidden="true" loading="lazy" decoding="async">
-<div class="about-lead"><span class="eyebrow">دربارهٔ استودیو</span><h2 id="about-title" data-od-id="about-title">فلوسی (Flowsee)؛ همراه برند شما</h2><p>فلوسی (Flowsee) یک استودیوی طراحی برند و تجربهٔ دیجیتال است. از اولین ایده تا آخرین جزئیات، هویت بصری، تجربهٔ دیجیتال و محتوا را به مسیری منسجم تبدیل می‌کنیم؛ مسیری که به رشد واقعی کسب‌وکار کمک می‌کند.</p></div>
+<div class="about-lead"><span class="eyebrow">دربارهٔ استودیو</span><h2 id="about-title" data-od-id="about-title">فلوسی؛ همراه برند شما</h2><p>فلوسی یک استودیوی طراحی برند و تجربهٔ دیجیتال است. از اولین ایده تا آخرین جزئیات، هویت بصری، تجربهٔ دیجیتال و محتوا را به مسیری منسجم تبدیل می‌کنیم؛ مسیری که به رشد واقعی کسب‌وکار کمک می‌کند.</p></div>
 </div>
 </section>
 
@@ -67,14 +67,19 @@
 <a class="social social-telegram" href="https://t.me/flowseeadmin" target="_blank" rel="noopener noreferrer" aria-label="تلگرام فلوسی"><img src="/assets/footer-imgTelegram1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
 <a class="social social-whatsapp" href="https://wa.me/989109027628" target="_blank" rel="noopener noreferrer" aria-label="واتساپ فلوسی"><img src="/assets/footer-imgWhatsapp1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
 <a class="social social-x" href="https://x.com/flowseeir" target="_blank" rel="noopener noreferrer" aria-label="ایکس فلوسی"><span class="footer-social-label" aria-hidden="true">𝕏</span></a>
-<a class="social social-map" href="https://maps.app.goo.gl/kN2kZ9AkS6nGbnoC7" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در گوگل‌مپ"><span class="footer-social-label" aria-hidden="true">G</span></a>
-<a class="social social-balad" href="https://balad.ir/p/46T1JAasDQclgV" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در بلد"><span class="footer-social-label" aria-hidden="true">بلد</span></a>
-<a class="social social-bilbooard" href="https://bilbooard.ir/qazvin/b/flossy-studio" target="_blank" rel="noopener noreferrer" aria-label="پروفایل استودیو فلوسی در بیلبورد"><span class="footer-social-label" aria-hidden="true">B</span></a>
-<a class="social social-rubika" href="https://rubika.ir/Flowseeadmin" target="_blank" rel="noopener noreferrer" aria-label="روبیکای فلوسی"><span class="footer-social-label" aria-hidden="true">ر</span></a>
+<a class="social social-map" href="https://maps.app.goo.gl/kN2kZ9AkS6nGbnoC7" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در گوگل‌مپ"><img src="/assets/google-maps-logo.png" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
+<a class="social social-balad" href="https://balad.ir/p/46T1JAasDQclgV" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در بلد"><img src="/assets/balad-logo.png" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
 <a class="social social-gmail" href="mailto:flowseeadmin@gmail.com" aria-label="ایمیل فلوسی"><img src="/assets/footer-imgGmail1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
 </div>
 </div>
 </footer>
+
+<dialog id="service-dialog" class="service-dialog" aria-labelledby="service-dialog-title">
+<div class="dialog-head"><h2 id="service-dialog-title"></h2><button type="button" class="close-dialog" data-close aria-label="بستن"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+<p id="service-dialog-description" class="service-dialog-description"></p>
+<h3>زیرخدمات</h3><ul id="service-dialog-items" class="service-dialog-items"></ul>
+<button class="button primary" type="button" data-service-contact>گفت‌وگو دربارهٔ این خدمت</button>
+</dialog>
 
 <dialog id="contact-dialog" aria-labelledby="contact-title" data-od-id="project-dialog">
 <div class="dialog-head">
