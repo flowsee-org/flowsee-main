@@ -137,6 +137,9 @@ h1,h2,h3,p{margin:0}
 .footer-nav{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
 .footer-nav a{display:flex;align-items:center;min-height:44px;font-size:13px;color:var(--blue-pale)}
 .footer-nav a:hover{color:var(--bg);text-decoration:underline;text-underline-offset:5px}
+.footer-social-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;direction:ltr}
+.footer-social-links a{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--border);border-radius:50%;color:var(--fg);font-weight:700;text-decoration:none}
+.footer-social-links a:hover{border-color:var(--blue-light);color:var(--blue-light)}
 .site-footer :focus-visible{outline-color:var(--blue-light)}
 dialog{width:min(660px,calc(100% - 32px));max-height:calc(100dvh - 40px);border:1px solid var(--border);border-radius:20px;padding:32px;background:var(--bg);color:var(--fg);box-shadow:0 24px 80px oklch(0% 0 0/.25)}
 dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
@@ -161,6 +164,8 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
 @media(max-width:479px){.consult-text{display:none}.header-actions .consult{padding:5px 8px;min-height:44px}}
 @media(max-width:389px){.container{width:calc(100% - 32px)}.brand>span{font-size:17px}.header-actions .button>span{display:none}.header-actions .consult{padding:5px 7px}.header-actions .consult .ico-phone{display:grid}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+.footer-social-links{max-width:320px}
+@media(max-width:649px){.footer-bottom{align-items:center}.footer-social-links{max-width:280px}}
 </style>
 </head>
 <body data-project="{{ $project->slug }}">
@@ -272,6 +277,14 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
 <div class="container footer-bottom">
 <a class="footer-brand" href="/" aria-label="بازگشت به صفحهٔ اصلی استودیو فلوسی" data-od-id="footer-brand"><img src="/assets/footer-imgUnion.svg" width="92" height="93.8623" alt="فلوسی"><span>استودیو فلوسی</span></a>
 <nav class="footer-nav" aria-label="پیوندهای پایین صفحه" data-od-id="footer-navigation"><a href="/#portfolio">نمونه‌کارها</a><a href="/#services">خدمات</a><a href="/#about">درباره ما</a><a href="#top" data-od-id="footer-top">بازگشت به بالا ↑</a></nav>
+<div class="footer-social-links" aria-label="پروفایل‌ها و موقعیت استودیو فلوسی">
+<a href="https://www.instagram.com/flowsee.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام فلوسی">◎</a>
+<a href="https://x.com/flowseeir" target="_blank" rel="noopener noreferrer" aria-label="ایکس فلوسی">𝕏</a>
+<a href="https://maps.app.goo.gl/kN2kZ9AkS6nGbnoC7" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در گوگل‌مپ">⌖</a>
+<a href="https://balad.ir/p/46T1JAasDQclgV" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در بلد">ب</a>
+<a href="https://bilbooard.ir/qazvin/b/flossy-studio" target="_blank" rel="noopener noreferrer" aria-label="پروفایل استودیو فلوسی در بیلبورد">B</a>
+<a href="https://rubika.ir/Flowseeadmin" target="_blank" rel="noopener noreferrer" aria-label="روبیکای فلوسی">ر</a>
+</div>
 </div>
 </footer>
 <dialog id="contact-dialog" aria-labelledby="contact-title" data-od-id="project-dialog">

@@ -123,7 +123,7 @@ button, a, input, select, textarea { touch-action: manipulation; }
   .footer-brand img, .site-footer .footer-brand img { display:block; width:36px; height:auto; }
   .footer-nav { width:100%; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); justify-items:stretch; }
   .footer-nav a { justify-content:center; }
-  .socials { width:100%; display:flex; flex-wrap:nowrap; align-items:center; justify-content:center; gap:16px; margin-inline:auto; }
+  .socials { width:100%; max-width:340px; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:12px; margin-inline:auto; }
   .socials .social { flex:0 0 58px; }
 }
 @media (min-width:650px) { .about-lead p { text-align:justify; text-justify:inter-word; } }

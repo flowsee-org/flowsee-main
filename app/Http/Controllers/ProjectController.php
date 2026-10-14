@@ -95,6 +95,8 @@ class ProjectController extends Controller
                         'https://wa.me/989109027628',
                         'https://x.com/flowseeir',
                         'https://rubika.ir/Flowseeadmin',
+                        'https://balad.ir/p/46T1JAasDQclgV',
+                        'https://bilbooard.ir/qazvin/b/flossy-studio',
                     ],
                 ],
                 [
@@ -124,6 +126,8 @@ class ProjectController extends Controller
                         'https://wa.me/989109027628',
                         'https://x.com/flowseeir',
                         'https://rubika.ir/Flowseeadmin',
+                        'https://balad.ir/p/46T1JAasDQclgV',
+                        'https://bilbooard.ir/qazvin/b/flossy-studio',
                     ],
                 ],
                 [
@@ -197,6 +201,8 @@ class ProjectController extends Controller
                         'https://wa.me/989109027628',
                         'https://x.com/flowseeir',
                         'https://rubika.ir/Flowseeadmin',
+                        'https://balad.ir/p/46T1JAasDQclgV',
+                        'https://bilbooard.ir/qazvin/b/flossy-studio',
                     ],
                 ],
                 [
@@ -222,6 +228,8 @@ class ProjectController extends Controller
                         'https://wa.me/989109027628',
                         'https://x.com/flowseeir',
                         'https://rubika.ir/Flowseeadmin',
+                        'https://balad.ir/p/46T1JAasDQclgV',
+                        'https://bilbooard.ir/qazvin/b/flossy-studio',
                     ],
                 ],
                 [

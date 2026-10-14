@@ -594,6 +594,10 @@ html{scroll-padding-top:64px}
 .site-footer .social{width:48px;height:48px;display:grid;place-items:center;border:1px solid oklch(88% 0 0/.2);border-radius:50%;transition:background-color .2s,border-color .2s,transform .2s}
 .site-footer .social:hover{transform:translateY(-2px);background:oklch(88% 0 0/.12);border-color:oklch(88% 0 0/.55)}
 .site-footer .social img{display:block;width:22px;height:22px;object-fit:contain}
+.site-footer .footer-social-label{display:grid;place-items:center;width:100%;height:100%;font:700 18px/1 IRANSansX, sans-serif;color:var(--fg)}
+.site-footer .social-map .footer-social-label{font-size:28px}
+.site-footer .social-balad .footer-social-label{color:#ff7442}
+.site-footer .social-bilbooard .footer-social-label{font-family:var(--display);font-size:21px;color:#a9c94c}
 .about .about-panel>.about-mark{opacity:.18!important}
 @media(max-width:649px){.service-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.service-grid .service-card{min-height:132px;padding:14px;gap:12px}.service-grid .service-icon{width:36px;height:36px;border-radius:10px}.service-grid .service-icon svg{width:19px;height:19px}.service-grid .service-category{font-size:12px}.service-grid .service-title{font-size:clamp(14px,3.8vw,17px);line-height:1.65}.site-footer .footer-inner{grid-template-columns:1fr;justify-items:center;gap:14px;padding-block:26px}.site-footer .footer-brand,.site-footer .footer-nav,.site-footer .socials{justify-self:center}.site-footer .footer-nav{gap:4px 14px}.site-footer .socials{gap:10px}.site-footer .social{width:40px;height:40px}.site-footer .social img{width:21px;height:21px}.about .about-panel>.about-mark{opacity:.12!important}}
 @media(max-width:359px){.service-grid{gap:8px}.service-grid .service-card{padding:10px}.service-grid .service-title{font-size:13px}}
@@ -653,3 +657,5 @@ html{scroll-padding-top:64px}
 :root[data-theme="light"] .theme-icon-sun,:root[data-theme="dark"] .theme-icon-moon{display:none}
 html,body{transition:background-color .22s ease,color .22s ease}
 @media(max-width:649px){.theme-toggle{inset-inline-end:8px;width:34px;height:34px}.consultation-call{padding-inline:54px}}
+.site-footer .socials{flex-wrap:wrap;max-width:490px;justify-self:end}
+@media(max-width:649px){.site-footer .socials{max-width:320px;justify-self:center}}
