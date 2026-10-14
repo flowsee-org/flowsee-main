@@ -363,6 +363,10 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .service-dialog[open] { animation:service-dialog-enter 240ms cubic-bezier(.2,.75,.25,1) both; }
 @media(prefers-reduced-motion:reduce) { .service-dialog[open] { animation:none; } }
 
+/* Service detail rows use the full dialog width after their number badges are removed. */
+.service-dialog .service-dialog-items li { display:block;width:100%;grid-template-columns:minmax(0,1fr); }
+.service-dialog .service-detail-label { display:block;width:100%;min-width:0;text-align:right;white-space:normal;overflow-wrap:anywhere; }
+
 /* Center the footer into a simple brand, navigation, and contact stack. */
 .site-footer .footer-inner { display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:22px;padding-block:42px; }
 .site-footer .footer-brand { order:0;align-self:center;width:48px;height:48px;margin:0; }
