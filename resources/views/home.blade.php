@@ -45,7 +45,7 @@
 <section class="about" id="about" aria-labelledby="about-title" data-od-id="about">
 <div class="about-panel">
 <img class="about-mark" src="/assets/about-flowsee-mark.svg" width="500" height="500" alt="" aria-hidden="true" loading="lazy" decoding="async">
-<div class="about-lead"><span class="eyebrow">دربارهٔ استودیو</span><h2 id="about-title" data-od-id="about-title">فلوسی؛ همراه برند شما</h2><p>از اولین ایده تا آخرین جزئیات، کنار برند شما هستیم. هویت بصری، تجربهٔ دیجیتال و محتوا را به یک مسیر منسجم تبدیل می‌کنیم؛ مسیری که هم به‌یادماندنی است و هم به رشد واقعی کسب‌وکار کمک می‌کند.</p></div>
+<div class="about-lead"><span class="eyebrow">دربارهٔ استودیو</span><h2 id="about-title" data-od-id="about-title">فلوسی (Flowsee)؛ همراه برند شما</h2><p>فلوسی (Flowsee) یک استودیوی طراحی برند و تجربهٔ دیجیتال است. از اولین ایده تا آخرین جزئیات، هویت بصری، تجربهٔ دیجیتال و محتوا را به مسیری منسجم تبدیل می‌کنیم؛ مسیری که به رشد واقعی کسب‌وکار کمک می‌کند.</p></div>
 </div>
 </section>
 

@@ -1,6 +1,6 @@
 # استودیو فلوسی
 
-> استودیو فلوسی در زمینهٔ طراحی هویت بصری، تجربهٔ دیجیتال، بازاریابی و توسعهٔ محصول فعالیت می‌کند.
+> Flowsee (استودیو فلوسی) در زمینهٔ طراحی هویت بصری، تجربهٔ دیجیتال، بازاریابی و توسعهٔ محصول فعالیت می‌کند.
 
 - وب‌سایت: https://flowsee.ir/
 - نمونه‌کارها: https://flowsee.ir/#portfolio
@@ -10,6 +10,12 @@
 - اطلاعات خزنده‌ها: https://flowsee.ir/robots.txt
 - ایمیل: mailto:flowseeadmin@gmail.com
 - تلفن: +98 910 902 7628
+- اینستاگرام رسمی: https://www.instagram.com/flowsee.ir/
+- تلگرام رسمی: https://t.me/flowseeadmin
+- واتساپ رسمی: https://wa.me/989109027628
+- ایکس رسمی: https://x.com/flowseeir
+- روبیکا: https://rubika.ir/Flowseeadmin
+- موقعیت مکانی: https://maps.app.goo.gl/kN2kZ9AkS6nGbnoC7
 
 ## کیس‌استادی‌های منتشرشده
 

@@ -9,14 +9,14 @@
     })(window, document, "clarity", "script", "ywjxxggyxf");
 </script>
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="description" content="استودیو فلوسی؛ طراحی برای رشد، استراتژی برای ماندگاری. خدمات طراحی هویت بصری، دیجیتال مارکتینگ و توسعه نرم‌افزار.">
+<meta name="description" content="Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.">
 <link rel="canonical" href="https://flowsee.ir/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fa_IR">
-<meta property="og:site_name" content="استودیو فلوسی">
+<meta property="og:site_name" content="استودیو فلوسی | Flowsee">
 <meta property="og:url" content="https://flowsee.ir/">
-<meta property="og:title" content="استودیو فلوسی — خلاقیت در دنیای دیجیتال">
-<meta property="og:description" content="استودیو فلوسی؛ طراحی برای رشد، استراتژی برای ماندگاری. خدمات طراحی هویت بصری، دیجیتال مارکتینگ و توسعه نرم‌افزار.">
+<meta property="og:title" content="استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال">
+<meta property="og:description" content="Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.">
 <meta property="og:image" content="https://flowsee.ir/assets/flowsee-social.jpg">
 <meta property="og:image:secure_url" content="https://flowsee.ir/assets/flowsee-social.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -24,10 +24,10 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="استودیو فلوسی؛ طراحی برای رشد و ماندگاری">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="استودیو فلوسی — خلاقیت در دنیای دیجیتال">
-<meta name="twitter:description" content="استودیو فلوسی؛ طراحی برای رشد، استراتژی برای ماندگاری. خدمات طراحی هویت بصری، دیجیتال مارکتینگ و توسعه نرم‌افزار.">
+<meta name="twitter:title" content="استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال">
+<meta name="twitter:description" content="Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.">
 <meta name="twitter:image" content="https://flowsee.ir/assets/flowsee-social.jpg">
-<meta name="theme-color" content="#FE5400"><title>استودیو فلوسی — خلاقیت در دنیای دیجیتال</title>
+<meta name="theme-color" content="#FE5400"><title>استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال</title>
 <script>
 try {
   const savedTheme = localStorage.getItem('flowsee-theme');
