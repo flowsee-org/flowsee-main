@@ -87,4 +87,3 @@ class BlogTest extends TestCase
     }
 }
 
-//lol
