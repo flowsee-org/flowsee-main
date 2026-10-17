@@ -37,6 +37,8 @@ class AdminPanelProvider extends PanelProvider
             ->maxContentWidth('full')
             ->resources([
                 LeadResource::class,
+                \App\Filament\Resources\Projects\ProjectResource::class,
+                \App\Filament\Resources\CaseStudies\CaseStudyResource::class,
                 ServiceResource::class,
                 SiteSettingResource::class,
                 SocialLinkResource::class,

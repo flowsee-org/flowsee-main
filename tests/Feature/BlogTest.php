@@ -86,3 +86,5 @@ class BlogTest extends TestCase
         $this->assertDatabaseMissing('blog_posts', ['id' => $postId]);
     }
 }
+
+//lol

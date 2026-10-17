@@ -2,8 +2,9 @@
 
 namespace App\Filament\Resources\Leads;
 
-use App\Filament\Resources\Leads\Pages\ListLeads;
+use App\Filament\Resources\Leads\Pages;
 use App\Models\Lead;
+use Filament\Actions;
 use Filament\Schemas;
 use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
@@ -23,6 +24,10 @@ class LeadResource extends Resource
     protected static ?string $modelLabel = 'درخواست';
 
     protected static ?string $pluralModelLabel = 'درخواست‌ها';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'مدیریت مشتریان';
+
+    protected static ?int $navigationSort = 1;
 
     public static function form(Schema $schema): Schema
     {
@@ -107,6 +112,24 @@ class LeadResource extends Resource
                         ->when($data['from'] ?? null, fn (Builder $query, string $date): Builder => $query->whereDate('created_at', '>=', $date))
                         ->when($data['until'] ?? null, fn (Builder $query, string $date): Builder => $query->whereDate('created_at', '<=', $date))),
             ])
+            ->actions([
+                Actions\ViewAction::make(),
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
+            ])
+            ->bulkActions([
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
+                    Actions\BulkAction::make('mark_contacted')
+                        ->label('علامت‌گذاری به‌عنوان تماس‌گرفته‌شده')
+                        ->icon('heroicon-o-phone')
+                        ->action(fn ($records) => $records->each->update(['status' => 'contacted'])),
+                    Actions\BulkAction::make('mark_archived')
+                        ->label('بایگانی')
+                        ->icon('heroicon-o-archive-box')
+                        ->action(fn ($records) => $records->each->update(['status' => 'archived'])),
+                ]),
+            ])
             ->defaultSort('created_at', 'desc')
             ->emptyStateHeading('هنوز درخواستی ثبت نشده است');
     }
@@ -114,7 +137,10 @@ class LeadResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListLeads::route('/'),
+            'index' => Pages\ListLeads::route('/'),
+            'create' => Pages\CreateLead::route('/create'),
+            'view' => Pages\ViewLead::route('/{record}'),
+            'edit' => Pages\EditLead::route('/{record}/edit'),
         ];
     }
 }

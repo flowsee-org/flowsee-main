@@ -21,10 +21,10 @@ class StudioSiteContentTest extends TestCase
             ->assertHeader('Access-Control-Allow-Origin', 'https://studio.flowsee.ir');
     }
 
-    public function test_project_and_case_study_management_are_not_registered_in_the_laravel_admin_panel(): void
+    public function test_project_and_case_study_management_require_authentication_in_the_laravel_admin_panel(): void
     {
-        $this->get('/admin/projects')->assertNotFound();
-        $this->get('/admin/case-studies')->assertNotFound();
+        $this->get('/admin/projects')->assertRedirect('/admin/login');
+        $this->get('/admin/case-studies')->assertRedirect('/admin/login');
     }
 
     public function test_original_portfolio_and_ebrahimi_case_study_are_restored_once(): void
