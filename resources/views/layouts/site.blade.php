@@ -9,25 +9,25 @@
     })(window, document, "clarity", "script", "ywjxxggyxf");
 </script>
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="description" content="Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.">
-<link rel="canonical" href="https://flowsee.ir/">
+<meta name="description" content="{{ $__env->yieldContent('meta_description', $pageDescription ?? 'Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.') }}">
+<link rel="canonical" href="{{ $__env->yieldContent('canonical_url', $pageUrl ?? 'https://flowsee.ir/') }}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fa_IR">
 <meta property="og:site_name" content="استودیو فلوسی | Flowsee">
-<meta property="og:url" content="https://flowsee.ir/">
-<meta property="og:title" content="استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال">
-<meta property="og:description" content="Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.">
-<meta property="og:image" content="https://flowsee.ir/assets/flowsee-social.jpg">
-<meta property="og:image:secure_url" content="https://flowsee.ir/assets/flowsee-social.jpg">
+<meta property="og:url" content="{{ $__env->yieldContent('canonical_url', $pageUrl ?? 'https://flowsee.ir/') }}">
+<meta property="og:title" content="{{ $__env->yieldContent('meta_title', $pageTitle ?? 'استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال') }}">
+<meta property="og:description" content="{{ $__env->yieldContent('meta_description', $pageDescription ?? 'Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.') }}">
+<meta property="og:image" content="{{ $__env->yieldContent('meta_image', $imageUrl ?? 'https://flowsee.ir/assets/flowsee-social.jpg') }}">
+<meta property="og:image:secure_url" content="{{ $__env->yieldContent('meta_image', $imageUrl ?? 'https://flowsee.ir/assets/flowsee-social.jpg') }}">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="استودیو فلوسی؛ طراحی برای رشد و ماندگاری">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال">
-<meta name="twitter:description" content="Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.">
-<meta name="twitter:image" content="https://flowsee.ir/assets/flowsee-social.jpg">
-<meta name="theme-color" content="#FE5400"><title>استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال</title>
+<meta name="twitter:title" content="{{ $__env->yieldContent('meta_title', $pageTitle ?? 'استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال') }}">
+<meta name="twitter:description" content="{{ $__env->yieldContent('meta_description', $pageDescription ?? 'Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.') }}">
+<meta name="twitter:image" content="{{ $__env->yieldContent('meta_image', $imageUrl ?? 'https://flowsee.ir/assets/flowsee-social.jpg') }}">
+<meta name="theme-color" content="#FE5400"><title>{{ $__env->yieldContent('meta_title', $pageTitle ?? 'استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال') }}</title>
 <script>
 try {
   const savedTheme = localStorage.getItem('flowsee-theme');
@@ -47,6 +47,7 @@ try {
 <link rel="preload" href="{{ asset('assets/css/site.css') }}?v={{ filemtime(public_path('assets/css/site.css')) }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" href="{{ asset('assets/css/mobile.css') }}?v={{ filemtime(public_path('assets/css/mobile.css')) }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="{{ asset('assets/css/site.css') }}"><link rel="stylesheet" href="{{ asset('assets/css/mobile.css') }}"></noscript>
+@stack('styles')
 <script type="application/ld+json">@json($structuredData)</script>
 </head>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\BlogPost;
 use App\Support\WebsiteMediaUrl;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,16 @@ class ProjectController extends Controller
             ->where('is_active', true)
             ->orderByDesc('is_featured')
             ->orderBy('sort_order')
+            ->get();
+
+        $blogPosts = BlogPost::query()
+            ->with('category')
+            ->where('is_published', true)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->orderByDesc('is_featured')
+            ->orderByDesc('published_at')
+            ->limit(3)
             ->get();
 
         $projectsData = $projects->map(function ($p) {
@@ -148,7 +159,7 @@ class ProjectController extends Controller
             ],
         ];
 
-        return view('home', compact('projects', 'projectsData', 'serviceIconPaths', 'structuredData'));
+        return view('home', compact('projects', 'projectsData', 'blogPosts', 'serviceIconPaths', 'structuredData'));
     }
 
     /**

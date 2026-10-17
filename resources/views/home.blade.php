@@ -1,5 +1,6 @@
 @extends('layouts.site')
 @section('content')
+@push('styles')<link rel="stylesheet" href="{{ asset('assets/css/blog.css') }}?v={{ filemtime(public_path('assets/css/blog.css')) }}">@endpush
 
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false"><defs><symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></symbol><symbol id="i-arrow-ul" viewBox="0 0 24 24"><line x1="17" y1="17" x2="7" y2="7"></line><polyline points="7 17 7 7 17 7"></polyline></symbol><symbol id="i-arrow-down" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></symbol><symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></symbol><symbol id="i-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></symbol></defs></svg>
 <a class="skip-link" href="#main" data-od-id="skip-navigation">رفتن به محتوای اصلی</a>
@@ -59,6 +60,11 @@
 </div>
 </section>
 
+<section class="home-blog" id="blog" aria-labelledby="home-blog-title">
+<div class="section-heading"><div><span class="eyebrow">مجلهٔ فلوسی</span><h2 id="home-blog-title">ایده‌هایی برای رشد بهتر.</h2></div><a class="portfolio-view-all" href="{{ route('blog.index') }}">همهٔ مقاله‌ها <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+@if($blogPosts->isNotEmpty())<div class="blog-grid home-blog-grid">@foreach($blogPosts as $index => $post)@include('blog._card', ['post' => $post, 'featured' => $index === 0])@endforeach</div>@else<div class="home-blog-empty"><span>دانش، تجربه و طراحی</span><p>مقاله‌های تازهٔ فلوسی به‌زودی در این بخش منتشر می‌شوند.</p><a href="{{ route('blog.index') }}">ورود به بلاگ ↗</a></div>@endif
+</section>
+
 <section class="about" id="about" aria-labelledby="about-title" data-od-id="about">
 <div class="about-panel">
 <img class="about-mark" src="/assets/about-flowsee-mark.svg" width="500" height="500" alt="" aria-hidden="true" loading="lazy" decoding="async">
@@ -77,6 +83,7 @@
 <nav class="footer-nav" aria-label="پیوندهای پایین صفحه" data-od-id="footer-navigation">
 <a href="#portfolio">نمونه‌کارها</a>
 <a href="#services">خدمات</a>
+<a href="{{ route('blog.index') }}">بلاگ</a>
 </nav>
 <div class="socials" aria-label="راه‌های ارتباطی">
 <a class="social social-instagram" href="https://www.instagram.com/flowsee.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام فلوسی"><img src="/assets/footer-imgInstagram1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>

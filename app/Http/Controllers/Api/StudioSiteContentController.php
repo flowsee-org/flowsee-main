@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\CaseStudy;
 use App\Models\CaseStudySection;
+use App\Models\BlogCategory;
+use App\Models\BlogPost;
 use App\Models\ColorPalette;
 use App\Models\GalleryImage;
 use App\Models\Project;
 use App\Models\Service;
+use App\Support\RichTextContent;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -38,6 +41,59 @@ class StudioSiteContentController extends Controller
                 ->get(),
             'services' => Service::query()->where('is_active', true)->orderBy('sort_order')->get(['id', 'title']),
         ])->header('Cache-Control', 'private, no-store');
+    }
+
+    public function blogIndex(Request $request): JsonResponse
+    {
+        if ($denied = $this->authorizeStudioAdmin($request)) {
+            return $denied;
+        }
+
+        return response()->json([
+            'categories' => BlogCategory::query()->orderBy('sort_order')->get(),
+            'posts' => BlogPost::query()->with('category')->orderByDesc('updated_at')->get(),
+        ])->header('Cache-Control', 'private, no-store');
+    }
+
+    public function storeBlogPost(Request $request): JsonResponse
+    {
+        if ($denied = $this->authorizeStudioAdmin($request)) {
+            return $denied;
+        }
+
+        $data = $request->validate($this->blogPostRules());
+        $data['content'] = RichTextContent::sanitize($data['content']);
+        $data['published_at'] = $data['published_at'] ?? ($data['is_published'] ? now() : null);
+        $post = BlogPost::create($data);
+
+        return response()->json(['post' => $post->load('category')], 201);
+    }
+
+    public function updateBlogPost(Request $request, BlogPost $post): JsonResponse
+    {
+        if ($denied = $this->authorizeStudioAdmin($request)) {
+            return $denied;
+        }
+
+        $data = $request->validate($this->blogPostRules($post));
+        $data['content'] = RichTextContent::sanitize($data['content']);
+        if ($data['is_published'] && empty($data['published_at'])) {
+            $data['published_at'] = $post->published_at ?? now();
+        }
+        $post->update($data);
+
+        return response()->json(['post' => $post->fresh()->load('category')]);
+    }
+
+    public function destroyBlogPost(Request $request, BlogPost $post): JsonResponse
+    {
+        if ($denied = $this->authorizeStudioAdmin($request)) {
+            return $denied;
+        }
+
+        $post->delete();
+
+        return response()->json(['message' => 'مقاله حذف شد.']);
     }
 
     public function storeProject(Request $request): JsonResponse
@@ -223,6 +279,24 @@ class StudioSiteContentController extends Controller
             'gallery_images.*.caption' => ['nullable', 'string', 'max:500'],
             'gallery_images.*.alt' => ['nullable', 'string', 'max:255'],
             'gallery_images.*.layout' => ['required', Rule::in(['full', 'half', 'third'])],
+        ];
+    }
+
+    private function blogPostRules(?BlogPost $post = null): array
+    {
+        return [
+            'blog_category_id' => ['required', 'integer', 'exists:blog_categories,id'],
+            'title' => ['required', 'string', 'max:255'],
+            'slug' => ['required', 'string', 'max:255', 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/', Rule::unique('blog_posts', 'slug')->ignore($post?->id)],
+            'excerpt' => ['nullable', 'string', 'max:1000'],
+            'content' => ['required', 'string', 'max:500000'],
+            'cover_image' => [Rule::requiredIf(fn () => (bool) request()->boolean('is_published')), 'nullable', 'string', 'max:2048'],
+            'cover_alt' => ['nullable', 'string', 'max:255'],
+            'meta_title' => ['nullable', 'string', 'max:255'],
+            'meta_description' => ['nullable', 'string', 'max:500'],
+            'is_featured' => ['required', 'boolean'],
+            'is_published' => ['required', 'boolean'],
+            'published_at' => ['nullable', 'date'],
         ];
     }
 
