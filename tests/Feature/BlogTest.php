@@ -12,6 +12,17 @@ class BlogTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_editorial_lists_are_scoped_and_popularity_uses_actual_article_requests(): void
+    {
+        $category = BlogCategory::where('slug', 'brand-identity')->firstOrFail();
+        $post = BlogPost::create(['blog_category_id' => $category->id, 'title' => 'Selected story', 'slug' => 'selected-story', 'content' => '<p>Story</p>', 'is_featured' => true, 'is_published' => true, 'published_at' => now()->subDay()]);
+        $this->getJson('/api/blog?category=brand-identity')->assertOk()->assertJsonCount(0, 'popular')->assertJsonPath('featured.0.id', $post->id);
+        $this->get('/blog/selected-story')->assertOk();
+        $this->assertSame(1, (int) $post->fresh()->views);
+        $this->getJson('/api/blog?category=brand-identity')->assertOk()->assertJsonPath('popular.0.id', $post->id)->assertJsonPath('latest.0.id', $post->id);
+        $this->getJson('/api/blog?category=ux-ui')->assertOk()->assertJsonCount(0, 'popular')->assertJsonCount(0, 'featured');
+    }
+
     public function test_public_next_listing_filters_and_paginates_without_exposing_unpublished_content(): void
     {
         $brand = BlogCategory::where('slug', 'brand-identity')->firstOrFail();

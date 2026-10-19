@@ -22,7 +22,7 @@ export async function generateMetadata({ searchParams }) {
 }
 
 export default async function BlogPage({ searchParams }) {
-  const { categories, category, posts, pagination } = await requestListing(searchParams);
+  const { categories, category, posts, pagination, featured = [], latest = [], popular = [] } = await requestListing(searchParams);
   const meta = listingMeta(category, pagination.currentPage);
   const structuredData = {
     '@context': 'https://schema.org', '@type': 'CollectionPage', name: meta.title, url: meta.url, description: meta.description, inLanguage: 'fa-IR',
@@ -50,7 +50,8 @@ export default async function BlogPage({ searchParams }) {
           </a>;
         })}
       </div> : <div className="blog-empty"><span className="blog-empty-mark">F</span><h3>مقاله‌ها به‌زودی منتشر می‌شوند</h3><p>به‌زودی تجربه‌ها و راهنماهای تازهٔ فلوسی را همین‌جا می‌خوانید.</p><a href="/" className="blog-button">بازگشت به صفحهٔ اصلی</a></div>}
-      {posts.length > 0 && <section className="blog-latest" aria-labelledby="latest-title"><div className="blog-section-heading"><h2 id="latest-title">تازه‌ترین مقاله‌ها</h2></div><div className="blog-latest-grid">{[...posts].sort((a,b) => new Date(b.publishedAt) - new Date(a.publishedAt)).map(post => <a href={`/blog/${post.slug}`} className="blog-card" key={post.id}><span className="blog-card-image">{post.coverUrl && <img src={post.coverUrl} alt={post.coverAlt} loading="lazy" />}</span><span className="blog-card-copy"><span className="blog-card-meta">{post.category?.name}</span><h3 className="blog-card-title">{post.title}</h3><span className="blog-card-excerpt">{post.excerpt}</span><time className="blog-card-meta" dateTime={post.publishedAt}>{new Intl.DateTimeFormat('fa-IR',{dateStyle:'long',timeZone:'Asia/Tehran'}).format(new Date(post.publishedAt))}</time></span></a>)}</div></section>}
+      <StorySection title="مقالات منتخب" id="selected-stories" posts={featured} />
+      <div className="blog-editorial-columns"><StorySection title="تازه‌ترین مقاله‌ها" id="latest-stories" posts={latest} /><StorySection title="پربازدیدترین مقاله‌ها" id="popular-stories" posts={popular} compact /></div>
       {pagination.lastPage > 1 && <nav className="blog-pagination" aria-label="صفحه‌بندی مقاله‌ها">
         {pagination.currentPage > 1 && <Link href={`/${listingQuery(category?.slug, pagination.currentPage - 1)}`} scroll={false}>صفحهٔ قبل</Link>}
         <span>{pagination.currentPage.toLocaleString('fa-IR')} / {pagination.lastPage.toLocaleString('fa-IR')}</span>
@@ -58,4 +59,15 @@ export default async function BlogPage({ searchParams }) {
       </nav>}
     </section>
   </main>;
+}
+
+function StorySection({ title, id, posts, compact = false }) {
+  if (!posts.length) return null;
+  return <section className={`blog-latest${compact ? ' blog-popular' : ''}`} aria-labelledby={id}>
+    <div className="blog-section-heading"><h2 id={id}>{title}</h2></div>
+    <div className="blog-latest-grid">{posts.map(post => <a href={`/blog/${post.slug}`} className="blog-card" key={post.id}>
+      <span className="blog-card-image">{post.coverUrl && <img src={post.coverUrl} alt={post.coverAlt} loading="lazy" />}</span>
+      <span className="blog-card-copy"><span className="blog-card-meta">{post.category?.name}</span><h3 className="blog-card-title">{post.title}</h3><span className="blog-card-excerpt">{post.excerpt}</span><time className="blog-card-meta" dateTime={post.publishedAt}>{new Intl.DateTimeFormat('fa-IR',{dateStyle:'long',timeZone:'Asia/Tehran'}).format(new Date(post.publishedAt))}</time></span>
+    </a>)}</div>
+  </section>;
 }

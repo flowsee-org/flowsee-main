@@ -433,7 +433,7 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .case-study .cs-sec>.container { padding-block:clamp(32px,5vw,56px); }
 .case-study .cs-head { max-width:780px;margin-bottom:30px; }
 .case-study .cs-head>.eyebrow { width:max-content;max-width:100%;margin-bottom:4px;padding:5px 11px;border:1px solid color-mix(in srgb,var(--accent) 22%,transparent);border-radius:999px;background:color-mix(in srgb,var(--accent) 8%,transparent);color:var(--accent);font-size:12px; }
-.case-study .cs-head .idx { display:inline-grid;place-items:center;min-width:23px;height:23px;margin-inline-end:4px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font:700 10px/1 Arial,sans-serif; }
+.case-study .cs-head .idx { display:inline-grid;place-items:center;min-width:23px;height:23px;margin-inline-end:4px;border-radius:50%;background:var(--accent);color:var(--on-accent,oklch(23% .05 42));font:700 10px/1 Arial,sans-serif; }
 .case-study .trio { gap:14px; }
 .case-study .trio article { gap:10px;padding:20px;border:1px solid var(--border);border-top:2px solid var(--accent);border-radius:16px;background:linear-gradient(145deg,color-mix(in srgb,var(--surface) 88%,transparent),var(--bg)); }
 .case-study .steps { gap:12px;margin-top:32px; }

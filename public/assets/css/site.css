@@ -637,7 +637,8 @@ html{scroll-padding-top:64px}
   --blue-light:oklch(55% .075 230);
   --blue-pale:oklch(84% .035 230);
   --grid:oklch(58% .02 250);
-  --accent-ink:oklch(23% .05 42);
+  --accent-ink:oklch(79% .14 42);
+  --on-accent:oklch(23% .05 42);
   --focus:var(--accent);
   --soft-blue:oklch(27% .035 238);
 }

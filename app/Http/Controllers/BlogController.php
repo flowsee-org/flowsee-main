@@ -23,7 +23,19 @@ class BlogController extends Controller
             ->when($category, fn ($query) => $query->where('blog_category_id', $category->id))
             ->orderByDesc('is_featured')->orderByDesc('published_at')->orderByDesc('id')->paginate(9);
 
+        $stories = BlogPost::query()->with('category:id,name,slug')
+            ->where('is_published', true)->whereNotNull('published_at')->where('published_at', '<=', now())
+            ->when($category, fn ($query) => $query->where('blog_category_id', $category->id));
+        $serialize = fn ($items) => $items->map(fn ($post) => [
+            'id' => $post->id, 'title' => $post->title, 'slug' => $post->slug,
+            'excerpt' => $post->excerpt, 'coverUrl' => $post->cover_image ? WebsiteMediaUrl::for($post->cover_image) : null,
+            'coverAlt' => $post->cover_alt ?: $post->title, 'category' => $post->category,
+            'publishedAt' => $post->published_at->toIso8601String(),
+        ])->values();
         return response()->json([
+            'featured' => $serialize((clone $stories)->where('is_featured', true)->latest('published_at')->limit(4)->get()),
+            'latest' => $serialize((clone $stories)->latest('published_at')->orderByDesc('id')->limit(4)->get()),
+            'popular' => $serialize((clone $stories)->where('views', '>', 0)->orderByDesc('views')->latest('published_at')->limit(5)->get()),
             'categories' => $categories,
             'category' => $category,
             'posts' => $posts->getCollection()->map(fn (BlogPost $post) => [
@@ -100,6 +112,9 @@ class BlogController extends Controller
             ->whereNotNull('published_at')
             ->where('published_at', '<=', now())
             ->firstOrFail();
+
+        // Count page requests, not unique people. Do not invent a popularity ranking before visits exist.
+        $post->increment('views');
 
         $relatedPosts = BlogPost::query()
             ->with('category')
