@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\Api\LeadController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Api\StudioSiteContentController;
 use App\Http\Controllers\Api\StudioWebsiteMessagesController;
 use App\Http\Middleware\AllowStudioWebsiteMessages;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/blog', [BlogController::class, 'feed'])->name('api.blog.index');
 
 Route::post('/leads', [LeadController::class, 'store'])
     ->middleware('throttle:5,1')

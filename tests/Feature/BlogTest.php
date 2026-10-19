@@ -12,6 +12,32 @@ class BlogTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_public_next_listing_filters_and_paginates_without_exposing_unpublished_content(): void
+    {
+        $brand = BlogCategory::where('slug', 'brand-identity')->firstOrFail();
+        $ux = BlogCategory::where('slug', 'ux-ui')->firstOrFail();
+        foreach (range(1, 10) as $index) {
+            BlogPost::create([
+                'blog_category_id' => $brand->id, 'title' => 'Brand '.$index, 'slug' => 'brand-'.$index,
+                'content' => '<p>Full article body should not be in the listing.</p>',
+                'cover_image' => 'case-studies/cover.webp', 'is_published' => true, 'published_at' => now()->subDay(),
+            ]);
+        }
+        BlogPost::create(['blog_category_id' => $ux->id, 'title' => 'UX article', 'slug' => 'ux-article', 'content' => 'UX body', 'is_published' => true, 'published_at' => now()->subDay()]);
+        BlogPost::create(['blog_category_id' => $brand->id, 'title' => 'Private draft', 'slug' => 'private-draft', 'content' => 'Private body', 'is_published' => false]);
+        BlogPost::create(['blog_category_id' => $brand->id, 'title' => 'Scheduled article', 'slug' => 'scheduled-post', 'content' => 'Scheduled body', 'is_published' => true, 'published_at' => now()->addDay()]);
+
+        $this->getJson('/api/blog')->assertOk()->assertJsonPath('pagination.total', 11)->assertJsonCount(9, 'posts')
+            ->assertDontSee('Private body')->assertDontSee('private-draft')->assertDontSee('scheduled-post')->assertDontSee('Full article body');
+        $first = $this->getJson('/api/blog?category=brand-identity')->assertOk()
+            ->assertJsonPath('category.slug', 'brand-identity')->assertJsonPath('pagination.total', 10)->assertJsonPath('pagination.lastPage', 2);
+        $second = $this->getJson('/api/blog?category=brand-identity&page=2')->assertOk()->assertJsonCount(1, 'posts');
+        $this->assertEmpty(array_intersect(array_column($first->json('posts'), 'id'), array_column($second->json('posts'), 'id')));
+        $this->getJson('/api/blog?category=ux-ui')->assertOk()->assertJsonCount(1, 'posts')->assertJsonPath('posts.0.slug', 'ux-article');
+        $this->getJson('/api/blog?category=unknown')->assertNotFound();
+        $this->getJson('/api/blog?page=0')->assertUnprocessable();
+    }
+
     public function test_homepage_and_blog_pages_render_published_posts_and_category_filters(): void
     {
         $category = BlogCategory::query()->where('slug', 'brand-identity')->firstOrFail();
