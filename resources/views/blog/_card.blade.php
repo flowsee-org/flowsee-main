@@ -1,4 +1,4 @@
-<a class="blog-card {{ $featured ? 'blog-card-featured' : '' }}" href="{{ route('blog.show', $post->slug) }}">
+<a class="blog-card {{ ($bento ?? false) ? 'blog-bento-card '.($featured ? 'blog-bento-large' : '') : ($featured ? 'blog-card-featured' : '') }}" href="{{ route('blog.show', $post->slug) }}">
     <span class="blog-card-image">
         @if($post->cover_image)
             <img src="{{ \App\Support\WebsiteMediaUrl::for($post->cover_image) }}" alt="{{ $post->cover_alt ?: $post->title }}" loading="lazy" decoding="async">

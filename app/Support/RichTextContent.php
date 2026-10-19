@@ -8,7 +8,7 @@ use DOMNode;
 
 final class RichTextContent
 {
-    private const ALLOWED_TAGS = ['p', 'br', 'h2', 'h3', 'h4', 'strong', 'b', 'em', 'i', 'u', 's', 'ul', 'ol', 'li', 'a', 'blockquote', 'code', 'pre', 'hr'];
+    private const ALLOWED_TAGS = ['p', 'br', 'h2', 'h3', 'h4', 'strong', 'b', 'em', 'i', 'u', 's', 'ul', 'ol', 'li', 'a', 'blockquote', 'code', 'pre', 'hr', 'img', 'table', 'thead', 'tbody', 'tr', 'th', 'td'];
 
     public static function sanitize(?string $html): string
     {
@@ -63,7 +63,15 @@ final class RichTextContent
 
             foreach (iterator_to_array($child->attributes) as $attribute) {
                 $name = strtolower($attribute->name);
-                $keep = $tag === 'a' && in_array($name, ['href', 'title'], true);
+                $keep = ($tag === 'a' && in_array($name, ['href', 'title'], true))
+                    || ($tag === 'img' && in_array($name, ['src', 'alt', 'title'], true))
+                    || (in_array($tag, ['td', 'th'], true) && in_array($name, ['colspan', 'rowspan'], true) && preg_match('/^[1-9][0-9]?$/', $attribute->value));
+                if ($tag === 'img' && $name === 'src') {
+                    $keep = self::safeLink($attribute->value) && in_array(strtolower(parse_url($attribute->value, PHP_URL_SCHEME) ?? ''), ['http', 'https', ''], true);
+                }
+                if (in_array($tag, ['p', 'h2', 'h3', 'h4'], true) && $name === 'style') {
+                    $keep = (bool) preg_match('/^text-align:\s*(left|right|center|justify);?$/i', trim($attribute->value));
+                }
                 if (! $keep || ($name === 'href' && ! self::safeLink($attribute->value))) {
                     $child->removeAttributeNode($attribute);
                 }

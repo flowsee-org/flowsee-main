@@ -166,6 +166,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 .footer-social-links{max-width:320px}
 @media(max-width:649px){.footer-bottom{align-items:center}.footer-social-links{max-width:280px}}
+.rich-content{overflow-wrap:anywhere}.rich-content img{max-width:100%;height:auto}.rich-content table{border-collapse:collapse;table-layout:fixed;width:100%}.rich-content td,.rich-content th{border:1px solid var(--border);padding:8px}.rich-content ul{list-style:disc;padding-inline-start:24px}.rich-content ol{list-style:decimal;padding-inline-start:24px}.rich-content a{color:var(--accent);text-decoration:underline}.rich-content pre{direction:ltr;text-align:left;overflow:auto}
 </style>
 </head>
 <body data-project="{{ $project->slug }}">
@@ -184,7 +185,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
     <nav class="breadcrumb" aria-label="مسیر صفحه"><a href="/" data-od-id="breadcrumb-home">خانه</a><span aria-hidden="true">/</span><a href="/#portfolio" data-od-id="breadcrumb-portfolio">نمونه‌کارها</a><span aria-hidden="true">/</span><span aria-current="page">{{ $project->name }}</span></nav>
     <span class="eyebrow">{{ $caseStudy->eyebrow }}</span>
     <h1 data-od-id="case-title">{{ $caseStudy->title }}</h1>
-    <p class="hero-lead">{{ $caseStudy->lead }}</p>
+    <div class="hero-lead rich-content">{!! $caseStudy->lead !!}</div>
     <ul class="meta" aria-label="مشخصات پروژه">
       <li><span class="meta-k">کارفرما</span><span class="meta-v">{{ $caseStudy->client_name }}</span></li>
       <li><span class="meta-k">حوزه</span><span class="meta-v">{{ $caseStudy->industry }}</span></li>
@@ -215,14 +216,14 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
         <span class="eyebrow"><span class="index">{{ $section->index_label }}</span> · {{ $section->eyebrow }}</span>
         <h2 id="{{ $section->slug }}-title" data-od-id="{{ $section->slug }}-title">{{ $section->title }}</h2>
         @if($section->lead)
-        <p class="sec-lead">{{ $section->lead }}</p>
+        <div class="sec-lead rich-content">{!! $section->lead !!}</div>
         @endif
       </div>
 
       @if($section->steps->isNotEmpty())
       <ol class="steps" aria-label="مراحل پروژه">
         @foreach($section->steps as $step)
-        <li data-od-id="step-{{ $step->id }}"><span class="step-n">{{ $step->step_number }}</span><h3>{{ $step->title }}</h3><p>{{ $step->description }}</p></li>
+        <li data-od-id="step-{{ $step->id }}"><span class="step-n">{{ $step->step_number }}</span><h3>{{ $step->title }}</h3><div class="rich-content">{!! $step->description !!}</div></li>
         @endforeach
       </ol>
       @endif

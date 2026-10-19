@@ -170,7 +170,7 @@
 <div class="case-intro-copy">
 <span class="eyebrow" id="case-eyebrow"></span>
 <h2 class="cs-title" data-od-id="case-title" id="case-title"></h2>
-<p class="cs-lead" id="case-lead"></p>
+<div class="cs-lead rich-content" id="case-lead"></div>
 </div>
 <ul class="meta" aria-label="مشخصات پروژه">
 <li><span class="k">کارفرما</span><span class="v" id="case-client"></span></li>

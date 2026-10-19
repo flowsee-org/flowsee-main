@@ -1,0 +1,22 @@
+[Unit]
+Description=Flowsee Next.js blog
+After=network.target nginx.service php8.4-fpm.service
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/flowsee-blog-live
+Environment=NODE_ENV=production
+Environment=NEXT_TELEMETRY_DISABLED=1
+Environment=PORT=4180
+Environment=HOSTNAME=127.0.0.1
+Environment=FLOWSEE_CONTENT_ORIGIN=https://flowsee.ir
+ExecStart=/usr/local/bin/node /var/www/flowsee-blog-live/server.js
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

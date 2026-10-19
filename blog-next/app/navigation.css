@@ -1,0 +1,12 @@
+.blog-categories a{position:relative;display:inline-flex;align-items:center;gap:7px;min-height:44px}
+.blog-filter-progress{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:0;position:absolute;inset-inline-end:5px}
+.blog-filter-progress.is-pending{opacity:1;animation:blog-pending .7s ease-in-out infinite alternate}
+.blog-categories{max-width:100%;overscroll-behavior-inline:contain;scrollbar-width:none}
+.blog-categories::-webkit-scrollbar{display:none}
+.blog-grid-transition{animation:blog-reveal .18s ease-out}
+.blog-pagination{display:flex;align-items:center;justify-content:center;gap:20px}
+.blog-pagination a{padding:9px 16px;border:1px solid var(--border);border-radius:999px}
+.blog-pagination a:hover{background:var(--surface)}
+@keyframes blog-pending{from{opacity:.3}to{opacity:1}}
+@keyframes blog-reveal{from{opacity:.55;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.blog-grid-transition,.blog-filter-progress.is-pending{animation:none}}

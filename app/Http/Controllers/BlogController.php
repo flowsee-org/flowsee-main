@@ -9,6 +9,47 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    /** Public listing data for the server-rendered Next.js blog. Never expose drafts or article bodies. */
+    public function feed(Request $request)
+    {
+        $request->validate(['page' => ['sometimes', 'integer', 'min:1'], 'category' => ['sometimes', 'nullable', 'string', 'max:255']]);
+        $categories = BlogCategory::query()->orderBy('sort_order')->get(['id', 'name', 'slug', 'description']);
+        $slug = $request->query('category');
+        $category = $slug ? $categories->firstWhere('slug', $slug) : null;
+        abort_if($slug && ! $category, 404);
+
+        $posts = BlogPost::query()->with('category:id,name,slug')
+            ->where('is_published', true)->whereNotNull('published_at')->where('published_at', '<=', now())
+            ->when($category, fn ($query) => $query->where('blog_category_id', $category->id))
+            ->orderByDesc('is_featured')->orderByDesc('published_at')->orderByDesc('id')->paginate(9);
+
+        $stories = BlogPost::query()->with('category:id,name,slug')
+            ->where('is_published', true)->whereNotNull('published_at')->where('published_at', '<=', now())
+            ->when($category, fn ($query) => $query->where('blog_category_id', $category->id));
+        $serialize = fn ($items) => $items->map(fn ($post) => [
+            'id' => $post->id, 'title' => $post->title, 'slug' => $post->slug,
+            'excerpt' => $post->excerpt, 'coverUrl' => $post->cover_image ? WebsiteMediaUrl::for($post->cover_image) : null,
+            'coverAlt' => $post->cover_alt ?: $post->title, 'category' => $post->category,
+            'publishedAt' => $post->published_at->toIso8601String(),
+        ])->values();
+        return response()->json([
+            'featured' => $serialize((clone $stories)->where('is_featured', true)->latest('published_at')->limit(4)->get()),
+            'latest' => $serialize((clone $stories)->latest('published_at')->orderByDesc('id')->limit(4)->get()),
+            'popular' => $serialize((clone $stories)->where('views', '>', 0)->orderByDesc('views')->latest('published_at')->limit(5)->get()),
+            'categories' => $categories,
+            'category' => $category,
+            'posts' => $posts->getCollection()->map(fn (BlogPost $post) => [
+                'id' => $post->id, 'title' => $post->title, 'slug' => $post->slug,
+                'excerpt' => $post->excerpt,
+                'coverUrl' => $post->cover_image ? WebsiteMediaUrl::for($post->cover_image) : null,
+                'coverAlt' => $post->cover_alt ?: $post->title,
+                'publishedAt' => $post->published_at->toIso8601String(),
+                'category' => $post->category,
+            ])->values(),
+            'pagination' => ['currentPage' => $posts->currentPage(), 'lastPage' => $posts->lastPage(), 'total' => $posts->total(), 'perPage' => $posts->perPage()],
+        ], 200, ['Cache-Control' => 'no-cache']);
+    }
+
     public function index(Request $request)
     {
         $categories = BlogCategory::query()->orderBy('sort_order')->get();
@@ -71,6 +112,9 @@ class BlogController extends Controller
             ->whereNotNull('published_at')
             ->where('published_at', '<=', now())
             ->firstOrFail();
+
+        // Count page requests, not unique people. Do not invent a popularity ranking before visits exist.
+        $post->increment('views');
 
         $relatedPosts = BlogPost::query()
             ->with('category')

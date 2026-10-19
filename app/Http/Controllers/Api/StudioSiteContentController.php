@@ -153,7 +153,7 @@ class StudioSiteContentController extends Controller
         $data = $request->validate([
             'slug' => ['required', 'string', 'max:255', Rule::unique('case_studies', 'slug')->ignore($caseStudy?->id)],
             'title' => ['required', 'string', 'max:255'],
-            'lead' => ['nullable', 'string', 'max:255'],
+            'lead' => ['nullable', 'string', 'max:20000'],
             'eyebrow' => ['nullable', 'string', 'max:255'],
             'client_name' => ['nullable', 'string', 'max:255'],
             'industry' => ['nullable', 'string', 'max:255'],

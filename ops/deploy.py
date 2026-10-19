@@ -8,11 +8,13 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+import time
 
 REPO = Path('/var/www/flowsee-main')
 RELEASES = Path('/var/www/flowsee-releases')
 SHARED = Path('/var/www/flowsee-shared')
 LIVE = Path('/var/www/flowsee-live')
+BLOG_LIVE = Path('/var/www/flowsee-blog-live')
 PHP = '/usr/bin/php8.4'
 
 
@@ -21,11 +23,23 @@ def run(*args, cwd=REPO, timeout=300):
         env=dict(os.environ, COMPOSER_ALLOW_SUPERUSER='1'))
 
 
-def switch(target):
-    temporary = LIVE.with_name('flowsee-live.next')
+def switch(target, link=LIVE):
+    temporary = link.with_name(link.name + '.next')
     temporary.unlink(missing_ok=True)
     temporary.symlink_to(target, target_is_directory=True)
-    os.replace(temporary, LIVE)
+    os.replace(temporary, link)
+
+
+def build_blog(release):
+    directory = release / 'blog-next'
+    environment = dict(os.environ, NEXT_TELEMETRY_DISABLED='1', NODE_OPTIONS='--max-old-space-size=768')
+    subprocess.run(['npm', 'ci', '--no-audit', '--no-fund'], cwd=directory, env=environment, check=True, timeout=240)
+    subprocess.run(['npm', 'run', 'build'], cwd=directory, env=environment, check=True, timeout=240)
+    standalone = directory / '.next/standalone'
+    shutil.copytree(directory / '.next/static', standalone / '.next/static', dirs_exist_ok=True)
+    # The standalone runtime contains its own traced dependencies. Build dependencies are no longer needed.
+    shutil.rmtree(directory / 'node_modules')
+    return standalone
 
 
 def main(sha):
@@ -45,7 +59,7 @@ def main(sha):
                 run('git', 'archive', '--format=tar', '--output=' + str(archive), sha)
                 with tarfile.open(archive) as source:
                     members = [m for m in source.getmembers() if (m.isfile() or m.isdir())
-                        and m.name.split('/')[0] in {'app','bootstrap','config','database','public','resources','routes','storage','artisan','composer.json','composer.lock'}]
+                        and m.name.split('/')[0] in {'app','bootstrap','config','database','public','resources','routes','storage','artisan','composer.json','composer.lock','blog-next'}]
                     source.extractall(staging, members=members, filter='data')
                 archive.unlink()
                 if not (staging / 'public/index.php').is_file():
@@ -64,6 +78,7 @@ def main(sha):
                 run(PHP, 'artisan', 'config:cache', cwd=release)
                 run(PHP, 'artisan', 'route:cache', cwd=release)
                 run(PHP, 'artisan', 'view:cache', cwd=release)
+                build_blog(release)
                 run('chown', '-R', 'www-data:www-data', str(release / 'bootstrap/cache'), str(SHARED / 'storage'))
                 (release / 'public/deployment.txt').write_text(sha + '\n')
                 (release / '.ready').touch()
@@ -74,17 +89,36 @@ def main(sha):
         if not (release / '.ready').is_file():
             raise ValueError('Release was not completely prepared')
         previous = LIVE.resolve(strict=True)
+        previous_blog = BLOG_LIVE.resolve(strict=True) if BLOG_LIVE.exists() else None
         switch(release / 'public')
         try:
-            for path in ['/up', '/', '/robots.txt', '/sitemap.xml', '/assets/css/mobile.css', '/vendor/livewire/livewire.min.js']:
+            switch(release / 'blog-next/.next/standalone', BLOG_LIVE)
+            run('systemctl', 'restart', 'flowsee-blog')
+            for path in ['/up', '/', '/api/blog', '/robots.txt', '/sitemap.xml', '/assets/css/mobile.css', '/vendor/livewire/livewire.min.js']:
                 run('curl', '--fail', '--silent', '--show-error', '--max-time', '30',
                     '--resolve', 'flowsee.ir:443:127.0.0.1', 'https://flowsee.ir' + path)
             revision = run('curl', '--fail', '--silent', '--max-time', '20',
                 '--resolve', 'flowsee.ir:443:127.0.0.1', 'https://flowsee.ir/deployment.txt')
             if revision.decode().strip() != sha:
                 raise ValueError('Live revision mismatch')
+            for attempt in range(15):
+                try:
+                    blog = run('curl', '--fail', '--silent', '--show-error', '--max-time', '15', 'http://127.0.0.1:4180/blog')
+                    if b'data-flowsee-next-blog="true"' not in blog:
+                        raise ValueError('Next.js blog did not render its listing')
+                    break
+                except subprocess.CalledProcessError:
+                    if attempt == 14:
+                        raise
+                    time.sleep(1)
         except Exception:
             switch(previous)
+            if previous_blog:
+                switch(previous_blog, BLOG_LIVE)
+                run('systemctl', 'restart', 'flowsee-blog')
+            else:
+                run('systemctl', 'stop', 'flowsee-blog')
+                BLOG_LIVE.unlink(missing_ok=True)
             raise
         print('Published Laravel ' + sha, flush=True)
 

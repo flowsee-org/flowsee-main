@@ -33,3 +33,6 @@ Thumbs.db
 __pycache__/
 *.pyc
 /database/*.sqlite*
+/blog-next/node_modules/
+/blog-next/.next/
+/blog-next/.env.local

@@ -32,6 +32,19 @@ jobs:
           php vendor/bin/phpunit
           python3 -m py_compile ops/deploy.py ops/webhook.py ops/request-deploy.py
           python3 -m unittest discover -s ops -p 'test_*.py'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: blog-next/package-lock.json
+      - name: Build and test Next.js blog
+        working-directory: blog-next
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+        run: |
+          npm ci --no-audit --no-fund
+          npm test
+          npm run build
       - name: Publish and verify flowsee.ir
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
