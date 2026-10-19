@@ -30,24 +30,16 @@ export default async function BlogPage({ searchParams }) {
   };
   return <main id="blog-main" className="blog-page" data-flowsee-next-blog="true">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
-    <section className="blog-hero container">
-      <div className="blog-hero-copy"><span className="blog-eyebrow"><span />مجلهٔ فلوسی</span>
-        <h1>{category?.name || 'ایده‌هایی برای برندهای رو به رشد.'}</h1>
-        <p>{category?.description || 'نگاه‌ها، تجربه‌ها و راهنماهای کاربردی دربارهٔ برندینگ، طراحی و رشد در دنیای دیجیتال.'}</p>
-        <div className="blog-hero-note"><span>دانش طراحی</span><span>تجربهٔ واقعی</span><span>نگاه کاربردی</span></div>
-      </div>
-      <div className="blog-hero-art" aria-hidden="true"><span className="blog-hero-orbit blog-hero-orbit-one" /><span className="blog-hero-orbit blog-hero-orbit-two" /><span className="blog-hero-monogram">F</span><span className="blog-hero-caption">طراحی برای رشد<br />استراتژی برای ماندگاری</span></div>
-    </section>
     <section className="container blog-listing" aria-labelledby="blog-list-title">
-      <div className="blog-section-heading"><div><span className="blog-eyebrow"><span />از دیدگاه ما</span><h2 id="blog-list-title">مقاله‌ها و راهنماها</h2></div><span className="blog-result-count" role="status" aria-live="polite">{pagination.total.toLocaleString('fa-IR')} مقاله</span></div>
+      <div className="blog-section-heading"><div><span className="blog-eyebrow"><span />از دیدگاه ما</span><h1 id="blog-list-title">{category?.name || "مجلهٔ فلوسی"}</h1></div><span className="blog-result-count" role="status" aria-live="polite">{pagination.total.toLocaleString('fa-IR')} مقاله</span></div>
       <nav className="blog-categories" aria-label="دسته‌بندی مقاله‌ها">
         <FilterLink href="/" active={!category}>همهٔ مقاله‌ها</FilterLink>
         {categories.map(item => <FilterLink key={item.id} href={`/${listingQuery(item.slug)}`} active={category?.id === item.id}>{item.name}</FilterLink>)}
       </nav>
-      {posts.length ? <div className="blog-grid blog-grid-transition" key={`${category?.slug || 'all'}-${pagination.currentPage}`}>
+      {posts.length ? <div className="blog-bento blog-grid-transition" key={`${category?.slug || 'all'}-${pagination.currentPage}`}>
         {posts.map((post, index) => {
-          const featured = pagination.currentPage === 1 && index === 0;
-          return <a className={`blog-card${featured ? ' blog-card-featured' : ''}`} href={`/blog/${post.slug}`} key={post.id}>
+          const featured = index === 0 || index === 3;
+          return <a className={`blog-card blog-bento-card${featured ? ' blog-bento-large' : ''}`} href={`/blog/${post.slug}`} key={post.id}>
             <span className="blog-card-image">
               {post.coverUrl ? <img src={post.coverUrl} alt={post.coverAlt} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" /> : <span className="blog-card-art" aria-hidden="true"><span>F</span></span>}
               {featured && <span className="blog-card-featured-label">پیشنهاد فلوسی</span>}
@@ -58,6 +50,7 @@ export default async function BlogPage({ searchParams }) {
           </a>;
         })}
       </div> : <div className="blog-empty"><span className="blog-empty-mark">F</span><h3>مقاله‌ها به‌زودی منتشر می‌شوند</h3><p>به‌زودی تجربه‌ها و راهنماهای تازهٔ فلوسی را همین‌جا می‌خوانید.</p><a href="/" className="blog-button">بازگشت به صفحهٔ اصلی</a></div>}
+      {posts.length > 0 && <section className="blog-latest" aria-labelledby="latest-title"><div className="blog-section-heading"><h2 id="latest-title">تازه‌ترین مقاله‌ها</h2></div><div className="blog-latest-grid">{[...posts].sort((a,b) => new Date(b.publishedAt) - new Date(a.publishedAt)).map(post => <a href={`/blog/${post.slug}`} className="blog-card" key={post.id}><span className="blog-card-image">{post.coverUrl && <img src={post.coverUrl} alt={post.coverAlt} loading="lazy" />}</span><span className="blog-card-copy"><span className="blog-card-meta">{post.category?.name}</span><h3 className="blog-card-title">{post.title}</h3><span className="blog-card-excerpt">{post.excerpt}</span><time className="blog-card-meta" dateTime={post.publishedAt}>{new Intl.DateTimeFormat('fa-IR',{dateStyle:'long',timeZone:'Asia/Tehran'}).format(new Date(post.publishedAt))}</time></span></a>)}</div></section>}
       {pagination.lastPage > 1 && <nav className="blog-pagination" aria-label="صفحه‌بندی مقاله‌ها">
         {pagination.currentPage > 1 && <Link href={`/${listingQuery(category?.slug, pagination.currentPage - 1)}`} scroll={false}>صفحهٔ قبل</Link>}
         <span>{pagination.currentPage.toLocaleString('fa-IR')} / {pagination.lastPage.toLocaleString('fa-IR')}</span>

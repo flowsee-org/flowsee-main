@@ -10,6 +10,14 @@ class CaseStudyStep extends Model
 {
     use HasFactory;
 
+    protected function description(): \Illuminate\Database\Eloquent\Casts\Attribute
+    {
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(
+            get: fn ($value) => \App\Support\RichTextContent::sanitize($value),
+            set: fn ($value) => \App\Support\RichTextContent::sanitize($value),
+        );
+    }
+
     protected $fillable = [
         'section_id',
         'title',

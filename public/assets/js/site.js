@@ -43,6 +43,8 @@ if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion
 }
 const websiteProjects=Array.isArray(window.projectsData)?window.projectsData:[];
 const projectBySlug=new Map(websiteProjects.map(project=>[project.slug,project]));
+// Rich fields are sanitized by the CaseStudy models before JSON serialization.
+const richNode=(className,html)=>{const node=document.createElement("div");node.className="rich-content "+className;node.innerHTML=html||"";return node};
 const textNode=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;node.textContent=text||'';return node};
 const imageNode=(src,alt,loading='lazy')=>{const image=document.createElement('img');image.src=src||'';image.alt=alt||'';image.width=1920;image.height=1080;image.loading=loading;image.decoding='async';return image};
 function addCaseImage(container,image,layout='third'){
@@ -54,7 +56,7 @@ function renderCaseStudy(project){
   document.getElementById('case-dialog-title').textContent=project.name;
   document.getElementById('case-eyebrow').textContent=data.eyebrow||'کیس‌استادی';
   document.getElementById('case-title').textContent=data.title||project.name;
-  document.getElementById('case-lead').textContent=data.lead||project.description||'';
+  document.getElementById('case-lead').replaceChildren(data.lead?richNode('',data.lead):document.createTextNode(project.description||''));
   document.getElementById('case-client').textContent=data.client_name||'';
   document.getElementById('case-industry').textContent=data.industry||'';
   document.getElementById('case-services').textContent=data.services_provided||project.service||'';
@@ -65,8 +67,8 @@ function renderCaseStudy(project){
     if(section.band_image){const band=document.createElement('button');band.type='button';band.className='band';band.dataset.lightbox=section.band_image;band.dataset.caption=section.band_caption||section.title;band.setAttribute('aria-label','نمایش تصویر بخش '+section.title);band.append(imageNode(section.band_image,section.band_caption||section.title));sectionNode.append(band)}
     const inner=document.createElement('div');inner.className='container';const head=document.createElement('div');head.className='cs-head';
     const eyebrow=textNode('span','eyebrow','');let eyebrowText=section.eyebrow||'';if(section.index_label){const duplicatedPrefix=new RegExp('^\\s*'+section.index_label+'\\s*[·.]?\\s*');eyebrowText=eyebrowText.replace(duplicatedPrefix,'');const index=textNode('span','idx',section.index_label);eyebrow.append(index);eyebrow.append(document.createTextNode(' · '))}eyebrow.append(document.createTextNode(eyebrowText));
-    head.append(eyebrow,textNode('h3','',section.title));if(section.lead)head.append(textNode('p','',section.lead));inner.append(head);
-    if((section.steps||[]).length){const steps=document.createElement('ol');steps.className='steps';steps.setAttribute('aria-label','مراحل پروژه');for(const item of section.steps){const li=document.createElement('li');li.append(textNode('span','n',item.step_number||''),textNode('h4','',item.title),textNode('p','',item.description));steps.append(li)}inner.append(steps)}
+    head.append(eyebrow,textNode('h3','',section.title));if(section.lead)head.append(richNode('',section.lead));inner.append(head);
+    if((section.steps||[]).length){const steps=document.createElement('ol');steps.className='steps';steps.setAttribute('aria-label','مراحل پروژه');for(const item of section.steps){const li=document.createElement('li');li.append(textNode('span','n',item.step_number||''),textNode('h4','',item.title),richNode('',item.description));steps.append(li)}inner.append(steps)}
     const images=section.images||[];if(images.length){const grid=document.createElement('div');grid.className='fig-grid '+(images.length===2?'g2':'g3');for(const item of images)addCaseImage(grid,item,item.layout);inner.append(grid)}
     sectionNode.append(inner);body.append(sectionNode);
   }
