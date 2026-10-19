@@ -50,8 +50,24 @@ class LeadController extends Controller
             'user_agent' => $request->userAgent(),
         ]);
 
-        if (!app()->environment('testing')) {
-            SendLeadNotification::dispatch($lead->id);
+        if (! app()->environment('testing')) {
+            try {
+                SendLeadNotification::dispatch($lead->id);
+            } catch (\Throwable $queueException) {
+                Log::channel('lead_notifications')->warning('Could not queue lead notification; trying inline delivery.', [
+                    'lead_id' => $lead->id,
+                    'exception' => $queueException::class,
+                ]);
+
+                try {
+                    SendLeadNotification::dispatchSync($lead->id);
+                } catch (\Throwable $fallbackException) {
+                    Log::channel('lead_notifications')->error('Inline lead notification failed.', [
+                        'lead_id' => $lead->id,
+                        'exception' => $fallbackException::class,
+                    ]);
+                }
+            }
         }
 
         return response()->json([
