@@ -20,12 +20,6 @@ return [
 
     'default' => env('LOG_CHANNEL', 'stack'),
 
-    'lead_notifications' => [
-        'driver' => 'single',
-        'path' => storage_path('logs/lead-notifications.log'),
-        'level' => 'info',
-    ],
-
     /*
     |--------------------------------------------------------------------------
     | Deprecations Log Channel
@@ -57,6 +51,12 @@ return [
     */
 
     'channels' => [
+        'lead_notifications' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/lead-notifications.log'),
+            'level' => 'info',
+        ],
+
 
         'stack' => [
             'driver' => 'stack',
