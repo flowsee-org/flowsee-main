@@ -17,6 +17,8 @@ jobs:
           extensions: mbstring, intl, pdo_sqlite, zip, gd
           coverage: none
           tools: composer:v2
+      - name: Check PHP source syntax
+        run: find app config routes database tests -name '*.php' -print0 | xargs -0 -n1 php -l
       - name: Install and test Laravel
         run: |
           composer install --prefer-dist --no-interaction --no-progress
