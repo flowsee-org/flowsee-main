@@ -130,7 +130,19 @@
 </form>
 </div>
 <section class="form-success" id="form-success" tabindex="-1" hidden>
-<svg class="form-success-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29"/><path d="m18 33 9 9 19-20"/></svg>
+<svg class="form-success-icon" width="112" height="112" viewBox="0 0 128 128" fill="none" aria-hidden="true" focusable="false">
+<defs>
+<radialGradient id="success-glass" cx=".28" cy=".18" r=".95"><stop stop-color="#d6fff0" stop-opacity=".95"/><stop offset=".48" stop-color="#48dcad" stop-opacity=".8"/><stop offset="1" stop-color="#08775c"/></radialGradient>
+<linearGradient id="success-edge" x1="20" y1="12" x2="110" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity=".95"/><stop offset=".48" stop-color="#c3ffec" stop-opacity=".2"/><stop offset="1" stop-color="#074e40" stop-opacity=".75"/></linearGradient>
+<linearGradient id="success-shine" x1="42" y1="18" x2="73" y2="77" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity=".7"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+</defs>
+<circle cx="64" cy="67" r="51" fill="#055d48" fill-opacity=".22"/>
+<circle cx="64" cy="61" r="51" fill="url(#success-glass)" stroke="url(#success-edge)" stroke-width="2"/>
+<circle cx="64" cy="61" r="44" stroke="white" stroke-opacity=".24"/>
+<ellipse cx="52" cy="37" rx="32" ry="20" fill="url(#success-shine)" transform="rotate(-25 52 37)"/>
+<path d="m41 64 15 15 31-33" stroke="#075f4a" stroke-opacity=".3" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 3)"/>
+<path d="m41 64 15 15 31-33" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
 <h3>درخواست شما ثبت شد</h3>
 <p>پیام شما با موفقیت ارسال شد. ممنون که فلوسی را برای همراهی انتخاب کردید؛ به‌زودی با شما تماس می‌گیریم.</p>
 <button class="button primary" type="button" id="success-close">بستن</button>
