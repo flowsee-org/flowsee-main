@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Http;
 
 class StudioWebsiteMessagesController extends Controller
 {
-    private const PRIMARY_STUDIO_ADMIN_EMAIL = 'ceo@flowsee.local';
-
     public function index(Request $request): JsonResponse
     {
         $token = $request->bearerToken();
@@ -28,7 +26,7 @@ class StudioWebsiteMessagesController extends Controller
                 ->timeout(6)
                 ->acceptJson()
                 ->withToken($token)
-                ->get('https://studio.flowsee.ir/api/apps/flowsee-preview/entities/User/me');
+                ->get($this->studioSessionUrl());
         } catch (\Throwable $exception) {
             report($exception);
 
@@ -46,7 +44,7 @@ class StudioWebsiteMessagesController extends Controller
         $identity = $identityResponse->json();
         if (! is_array($identity) || ($identity['role'] ?? null) !== 'superadmin'
             || ! is_string($identity['email'] ?? null)
-            || mb_strtolower($identity['email']) !== self::PRIMARY_STUDIO_ADMIN_EMAIL) {
+            || mb_strtolower($identity['email']) !== mb_strtolower((string) config('studio.admin_email'))) {
             return response()->json(['message' => 'Studio superadmin access required.'], 403);
         }
 
@@ -92,5 +90,11 @@ class StudioWebsiteMessagesController extends Controller
             'statuses' => Lead::STATUSES,
             'services' => Lead::SERVICES,
         ])->header('Cache-Control', 'private, no-store');
+    }
+
+    private function studioSessionUrl(): string
+    {
+        return rtrim((string) config('studio.base_url'), '/')
+            .'/api/apps/flowsee-preview/entities/User/me';
     }
 }

@@ -31,11 +31,13 @@ class AdminLeadsTest extends TestCase
         $this->actingAs($user)->get('/admin/leads')->assertForbidden();
     }
 
-    public function test_admin_login_can_only_be_embedded_by_the_studio_subdomain(): void
+    public function test_admin_login_can_only_be_embedded_by_the_configured_studio_origins(): void
     {
+        $expectedFrameAncestors = "frame-ancestors 'self' ".implode(' ', config('cors.allowed_origins', []));
+
         $this->get('/admin/login')
             ->assertOk()
-            ->assertHeader('Content-Security-Policy', "frame-ancestors 'self' https://studio.flowsee.ir")
+            ->assertHeader('Content-Security-Policy', $expectedFrameAncestors)
             ->assertHeaderMissing('X-Frame-Options');
     }
 

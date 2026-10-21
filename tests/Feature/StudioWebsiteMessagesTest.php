@@ -112,4 +112,60 @@ class StudioWebsiteMessagesTest extends TestCase
         ])->assertNoContent()
             ->assertHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     }
+
+    public function test_admin_email_is_read_from_the_environment_config(): void
+    {
+        config(['studio.admin_email' => 'owner@flowsee.local']);
+
+        Http::fake([
+            'studio.flowsee.ir/api/apps/flowsee-preview/entities/User/me' => Http::response([
+                'email' => 'owner@flowsee.local',
+                'role' => 'superadmin',
+            ], 200),
+        ]);
+
+        $this->getJson('/api/studio/website-messages', [
+            'Authorization' => 'Bearer studio-session-token',
+        ])->assertOk();
+    }
+
+    public function test_admin_email_mismatch_is_denied_when_the_configured_email_changes(): void
+    {
+        config(['studio.admin_email' => 'owner@flowsee.local']);
+
+        Http::fake([
+            'studio.flowsee.ir/api/apps/flowsee-preview/entities/User/me' => Http::response([
+                'email' => 'ceo@flowsee.local',
+                'role' => 'superadmin',
+            ], 200),
+        ]);
+
+        $this->getJson('/api/studio/website-messages', [
+            'Authorization' => 'Bearer studio-session-token',
+        ])->assertForbidden();
+    }
+
+    public function test_cors_origins_are_read_from_config_for_local_and_production(): void
+    {
+        config(['cors.allowed_origins' => ['https://studio.flowsee.ir', 'http://localhost:5173']]);
+
+        Http::fake([
+            'studio.flowsee.ir/api/apps/flowsee-preview/entities/User/me' => Http::response([
+                'email' => 'ceo@flowsee.local',
+                'role' => 'superadmin',
+            ], 200),
+        ]);
+
+        $this->getJson('/api/studio/website-messages', [
+            'Authorization' => 'Bearer studio-session-token',
+            'Origin' => 'http://localhost:5173',
+        ])->assertOk()
+            ->assertHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+
+        $this->getJson('/api/studio/website-messages', [
+            'Authorization' => 'Bearer studio-session-token',
+            'Origin' => 'https://evil.example.test',
+        ])->assertOk()
+            ->assertHeaderMissing('Access-Control-Allow-Origin');
+    }
 }
