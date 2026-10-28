@@ -9,11 +9,19 @@
 <header class="blog-topbar"><a href="/" class="blog-brand" aria-label="صفحهٔ اصلی استودیو فلوسی"><span class="blog-brand-mark">F</span><span>استودیو فلوسی</span></a><nav aria-label="ناوبری اصلی"><a href="/">خانه</a><a href="/blog" aria-current="page">بلاگ</a><a href="/#portfolio">نمونه‌کارها</a><a href="/#services">خدمات</a></nav><a class="blog-top-cta" href="/#contact-dialog">مشاوره رایگان</a></header>
 <main id="article-main" class="blog-article-page">
     <div class="container article-shell">
-        <nav class="article-breadcrumb" aria-label="مسیر صفحه"><a href="/">خانه</a><span>/</span><a href="{{ route('blog.index') }}">بلاگ</a><span>/</span><a href="{{ route('blog.index', ['category' => $post->category->slug]) }}">{{ $post->category->name }}</a></nav>
+        <nav class="article-breadcrumb" aria-label="مسیر صفحه"><a href="/">خانه</a><span aria-hidden="true">/</span><a href="{{ route('blog.index') }}">بلاگ</a><span aria-hidden="true">/</span><a href="{{ route('blog.index', ['category' => $post->category->slug]) }}">{{ $post->category->name }}</a></nav>
         <article>
-            <header class="article-header"><span class="blog-eyebrow"><span></span>{{ $post->category->name }}</span><h1>{{ $post->title }}</h1>@if($post->excerpt)<p class="article-lead">{{ $post->excerpt }}</p>@endif<div class="article-byline"><span>استودیو فلوسی</span><time datetime="{{ $post->published_at->toDateString() }}">{{ $post->published_at->translatedFormat('j F Y') }}</time></div></header>
-            @if($post->cover_image)<figure class="article-cover"><img src="{{ $imageUrl }}" alt="{{ $post->cover_alt ?: $post->title }}" fetchpriority="high"><figcaption>{{ $post->cover_alt ?: $post->title }}</figcaption></figure>@endif
-            <div class="article-layout"><aside class="article-aside"><span>در این مقاله</span><a href="#article-content">{{ $post->title }}</a><a href="{{ route('blog.index', ['category' => $post->category->slug]) }}">مقاله‌های {{ $post->category->name }}</a></aside><div id="article-content" class="article-content">{!! $post->content !!}</div></div>
+            <header class="article-header">
+                <span class="blog-eyebrow"><span></span>{{ $post->category->name }}</span>
+                <h1>{{ $post->title }}</h1>
+                @if($post->excerpt)<p class="article-lead">{{ $post->excerpt }}</p>@endif
+                <div class="article-byline"><span class="article-author-mark" aria-hidden="true">F</span><span>استودیو فلوسی</span><i aria-hidden="true"></i><time datetime="{{ $post->published_at->toDateString() }}">{{ $post->published_at->translatedFormat('j F Y') }}</time><i aria-hidden="true"></i><span>{{ $readingMinutes }} دقیقه مطالعه</span></div>
+            </header>
+            @if($post->cover_image)<figure class="article-cover"><img src="{{ $imageUrl }}" alt="{{ $post->cover_alt ?: $post->title }}" fetchpriority="high"><figcaption><span>{{ $post->cover_alt ?: $post->title }}</span><a href="{{ route('blog.index', ['category' => $post->category->slug]) }}">{{ $post->category->name }} <span aria-hidden="true">↗</span></a></figcaption></figure>@endif
+            <div class="article-layout">
+                <aside class="article-aside" aria-label="راهنمای مقاله"><div class="article-aside-title"><span class="article-aside-icon" aria-hidden="true">☰</span><span>در این مقاله</span></div><nav class="article-toc" aria-label="سرفصل‌های مقاله"><a class="is-active" href="#article-content">شروع مقاله</a>@foreach($postHeadings as $heading)<a data-level="{{ $heading['level'] }}" href="#{{ $heading['id'] }}">{{ $heading['text'] }}</a>@endforeach</nav><a class="article-category-link" href="{{ route('blog.index', ['category' => $post->category->slug]) }}"><span>مطالب بیشتر در</span><strong>{{ $post->category->name }}</strong><span aria-hidden="true">↗</span></a></aside>
+                <div id="article-content" class="article-content">{!! $post->content !!}</div>
+            </div>
         </article>
     </div>
     @if($relatedPosts->isNotEmpty())<section class="container related-posts"><div class="blog-section-heading"><div><span class="blog-eyebrow"><span></span> ادامهٔ خواندن</span><h2>از همین دسته</h2></div><a class="blog-text-link" href="{{ route('blog.index', ['category' => $post->category->slug]) }}">همهٔ مقاله‌ها ↗</a></div><div class="blog-grid related-grid">@foreach($relatedPosts as $related)@include('blog._card', ['post' => $related, 'featured' => false])@endforeach</div></section>@endif

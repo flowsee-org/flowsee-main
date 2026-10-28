@@ -131,6 +131,18 @@ class BlogController extends Controller
         $pageDescription = $post->meta_description ?: ($post->excerpt ?: (string) str(strip_tags($post->content))->squish()->limit(160));
         $pageUrl = route('blog.show', $post->slug);
         $imageUrl = $post->cover_image ? WebsiteMediaUrl::for($post->cover_image) : 'https://flowsee.ir/assets/flowsee-social.jpg';
+        $readingMinutes = max(1, (int) ceil(preg_match_all('/[\pL\pN]+/u', strip_tags($post->content)) / 180));
+        $postHeadings = collect();
+        $content = preg_replace_callback('/<h([2-3])([^>]*)>(.*?)<\/h[2-3]>/is', function ($matches) use ($post, $postHeadings) {
+            $text = trim(strip_tags($matches[3]));
+            $id = trim((string) preg_replace('/[^\\pL\\pN]+/u', '-', mb_strtolower($text)), '-');
+            $id = $id !== '' ? $id : 'section-'.$postHeadings->count();
+            $id = 'article-'.$post->id.'-'.$id;
+            $postHeadings->push(['id' => $id, 'text' => $text, 'level' => (int) $matches[1]]);
+            $attributes = preg_replace('/\\s+id\\s*=\\s*(["\\']).*?\\1/i', '', $matches[2]);
+            return '<h'.$matches[1].$attributes.' id="'.$id.'">'.$matches[3].'</h'.$matches[1].'>';
+        }, $post->content);
+        $post->content = $content ?? $post->content;
         $structuredData = [
             '@context' => 'https://schema.org',
             '@graph' => [
@@ -159,7 +171,7 @@ class BlogController extends Controller
             ],
         ];
 
-        return view('blog.show', compact('post', 'relatedPosts', 'pageTitle', 'pageDescription', 'pageUrl', 'imageUrl', 'structuredData'));
+        return view('blog.show', compact('post', 'relatedPosts', 'postHeadings', 'readingMinutes', 'pageTitle', 'pageDescription', 'pageUrl', 'imageUrl', 'structuredData'));
     }
 
     public function sitemap()
