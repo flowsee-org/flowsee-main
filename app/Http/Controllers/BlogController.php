@@ -139,7 +139,7 @@ class BlogController extends Controller
             $id = $id !== '' ? $id : 'section-'.$postHeadings->count();
             $id = 'article-'.$post->id.'-'.$id;
             $postHeadings->push(['id' => $id, 'text' => $text, 'level' => (int) $matches[1]]);
-            $attributes = preg_replace('/\\s+id\\s*=\\s*(["\\']).*?\\1/i', '', $matches[2]);
+            $attributes = preg_replace("/\\s+id\\s*=\\s*([\"']).*?\\1/i", '', $matches[2]);
             return '<h'.$matches[1].$attributes.' id="'.$id.'">'.$matches[3].'</h'.$matches[1].'>';
         }, $post->content);
         $post->content = $content ?? $post->content;
