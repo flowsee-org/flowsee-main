@@ -610,6 +610,7 @@ html{scroll-padding-top:64px}
 .service-grid .service-top{width:100%;align-items:center;gap:14px}
 .service-grid .service-title{margin:0;font:500 clamp(16px,1.55vw,21px)/1.65 var(--display);text-wrap:balance}
 .service-grid .service-description{margin:0;padding-inline-start:60px;font-size:14px;line-height:1.9;color:var(--muted);text-wrap:pretty}
+.service-grid .service-description{min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere;word-break:normal}
 .service-grid .service-category{display:none}
 .about-panel{display:block}
 .about-lead{max-width:850px;position:relative;z-index:1}
