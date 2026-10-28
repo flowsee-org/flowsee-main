@@ -74,7 +74,8 @@ class BlogTest extends TestCase
         $this->get('/blog')->assertOk()->assertSee('مجلهٔ فلوسی')->assertSee('blog-bento')->assertDontSee('class="blog-hero', false)->assertSee('راهنمای ساخت هویت برند')->assertDontSee('پیش‌نویس خصوصی');
         $this->get('/blog?category=brand-identity')->assertOk()->assertSee('برندینگ و هویت بصری');
         $this->get('/blog/'.$post->slug)->assertOk()
-            ->assertSee('<h2>از کجا شروع کنیم؟</h2>', false)
+            ->assertSee('از کجا شروع کنیم؟')
+            ->assertSee('id="article-1-از-کجا-شروع-کنیم"', false)
             ->assertSee('BlogPosting', false)
             ->assertSee('راهنمای ساخت هویت برند');
         $this->get('/blog/private-draft')->assertNotFound();
