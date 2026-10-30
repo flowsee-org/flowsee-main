@@ -31,8 +31,7 @@
 <script>
 try {
   const savedTheme = localStorage.getItem('flowsee-theme');
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  document.documentElement.dataset.theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+  document.documentElement.dataset.theme = savedTheme || 'light';
 } catch (error) {
   document.documentElement.dataset.theme = 'light';
 }
@@ -53,5 +52,5 @@ try {
 
 <body>
 @yield('content')
-<script defer src="{{ asset('assets/js/site.js') }}?v={{ filemtime(public_path('assets/js/site.js')) }}"></script>
+@unless(request()->routeIs('product.e-learning'))<script defer src="{{ asset('assets/js/site.js') }}?v={{ filemtime(public_path('assets/js/site.js')) }}"></script>@endunless
 </body></html>

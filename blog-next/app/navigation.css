@@ -7,6 +7,12 @@
 .blog-pagination{display:flex;align-items:center;justify-content:center;gap:20px}
 .blog-pagination a{padding:9px 16px;border:1px solid var(--border);border-radius:999px}
 .blog-pagination a:hover{background:var(--surface)}
+.blog-topbar{gap:18px}
+.blog-theme-toggle{display:grid;place-items:center;flex:none;width:38px;height:38px;padding:0;border:1px solid var(--border);border-radius:50%;background:transparent;color:var(--fg);transition:background .2s,border-color .2s,transform .2s}
+.blog-theme-toggle:hover{background:var(--surface);border-color:var(--accent);transform:translateY(-1px)}
+.blog-theme-toggle svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.7}
+:root[data-theme="light"] .blog-theme-sun,:root[data-theme="dark"] .blog-theme-moon{display:none}
+@media(max-width:600px){.blog-topbar{gap:9px}.blog-theme-toggle{width:34px;height:34px}.blog-top-cta{white-space:nowrap}}
 @keyframes blog-pending{from{opacity:.3}to{opacity:1}}
 @keyframes blog-reveal{from{opacity:.55;transform:translateY(4px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.blog-grid-transition,.blog-filter-progress.is-pending{animation:none}}

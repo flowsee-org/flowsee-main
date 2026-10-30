@@ -13,39 +13,8 @@ class StudioWebsiteMessagesController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $token = $request->bearerToken();
-        if (! $token) {
-            return response()->json(['message' => 'Studio sign-in required.'], 401);
-        }
-
-        // Verify the current Studio session server-side; never trust client-supplied roles.
-        // Only the primary Studio superadmin identity is allowed. A separate
-        // Flowsee account would force the user to sign in twice.
-        try {
-            $identityResponse = Http::connectTimeout(3)
-                ->timeout(6)
-                ->acceptJson()
-                ->withToken($token)
-                ->get($this->studioSessionUrl());
-        } catch (\Throwable $exception) {
-            report($exception);
-
-            return response()->json(['message' => 'Could not verify Studio session.'], 503);
-        }
-
-        if ($identityResponse->status() === 401 || $identityResponse->status() === 403) {
-            return response()->json(['message' => 'Studio session expired or invalid.'], 401);
-        }
-
-        if (! $identityResponse->successful()) {
-            return response()->json(['message' => 'Could not verify Studio session.'], 503);
-        }
-
-        $identity = $identityResponse->json();
-        if (! is_array($identity) || ($identity['role'] ?? null) !== 'superadmin'
-            || ! is_string($identity['email'] ?? null)
-            || mb_strtolower($identity['email']) !== mb_strtolower((string) config('studio.admin_email'))) {
-            return response()->json(['message' => 'Studio superadmin access required.'], 403);
+        if ($denied = $this->authorizeStudioSuperadmin($request)) {
+            return $denied;
         }
 
         $query = Lead::query()->select([
@@ -90,6 +59,74 @@ class StudioWebsiteMessagesController extends Controller
             'statuses' => Lead::STATUSES,
             'services' => Lead::SERVICES,
         ])->header('Cache-Control', 'private, no-store');
+    }
+
+    public function updateStatus(Request $request, Lead $lead): JsonResponse
+    {
+        if ($denied = $this->authorizeStudioSuperadmin($request)) {
+            return $denied;
+        }
+
+        $data = $request->validate([
+            'status' => ['required', 'string', 'in:'.implode(',', array_keys(Lead::STATUSES))],
+        ]);
+        $lead->update(['status' => $data['status']]);
+
+        return response()->json(['message' => 'وضعیت پیام به‌روزرسانی شد.', 'id' => $lead->id, 'status' => $lead->status]);
+    }
+
+    public function bulkUpdateStatus(Request $request): JsonResponse
+    {
+        if ($denied = $this->authorizeStudioSuperadmin($request)) {
+            return $denied;
+        }
+
+        $data = $request->validate([
+            'ids' => ['required', 'array', 'min:1', 'max:50'],
+            'ids.*' => ['required', 'integer', 'distinct', 'exists:leads,id'],
+            'status' => ['required', 'string', 'in:'.implode(',', array_keys(Lead::STATUSES))],
+        ]);
+        $updated = Lead::query()->whereIn('id', $data['ids'])->update(['status' => $data['status']]);
+
+        return response()->json(['message' => 'وضعیت پیام‌ها به‌روزرسانی شد.', 'updated' => $updated]);
+    }
+
+    private function authorizeStudioSuperadmin(Request $request): ?JsonResponse
+    {
+        $token = $request->bearerToken();
+        if (! $token) {
+            return response()->json(['message' => 'Studio sign-in required.'], 401);
+        }
+
+        // Verify the current Studio session server-side; never trust client-supplied roles.
+        try {
+            $identityResponse = Http::connectTimeout(3)
+                ->timeout(6)
+                ->acceptJson()
+                ->withToken($token)
+                ->get($this->studioSessionUrl());
+        } catch (\Throwable $exception) {
+            report($exception);
+
+            return response()->json(['message' => 'Could not verify Studio session.'], 503);
+        }
+
+        if ($identityResponse->status() === 401 || $identityResponse->status() === 403) {
+            return response()->json(['message' => 'Studio session expired or invalid.'], 401);
+        }
+
+        if (! $identityResponse->successful()) {
+            return response()->json(['message' => 'Could not verify Studio session.'], 503);
+        }
+
+        $identity = $identityResponse->json();
+        if (! is_array($identity) || ($identity['role'] ?? null) !== 'superadmin'
+            || ! is_string($identity['email'] ?? null)
+            || mb_strtolower($identity['email']) !== mb_strtolower((string) config('studio.admin_email'))) {
+            return response()->json(['message' => 'Studio superadmin access required.'], 403);
+        }
+
+        return null;
     }
 
     private function studioSessionUrl(): string

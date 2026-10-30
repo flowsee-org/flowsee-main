@@ -16,6 +16,10 @@ Route::post('/leads', [LeadController::class, 'store'])
 Route::middleware(AllowStudioWebsiteMessages::class)->group(function (): void {
     Route::options('/studio/website-messages', fn () => response()->noContent());
     Route::get('/studio/website-messages', [StudioWebsiteMessagesController::class, 'index']);
+    Route::options('/studio/website-messages/{lead}', fn () => response()->noContent());
+    Route::put('/studio/website-messages/{lead}', [StudioWebsiteMessagesController::class, 'updateStatus']);
+    Route::options('/studio/website-messages/bulk-status', fn () => response()->noContent());
+    Route::post('/studio/website-messages/bulk-status', [StudioWebsiteMessagesController::class, 'bulkUpdateStatus']);
 
     Route::options('/studio/site-content/{path?}', fn () => response()->noContent())->where('path', '.*');
     Route::get('/studio/site-content', [StudioSiteContentController::class, 'index']);
