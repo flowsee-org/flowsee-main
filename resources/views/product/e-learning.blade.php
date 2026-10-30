@@ -49,6 +49,17 @@
     </div>
   </section>
 
+  <section class="learning-course-showcase" aria-labelledby="course-showcase-title">
+    <div class="container">
+      <div class="learning-course-heading"><div><span class="learning-eyebrow"><i></i> ویترین آموزش</span><h2 id="course-showcase-title">از یادگیری تا نتیجه، یک مسیر روشن.</h2><p>یک نمونهٔ نمایشی از چیزی که می‌توان برای آکادمی یا دورهٔ شما طراحی کرد.</p></div><a class="learning-text-link" href="tel:+989109027628">طراحی آکادمی اختصاصی <span>↗</span></a></div>
+      <div class="learning-course-grid">
+        <article class="learning-course-card"><div class="learning-course-cover learning-cover-blue"><span>01 / DESIGN</span><b>تجربهٔ<br>کاربر</b><i>✳</i></div><div class="learning-course-info"><span>طراحی دیجیتال</span><h3>از ایده تا تجربهٔ کاربری</h3><p>ساخت یک مسیر یادگیری مرحله‌به‌مرحله</p></div></article>
+        <article class="learning-course-card"><div class="learning-course-cover learning-cover-orange"><span>02 / CREATE</span><b>محتوا<br>بساز</b><i>◉</i></div><div class="learning-course-info"><span>تولید محتوا</span><h3>روایت ویدئویی برای آموزش</h3><p>ترکیب سناریو، تصویر و تمرین</p></div></article>
+        <article class="learning-course-card"><div class="learning-course-cover learning-cover-violet"><span>03 / BRAND</span><b>هویت<br>آموزش</b><i>✳</i></div><div class="learning-course-info"><span>برندینگ</span><h3>ساخت هویت بصری آکادمی</h3><p>یک زبان یکپارچه برای همهٔ نقاط تماس</p></div></article>
+      </div>
+    </div>
+  </section>
+
   <section class="container learning-process" id="process" aria-labelledby="process-title">
     <div class="learning-process-heading"><span class="learning-eyebrow"><i></i> مسیر همکاری</span><h2 id="process-title">شفاف، مرحله‌به‌مرحله، همراه شما.</h2><p>هر تصمیم با شناخت هدف و مخاطب شروع می‌شود و با یک محصول آمادهٔ استفاده ادامه پیدا می‌کند.</p></div>
     <ol class="learning-process-list"><li><span>۱</span><div><h3>شناخت و جهت‌دهی</h3><p>هدف آموزش، مخاطب و شرایط اجرا را روشن می‌کنیم.</p></div><b>01 / DISCOVER</b></li><li><span>۲</span><div><h3>طراحی تجربه و محتوا</h3><p>ساختار دوره، زبان بصری و مسیر استفاده را شکل می‌دهیم.</p></div><b>02 / DESIGN</b></li><li><span>۳</span><div><h3>ساخت و آماده‌سازی</h3><p>اجزای موردنیاز را تولید، پیاده‌سازی و برای انتشار آماده می‌کنیم.</p></div><b>03 / DELIVER</b></li></ol>
