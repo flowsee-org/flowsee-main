@@ -38,7 +38,7 @@
       }
       if (!storeIdentifier) {
         storeField.setAttribute('aria-invalid', 'true');
-        status.textContent = 'آیدی اینستاگرام یا نام فروشگاه را وارد کنید.';
+        status.textContent = 'نام فروشگاه یا آیدی اینستاگرام را وارد کنید.';
         status.classList.add('is-error');
         storeField.focus();
         return;
@@ -56,8 +56,8 @@
             name: storeIdentifier,
             store_identifier: storeIdentifier,
             phone,
-            service: 'marketing',
-            details: 'درخواست تحلیل رایگان پیج و راهنمای فروش برای فروشگاه آرایشی یا بهداشتی قزوین؛ همراه با سه ایدهٔ ریلز متناسب با محصولات فروشگاه.',
+            service: 'ecommerce',
+            details: 'درخواست مشاورهٔ طراحی فروشگاه اینترنتی برای فروش محصولات آرایشی و بهداشتی در قزوین.',
             ...attribution,
           }),
         });
@@ -67,7 +67,7 @@
           throw new Error(errors[0] || result.message || 'ثبت درخواست انجام نشد. لطفاً دوباره تلاش کنید.');
         }
         form.reset();
-        status.textContent = 'درخواست شما ثبت شد. به‌زودی برای هماهنگی تحلیل رایگان با شما تماس می‌گیریم.';
+        status.textContent = 'درخواست شما ثبت شد. برای گفت‌وگو دربارهٔ طراحی فروشگاه اینترنتی با شما تماس می‌گیریم.';
         status.classList.add('is-success');
       } catch (error) {
         status.textContent = error.message || 'اتصال برقرار نشد. لطفاً دوباره تلاش کنید یا تلفنی تماس بگیرید.';
@@ -75,7 +75,7 @@
       } finally {
         button.disabled = false;
         button.removeAttribute('aria-busy');
-        button.innerHTML = button.dataset.label || 'دریافت تحلیل رایگان پیج و راهنمای فروش';
+        button.innerHTML = button.dataset.label || 'درخواست مشاورهٔ طراحی سایت';
       }
     });
   });
