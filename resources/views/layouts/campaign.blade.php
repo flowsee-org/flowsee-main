@@ -17,16 +17,26 @@
   <link rel="preload" href="/assets/fonts/IRANSansX-Regular.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="/assets/fonts/IRANSansX-Medium.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="{{ asset('assets/css/qazvin-beauty.css') }}?v={{ filemtime(public_path('assets/css/qazvin-beauty.css')) }}">
-  <script type="application/ld+json">@json([
-    '@context' => 'https://schema.org',
-    '@type' => 'Service',
-    'name' => 'تحلیل رایگان بازاریابی فروشگاه آرایشی در قزوین',
-    'serviceType' => 'تحلیل شبکه‌های اجتماعی و مشاورهٔ فروش محلی',
-    'provider' => ['@type' => 'Organization', 'name' => 'استودیو فلوسی', 'url' => 'https://flowsee.ir/'],
-    'areaServed' => ['@type' => 'City', 'name' => 'قزوین'],
-    'url' => 'https://flowsee.ir/qazvin-beauty',
-    'description' => $pageDescription,
-  ])</script>
+  @php
+    $campaignStructuredData = [
+      '@context' => 'https://schema.org',
+      '@type' => 'Service',
+      'name' => 'تحلیل رایگان بازاریابی فروشگاه آرایشی در قزوین',
+      'serviceType' => 'تحلیل شبکه‌های اجتماعی و مشاورهٔ فروش محلی',
+      'provider' => [
+        '@type' => 'Organization',
+        'name' => 'استودیو فلوسی',
+        'url' => 'https://flowsee.ir/',
+      ],
+      'areaServed' => [
+        '@type' => 'City',
+        'name' => 'قزوین',
+      ],
+      'url' => 'https://flowsee.ir/qazvin-beauty',
+      'description' => $pageDescription,
+    ];
+  @endphp
+  <script type="application/ld+json">{{ Illuminate\Support\Js::encode($campaignStructuredData) }}</script>
 </head>
 <body>
   @yield('content')
