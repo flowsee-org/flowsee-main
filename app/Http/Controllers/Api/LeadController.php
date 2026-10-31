@@ -31,6 +31,12 @@ class LeadController extends Controller
             'email' => ['nullable', 'email', 'max:255'],
             'service' => ['required', 'string', 'max:50'],
             'details' => ['required', 'string', 'max:5000'],
+            'campaign_key' => ['nullable', 'string', 'max:80'],
+            'store_identifier' => ['nullable', 'string', 'max:100'],
+            'utm_source' => ['nullable', 'string', 'max:160'],
+            'utm_medium' => ['nullable', 'string', 'max:160'],
+            'utm_campaign' => ['nullable', 'string', 'max:160'],
+            'landing_path' => ['nullable', 'string', 'max:255'],
         ], [
             'name.required' => 'نام خود را وارد کنید.',
             'name.max' => 'نام نمی‌تواند بیشتر از ۱۰۰ کاراکتر باشد.',
@@ -50,12 +56,35 @@ class LeadController extends Controller
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
+        $leadData = $validator->validated();
+        $campaignKey = $leadData['campaign_key'] ?? null;
+        $details = $leadData['details'];
+        if ($campaignKey) {
+            $attribution = collect([
+                'utm_source' => $leadData['utm_source'] ?? null,
+                'utm_medium' => $leadData['utm_medium'] ?? null,
+                'utm_campaign' => $leadData['utm_campaign'] ?? null,
+                'landing_path' => $leadData['landing_path'] ?? null,
+            ])->filter(fn (?string $value): bool => filled($value))
+                ->map(fn (string $value, string $key): string => $key.'='.$value)
+                ->implode("\n");
+            if ($attribution !== '') {
+                $details .= "\n\nاطلاعات ورودی کمپین:\n".$attribution;
+            }
+        }
+
         $lead = Lead::create([
-            'name' => $validator->validated()['name'],
-            'phone' => $validator->validated()['phone'],
-            'email' => $validator->validated()['email'] ?? null,
-            'service' => $validator->validated()['service'],
-            'details' => $validator->validated()['details'],
+            'name' => $leadData['name'],
+            'phone' => $leadData['phone'],
+            'email' => $leadData['email'] ?? null,
+            'service' => $leadData['service'],
+            'details' => $details,
+            'campaign_key' => $campaignKey,
+            'store_identifier' => $leadData['store_identifier'] ?? null,
+            'utm_source' => $leadData['utm_source'] ?? null,
+            'utm_medium' => $leadData['utm_medium'] ?? null,
+            'utm_campaign' => $leadData['utm_campaign'] ?? null,
+            'landing_path' => $leadData['landing_path'] ?? null,
             'ip_address' => $request->ip(),
             'user_agent' => $request->userAgent(),
         ]);

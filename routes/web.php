@@ -5,6 +5,10 @@ use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProjectController::class, 'index'])->name('home');
+Route::view('/qazvin-beauty', 'campaigns.qazvin-beauty', [
+    'pageTitle' => 'رشد فروشگاه آرایشی در قزوین | تحلیل رایگان پیج و فروش',
+    'pageDescription' => 'برای فروشگاه آرایشی و بهداشتی قزوین، تحلیل رایگان پیج اینستاگرام و ۳ ایدهٔ ریلز پرفروش بگیرید؛ بدون نیاز به تولید محتوا یا مدیریت سایت توسط خودتان.',
+])->name('campaigns.qazvin-beauty');
 Route::get('/product/e-learning', function () {
     $pageTitle = 'طراحی محصول آموزش آنلاین | استودیو فلوسی';
     $pageDescription = 'از طراحی مسیر یادگیری و هویت آموزشی تا ساخت تجربهٔ دیجیتال دوره؛ محصول آموزشی خود را با همراهی استودیو فلوسی آمادهٔ رشد کنید.';

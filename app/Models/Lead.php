@@ -34,6 +34,12 @@ class Lead extends Model
         'details',
         'ip_address',
         'user_agent',
+        'campaign_key',
+        'store_identifier',
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'landing_path',
         'is_read',
         'status',
     ];
