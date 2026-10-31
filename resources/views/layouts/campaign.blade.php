@@ -21,8 +21,8 @@
     $campaignStructuredData = [
       '@context' => 'https://schema.org',
       '@type' => 'Service',
-      'name' => 'تحلیل رایگان بازاریابی فروشگاه آرایشی در قزوین',
-      'serviceType' => 'تحلیل شبکه‌های اجتماعی و مشاورهٔ فروش محلی',
+      'name' => 'طراحی سایت فروشگاهی آرایشی و بهداشتی در قزوین',
+      'serviceType' => 'طراحی و راه‌اندازی فروشگاه اینترنتی',
       'provider' => [
         '@type' => 'Organization',
         'name' => 'استودیو فلوسی',

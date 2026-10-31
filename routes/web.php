@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProjectController::class, 'index'])->name('home');
 Route::view('/qazvin-beauty', 'campaigns.qazvin-beauty', [
-    'pageTitle' => 'رشد فروشگاه آرایشی در قزوین | تحلیل رایگان پیج و فروش',
-    'pageDescription' => 'برای فروشگاه آرایشی و بهداشتی قزوین، تحلیل رایگان پیج اینستاگرام و ۳ ایدهٔ ریلز پرفروش بگیرید؛ بدون نیاز به تولید محتوا یا مدیریت سایت توسط خودتان.',
+    'pageTitle' => 'طراحی سایت فروشگاهی آرایشی و بهداشتی در قزوین | استودیو فلوسی',
+    'pageDescription' => 'طراحی فروشگاه اینترنتی برای فروشندگان لوازم آرایشی و بهداشتی قزوین؛ با دسته‌بندی محصول، صفحهٔ محصول، سبد خرید، ثبت سفارش و بهینه‌سازی موبایل.',
 ])->name('campaigns.qazvin-beauty');
 Route::get('/product/e-learning', function () {
     $pageTitle = 'طراحی محصول آموزش آنلاین | استودیو فلوسی';
