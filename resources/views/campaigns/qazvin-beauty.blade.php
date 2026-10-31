@@ -88,5 +88,4 @@
 </main>
 
 <footer class="qb-footer"><div class="qb-wrap"><a class="qb-brand" href="/" aria-label="استودیو فلوسی، صفحهٔ اصلی"><img src="/assets/header-imgFrame17.svg" width="30" height="30" alt=""><span>استودیو فلوسی</span></a><p>برای فروشگاه‌های محلی که می‌خواهند آنلاین هم انتخاب شوند.</p><a href="tel:+989109027628" dir="ltr">0910 902 7628</a></div></footer>
-<a class="qb-sticky-cta" href="#campaign-form">مشاورهٔ طراحی فروشگاه <span aria-hidden="true">←</span></a>
 @endsection

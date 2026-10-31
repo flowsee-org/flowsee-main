@@ -80,9 +80,4 @@
     });
   });
 
-  const sticky = document.querySelector('.qb-sticky-cta');
-  const firstForm = document.querySelector('#campaign-form');
-  if (sticky && firstForm && 'IntersectionObserver' in window) {
-    new IntersectionObserver(([entry]) => sticky.classList.toggle('is-hidden', entry.isIntersecting), { threshold: 0.18 }).observe(firstForm);
-  }
 })();
