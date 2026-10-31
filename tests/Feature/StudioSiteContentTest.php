@@ -31,7 +31,7 @@ class StudioSiteContentTest extends TestCase
     {
         (new LegacyPortfolioSeeder())->run();
 
-        $this->assertDatabaseCount('projects', 4);
+        $this->assertDatabaseCount('projects', 6);
         $this->assertDatabaseHas('projects', ['slug' => 'shopero', 'is_active' => true, 'has_case_study' => true]);
         $this->assertDatabaseHas('case_studies', ['slug' => 'shopero', 'is_published' => true]);
         $this->assertSame(8, \App\Models\CaseStudy::query()->where('slug', 'shopero')->firstOrFail()->sections()->count());
@@ -39,7 +39,11 @@ class StudioSiteContentTest extends TestCase
         $this->assertDatabaseHas('case_studies', ['slug' => 'ebrahimi', 'is_published' => true]);
         $caseStudy = \App\Models\CaseStudy::query()->where('slug', 'ebrahimi')->firstOrFail();
         $this->assertSame(8, $caseStudy->sections()->count());
-        $this->assertDatabaseCount('case_study_sections', 26);
+        $this->assertDatabaseHas('projects', ['slug' => 'mapi-shop', 'is_active' => true, 'has_case_study' => true]);
+        $this->assertDatabaseHas('case_studies', ['slug' => 'mapi-shop', 'is_published' => true]);
+        $this->assertDatabaseHas('projects', ['slug' => 'hadisnailline', 'is_active' => true, 'has_case_study' => true]);
+        $this->assertDatabaseHas('case_studies', ['slug' => 'hadisnailline', 'is_published' => true]);
+        $this->assertDatabaseCount('case_study_sections', 30);
         $caseStudy->update(['title' => 'ویرایش حفظ‌شده در Studio']);
 
         (new LegacyPortfolioSeeder())->run();
