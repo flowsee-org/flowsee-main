@@ -65,6 +65,16 @@
         <a class="qb-work-card qb-work-ima" href="/projects/ima"><img src="/assets/portfolio-imgIma2.png" alt="طراحی تجربهٔ دیجیتال ایما موویز" loading="lazy" width="900" height="650"><span class="qb-work-overlay"><small>محصول دیجیتال</small><b>ایما موویز</b><i>دیدن پروژه ↗</i></span></a>
         <a class="qb-work-card qb-work-exloot" href="/projects/exloot"><img src="/assets/portfolio-imgExloot2.png" alt="طراحی پلتفرم دیجیتال اکسلوت" loading="lazy" width="900" height="650"><span class="qb-work-overlay"><small>هویت و پلتفرم دیجیتال</small><b>اکسلوت</b><i>دیدن پروژه ↗</i></span></a>
       </div>
+      <div class="qb-case-grid" aria-label="کیس‌استادی‌های مرتبط با فروشگاه و زیبایی">
+        <article class="qb-case">
+          <a class="qb-case-cover" href="/projects/mapi-shop"><img src="/assets/case-studies/mapi-shop/cover.jpg" alt="ماکاپ فروشگاه اینترنتی Mapi Shop" loading="lazy" width="1920" height="1080"><span>کیس‌استادی فروشگاه اینترنتی</span></a>
+          <div class="qb-case-copy"><h3><a href="/projects/mapi-shop">Mapi Shop؛ تجربهٔ خرید آنلاین تخصصی</a></h3><p>طراحی صفحهٔ اصلی، دسته‌بندی و منوی فروشگاه تخصصی تجهیزات شنا. این تجربهٔ فروشگاهی می‌تواند برای محصولات آرایشی و بهداشتی نیز متناسب‌سازی شود.</p><div class="qb-case-gallery"><img src="/assets/case-studies/mapi-shop/mega-menu.jpg" alt="منوی دسته‌بندی فروشگاه Mapi Shop" loading="lazy" width="1440" height="1024"><img src="/assets/case-studies/mapi-shop/gift-modal.jpg" alt="پنجرهٔ پیشنهاد هدیه و خرید در Mapi Shop" loading="lazy" width="1440" height="1024"></div><a class="qb-case-link" href="/projects/mapi-shop">مشاهدهٔ کیس‌استادی <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="qb-case qb-case-hadis">
+          <a class="qb-case-cover" href="/projects/hadisnailline"><img src="/assets/case-studies/hadisnailline/flyer.jpg" alt="ماکاپ تراکت معرفی خدمات Hadisnailline" loading="lazy" width="2200" height="1760"><span>کیس‌استادی هویت چاپی</span></a>
+          <div class="qb-case-copy"><h3><a href="/projects/hadisnailline">Hadisnailline؛ از معرفی خدمات تا رزرو</a></h3><p>مجموعه‌ای هماهنگ از تراکت و کارت ویزیت برای معرفی خدمات ناخن، راه ارتباطی و دسترسی سریع به صفحهٔ اینستاگرام.</p><div class="qb-case-gallery"><img src="/assets/case-studies/hadisnailline/business-card.jpg" alt="ماکاپ کارت ویزیت Hadisnailline با QR کد" loading="lazy" width="2200" height="1467"><img src="/assets/case-studies/hadisnailline/flyer.jpg" alt="جزئیات تراکت خدمات Hadisnailline" loading="lazy" width="2200" height="1760"></div><a class="qb-case-link" href="/projects/hadisnailline">مشاهدهٔ کیس‌استادی <span aria-hidden="true">↗</span></a></div>
+        </article>
+      </div>
       <div class="qb-local-note"><span class="qb-local-symbol">Q</span><p><b>تیم محلی در قزوین</b><br>برای جلسه، عکاسی یا فیلم‌برداری حضوری محصولات، می‌توانیم نزدیک فروشگاه شما باشیم.</p><a href="https://maps.app.goo.gl/kN2kZ9AkS6nGbnoC7" target="_blank" rel="noopener">موقعیت استودیو <span aria-hidden="true">↗</span></a></div>
     </div>
   </section>
