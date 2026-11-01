@@ -57,27 +57,6 @@
     </div>
   </section>
 
-  <section class="qb-work qb-section" aria-labelledby="qb-work-title">
-    <div class="qb-wrap">
-      <div class="qb-section-heading qb-section-heading-row"><div><span class="qb-eyebrow"><i></i> تجربهٔ طراحی فروشگاه آنلاین</span><h2 id="qb-work-title">ساختار یک فروشگاه اینترنتی را از نزدیک ببینید.</h2></div><p>در پروژهٔ Mapi Shop، مسیر صفحهٔ اصلی، دسته‌بندی و انتخاب کالا را برای فروشگاه تخصصی طراحی کردیم؛ همین منطق برای محصولات آرایشی و بهداشتی قزوین متناسب‌سازی می‌شود.</p></div>
-      <div class="qb-work-grid">
-        <a class="qb-work-card qb-work-shop" href="#mapi-case"><img src="/assets/case-studies/mapi-shop/cover.jpg" alt="طراحی فروشگاه اینترنتی تخصصی Mapi Shop" loading="lazy" width="1920" height="1080"><span class="qb-work-overlay"><small>طراحی فروشگاه اینترنتی تخصصی</small><b>Mapi Shop</b><i>دیدن کیس‌استادی ↗</i></span></a>
-        <a class="qb-work-card qb-work-ima" href="/projects/shopero"><img src="/assets/portfolio-imgShopero1.png" alt="طراحی تجربهٔ فروشگاه آنلاین شاپیرو" loading="lazy" width="900" height="650"><span class="qb-work-overlay"><small>تجربهٔ خرید آنلاین</small><b>شاپیرو</b><i>دیدن پروژه ↗</i></span></a>
-      </div>
-      <div class="qb-case-grid" aria-label="کیس‌استادی‌های مرتبط با فروشگاه و زیبایی">
-        <article class="qb-case" id="mapi-case">
-          <a class="qb-case-cover" href="#mapi-case"><img src="/assets/case-studies/mapi-shop/cover.jpg" alt="ماکاپ فروشگاه اینترنتی Mapi Shop" loading="lazy" width="1920" height="1080"><span>کیس‌استادی فروشگاه اینترنتی</span></a>
-          <div class="qb-case-copy"><h3><a href="#mapi-case">Mapi Shop؛ تجربهٔ خرید آنلاین تخصصی</a></h3><p>برای Mapi Shop، فروشگاه تخصصی لوازم شنا، صفحهٔ اصلی، دسته‌بندی‌های چندسطحی و منوی مگا طراحی شد. این نمونه نشان می‌دهد چطور محصولات متنوع را منظم نمایش دهیم و مسیر رسیدن مشتری از دسته‌بندی تا خرید را کوتاه کنیم؛ الگویی قابل‌سفارشی‌سازی برای فروشگاه‌های آرایشی و بهداشتی.</p><div class="qb-case-gallery"><img src="/assets/case-studies/mapi-shop/mega-menu.jpg" alt="منوی دسته‌بندی فروشگاه Mapi Shop" loading="lazy" width="1440" height="1024"><img src="/assets/case-studies/mapi-shop/gift-modal.jpg" alt="پنجرهٔ پیشنهاد هدیه و خرید در Mapi Shop" loading="lazy" width="1440" height="1024"></div><a class="qb-case-link" href="#mapi-case">مشاهدهٔ کیس‌استادی <span aria-hidden="true">↗</span></a></div>
-        </article>
-        <article class="qb-case qb-case-hadis">
-          <a class="qb-case-cover" href="/projects/hadisnailline"><img src="/assets/case-studies/hadisnailline/flyer.jpg" alt="ماکاپ تراکت معرفی خدمات Hadisnailline" loading="lazy" width="2200" height="1760"><span>کیس‌استادی هویت چاپی</span></a>
-          <div class="qb-case-copy"><h3><a href="/projects/hadisnailline">Hadisnailline؛ از معرفی خدمات تا رزرو</a></h3><p>مجموعه‌ای هماهنگ از تراکت و کارت ویزیت برای معرفی خدمات ناخن، راه ارتباطی و دسترسی سریع به صفحهٔ اینستاگرام.</p><div class="qb-case-gallery"><img src="/assets/case-studies/hadisnailline/business-card.jpg" alt="ماکاپ کارت ویزیت Hadisnailline با QR کد" loading="lazy" width="2200" height="1467"><img src="/assets/case-studies/hadisnailline/flyer.jpg" alt="جزئیات تراکت خدمات Hadisnailline" loading="lazy" width="2200" height="1760"></div><a class="qb-case-link" href="/projects/hadisnailline">مشاهدهٔ کیس‌استادی <span aria-hidden="true">↗</span></a></div>
-        </article>
-      </div>
-      <div class="qb-local-note"><span class="qb-local-symbol">Q</span><p><b>تیم محلی در قزوین</b><br>برای جلسه، عکاسی یا فیلم‌برداری حضوری محصولات، می‌توانیم نزدیک فروشگاه شما باشیم.</p><a href="https://maps.app.goo.gl/kN2kZ9AkS6nGbnoC7" target="_blank" rel="noopener">موقعیت استودیو <span aria-hidden="true">↗</span></a></div>
-    </div>
-  </section>
-
   <section class="qb-steps qb-section" aria-labelledby="qb-steps-title">
     <div class="qb-wrap"><div class="qb-section-heading"><span class="qb-eyebrow"><i></i> از نیاز فروشگاه تا سایت آمادهٔ سفارش</span><h2 id="qb-steps-title">مراحل طراحی فروشگاه اینترنتی شما</h2></div><ol class="qb-step-list"><li><span>۰۱</span><div><b>نیازها و کالاها را می‌شناسیم</b><p>دسته‌بندی محصولات، روش مدیریت و مسیر خرید مشتری را مشخص می‌کنیم.</p></div></li><li><span>۰۲</span><div><b>ساختار و ظاهر فروشگاه را طراحی می‌کنیم</b><p>صفحهٔ اصلی، فهرست کالاها و جزئیات محصول را برای موبایل و دسکتاپ می‌چینیم.</p></div></li><li><span>۰۳</span><div><b>مسیر ثبت سفارش را آماده می‌کنیم</b><p>سبد خرید و ثبت سفارش را بررسی می‌کنیم تا مشتری راحت‌تر خریدش را کامل کند.</p></div></li></ol></div>
   </section>
