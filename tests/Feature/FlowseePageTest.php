@@ -189,9 +189,9 @@ class FlowseePageTest extends TestCase
             ->assertSee('assets/exloot-case-study/exloot-7.jpg');
         $this->get('/up')->assertOk();
         $this->get('/not-a-page')->assertNotFound()
-            ->assertSee('<title>صفحه پیدا نشد | استودیو فلوسی</title>', false)
+            ->assertSee('<title>مسیر پیدا نشد | استودیو فلوسی</title>', false)
             ->assertSee('name="robots" content="noindex,follow"', false)
-            ->assertSee('این صفحه پیدا نشد.')
+            ->assertSee('این مسیر به')
             ->assertSee('href="/#portfolio"', false);
     }
 
