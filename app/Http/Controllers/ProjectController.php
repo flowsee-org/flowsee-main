@@ -186,6 +186,11 @@ class ProjectController extends Controller
             abort(404);
         }
 
+        // Keep the Mapi Shop case study in the homepage portfolio modal.
+        if ($project->slug === 'mapi-shop') {
+            return redirect()->route('home', ['case' => $project->slug]);
+        }
+
         $pageUrl = 'https://flowsee.ir' . route('projects.show', $project->slug, false);
         $pageTitle = $caseStudy->meta_title ?: $caseStudy->title . ' | استودیو فلوسی';
         $pageDescription = $caseStudy->meta_description ?: $caseStudy->lead;
