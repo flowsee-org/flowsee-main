@@ -120,10 +120,20 @@ class StudioWebsiteMessagesController extends Controller
         }
 
         $identity = $identityResponse->json();
-        if (! is_array($identity) || ($identity['role'] ?? null) !== 'superadmin'
-            || ! is_string($identity['email'] ?? null)
-            || mb_strtolower($identity['email']) !== mb_strtolower((string) config('studio.admin_email'))) {
-            return response()->json(['message' => 'Studio superadmin access required.'], 403);
+        if (! is_array($identity)) {
+            return response()->json(['message' => 'Studio identity is invalid.'], 403);
+        }
+
+        $role = $identity['role'] ?? null;
+        $email = is_string($identity['email'] ?? null) ? $identity['email'] : '';
+        $modules = is_array($identity['module_access'] ?? null) ? $identity['module_access'] : [];
+
+        $isSuperadmin = $role === 'superadmin' || ($email && mb_strtolower($email) === mb_strtolower((string) config('studio.admin_email')));
+        $isAdmin = $role === 'admin';
+        $hasModuleAccess = in_array('website-messages', $modules);
+
+        if (! $isSuperadmin && ! $isAdmin && ! $hasModuleAccess) {
+            return response()->json(['message' => 'Studio authorized access required.'], 403);
         }
 
         return null;

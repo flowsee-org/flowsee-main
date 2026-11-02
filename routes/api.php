@@ -29,6 +29,7 @@ Route::middleware(AllowStudioWebsiteMessages::class)->group(function (): void {
     Route::put('/studio/site-content/projects/{project}/case-study', [StudioSiteContentController::class, 'saveCaseStudy']);
     Route::delete('/studio/site-content/projects/{project}/case-study', [StudioSiteContentController::class, 'deleteCaseStudy']);
     Route::post('/studio/site-content/images', [StudioSiteContentController::class, 'uploadImage']);
+    Route::post('/studio/site-content/files', [StudioSiteContentController::class, 'uploadFile']);
     Route::get('/studio/site-content/blog', [StudioSiteContentController::class, 'blogIndex']);
     Route::post('/studio/site-content/blog', [StudioSiteContentController::class, 'storeBlogPost']);
     Route::put('/studio/site-content/blog/{post}', [StudioSiteContentController::class, 'updateBlogPost']);

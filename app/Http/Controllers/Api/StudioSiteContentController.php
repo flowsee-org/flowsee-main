@@ -259,6 +259,55 @@ class StudioSiteContentController extends Controller
         ], 201);
     }
 
+    public function uploadFile(Request $request): JsonResponse
+    {
+        if ($denied = $this->authorizeStudioAdmin($request)) {
+            return $denied;
+        }
+
+        $file = $request->file('file') ?? $request->file('image');
+        if (! $file) {
+            return response()->json(['message' => 'فایلی ارسال نشده است.'], 422);
+        }
+
+        $request->validate([
+            'file' => ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png,webp', 'max:20480'],
+            'image' => ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png,webp', 'max:20480'],
+        ]);
+
+        $mime = $file->getMimeType();
+        $ext = strtolower($file->getClientOriginalExtension());
+        if ($mime === 'application/pdf' || $ext === 'pdf') {
+            $path = 'site-files/'.Str::uuid().'.pdf';
+            Storage::disk('public')->put($path, file_get_contents($file->getRealPath()));
+
+            return response()->json([
+                'path' => $path,
+                'url' => Storage::disk('public')->url($path),
+                'name' => $file->getClientOriginalName(),
+                'size' => $file->getSize(),
+            ], 201);
+        }
+
+        try {
+            $image = ImageManager::usingDriver(Driver::class)->decode($file);
+            $encoded = $image->encodeUsingFormat(Format::WEBP, quality: 85);
+            $path = 'case-studies/'.Str::uuid().'.webp';
+            Storage::disk('public')->put($path, (string) $encoded);
+        } catch (\Throwable $exception) {
+            report($exception);
+
+            return response()->json(['message' => 'تبدیل تصویر به WebP انجام نشد.'], 422);
+        }
+
+        return response()->json([
+            'path' => $path,
+            'url' => Storage::disk('public')->url($path),
+            'width' => $image->width(),
+            'height' => $image->height(),
+        ], 201);
+    }
+
     private function projectRules(?Project $project = null): array
     {
         return [
@@ -333,10 +382,20 @@ class StudioSiteContentController extends Controller
         }
 
         $identity = $identityResponse->json();
-        if (! is_array($identity) || ($identity['role'] ?? null) !== 'superadmin'
-            || ! is_string($identity['email'] ?? null)
-            || mb_strtolower($identity['email']) !== mb_strtolower((string) config('studio.admin_email'))) {
-            return response()->json(['message' => 'Studio superadmin access required.'], 403);
+        if (! is_array($identity)) {
+            return response()->json(['message' => 'Studio identity is invalid.'], 403);
+        }
+
+        $role = $identity['role'] ?? null;
+        $email = is_string($identity['email'] ?? null) ? $identity['email'] : '';
+        $modules = is_array($identity['module_access'] ?? null) ? $identity['module_access'] : [];
+
+        $isSuperadmin = $role === 'superadmin' || ($email && mb_strtolower($email) === mb_strtolower((string) config('studio.admin_email')));
+        $isAdmin = $role === 'admin';
+        $hasModuleAccess = in_array('site-content', $modules) || in_array('blog-content', $modules);
+
+        if (! $isSuperadmin && ! $isAdmin && ! $hasModuleAccess) {
+            return response()->json(['message' => 'Studio authorized access required.'], 403);
         }
 
         return null;

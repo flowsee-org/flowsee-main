@@ -15,7 +15,7 @@
 <a class="portfolio-view-all" href="#portfolio-grid">مشاهده همه <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
 </div>
 <div class="portfolio-grid" id="portfolio-grid">
-@php($featuredProject = $projects->firstWhere('is_featured', true))
+@php($featuredProject = $projects->firstWhere('sort_order', 1) ?: ($projects->firstWhere('is_featured', true) ?: $projects->first()))
 @if($featuredProject)
 @php($project = $featuredProject)
 <button class="project-card featured-project" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? 'مشاهدهٔ کیس‌استادی ' . $project->name : $project->name }}">
@@ -28,17 +28,16 @@
 </span>
 </button>
 @endif
-@if($projects->contains(fn($item) => !$item->is_featured))
+@php($otherProjects = $projects->filter(fn($item) => $item->id !== $featuredProject?->id))
+@if($otherProjects->isNotEmpty())
 <div class="project-carousel" role="region" aria-label="نمونه‌کارهای بیشتر">
 <div class="project-carousel-controls"><span>نمونه‌کارهای بیشتر</span><div><button type="button" data-carousel-step="-1" aria-label="نمونه‌کارهای قبلی"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button><button type="button" data-carousel-step="1" aria-label="نمونه‌کارهای بعدی"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button></div></div>
 <div class="project-carousel-track" id="project-carousel-track" tabindex="0" aria-label="برای دیدن نمونه‌کارهای بیشتر پیمایش کنید">
-@foreach($projects as $project)
-@if(!$project->is_featured)
+@foreach($otherProjects as $project)
 <button class="project-card" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? 'مشاهدهٔ کیس‌استادی ' . $project->name : $project->name }}">
 <span class="project-visual"><img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async"></span>
 <span class="project-copy"><span class="project-name">{{ $project->name }}</span></span>
 </button>
-@endif
 @endforeach
 </div>
 </div>
