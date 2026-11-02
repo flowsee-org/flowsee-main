@@ -47,7 +47,7 @@ class SendLeadNotification implements ShouldQueue
             Log::channel('lead_notifications')->info('Lead notification sent to Telegram', [
                 'lead_id' => $lead->id,
                 'name' => $lead->name,
-                'phone' => $lead->phone,
+                'phone' => $this->maskPhone($lead->phone),
                 'service' => $lead->service,
             ]);
         } else {
@@ -135,5 +135,17 @@ class SendLeadNotification implements ShouldQueue
             ]);
             return false;
         }
+    }
+
+    protected function maskPhone(?string $phone): string
+    {
+        if (! $phone) {
+            return '';
+        }
+        $len = mb_strlen($phone);
+        if ($len <= 4) {
+            return '***';
+        }
+        return mb_substr($phone, 0, 4) . str_repeat('*', max(1, $len - 6)) . mb_substr($phone, -2);
     }
 }

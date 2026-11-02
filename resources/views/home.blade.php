@@ -98,7 +98,7 @@
 </footer>
 
 <dialog id="service-dialog" class="service-dialog" aria-labelledby="service-dialog-title">
-<div class="dialog-head"><h2 id="service-dialog-title"></h2><button type="button" class="close-dialog" data-close aria-label="بستن"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+<div class="dialog-head"><div id="service-dialog-icon" class="service-dialog-icon" aria-hidden="true"></div><h2 id="service-dialog-title"></h2><button type="button" class="close-dialog" data-close aria-label="بستن"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
 <p id="service-dialog-description" class="service-dialog-description"></p>
 <ul id="service-dialog-items" class="service-dialog-items" aria-label="جزئیات خدمت"></ul>
 <button class="button primary" type="button" data-service-contact>گفت‌وگو دربارهٔ این خدمت</button>
@@ -195,7 +195,7 @@
 </dialog>
 
 <script>
-window.projectsData = {!! $projectsData !!};
+window.projectsData = @json($projectsData);
 </script>
 
 @endsection

@@ -9,6 +9,6 @@ class DispatchLeadNotification
 {
     public function handle(LeadCreated $event): void
     {
-        SendLeadNotification::dispatch($event);
+        SendLeadNotification::dispatch($event->lead->id);
     }
 }

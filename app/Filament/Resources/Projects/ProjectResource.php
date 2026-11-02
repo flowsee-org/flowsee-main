@@ -10,6 +10,9 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\Format;
+use Intervention\Image\ImageManager;
 
 class ProjectResource extends Resource
 {
@@ -78,9 +81,9 @@ class ProjectResource extends Resource
                                 $fullPath = storage_path('app/public/' . $path);
                                 if (file_exists($fullPath)) {
                                     try {
-                                        $image = \Intervention\Image\ImageManagerStatic::make($fullPath);
-                                        $image->encode('webp', 85);
-                                        $image->save($fullPath);
+                                        $image = ImageManager::usingDriver(Driver::class)->read($fullPath);
+                                        $encoded = $image->encodeUsingFormat(Format::WEBP, quality: 85);
+                                        file_put_contents($fullPath, (string) $encoded);
                                     } catch (\Exception $e) {
                                         // If conversion fails, keep original
                                     }
@@ -111,9 +114,9 @@ class ProjectResource extends Resource
                                         $fullPath = storage_path('app/public/' . $path);
                                         if (file_exists($fullPath)) {
                                             try {
-                                                $image = \Intervention\Image\ImageManagerStatic::make($fullPath);
-                                                $image->encode('webp', 85);
-                                                $image->save($fullPath);
+                                        $image = ImageManager::usingDriver(Driver::class)->read($fullPath);
+                                        $encoded = $image->encodeUsingFormat(Format::WEBP, quality: 85);
+                                        file_put_contents($fullPath, (string) $encoded);
                                             } catch (\Exception $e) {
                                                 // If conversion fails, keep original
                                             }
