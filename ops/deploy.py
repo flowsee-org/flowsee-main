@@ -121,6 +121,13 @@ def main(sha):
                 BLOG_LIVE.unlink(missing_ok=True)
             raise
         print('Published Laravel ' + sha, flush=True)
+        # Prune old releases to prevent disk exhaustion
+        for item in RELEASES.iterdir():
+            if item.is_dir() and item != release and item != previous.parent:
+                try:
+                    shutil.rmtree(item)
+                except Exception:
+                    pass
 
 
 if __name__ == '__main__':
