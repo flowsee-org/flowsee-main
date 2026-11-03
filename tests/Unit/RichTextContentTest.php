@@ -20,11 +20,14 @@ class RichTextContentTest extends TestCase
 
     public function test_editor_images_tables_and_alignment_survive_sanitizing(): void
     {
-        $html = RichTextContent::sanitize('<h2 style="text-align: center">عنوان</h2><img src="https://flowsee.ir/storage/test.webp" alt="تصویر"><table><tbody><tr><th colspan="2">Title</th></tr><tr><td>A</td><td>B</td></tr></tbody></table>');
+        $html = RichTextContent::sanitize('<h2 style="text-align: center">عنوان</h2><img src="https://flowsee.ir/storage/test.webp" alt="تصویر"><table><tbody><tr><th colspan="2">Title</th></tr><tr><td>A</td><td>B</td></tr></tbody></table><a href="https://flowsee.ir/storage/doc.pdf" class="flowsee-pdf-link" target="_blank" rel="noopener noreferrer">دانلود مستند (PDF)</a>');
         $this->assertStringContainsString('text-align: center', $html);
         $this->assertStringContainsString('alt="تصویر"', $html);
         $this->assertStringContainsString('<table>', $html);
         $this->assertStringContainsString('colspan="2"', $html);
+        $this->assertStringContainsString('class="flowsee-pdf-link"', $html);
+        $this->assertStringContainsString('target="_blank"', $html);
+        $this->assertStringContainsString('rel="noopener noreferrer"', $html);
     }
 
     public function test_unsafe_urls_events_and_styles_are_removed(): void

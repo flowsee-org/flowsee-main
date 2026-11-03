@@ -63,11 +63,17 @@ final class RichTextContent
 
             foreach (iterator_to_array($child->attributes) as $attribute) {
                 $name = strtolower($attribute->name);
-                $keep = ($tag === 'a' && in_array($name, ['href', 'title'], true))
+                $keep = ($tag === 'a' && in_array($name, ['href', 'title', 'target', 'rel', 'class', 'download'], true))
                     || ($tag === 'img' && in_array($name, ['src', 'alt', 'title'], true))
                     || (in_array($tag, ['td', 'th'], true) && in_array($name, ['colspan', 'rowspan'], true) && preg_match('/^[1-9][0-9]?$/', $attribute->value));
                 if ($tag === 'img' && $name === 'src') {
                     $keep = self::safeLink($attribute->value) && in_array(strtolower(parse_url($attribute->value, PHP_URL_SCHEME) ?? ''), ['http', 'https', ''], true);
+                }
+                if ($tag === 'a' && $name === 'target') {
+                    $keep = in_array(strtolower($attribute->value), ['_blank', '_self'], true);
+                }
+                if ($tag === 'a' && $name === 'class') {
+                    $keep = (bool) preg_match('/^[a-zA-Z0-9_\-\s]+$/', $attribute->value);
                 }
                 if (in_array($tag, ['p', 'h2', 'h3', 'h4'], true) && $name === 'style') {
                     $keep = (bool) preg_match('/^text-align:\s*(left|right|center|justify);?$/i', trim($attribute->value));
