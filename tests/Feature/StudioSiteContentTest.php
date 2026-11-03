@@ -68,6 +68,20 @@ class StudioSiteContentTest extends TestCase
         $this->withToken('valid-studio-session')->getJson('/api/studio/site-content')->assertForbidden();
     }
 
+    public function test_user_with_module_access_can_access_site_content_api(): void
+    {
+        Http::fake([
+            'studio.flowsee.ir/*' => Http::response([
+                'id' => 'yashar-1',
+                'email' => 'yashar@flowsee.local',
+                'role' => 'employee',
+                'module_access' => ['site-content'],
+            ]),
+        ]);
+
+        $this->withToken('valid-studio-session')->getJson('/api/studio/site-content')->assertOk();
+    }
+
     public function test_primary_studio_superadmin_can_manage_site_projects_and_case_studies(): void
     {
         Http::fake([

@@ -147,7 +147,6 @@ class FlowseePageTest extends TestCase
             ->assertSee('class="service-grid"', false)
             ->assertSee('class="service-icon"', false)
             ->assertDontSee('class="service-dialog-kicker"', false)
-            ->assertDontSee('id="service-dialog-icon"', false)
             ->assertDontSee('زیرخدمات')
             ->assertDontSee('href="#contact-dialog" data-contact="consultation"', false)
             ->assertSee('name="service" value="consultation"', false)

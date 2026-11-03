@@ -390,12 +390,11 @@ class StudioSiteContentController extends Controller
         $email = is_string($identity['email'] ?? null) ? $identity['email'] : '';
         $modules = is_array($identity['module_access'] ?? null) ? $identity['module_access'] : [];
 
-        $isSuperadmin = $role === 'superadmin' || ($email && mb_strtolower($email) === mb_strtolower((string) config('studio.admin_email')));
-        $isAdmin = $role === 'admin';
+        $isPrimarySuperadmin = $role === 'superadmin' && $email && mb_strtolower($email) === mb_strtolower((string) config('studio.admin_email'));
         $hasModuleAccess = in_array('site-content', $modules) || in_array('blog-content', $modules);
 
-        if (! $isSuperadmin && ! $isAdmin && ! $hasModuleAccess) {
-            return response()->json(['message' => 'Studio authorized access required.'], 403);
+        if (! $isPrimarySuperadmin && ! $hasModuleAccess) {
+            return response()->json(['message' => 'Studio superadmin access required.'], 403);
         }
 
         return null;
