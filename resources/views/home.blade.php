@@ -23,8 +23,10 @@
 <img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async">
 </span>
 <span class="project-copy">
+<span class="project-category">{{ $project->service?->title ?? 'پروژه منتخب' }}</span>
 <span class="project-name">{{ $project->name }}</span>
 <span class="project-description">{{ $project->description ?: ($project->caseStudy?->lead ?? $project->service?->description ?? '') }}</span>
+<span class="project-action"><span class="project-action-label">مشاهدهٔ پروژه</span> <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
 </span>
 </button>
 @endif
@@ -36,7 +38,10 @@
 @foreach($otherProjects as $project)
 <button class="project-card" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? 'مشاهدهٔ کیس‌استادی ' . $project->name : $project->name }}">
 <span class="project-visual"><img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async"></span>
-<span class="project-copy"><span class="project-name">{{ $project->name }}</span></span>
+<span class="project-copy">
+<span class="project-category">{{ $project->service?->title ?? 'نمونه‌کار' }}</span>
+<span class="project-name">{{ $project->name }}</span>
+</span>
 </button>
 @endforeach
 </div>
