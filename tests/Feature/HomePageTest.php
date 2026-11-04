@@ -34,7 +34,12 @@ class HomePageTest extends TestCase
 
         $response = $this->get('/');
         $response->assertOk();
-        $response->assertSee('window.projectsData = [', false);
-        $response->assertDontSee('window.projectsData = "[', false);
+
+        $this->assertSame(1, preg_match('/window\.projectsData = (.+);/', $response->getContent(), $matches));
+        $projectsData = json_decode($matches[1], true, flags: JSON_THROW_ON_ERROR);
+
+        $this->assertIsArray($projectsData);
+        $this->assertTrue(array_is_list($projectsData));
+        $this->assertContains('test-project', array_column($projectsData, 'slug'));
     }
 }
