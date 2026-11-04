@@ -16,7 +16,7 @@ class ProjectController extends Controller
     {
         $projects = Project::with(['service', 'caseStudy'])
             ->where('is_active', true)
-            ->orderBy('sort_order')
+            ->orderByRaw('CASE WHEN sort_order > 0 THEN sort_order ELSE 999999 END ASC')
             ->orderByDesc('is_featured')
             ->orderByDesc('created_at')
             ->get();
