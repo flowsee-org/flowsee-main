@@ -23,4 +23,18 @@ class HomePageTest extends TestCase
         $response->assertSee('window.projectsData = ', false);
         $response->assertDontSee('window.projectsData = {!!', false);
     }
+
+    public function test_projects_data_is_rendered_as_json_array_not_double_encoded_string(): void
+    {
+        \App\Models\Project::factory()->create([
+            'is_active' => true,
+            'name' => 'Test Project',
+            'slug' => 'test-project',
+        ]);
+
+        $response = $this->get('/');
+        $response->assertOk();
+        $response->assertSee('window.projectsData = [', false);
+        $response->assertDontSee('window.projectsData = "[', false);
+    }
 }

@@ -41,7 +41,8 @@ if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion
   const sectionMotion=new IntersectionObserver(entries=>{entries.forEach(entry=>entry.target.classList.toggle('is-in-view',entry.isIntersecting))},{threshold:0.08});
   document.querySelectorAll('main section, .site-footer').forEach(section=>{section.classList.add('section-motion');sectionMotion.observe(section)});
 }
-const websiteProjects=Array.isArray(window.projectsData)?window.projectsData:[];
+const rawProjects=typeof window.projectsData==='string'?(()=>{try{return JSON.parse(window.projectsData)}catch(e){return []}})():window.projectsData;
+const websiteProjects=Array.isArray(rawProjects)?rawProjects:[];
 const projectBySlug=new Map(websiteProjects.map(project=>[project.slug,project]));
 // Rich fields are sanitized by the CaseStudy models before JSON serialization.
 const richNode=(className,html)=>{const node=document.createElement("div");node.className="rich-content "+className;node.innerHTML=html||"";return node};

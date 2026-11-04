@@ -74,7 +74,7 @@ class ProjectController extends Controller
                     'layout' => $img->layout,
                 ]),
             ];
-        })->toJson();
+        })->values();
 
         $serviceIconPaths = [
             'branding' => 'M12 3 3.5 7.5 12 12l8.5-4.5L12 3Zm-8.5 9L12 16.5l8.5-4.5M3.5 16.5 12 21l8.5-4.5',
