@@ -136,7 +136,6 @@ function showGalleryImage(index){
   loadOriginalImage(source,zoomImage);
   if(zoomImage.complete&&zoomImage.naturalWidth)imageReady();
 }
-caseDialog.addEventListener('click',event=>{const button=event.target.closest('[data-lightbox]');if(!button||!caseDialog.contains(button))return;galleryButtons=[...document.querySelectorAll('#case-dialog [data-lightbox]')];const index=galleryButtons.indexOf(button);if(index<0)return;showGalleryImage(index);showModal(lightbox)});
 previousImage.addEventListener('click',()=>showGalleryImage(galleryIndex-1));
 nextImage.addEventListener('click',()=>showGalleryImage(galleryIndex+1));
 lightbox.addEventListener('keydown',event=>{if(event.altKey||event.ctrlKey||event.metaKey||lightbox.classList.contains('is-zoomed'))return;
