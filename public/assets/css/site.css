@@ -698,3 +698,60 @@ html,body{transition:background-color .22s ease,color .22s ease}
   line-height: 1.55;
   overflow-wrap: anywhere;
 }
+
+/* Portfolio modal scrollbar: quiet, theme-aware, and free of browser arrows. */
+.preview-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--fg) 30%, transparent) transparent;
+  scrollbar-gutter: stable;
+}
+.preview-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.preview-scroll::-webkit-scrollbar-track { background: transparent; }
+.preview-scroll::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--fg) 28%, transparent); border: 2px solid transparent; border-radius: 999px; background-clip: content-box; }
+.preview-scroll::-webkit-scrollbar-thumb:hover { background: color-mix(in srgb, var(--fg) 48%, transparent); background-clip: content-box; }
+.preview-scroll::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+
+/* Case-study layout and interaction polish. */
+.case-study .cs-hero::after { inset-inline-start:auto; inset-inline-end:clamp(20px,5vw,72px); inset-block-start:50%; transform:translateY(-50%) rotate(-9deg); font-size:clamp(130px,18vw,230px); }
+.case-study .meta .v { min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.case-study .steps { margin-bottom:clamp(32px,5vw,64px); }
+.case-study .cover,
+.case-study .fig,
+.case-study .closing { border-radius:16px; overflow:hidden; }
+.case-study .closing { border:1px solid var(--border); }
+.case-study .closing img { display:block; border-radius:inherit; }
+.project-carousel-track { cursor:grab; touch-action:pan-y; scroll-behavior:smooth; }
+.project-carousel-track.is-dragging { cursor:grabbing; scroll-behavior:auto; user-select:none; }
+.project-carousel-track.is-dragging * { user-select:none; }
+.portfolio-grid .project-card,
+.service-grid .service-row,
+.project-carousel-controls button,
+.close-dialog,
+.button,
+.quiet-link { transition-timing-function:cubic-bezier(.22,1,.36,1); }
+.portfolio-grid .project-card { transition:transform 420ms cubic-bezier(.22,1,.36,1),border-color 260ms cubic-bezier(.22,1,.36,1),box-shadow 420ms cubic-bezier(.22,1,.36,1); }
+.service-grid .service-row { transition:transform 420ms cubic-bezier(.22,1,.36,1),background-color 260ms cubic-bezier(.22,1,.36,1),border-color 260ms cubic-bezier(.22,1,.36,1); }
+@media(prefers-reduced-motion:reduce){.project-carousel-track{scroll-behavior:auto}.portfolio-grid .project-card,.service-grid .service-row{transition:none}}
+
+/* Locale, editor-safe surfaces, and final portfolio sizing fixes. */
+.language-switcher { position:fixed; inset-block-start:14px; inset-inline-end:18px; z-index:50; }
+.language-switcher a { display:inline-flex; align-items:center; min-height:34px; padding:5px 12px; border:1px solid color-mix(in srgb,var(--fg) 16%,transparent); border-radius:999px; background:color-mix(in srgb,var(--bg) 76%,transparent); color:var(--fg); font-size:12px; text-decoration:none; backdrop-filter:blur(14px); box-shadow:0 8px 24px rgb(0 0 0/.08); transition:background-color 260ms cubic-bezier(.22,1,.36,1),border-color 260ms cubic-bezier(.22,1,.36,1),transform 420ms cubic-bezier(.22,1,.36,1); }
+.language-switcher a:hover { border-color:var(--accent); background:color-mix(in srgb,var(--accent) 10%,var(--bg)); transform:translateY(-1px); }
+html[lang="en"] body { font-family:Montserrat,Arial,sans-serif; }
+html[lang="en"] .language-switcher a { font-family:Montserrat,Arial,sans-serif; }
+.portfolio-grid .featured-project,
+.portfolio-grid .featured-project:hover { box-sizing:border-box; background:var(--bg)!important; color:var(--fg); }
+#project-carousel-track,
+#project-carousel-track > .project-card { box-sizing:border-box; }
+#project-carousel-track > .project-card { border:1px solid var(--border); outline:0; }
+#project-carousel-track > .project-card:focus-visible { outline:2px solid var(--accent); outline-offset:-3px; box-shadow:none; }
+#case-title,.case-study .cs-title { font-size:clamp(30px,3.6vw,50px); line-height:1.35; }
+@media(max-width:649px){#case-title,.case-study .cs-title{font-size:clamp(28px,7.4vw,40px);line-height:1.42}.language-switcher{inset-block-start:10px;inset-inline-end:10px}.language-switcher a{min-height:30px;padding-inline:10px}}
+/* Modal editor/footer surface: keep actions opaque above scrolling content. */
+.preview-dialog .project-window-bottom,
+.case-dialog .cs-cta { position:sticky; bottom:0; z-index:4; background:var(--bg); border-top:1px solid var(--border); box-shadow:0 -14px 28px rgb(0 0 0/.12); }
+.preview-dialog .preview-scroll { padding-bottom:clamp(48px,8vh,96px); }
+/* The public preview uses dialog ids; keep the editor action rail opaque there too. */
+#preview-dialog .project-window-bottom,
+#case-dialog .cs-cta { position:sticky; bottom:0; z-index:5; background:#121212; border-top:1px solid color-mix(in srgb,var(--fg) 14%,transparent); }
+#preview-dialog .preview-scroll { padding-bottom:clamp(56px,9vh,112px); }

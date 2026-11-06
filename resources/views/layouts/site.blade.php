@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="fa" dir="rtl"><head>
+<!DOCTYPE html><html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() === 'en' ? 'ltr' : 'rtl' }}"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="google-site-verification" content="UAQcvYOs7dLeVV987bTILlMz0EU8I0LTdyOlBlKpfeA">
 <script type="text/javascript">
@@ -11,6 +11,14 @@
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="description" content="{{ $__env->yieldContent('meta_description', $pageDescription ?? 'Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.') }}">
 <link rel="canonical" href="{{ $__env->yieldContent('canonical_url', $pageUrl ?? 'https://flowsee.ir/') }}">
+@php
+    $currentPath = trim(request()->path(), '/');
+    $faPath = preg_replace('#^en(?:/|$)#', '', $currentPath);
+    $enPath = 'en' . ($faPath !== '' ? '/' . $faPath : '');
+@endphp
+<link rel="alternate" hreflang="fa" href="{{ url($faPath) }}">
+<link rel="alternate" hreflang="en" href="{{ url($enPath) }}">
+<link rel="alternate" hreflang="x-default" href="{{ url($faPath) }}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fa_IR">
 <meta property="og:site_name" content="استودیو فلوسی | Flowsee">
@@ -51,6 +59,12 @@ try {
 </head>
 
 <body>
+@php
+    $isEnglish = app()->getLocale() === 'en';
+@endphp
+<nav class="language-switcher" aria-label="{{ $isEnglish ? 'Language' : 'زبان' }}">
+  <a href="{{ url($isEnglish ? $faPath : $enPath) }}" lang="{{ $isEnglish ? 'fa' : 'en' }}">{{ $isEnglish ? __('ui.language_fa') : __('ui.language') }}</a>
+</nav>
 @yield('content')
 @unless(request()->routeIs('product.e-learning'))<script defer src="{{ asset('assets/js/site.js') }}?v={{ filemtime(public_path('assets/js/site.js')) }}"></script>@endunless
 </body></html>

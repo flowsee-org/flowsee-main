@@ -4,15 +4,15 @@
 
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false"><defs><symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></symbol><symbol id="i-arrow-ul" viewBox="0 0 24 24"><line x1="17" y1="17" x2="7" y2="7"></line><polyline points="7 17 7 7 17 7"></polyline></symbol><symbol id="i-arrow-down" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></symbol><symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></symbol><symbol id="i-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></symbol></defs></svg>
 <a class="skip-link" href="#main" data-od-id="skip-navigation">رفتن به محتوای اصلی</a>
-<header class="consultation-bar" id="top" data-od-id="consultation-bar"><a class="consultation-call" href="tel:+989109027628" target="_top" aria-label="تماس تلفنی برای مشاوره رایگان" data-od-id="free-consultation"><span class="consultation-advice-word">مشاوره</span> <span class="consultation-free-word">رایگان</span></a><button type="button" class="theme-toggle" data-theme-toggle aria-label="فعال‌کردن حالت تاریک" title="فعال‌کردن حالت تاریک" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle class="theme-icon-sun" cx="12" cy="12" r="4"/><path class="theme-icon-sun" d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42 1.42"/><path class="theme-icon-moon" d="M20.2 15.3A8.5 8.5 0 0 1 8.7 3.8 8.5 8.5 0 1 0 20.2 15.3Z"/></svg><span class="sr-only" data-theme-label>حالت تاریک</span></button></header>
+<header class="consultation-bar" id="top" data-od-id="consultation-bar"><a class="consultation-call" href="tel:+989109027628" target="_top" aria-label="تماس تلفنی برای {{ __('ui.consultation') }}" data-od-id="free-consultation"><span class="consultation-advice-word">مشاوره</span> <span class="consultation-free-word">رایگان</span></a><button type="button" class="theme-toggle" data-theme-toggle aria-label="فعال‌کردن حالت تاریک" title="فعال‌کردن حالت تاریک" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle class="theme-icon-sun" cx="12" cy="12" r="4"/><path class="theme-icon-sun" d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42 1.42"/><path class="theme-icon-moon" d="M20.2 15.3A8.5 8.5 0 0 1 8.7 3.8 8.5 8.5 0 1 0 20.2 15.3Z"/></svg><span class="sr-only" data-theme-label>حالت تاریک</span></button></header>
 <main id="main" data-od-id="main-content">
-<section class="hero container" aria-labelledby="hero-title" data-od-id="hero"><div class="hero-copy"><h1 id="hero-title" data-od-id="hero-title">طراحی برای <em>رشد،</em><br>استراتژی برای ماندگاری.</h1><p class="hero-description" data-od-id="hero-description">از خلق هویت برند تا زیرساخت دیجیتال و تولید محتوا؛ تمام نقاط تماس کسب‌وکارتان را طوری می‌سازیم که در نگاه اول اعتماد بسازد و بفروشد.</p><div class="hero-actions"><button class="button primary" type="button" data-contact="project" data-od-id="start-project">شروع پروژه </button><a class="quiet-link" href="#portfolio" data-od-id="explore-projects">دیدن نمونه‌کارها </a></div><div class="hero-disciplines" aria-label="حوزه‌های فعالیت"><span>هویت بصری</span><span>تجربه دیجیتال</span><span>تولید محتوا</span></div></div><figure class="hero-art" data-od-id="hero-artwork"><div class="art-stage"><img class="sculpture hero-logo-glass" src="/assets/felosi-logo-sculpture.png" alt="نشان شیشه‌ای سه‌بعدی فلوسی" width="500" height="500" fetchpriority="high"></div></figure></section>
+<section class="hero container" aria-labelledby="hero-title" data-od-id="hero"><div class="hero-copy"><h1 id="hero-title" data-od-id="hero-title">{!! __('ui.hero_title') !!}</h1><p class="hero-description" data-od-id="hero-description">{{ __('ui.hero_description') }}</p><div class="hero-actions"><button class="button primary" type="button" data-contact="project" data-od-id="start-project">{{ __('ui.start_project') }} </button><a class="quiet-link" href="#portfolio" data-od-id="explore-projects">{{ __('ui.see_projects') }} </a></div><div class="hero-disciplines" aria-label="حوزه‌های فعالیت"><span>هویت بصری</span><span>تجربه دیجیتال</span><span>تولید محتوا</span></div></div><figure class="hero-art" data-od-id="hero-artwork"><div class="art-stage"><img class="sculpture hero-logo-glass" src="/assets/felosi-logo-sculpture.png" alt="نشان شیشه‌ای سه‌بعدی فلوسی" width="500" height="500" fetchpriority="high"></div></figure></section>
 
 <div class="container main-stack">
 <section id="portfolio" aria-labelledby="portfolio-title" data-od-id="portfolio">
 <div class="section-heading" data-od-id="portfolio-heading">
-<div><span class="eyebrow">منتخب نمونه‌کارها</span><h2 id="portfolio-title" data-od-id="portfolio-title">طراحی را در عمل ببینید.</h2></div>
-<a class="portfolio-view-all" href="#portfolio-grid">مشاهده همه <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+<div><span class="eyebrow">{{ __('ui.selected_projects') }}</span><h2 id="portfolio-title" data-od-id="portfolio-title">{{ __('ui.see_in_action') }}</h2></div>
+<a class="portfolio-view-all" href="#portfolio-grid">{{ __('ui.view_all') }} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
 </div>
 <div class="portfolio-grid" id="portfolio-grid">
 @php($featuredProject = $projects->firstWhere('sort_order', 1) ?: ($projects->firstWhere('is_featured', true) ?: $projects->first()))
@@ -32,9 +32,9 @@
 @endif
 @php($otherProjects = $projects->filter(fn($item) => $item->id !== $featuredProject?->id))
 @if($otherProjects->isNotEmpty())
-<div class="project-carousel" role="region" aria-label="نمونه‌کارهای بیشتر">
-<div class="project-carousel-controls"><span>نمونه‌کارهای بیشتر</span><div><button type="button" data-carousel-step="-1" aria-label="نمونه‌کارهای قبلی"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button><button type="button" data-carousel-step="1" aria-label="نمونه‌کارهای بعدی"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button></div></div>
-<div class="project-carousel-track" id="project-carousel-track" tabindex="0" aria-label="برای دیدن نمونه‌کارهای بیشتر پیمایش کنید">
+<div class="project-carousel" role="region" aria-label="{{ __('ui.more_projects') }}">
+<div class="project-carousel-controls"><span>{{ __('ui.more_projects') }}</span><div><button type="button" data-carousel-step="-1" aria-label="{{ __('ui.previous_project') }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button><button type="button" data-carousel-step="1" aria-label="{{ __('ui.next_project') }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button></div></div>
+<div class="project-carousel-track" id="project-carousel-track" tabindex="0" aria-label="برای {{ __('ui.see_projects') }}ی بیشتر پیمایش کنید">
 @foreach($otherProjects as $project)
 <button class="project-card" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? 'مشاهدهٔ کیس‌استادی ' . $project->name : $project->name }}">
 <span class="project-visual"><img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async"></span>
@@ -52,10 +52,10 @@
 
 <section id="services" aria-labelledby="services-title" data-od-id="services">
 <div class="section-heading" data-od-id="services-heading">
-<div><span class="eyebrow">خدمات ما</span><h2 id="services-title" data-od-id="services-title">از ایده تا اجرا، در کنار شما.</h2></div>
+<div><span class="eyebrow">{{ __('ui.services') }}</span><h2 id="services-title" data-od-id="services-title">{{ __('ui.services_title') }}</h2></div>
 </div>
 <div class="service-grid">
-@foreach(App\Models\Service::where('is_active', true)->orderBy('sort_order')->get() as $service)
+@foreach($services as $service)
 <article class="service-card {{ $service->is_highlighted ? 'highlighted' : '' }}" data-service-card data-service-slug="{{ $service->slug }}" data-service-title="{{ $service->title }}" data-service-description="{{ $service->description }}" data-od-id="service-{{ $service->slug }}" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="service-dialog" aria-label="جزئیات {{ $service->title }}">
 <div class="service-top"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="{{ $serviceIconPaths[$service->slug] ?? $serviceIconPaths['academy'] }}"/></svg></span><h3 class="service-title">{{ $service->title }}</h3></div>
 <p class="service-description">{{ $service->description }}</p>
@@ -65,14 +65,14 @@
 </section>
 
 <section class="home-blog" id="blog" aria-labelledby="home-blog-title">
-<div class="section-heading"><div><span class="eyebrow">مجلهٔ فلوسی</span><h2 id="home-blog-title">ایده‌هایی برای رشد بهتر.</h2></div><a class="portfolio-view-all" href="{{ route('blog.index') }}">همهٔ مقاله‌ها <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>
-@if($blogPosts->isNotEmpty())<div class="blog-grid home-blog-grid">@foreach($blogPosts as $index => $post)@include('blog._card', ['post' => $post, 'featured' => $index === 0])@endforeach</div>@else<div class="home-blog-empty"><span>دانش، تجربه و طراحی</span><p>مقاله‌های تازهٔ فلوسی به‌زودی در این بخش منتشر می‌شوند.</p><a href="{{ route('blog.index') }}">ورود به بلاگ ↗</a></div>@endif
+<div class="section-heading"><div><span class="eyebrow">مجلهٔ فلوسی</span><h2 id="home-blog-title">ایده‌هایی برای رشد بهتر.</h2></div><a class="portfolio-view-all" href="{{ route(app()->getLocale() === 'en' ? 'blog.index.en' : 'blog.index') }}">{{ __('ui.all_articles') }} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+@if($blogPosts->isNotEmpty())<div class="blog-grid home-blog-grid">@foreach($blogPosts as $index => $post)@include('blog._card', ['post' => $post, 'featured' => $index === 0])@endforeach</div>@else<div class="home-blog-empty"><span>دانش، تجربه و طراحی</span><p>مقاله‌های تازهٔ فلوسی به‌زودی در این بخش منتشر می‌شوند.</p><a href="{{ route(app()->getLocale() === 'en' ? 'blog.index.en' : 'blog.index') }}">ورود به {{ __('ui.blog') }} ↗</a></div>@endif
 </section>
 
 <section class="about" id="about" aria-labelledby="about-title" data-od-id="about">
 <div class="about-panel">
 <img class="about-mark" src="/assets/about-flowsee-mark.svg" width="500" height="500" alt="" aria-hidden="true" loading="lazy" decoding="async">
-<div class="about-lead"><span class="eyebrow">دربارهٔ استودیو</span><h2 id="about-title" data-od-id="about-title">فلوسی؛ همراه برند شما</h2><p>فلوسی یک استودیوی طراحی برند و تجربهٔ دیجیتال است. از اولین ایده تا آخرین جزئیات، هویت بصری، تجربهٔ دیجیتال و محتوا را به مسیری منسجم تبدیل می‌کنیم؛ مسیری که به رشد واقعی کسب‌وکار کمک می‌کند.</p></div>
+<div class="about-lead"><span class="eyebrow">{{ __('ui.about_studio') }}</span><h2 id="about-title" data-od-id="about-title">{{ __('ui.about_title') }}</h2><p>فلوسی یک استودیوی طراحی برند و تجربهٔ دیجیتال است. از اولین ایده تا آخرین جزئیات، هویت بصری، تجربهٔ دیجیتال و محتوا را به مسیری منسجم تبدیل می‌کنیم؛ مسیری که به رشد واقعی کسب‌وکار کمک می‌کند.</p></div>
 </div>
 </section>
 
@@ -87,7 +87,7 @@
 <nav class="footer-nav" aria-label="پیوندهای پایین صفحه" data-od-id="footer-navigation">
 <a href="#portfolio">نمونه‌کارها</a>
 <a href="#services">خدمات</a>
-<a href="{{ route('blog.index') }}">بلاگ</a>
+<a href="{{ route(app()->getLocale() === 'en' ? 'blog.index.en' : 'blog.index') }}">{{ __('ui.blog') }}</a>
 </nav>
 <div class="socials" aria-label="راه‌های ارتباطی">
 <a class="social social-instagram" href="https://www.instagram.com/flowsee.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام فلوسی"><img src="/assets/footer-imgInstagram1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
@@ -110,7 +110,7 @@
 
 <dialog id="contact-dialog" aria-labelledby="contact-title" data-od-id="project-dialog">
 <div class="dialog-head">
-<h2 id="contact-title" data-od-id="contact-title">شروع پروژه</h2>
+<h2 id="contact-title" data-od-id="contact-title">{{ __('ui.start_project') }}</h2>
 <button type="button" class="close-dialog" data-close aria-label="بستن" data-od-id="close-project-dialog"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
 </div>
 <div id="contact-form-content">
@@ -183,7 +183,7 @@
 </ul>
 </header>
 <div id="case-body"></div>
-<div class="container"><div class="cs-cta"><div><span class="eyebrow">قدم بعدی</span><h3>پروژهٔ بعدی شما، یک هویت ماندگار.</h3><p>از تحلیل بریف تا توسعهٔ هویت بصری، در کنار شما هستیم.</p></div><div class="cs-actions"><button class="button primary" type="button" data-contact="project" data-od-id="case-start-project">شروع پروژه <svg class="icon" aria-hidden="true"><use href="#i-arrow-ul"></use></svg></button><a class="quiet-link" href="tel:+989109027628" data-od-id="case-phone">۰۹۱۰۹۰۲۷۶۲۸ <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg></a></div></div></div>
+<div class="container"><div class="cs-cta"><div><span class="eyebrow">قدم بعدی</span><h3>پروژهٔ بعدی شما، یک هویت ماندگار.</h3><p>از تحلیل بریف تا توسعهٔ هویت بصری، در کنار شما هستیم.</p></div><div class="cs-actions"><button class="button primary" type="button" data-contact="project" data-od-id="case-start-project">{{ __('ui.start_project') }} <svg class="icon" aria-hidden="true"><use href="#i-arrow-ul"></use></svg></button><a class="quiet-link" href="tel:+989109027628" data-od-id="case-phone">۰۹۱۰۹۰۲۷۶۲۸ <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg></a></div></div></div>
 </article>
 </div>
 </dialog>
