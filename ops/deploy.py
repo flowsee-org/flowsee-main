@@ -59,7 +59,7 @@ def main(sha):
                 run('git', 'archive', '--format=tar', '--output=' + str(archive), sha)
                 with tarfile.open(archive) as source:
                     members = [m for m in source.getmembers() if (m.isfile() or m.isdir())
-                        and m.name.split('/')[0] in {'app','bootstrap','config','database','public','resources','routes','storage','artisan','composer.json','composer.lock','blog-next'}]
+                        and m.name.split('/')[0] in {'app','bootstrap','config','database','lang','public','resources','routes','storage','artisan','composer.json','composer.lock','blog-next'}]
                     source.extractall(staging, members=members, filter='data')
                 archive.unlink()
                 if not (staging / 'public/index.php').is_file():
