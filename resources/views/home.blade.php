@@ -77,7 +77,7 @@
 <div class="stack-carousel-track" id="stack-carousel-track" role="region" aria-label="راهنمای فناوری‌های برنامه‌نویسی" tabindex="0">
 @foreach($stackPosts as $post)
 <a class="stack-card" href="{{ route('blog.show', $post->slug) }}" aria-label="خواندن مقاله: {{ $post->title }}">
-<span class="stack-card-top"><span class="stack-logo"><img src="{{ \\App\\Support\\WebsiteMediaUrl::for($post->cover_image) }}" alt="" width="56" height="56" loading="lazy" decoding="async"></span><span class="stack-card-kicker">راهنمای فناوری</span><svg class="stack-card-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+<span class="stack-card-top"><span class="stack-logo"><img src="{{ \App\Support\WebsiteMediaUrl::for($post->cover_image) }}" alt="" width="56" height="56" loading="lazy" decoding="async"></span><span class="stack-card-kicker">راهنمای فناوری</span><svg class="stack-card-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
 <strong class="stack-card-title">{{ $post->title }}</strong>
 <span class="stack-card-description">{{ $post->excerpt }}</span>
 <span class="stack-card-link">خواندن مقاله <span aria-hidden="true">↗</span></span>
