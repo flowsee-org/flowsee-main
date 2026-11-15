@@ -15,7 +15,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::with(['service', 'caseStudy'])
+        $projects = Project::with([
+            'service',
+            'caseStudy.colors',
+            'caseStudy.sections.steps',
+            'caseStudy.sections.images',
+            'galleryImages',
+        ])
             ->where('is_active', true)
             ->orderByRaw('CASE WHEN sort_order > 0 THEN sort_order ELSE 999999 END ASC')
             ->orderByDesc('is_featured')
@@ -23,6 +29,7 @@ class ProjectController extends Controller
             ->get();
 
         $blogPosts = BlogPost::query()
+            ->select(['id', 'blog_category_id', 'title', 'slug', 'excerpt', 'cover_image', 'cover_alt', 'is_featured', 'published_at'])
             ->with('category')
             ->where('is_published', true)
             ->whereNotNull('published_at')
@@ -34,7 +41,7 @@ class ProjectController extends Controller
             ->get();
 
         $stackPosts = BlogPost::query()
-            ->with('category:id,name,slug')
+            ->select(['id', 'slug', 'title', 'cover_image', 'cover_alt'])
             ->whereHas('category', fn ($query) => $query->where('slug', 'programming-stacks'))
             ->where('is_published', true)
             ->whereNotNull('published_at')

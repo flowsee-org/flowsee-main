@@ -16,8 +16,8 @@
     } catch (_) { document.documentElement.dataset.theme = 'light'; }
   </script>
   <style>
-    @font-face{font-family:IRANSansX;src:url('/assets/fonts/IRANSansX-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
-    @font-face{font-family:IRANSansX;src:url('/assets/fonts/IRANSansX-Medium.ttf') format('truetype');font-weight:700;font-display:swap}
+    @font-face{font-family:IRANSansX;src:url('/assets/fonts/IRANSansX-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+    @font-face{font-family:IRANSansX;src:url('/assets/fonts/IRANSansX-Medium.woff2') format('woff2');font-weight:700;font-display:swap}
     :root{color-scheme:light;--bg:#fffaf6;--surface:#fff;--ink:#191919;--muted:#77716d;--line:#eee4dc;--soft:#fff0e8;--accent:#fe5400;--shadow:0 24px 80px #59230012}
     :root[data-theme="dark"]{color-scheme:dark;--bg:#090e13;--surface:#101820;--ink:#f2f5f7;--muted:#a1adb7;--line:#26323c;--soft:#251a15;--accent:#ff6a24;--shadow:0 24px 80px #0005}
     *{box-sizing:border-box}html{min-height:100%;background:var(--bg)}body{min-height:100vh;margin:0;background:radial-gradient(ellipse at 12% 10%,color-mix(in srgb,var(--accent) 8%,transparent),transparent 30%),radial-gradient(ellipse at 91% 85%,color-mix(in srgb,#ffc978 12%,transparent),transparent 28%),var(--bg);color:var(--ink);font-family:IRANSansX,Arial,sans-serif;transition:background .25s,color .25s}

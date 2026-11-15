@@ -45,7 +45,11 @@ try {
 }
 </script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" as="image" href="/assets/felosi-logo-sculpture.png" fetchpriority="high">
+@if(request()->routeIs('home', 'home.en'))
+<link rel="preload" as="image" type="image/webp" href="/assets/felosi-logo-sculpture-640.webp" imagesrcset="/assets/felosi-logo-sculpture-640.webp 640w, /assets/felosi-logo-sculpture-960.webp 960w" imagesizes="(max-width: 649px) 300px, (max-width: 899px) 280px, 500px" fetchpriority="high">
+@endif
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/IRANSansX-Regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/IRANSansXFaNum-Regular.woff2" crossorigin>
 
 
 

@@ -6,7 +6,7 @@
 <a class="skip-link" href="#main" data-od-id="skip-navigation">رفتن به محتوای اصلی</a>
 <header class="consultation-bar" id="top" data-od-id="consultation-bar"><a class="consultation-call" href="tel:+989109027628" target="_top" aria-label="تماس تلفنی برای {{ __('ui.consultation') }}" data-od-id="free-consultation"><span class="consultation-advice-word">مشاوره</span> <span class="consultation-free-word">رایگان</span></a><button type="button" class="theme-toggle" data-theme-toggle aria-label="فعال‌کردن حالت تاریک" title="فعال‌کردن حالت تاریک" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle class="theme-icon-sun" cx="12" cy="12" r="4"/><path class="theme-icon-sun" d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42 1.42"/><path class="theme-icon-moon" d="M20.2 15.3A8.5 8.5 0 0 1 8.7 3.8 8.5 8.5 0 1 0 20.2 15.3Z"/></svg><span class="sr-only" data-theme-label>حالت تاریک</span></button></header>
 <main id="main" data-od-id="main-content">
-<section class="hero container" aria-labelledby="hero-title" data-od-id="hero"><div class="hero-copy"><h1 id="hero-title" data-od-id="hero-title">{!! __('ui.hero_title') !!}</h1><p class="hero-description" data-od-id="hero-description">{{ __('ui.hero_description') }}</p><div class="hero-actions"><button class="button primary" type="button" data-contact="project" data-od-id="start-project">{{ __('ui.start_project') }} </button><a class="quiet-link" href="#portfolio" data-od-id="explore-projects">{{ __('ui.see_projects') }} </a></div><div class="hero-disciplines" aria-label="حوزه‌های فعالیت"><span>هویت بصری</span><span>تجربه دیجیتال</span><span>تولید محتوا</span></div></div><figure class="hero-art" data-od-id="hero-artwork"><div class="art-stage"><img class="sculpture hero-logo-glass" src="/assets/felosi-logo-sculpture.png" alt="نشان شیشه‌ای سه‌بعدی فلوسی" width="500" height="500" fetchpriority="high"></div></figure></section>
+<section class="hero container" aria-labelledby="hero-title" data-od-id="hero"><div class="hero-copy"><h1 id="hero-title" data-od-id="hero-title">{!! __('ui.hero_title') !!}</h1><p class="hero-description" data-od-id="hero-description">{{ __('ui.hero_description') }}</p><div class="hero-actions"><button class="button primary" type="button" data-contact="project" data-od-id="start-project">{{ __('ui.start_project') }} </button><a class="quiet-link" href="#portfolio" data-od-id="explore-projects">{{ __('ui.see_projects') }} </a></div><div class="hero-disciplines" aria-label="حوزه‌های فعالیت"><span>هویت بصری</span><span>تجربه دیجیتال</span><span>تولید محتوا</span></div></div><figure class="hero-art" data-od-id="hero-artwork"><div class="art-stage"><picture><source type="image/webp" srcset="/assets/felosi-logo-sculpture-640.webp 640w, /assets/felosi-logo-sculpture-960.webp 960w" sizes="(max-width: 649px) 300px, (max-width: 899px) 280px, 500px"><img class="sculpture hero-logo-glass" src="/assets/felosi-logo-sculpture.png" alt="نشان شیشه‌ای سه‌بعدی فلوسی" width="500" height="500" fetchpriority="high" decoding="async"></picture></div></figure></section>
 
 <div class="container main-stack">
 <section id="portfolio" aria-labelledby="portfolio-title" data-od-id="portfolio">
@@ -20,7 +20,7 @@
 @php($project = $featuredProject)
 <button class="project-card featured-project" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? 'مشاهدهٔ کیس‌استادی ' . $project->name : $project->name }}">
 <span class="project-visual">
-<img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async">
+<img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::previewFor($project->cover_image) }}" @if($previewSrcset = \App\Support\WebsiteMediaUrl::previewSrcsetFor($project->cover_image)) srcset="{{ $previewSrcset }}" sizes="(max-width: 649px) calc(100vw - 40px), (max-width: 899px) 50vw, 1120px" @endif width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async">
 </span>
 <span class="project-copy">
 <span class="project-category">{{ $project->service?->title ?? 'پروژه منتخب' }}</span>
@@ -37,7 +37,7 @@
 <div class="project-carousel-track" id="project-carousel-track" tabindex="0" aria-label="برای {{ __('ui.see_projects') }}ی بیشتر پیمایش کنید">
 @foreach($otherProjects as $project)
 <button class="project-card" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? 'مشاهدهٔ کیس‌استادی ' . $project->name : $project->name }}">
-<span class="project-visual"><img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::for($project->cover_image) }}" width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async"></span>
+<span class="project-visual"><img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::previewFor($project->cover_image) }}" @if($previewSrcset = \App\Support\WebsiteMediaUrl::previewSrcsetFor($project->cover_image)) srcset="{{ $previewSrcset }}" sizes="(max-width: 649px) calc(100vw - 40px), (max-width: 899px) 50vw, 1120px" @endif width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async"></span>
 <span class="project-copy">
 <span class="project-category">{{ $project->service?->title ?? 'نمونه‌کار' }}</span>
 <span class="project-name">{{ $project->name }}</span>
@@ -71,7 +71,12 @@
 @foreach($stackPosts as $post)
 <li>
 <a class="stack-logo-link" data-stack="{{ $post->slug }}" href="{{ route(app()->getLocale() === 'en' ? 'blog.show.en' : 'blog.show', $post->slug) }}" aria-label="خواندن مقاله: {{ $post->title }}" title="{{ $post->cover_alt ?: $post->title }}">
+@php($stackSymbol = config('website-media.stack_symbols.'.$post->slug))
+@if($stackSymbol)
+<svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="{{ asset(config('website-media.stack_sprite')) }}#{{ $stackSymbol }}"></use></svg>
+@else
 <img src="{{ \App\Support\WebsiteMediaUrl::for($post->cover_image) }}" alt="" width="48" height="48" loading="lazy" decoding="async">
+@endif
 </a>
 </li>
 @endforeach
@@ -109,7 +114,7 @@
 <a class="social social-telegram" href="https://t.me/flowseeadmin" target="_blank" rel="noopener noreferrer" aria-label="تلگرام فلوسی"><img src="/assets/footer-imgTelegram1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
 <a class="social social-whatsapp" href="https://wa.me/989109027628" target="_blank" rel="noopener noreferrer" aria-label="واتساپ فلوسی"><img src="/assets/footer-imgWhatsapp1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
 <a class="social social-x" href="https://x.com/flowseeir" target="_blank" rel="noopener noreferrer" aria-label="ایکس فلوسی"><span class="footer-social-label" aria-hidden="true">𝕏</span></a>
-<a class="social social-map" href="https://maps.app.goo.gl/kN2kZ9AkS6nGbnoC7" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در گوگل‌مپ"><img src="/assets/google-maps-logo.png" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
+<a class="social social-map" href="https://maps.app.goo.gl/kN2kZ9AkS6nGbnoC7" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در گوگل‌مپ"><img src="/assets/google-maps-logo.webp" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
 <a class="social social-balad" href="https://balad.ir/p/46T1JAasDQclgV" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در بلد"><img src="/assets/balad-logo.png" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
 <a class="social social-gmail" href="mailto:flowseeadmin@gmail.com" aria-label="ایمیل فلوسی"><img src="/assets/footer-imgGmail1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
 </div>
