@@ -22,11 +22,11 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script type="application/ld+json">@json($structuredData)</script>
 <style>
-@font-face{font-family:IRANSansX;src:url('/assets/fonts/IRANSansX-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
-@font-face{font-family:IRANSansX;src:url('/assets/fonts/IRANSansX-Medium.ttf') format('truetype');font-weight:500 900;font-display:swap}
-@font-face{font-family:IRANSansXFaNum;src:url('/assets/fonts/IRANSansXFaNum-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
-@font-face{font-family:PARADOX;src:url('/assets/fonts/PARADOX-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
-@font-face{font-family:Montserrat;src:url('/assets/fonts/Montserrat-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:IRANSansX;src:url('/assets/fonts/IRANSansX-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:IRANSansX;src:url('/assets/fonts/IRANSansX-Medium.woff2') format('woff2');font-weight:500 900;font-display:swap}
+@font-face{font-family:IRANSansXFaNum;src:url('/assets/fonts/IRANSansXFaNum-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:PARADOX;src:url('/assets/fonts/PARADOX-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Montserrat;src:url('/assets/fonts/Montserrat-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
 :root{
   --bg: oklch(100.0000% 0 0);
   --surface: oklch(96.1151% 0 0);

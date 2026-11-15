@@ -1,8 +1,8 @@
 
-@font-face{font-family:IRANSansX;src:url('/assets/fonts/IRANSansX-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
-@font-face{font-family:IRANSansX;src:url('/assets/fonts/IRANSansX-Medium.ttf') format('truetype');font-weight:500 900;font-display:swap}
-@font-face{font-family:IRANSansXFaNum;src:url('/assets/fonts/IRANSansXFaNum-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
-@font-face{font-family:Montserrat;src:url('/assets/fonts/Montserrat-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:IRANSansX;src:url('/assets/fonts/IRANSansX-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:IRANSansX;src:url('/assets/fonts/IRANSansX-Medium.woff2') format('woff2');font-weight:500 900;font-display:swap}
+@font-face{font-family:IRANSansXFaNum;src:url('/assets/fonts/IRANSansXFaNum-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Montserrat;src:url('/assets/fonts/Montserrat-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
 
 
 :root{
@@ -755,3 +755,5 @@ html[lang="en"] .language-switcher a { font-family:Montserrat,Arial,sans-serif; 
 #preview-dialog .project-window-bottom,
 #case-dialog .cs-cta { position:sticky; bottom:0; z-index:5; background:#121212; border-top:1px solid color-mix(in srgb,var(--fg) 14%,transparent); }
 #preview-dialog .preview-scroll { padding-bottom:clamp(56px,9vh,112px); }
+/* Keep picture sources inside the existing hero layout. */
+.art-stage>picture{display:block;width:100%;line-height:0}

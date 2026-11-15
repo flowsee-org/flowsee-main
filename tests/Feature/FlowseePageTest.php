@@ -113,12 +113,17 @@ class FlowseePageTest extends TestCase
 
         app(\Database\Seeders\ImaMoviesCaseStudySeeder::class)->run();
 
-        $this->get('/')->assertOk()
+        $response = $this->get('/')->assertOk()
             ->assertSee('طراحی رابط و تجربه کاربری')
             ->assertSee('طراحی تجربه‌های دیجیتال ساده، روان و هدفمند.')
             ->assertSee('بازاریابی شبکه‌های اجتماعی')
-            ->assertSee('/assets/ima-case-study/ima-movies.webp')
+            ->assertSee(\App\Support\WebsiteMediaUrl::previewFor('assets/ima-case-study/ima-movies.webp'))
             ->assertDontSee('class="about-values"', false);
+
+        $this->assertSame(
+            \App\Support\WebsiteMediaUrl::for('assets/ima-case-study/ima-movies.webp'),
+            collect($response->viewData('projectsData'))->firstWhere('slug', 'ima')['cover_image'],
+        );
 
         $project = Project::with('caseStudy.sections.steps', 'caseStudy.sections.images')
             ->where('slug', 'ima')
