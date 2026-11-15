@@ -64,6 +64,42 @@
 </div>
 </section>
 
+<section class="stack-showcase" id="technology-stacks" aria-labelledby="stack-showcase-title">
+<div class="section-heading stack-showcase-heading">
+<div><span class="eyebrow">فناوری‌های ساخت محصول</span><h2 id="stack-showcase-title">ابزارهایی که دنیای دیجیتال را می‌سازند.</h2></div>
+<div class="stack-carousel-controls" aria-label="کنترل اسلایدر فناوری‌ها">
+<button type="button" data-stack-step="-1" aria-label="فناوری قبلی"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
+<button type="button" data-stack-step="1" aria-label="فناوری بعدی"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+</div>
+</div>
+<p class="stack-showcase-intro">از زبان‌های پایه تا چارچوب‌های وب و موبایل؛ هر نشان، دریچه‌ای به یک راهنمای مستقل و کاربردی است.</p>
+@if($stackPosts->isNotEmpty())
+<div class="stack-carousel-track" id="stack-carousel-track" role="region" aria-label="راهنمای فناوری‌های برنامه‌نویسی" tabindex="0">
+@foreach($stackPosts as $post)
+<a class="stack-card" href="{{ route('blog.show', $post->slug) }}" aria-label="خواندن مقاله: {{ $post->title }}">
+<span class="stack-card-top"><span class="stack-logo"><img src="{{ \\App\\Support\\WebsiteMediaUrl::for($post->cover_image) }}" alt="" width="56" height="56" loading="lazy" decoding="async"></span><span class="stack-card-kicker">راهنمای فناوری</span><svg class="stack-card-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+<strong class="stack-card-title">{{ $post->title }}</strong>
+<span class="stack-card-description">{{ $post->excerpt }}</span>
+<span class="stack-card-link">خواندن مقاله <span aria-hidden="true">↗</span></span>
+</a>
+@endforeach
+</div>
+@else
+<div class="stack-showcase-empty">راهنماهای فناوری به‌زودی در این بخش قرار می‌گیرند.</div>
+@endif
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const track = document.getElementById('stack-carousel-track');
+    if (!track) return;
+    document.querySelectorAll('[data-stack-step]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            track.scrollBy({ left: Number(button.dataset.stackStep) * Math.max(260, track.clientWidth * 0.8), behavior: 'smooth' });
+        });
+    });
+});
+</script>
+
 <section class="home-blog" id="blog" aria-labelledby="home-blog-title">
 <div class="section-heading"><div><span class="eyebrow">مجلهٔ فلوسی</span><h2 id="home-blog-title">ایده‌هایی برای رشد بهتر.</h2></div><a class="portfolio-view-all" href="{{ route(app()->getLocale() === 'en' ? 'blog.index.en' : 'blog.index') }}">{{ __('ui.all_articles') }} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>
 @if($blogPosts->isNotEmpty())<div class="blog-grid home-blog-grid">@foreach($blogPosts as $index => $post)@include('blog._card', ['post' => $post, 'featured' => $index === 0])@endforeach</div>@else<div class="home-blog-empty"><span>دانش، تجربه و طراحی</span><p>مقاله‌های تازهٔ فلوسی به‌زودی در این بخش منتشر می‌شوند.</p><a href="{{ route(app()->getLocale() === 'en' ? 'blog.index.en' : 'blog.index') }}">ورود به {{ __('ui.blog') }} ↗</a></div>@endif
