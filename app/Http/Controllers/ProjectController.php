@@ -7,7 +7,6 @@ use App\Models\BlogPost;
 use App\Models\Service;
 use App\Support\WebsiteMediaUrl;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 
 class ProjectController extends Controller
 {
@@ -97,10 +96,12 @@ class ProjectController extends Controller
             'academy' => 'M12 3a9 9 0 1 0 9 9h-9V3Zm3-1v6h6a7 7 0 0 0-6-6Z',
         ];
 
-        $services = Cache::remember('flowsee.home.services', now()->addMinutes(5), fn () => Service::query()
+        // Read the small service list directly so stale shared cache values cannot
+        // change the model type expected by the homepage.
+        $services = Service::query()
             ->where('is_active', true)
             ->orderBy('sort_order')
-            ->get());
+            ->get();
 
         $structuredData = [
             '@context' => 'https://schema.org',

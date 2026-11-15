@@ -2,12 +2,48 @@
 
 namespace Tests\Feature;
 
+use App\Models\Service;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Cache;
 use Tests\TestCase;
 
 class HomePageTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function test_homepage_reads_service_models_even_when_legacy_cache_contains_labels(): void
+    {
+        $service = Service::factory()->create([
+            'slug' => 'cache-regression',
+            'title' => 'خدمت زنده از دیتابیس',
+            'is_active' => true,
+            'is_highlighted' => true,
+        ]);
+        Service::factory()->create([
+            'slug' => 'inactive-regression',
+            'title' => 'خدمت غیرفعال',
+            'is_active' => false,
+        ]);
+
+        Cache::put('flowsee.home.services', collect([
+            'cache-regression' => 'برچسب قدیمی کش',
+        ]), now()->addMinutes(5));
+
+        try {
+            $this->get('/')
+                ->assertOk()
+                ->assertViewHas('services', fn ($services) =>
+                    $services->count() === 1
+                    && $services->first() instanceof Service
+                    && $services->first()->id === $service->id
+                )
+                ->assertSee('خدمت زنده از دیتابیس')
+                ->assertDontSee('خدمت غیرفعال')
+                ->assertDontSee('برچسب قدیمی کش');
+        } finally {
+            Cache::forget('flowsee.home.services');
+        }
+    }
 
     public function test_home_page_renders_service_dialog_icon_container(): void
     {
