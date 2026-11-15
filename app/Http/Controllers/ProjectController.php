@@ -177,7 +177,7 @@ class ProjectController extends Controller
             ],
         ];
 
-        return view('home', compact('projects', 'projectsData', 'blogPosts', 'services', 'serviceIconPaths', 'structuredData'));
+        return view('home', compact('projects', 'projectsData', 'blogPosts', 'stackPosts', 'services', 'serviceIconPaths', 'structuredData'));
     }
 
     /**

@@ -40,7 +40,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ShoperoCaseStudySeeder::class);
         $this->seedSocialLinks();
         $this->seedSiteSettings();
-        $this->call(ProgrammingStackArticlesSeeder::class);
     }
 
     protected function seedServices(): void
