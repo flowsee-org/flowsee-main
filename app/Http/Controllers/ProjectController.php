@@ -30,7 +30,17 @@ class ProjectController extends Controller
             ->where('published_at', '<=', now())
             ->orderByDesc('is_featured')
             ->orderByDesc('published_at')
+            ->whereDoesntHave('category', fn ($query) => $query->where('slug', 'programming-stacks'))
             ->limit(3)
+            ->get();
+
+        $stackPosts = BlogPost::query()
+            ->with('category:id,name,slug')
+            ->whereHas('category', fn ($query) => $query->where('slug', 'programming-stacks'))
+            ->where('is_published', true)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->orderBy('id')
             ->get();
 
         $projectsData = $projects->map(function ($p) {
