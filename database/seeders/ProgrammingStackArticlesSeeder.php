@@ -10,7 +10,7 @@ class ProgrammingStackArticlesSeeder extends Seeder
 {
     public function run(): void
     {
-        $category = BlogCategory::updateOrCreate(
+        $category = BlogCategory::firstOrCreate(
             ['slug' => 'programming-stacks'],
             [
                 'name' => 'فناوری و توسعه',
@@ -295,7 +295,8 @@ HTML,
         ];
 
         foreach ($articles as $index => $article) {
-            BlogPost::updateOrCreate(
+            // Deployment may create missing guides, but must preserve editorial changes and dates.
+            BlogPost::firstOrCreate(
                 ['slug' => $article['slug']],
                 [
                     'blog_category_id' => $category->id,
