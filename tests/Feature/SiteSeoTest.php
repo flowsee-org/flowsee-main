@@ -74,7 +74,7 @@ class SiteSeoTest extends TestCase
     public function test_sitemap_tracks_public_case_studies_and_excludes_drafts_and_redirects(): void
     {
         foreach (['published', 'draft', 'inactive', 'mapi-shop'] as $slug) {
-            $project = Project::updateOrCreate(['slug' => $slug], ['name' => $slug, 'is_active' => $slug !== 'inactive', 'has_case_study' => true]);
+            $project = Project::updateOrCreate(['slug' => $slug], ['name' => $slug, 'cover_image' => '16.jpg', 'is_active' => $slug !== 'inactive', 'has_case_study' => true]);
             CaseStudy::updateOrCreate(['project_id' => $project->id], ['slug' => $slug, 'title' => $slug, 'is_published' => $slug !== 'draft']);
         }
         $response = $this->get('/sitemap.xml')->assertOk()->assertHeader('Content-Type', 'application/xml; charset=UTF-8')
