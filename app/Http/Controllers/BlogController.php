@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogCategory;
 use App\Models\BlogPost;
+use App\Support\StackArticleLocalization;
 use App\Support\WebsiteMediaUrl;
 use Illuminate\Http\Request;
 
@@ -127,8 +128,16 @@ class BlogController extends Controller
             ->where('published_at', '<=', now())
             ->firstOrFail();
 
-        if (request()->routeIs('blog.show.en')) {
+        $isEnglish = request()->routeIs('blog.show.en');
+        $isStackArticle = $post->category?->slug === 'programming-stacks'
+            && StackArticleLocalization::translation($post->slug) !== null;
+
+        if ($isEnglish && ! $isStackArticle) {
             return redirect()->route('blog.show', $post->slug, 301);
+        }
+
+        if ($isEnglish) {
+            StackArticleLocalization::apply($post);
         }
 
         // Count page requests, not unique people. Do not invent a popularity ranking before visits exist.
@@ -145,9 +154,17 @@ class BlogController extends Controller
             ->limit(3)
             ->get();
 
-        $pageTitle = $post->meta_title ?: $post->title.' | بلاگ استودیو فلوسی';
-        $pageDescription = $post->meta_description ?: ($post->excerpt ?: (string) str(strip_tags($post->content))->squish()->limit(160));
-        $pageUrl = route('blog.show', $post->slug);
+        if ($isEnglish) {
+            $relatedPosts->each(fn (BlogPost $related) => StackArticleLocalization::apply($related));
+        }
+
+        $pageTitle = $isEnglish
+            ? $post->title.' | Flowsee Journal'
+            : ($post->meta_title ?: $post->title.' | بلاگ استودیو فلوسی');
+        $pageDescription = $isEnglish
+            ? $post->excerpt
+            : ($post->meta_description ?: ($post->excerpt ?: (string) str(strip_tags($post->content))->squish()->limit(160)));
+        $pageUrl = route($isEnglish ? 'blog.show.en' : 'blog.show', $post->slug);
         $imageUrl = $post->cover_image ? WebsiteMediaUrl::for($post->cover_image) : 'https://flowsee.ir/assets/flowsee-social.jpg';
         $readingMinutes = max(1, (int) ceil(preg_match_all('/[\pL\pN]+/u', strip_tags($post->content)) / 180));
         $postHeadings = collect();
@@ -167,11 +184,11 @@ class BlogController extends Controller
                 ['@type' => 'Organization', '@id' => 'https://flowsee.ir/#organization', 'name' => 'استودیو فلوسی', 'url' => 'https://flowsee.ir/'],
                 ['@type' => 'WebSite', '@id' => 'https://flowsee.ir/#website', 'url' => 'https://flowsee.ir/', 'name' => 'استودیو فلوسی', 'inLanguage' => 'fa-IR'],
                 ['@type' => 'BreadcrumbList', '@id' => $pageUrl.'#breadcrumb', 'itemListElement' => [
-                    ['@type' => 'ListItem', 'position' => 1, 'name' => 'خانه', 'item' => 'https://flowsee.ir/'],
-                    ['@type' => 'ListItem', 'position' => 2, 'name' => 'بلاگ', 'item' => 'https://flowsee.ir/blog'],
+                    ['@type' => 'ListItem', 'position' => 1, 'name' => $isEnglish ? 'Home' : 'خانه', 'item' => $isEnglish ? 'https://flowsee.ir/en' : 'https://flowsee.ir/'],
+                    ['@type' => 'ListItem', 'position' => 2, 'name' => $isEnglish ? 'Development technologies' : 'فناوری و توسعه', 'item' => $isEnglish ? 'https://flowsee.ir/en#technology-stacks' : 'https://flowsee.ir/blog?category=programming-stacks'],
                     ['@type' => 'ListItem', 'position' => 3, 'name' => $post->title, 'item' => $pageUrl],
                 ]],
-                ['@type' => 'WebPage', '@id' => $pageUrl.'#webpage', 'url' => $pageUrl, 'name' => $pageTitle, 'description' => $pageDescription, 'isPartOf' => ['@id' => 'https://flowsee.ir/#website'], 'breadcrumb' => ['@id' => $pageUrl.'#breadcrumb'], 'inLanguage' => 'fa-IR'],
+                ['@type' => 'WebPage', '@id' => $pageUrl.'#webpage', 'url' => $pageUrl, 'name' => $pageTitle, 'description' => $pageDescription, 'isPartOf' => ['@id' => 'https://flowsee.ir/#website'], 'breadcrumb' => ['@id' => $pageUrl.'#breadcrumb'], 'inLanguage' => $isEnglish ? 'en' : 'fa-IR'],
                 [
                     '@type' => 'BlogPosting',
                     '@id' => $pageUrl.'#article',
@@ -184,12 +201,28 @@ class BlogController extends Controller
                     'author' => ['@id' => 'https://flowsee.ir/#organization'],
                     'publisher' => ['@id' => 'https://flowsee.ir/#organization'],
                     'articleSection' => $post->category->name,
-                    'inLanguage' => 'fa-IR',
+                    'inLanguage' => $isEnglish ? 'en' : 'fa-IR',
                 ],
             ],
         ];
 
-        return view('blog.show', compact('post', 'relatedPosts', 'postHeadings', 'readingMinutes', 'pageTitle', 'pageDescription', 'pageUrl', 'imageUrl', 'structuredData'));
+        $articleUi = $isEnglish ? [
+            'skip' => 'Skip to article', 'brand' => 'Flowsee Studio', 'home' => 'Home', 'blog' => 'Technology guides',
+            'portfolio' => 'Portfolio', 'services' => 'Services', 'language' => 'Language', 'switch_language' => 'فارسی',
+            'theme_dark' => 'Switch to dark mode', 'theme_light' => 'Switch to light mode', 'consultation' => 'Free consultation',
+            'breadcrumb' => 'Breadcrumb', 'author' => 'Flowsee Studio', 'reading_minutes' => 'min read', 'contents' => 'In this article',
+            'start' => 'Introduction', 'more_in' => 'More in', 'continue_reading' => 'Keep reading', 'same_category' => 'More technology guides',
+            'all_articles' => 'All guides', 'read_article' => 'Read article', 'footer_tagline' => 'Design for growth, strategy for longevity.',
+        ] : [
+            'skip' => 'رفتن به محتوای اصلی', 'brand' => 'استودیو فلوسی', 'home' => 'خانه', 'blog' => 'بلاگ',
+            'portfolio' => 'نمونه‌کارها', 'services' => 'خدمات', 'language' => 'زبان', 'switch_language' => 'English',
+            'theme_dark' => 'فعال‌کردن حالت تاریک', 'theme_light' => 'فعال‌کردن حالت روشن', 'consultation' => 'مشاوره رایگان',
+            'breadcrumb' => 'مسیر صفحه', 'author' => 'استودیو فلوسی', 'reading_minutes' => 'دقیقه مطالعه', 'contents' => 'در این مقاله',
+            'start' => 'شروع مقاله', 'more_in' => 'مطالب بیشتر در', 'continue_reading' => 'ادامهٔ خواندن', 'same_category' => 'از همین دسته',
+            'all_articles' => 'همهٔ مقاله‌ها', 'read_article' => 'خواندن مقاله', 'footer_tagline' => 'طراحی برای رشد، استراتژی برای ماندگاری.',
+        ];
+
+        return view('blog.show', compact('post', 'relatedPosts', 'postHeadings', 'readingMinutes', 'pageTitle', 'pageDescription', 'pageUrl', 'imageUrl', 'structuredData', 'articleUi', 'isEnglish', 'isStackArticle'));
     }
 
     public function sitemap()
