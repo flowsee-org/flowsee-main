@@ -23,6 +23,16 @@ class SiteSeoTest extends TestCase
         ]);
     }
 
+    public function test_reading_an_article_does_not_change_its_editorial_modification_date(): void
+    {
+        $post = $this->publish('stable-modification-date');
+        $post->update(['updated_at' => now()->subDays(7)]);
+        $modified = $post->getRawOriginal('updated_at');
+        $this->get('/blog/stable-modification-date')->assertOk();
+        $this->assertSame(1, (int) $post->fresh()->views);
+        $this->assertSame($modified, $post->fresh()->getRawOriginal('updated_at'));
+    }
+
     public function test_blog_with_multiple_pages_renders_crawlable_pagination_and_distinct_canonicals(): void
     {
         foreach (range(1, 10) as $n) {

@@ -132,7 +132,7 @@ class BlogController extends Controller
         }
 
         // Count page requests, not unique people. Do not invent a popularity ranking before visits exist.
-        $post->increment('views');
+        BlogPost::withoutTimestamps(fn () => $post->increment('views'));
 
         $relatedPosts = BlogPost::query()
             ->with('category')
