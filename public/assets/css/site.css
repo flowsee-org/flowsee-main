@@ -720,7 +720,7 @@ html,body{transition:background-color .22s ease,color .22s ease}
 .case-study .closing { border-radius:16px; overflow:hidden; }
 .case-study .closing { border:1px solid var(--border); }
 .case-study .closing img { display:block; border-radius:inherit; }
-.project-carousel-track { cursor:grab; touch-action:pan-y; scroll-behavior:smooth; }
+.project-carousel-track { cursor:grab; touch-action:auto; scroll-behavior:smooth; }
 .project-carousel-track.is-dragging { cursor:grabbing; scroll-behavior:auto; user-select:none; }
 .project-carousel-track.is-dragging * { user-select:none; }
 .portfolio-grid .project-card,
@@ -776,3 +776,6 @@ html[lang="en"] #portfolio .featured-project::after{background:linear-gradient(9
 html[lang="en"] #preview-dialog :is(.project-intro,.project-intro h2,.project-intro>p){direction:ltr;text-align:left}
 html[lang="en"] #case-dialog :is(.cs-title,.cs-lead,.cs-head,.rich-content,.rich-content p,.trio p,.steps p,.meta,.sw-meta,.palette code,.cs-cta){text-align:left;direction:ltr}
 html[lang="en"] #case-dialog .meta .v{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}
+html[lang="en"] #services .service-card,
+html[lang="en"] #services .service-title,
+html[lang="en"] #services .service-description{direction:ltr;text-align:left}

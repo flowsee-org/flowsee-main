@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'stack_sprite' => 'assets/stack-logos.f59a643be4.svg',
+    'stack_sprite' => 'assets/stack-logos.ad29e05944.svg',
     'stack_symbols' => [
         'javascript-guide' => 'javascript',
         'typescript-guide' => 'typescript',
@@ -16,6 +16,7 @@ return [
         'livewire-guide' => 'livewire',
         'php-guide' => 'php',
         'electronjs-guide' => 'electronjs',
+        'figma-guide' => 'figma',
     ],
     'remote_media' => [
         'https://cdn.simpleicons.org/javascript/f7df1e' => 'assets/stack-icons/javascript-47dedab5.svg',
@@ -31,6 +32,7 @@ return [
         'https://cdn.simpleicons.org/livewire/4e56a6' => 'assets/stack-icons/livewire-e977315f.svg',
         'https://cdn.simpleicons.org/php/777bb4' => 'assets/stack-icons/php-b14442ae.svg',
         'https://cdn.simpleicons.org/electron/47848f' => 'assets/stack-icons/electronjs-48d08519.svg',
+        'https://cdn.simpleicons.org/figma/f24e1e' => 'assets/stack-icons/figma.svg',
     ],
     'dimensions' => [
         '01.jpg' => [1920, 1080],

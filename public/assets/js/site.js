@@ -94,12 +94,14 @@ if(projectTrack){
   const desktopStep=()=>window.matchMedia('(min-width: 650px)').matches?3:1;
   const updateControls=()=>{const overflow=projectTrack.scrollWidth>projectTrack.clientWidth+2,index=activeIndex(),step=desktopStep(),visible=step===3?3:1;controls.forEach(button=>{const direction=Math.sign(Number(button.dataset.carouselStep));button.hidden=!overflow;button.disabled=!overflow||(direction<0?index<=Math.floor(visible/2):index>=slides.length-1-Math.floor(visible/2))})};
   controls.forEach(button=>button.addEventListener('click',()=>{const amount=Math.sign(Number(button.dataset.carouselStep))*desktopStep(),target=slides[Math.max(0,Math.min(slides.length-1,activeIndex()+amount))];target?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest',inline:'center'})}));
-  let dragActive=false,dragMoved=false,lastPointerX=0;
-  const endDrag=event=>{if(!dragActive)return;dragActive=false;projectTrack.classList.remove('is-dragging');if(event?.pointerId!==undefined&&projectTrack.hasPointerCapture(event.pointerId))projectTrack.releasePointerCapture(event.pointerId);if(dragMoved)setTimeout(()=>{dragMoved=false},0)};
-  projectTrack.addEventListener('pointerdown',event=>{if(event.pointerType==='mouse'&&event.button!==0)return;dragActive=true;dragMoved=false;lastPointerX=event.clientX;projectTrack.classList.add('is-dragging');projectTrack.setPointerCapture?.(event.pointerId)});
-  projectTrack.addEventListener('pointermove',event=>{if(!dragActive)return;const delta=event.clientX-lastPointerX;if(Math.abs(delta)>2)dragMoved=true;if(dragMoved){event.preventDefault();projectTrack.scrollBy({left:-delta,behavior:'auto'})}lastPointerX=event.clientX});
-  projectTrack.addEventListener('pointerup',endDrag);projectTrack.addEventListener('pointercancel',endDrag);projectTrack.addEventListener('lostpointercapture',()=>{dragActive=false;projectTrack.classList.remove('is-dragging')});
-  projectTrack.addEventListener('click',event=>{if(!dragMoved)return;event.preventDefault();event.stopPropagation();dragMoved=false},true);  projectTrack.addEventListener('scroll',()=>requestAnimationFrame(updateControls),{passive:true});window.addEventListener('resize',updateControls);updateControls();
+  let dragActive=false,dragMoved=false,lastPointerX=0,dragStartX=0,dragEndX=0,dragEndY=0,suppressClickUntil=0;
+  projectTrack.addEventListener('pointerdown',event=>{if(event.pointerType!=='mouse'||event.button!==0)return;dragActive=true;dragMoved=false;dragStartX=lastPointerX=event.clientX;projectTrack.classList.add('is-dragging')});
+  projectTrack.addEventListener('dragstart',event=>event.preventDefault());
+  window.addEventListener('pointermove',event=>{if(!dragActive)return;const delta=event.clientX-lastPointerX;if(Math.abs(event.clientX-dragStartX)>5)dragMoved=true;if(dragMoved){event.preventDefault();projectTrack.scrollBy({left:getComputedStyle(projectTrack).direction==='rtl'?delta:-delta,behavior:'auto'})}lastPointerX=event.clientX},{passive:false});
+  const endDrag=event=>{if(!dragActive)return;dragActive=false;projectTrack.classList.remove('is-dragging');if(dragMoved){suppressClickUntil=performance.now()+350;dragEndX=event.clientX;dragEndY=event.clientY}};
+  window.addEventListener('pointerup',endDrag);window.addEventListener('pointercancel',endDrag);
+  projectTrack.addEventListener('click',event=>{if(event.detail===0||performance.now()>suppressClickUntil||Math.hypot(event.clientX-dragEndX,event.clientY-dragEndY)>14)return;suppressClickUntil=0;event.preventDefault();event.stopPropagation()},true);
+  projectTrack.addEventListener('scroll',()=>requestAnimationFrame(updateControls),{passive:true});window.addEventListener('resize',updateControls);updateControls();
 }
 const requestedCase=new URLSearchParams(window.location.search).get('case');if(requestedCase){const project=projectBySlug.get(requestedCase);if(project?.case_study){renderCaseStudy(project);openDialog(caseDialog)}}
 contact.addEventListener('close',clearContactForm);

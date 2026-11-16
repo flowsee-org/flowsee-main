@@ -89,13 +89,13 @@
 
 
 /* Homepage technology logos: all article links remain visible without scrolling. */
-.stack-showcase{margin-block:12px 52px}
-.stack-logo-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;margin:0;padding:0;list-style:none}
+.stack-showcase{width:100%;margin-block:0}
+.stack-logo-grid{display:grid;width:min(100%,1000px);grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;margin:0 auto;padding:0;list-style:none}
 .stack-logo-grid>li{min-width:0}
-.stack-logo-link{display:grid;place-items:center;min-width:0;min-height:96px;padding:20px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);transition:background-color .15s,border-color .15s}
+.stack-logo-link{display:grid;place-items:center;min-width:0;min-height:88px;padding:18px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);transition:background-color .15s,border-color .15s}
 .stack-logo-link:hover{border-color:var(--accent);background:var(--bg)}
 .stack-logo-link:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 .stack-logo-link :is(img,svg){display:block;width:48px;height:48px;object-fit:contain}
 [data-theme="dark"] .stack-logo-link[data-stack="nextjs-guide"] :is(img,svg){filter:invert(1)}
-@media(max-width:600px){.stack-showcase{margin-bottom:36px}.stack-logo-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.stack-logo-link{min-height:64px;padding:12px}.stack-logo-link :is(img,svg){width:36px;height:36px}}
+@media(max-width:600px){.stack-logo-grid{width:100%;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.stack-logo-grid>li:nth-last-child(2):nth-child(4n+1){grid-column-start:2}.stack-logo-link{min-height:64px;padding:12px}.stack-logo-link :is(img,svg){width:36px;height:36px}}
 @media(prefers-reduced-motion:reduce){.stack-logo-link{transition:none}}

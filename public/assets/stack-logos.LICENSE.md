@@ -1,6 +1,6 @@
 # Technology logo sprite
 
-The `stack-logos.*.svg` sprite combines the 13 existing technology marks from
+The `stack-logos.*.svg` sprite combines the 14 existing technology marks from
 [Simple Icons](https://github.com/simple-icons/simple-icons), distributed under
 [CC0 1.0](https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md).
 Path geometry is preserved; each symbol uses the color already used on this site.

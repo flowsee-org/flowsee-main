@@ -340,7 +340,7 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .project-carousel-controls button svg { width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 .project-carousel-controls button:hover:not(:disabled) { border-color:var(--accent); background:color-mix(in srgb,var(--accent) 8%,var(--bg)); color:var(--accent); }
 .project-carousel-controls button:disabled { opacity:.4; cursor:default; }
-.project-carousel-track { display:grid; grid-auto-flow:column; grid-auto-columns:calc(33.333333% - 9.333333px); grid-template-rows:1fr; gap:14px; overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:x mandatory; scrollbar-width:none; padding:2px 1px 8px; direction:rtl; }
+.project-carousel-track { display:grid; grid-auto-flow:column; grid-auto-columns:calc(33.333333% - 9.333333px); grid-template-rows:1fr; gap:14px; overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:x mandatory; scrollbar-width:none; padding:2px 1px 8px; direction:rtl; touch-action:auto; }
 .project-carousel-track::-webkit-scrollbar { display:none; }
 .project-carousel-track>.project-card { min-width:0; scroll-snap-align:center; height:auto; display:flex; flex-direction:column; }
 .project-carousel-track>.project-card .project-visual { flex:0 0 auto; aspect-ratio:16/9; }
