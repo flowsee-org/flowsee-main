@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\BlogPost;
 use App\Models\Service;
 use App\Support\WebsiteMediaUrl;
+use App\Support\PortfolioLocalization;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -68,7 +69,7 @@ class ProjectController extends Controller
                     'cover_image' => WebsiteMediaUrl::for($p->caseStudy->cover_image),
                     'cover_caption' => $p->caseStudy->cover_caption,
                     'theme_color' => $p->caseStudy->theme_color,
-                    'colors' => $p->caseStudy->colors->map(fn($c) => ['name' => $c->name, 'hex' => $c->hex]),
+                    'colors' => $p->caseStudy->colors->map(fn($c) => ['name' => $c->name, 'hex' => $c->hex])->all(),
                     'sections' => $p->caseStudy->sections->map(fn($s) => [
                         'title' => $s->title,
                         'lead' => $s->lead,
@@ -76,23 +77,25 @@ class ProjectController extends Controller
                         'index_label' => $s->index_label,
                         'band_image' => WebsiteMediaUrl::for($s->band_image),
                         'band_caption' => $s->band_caption,
-                        'steps' => $s->steps->map(fn($st) => ['title' => $st->title, 'description' => $st->description, 'step_number' => $st->step_number]),
+                        'steps' => $s->steps->map(fn($st) => ['title' => $st->title, 'description' => $st->description, 'step_number' => $st->step_number])->all(),
                         'images' => $s->images->map(fn($img) => [
                             'path' => WebsiteMediaUrl::for($img->path),
                             'caption' => $img->caption,
                             'alt' => $img->alt,
                             'layout' => $img->layout,
-                        ]),
-                    ]),
+                        ])->all(),
+                    ])->all(),
                 ] : null,
                 'gallery_images' => $p->galleryImages->map(fn($img) => [
                     'path' => WebsiteMediaUrl::for($img->path),
                     'caption' => $img->caption,
                     'alt' => $img->alt,
                     'layout' => $img->layout,
-                ]),
+                ])->all(),
             ];
         })->values()->all();
+        $projectsData = PortfolioLocalization::localize($projectsData, app()->getLocale());
+        $portfolioCopy = collect($projectsData)->keyBy('slug');
 
         $serviceIconPaths = [
             'branding' => 'M12 3 3.5 7.5 12 12l8.5-4.5L12 3Zm-8.5 9L12 16.5l8.5-4.5M3.5 16.5 12 21l8.5-4.5',
@@ -194,7 +197,7 @@ class ProjectController extends Controller
             'description' => $pageDescription, 'inLanguage' => $isEnglish ? 'en' : 'fa-IR',
         ]);
 
-        return view('home', compact('projects', 'projectsData', 'blogPosts', 'stackPosts', 'services', 'serviceIconPaths', 'structuredData', 'pageUrl', 'pageTitle', 'pageDescription'));
+        return view('home', compact('projects', 'projectsData', 'portfolioCopy', 'blogPosts', 'stackPosts', 'services', 'serviceIconPaths', 'structuredData', 'pageUrl', 'pageTitle', 'pageDescription'));
     }
 
     /**

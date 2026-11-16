@@ -138,7 +138,7 @@ function showGalleryImage(index){
   imageStatus.textContent=uiText('در حال بارگذاری تصویر…');imageStatus.hidden=false;zoomViewport.setAttribute('aria-busy','true');
   zoomImage.alt=source.alt;zoomImage.width=Number(source.getAttribute('width'));zoomImage.height=Number(source.getAttribute('height'));
   document.getElementById('lightbox-cap').textContent=button.dataset.caption||source.alt;
-  imageCount.textContent=(galleryIndex+1).toLocaleString('fa-IR')+' / '+galleryButtons.length.toLocaleString('fa-IR');
+  imageCount.textContent=(galleryIndex+1).toLocaleString(document.documentElement.lang==='en'?'en-US':'fa-IR')+' / '+galleryButtons.length.toLocaleString(document.documentElement.lang==='en'?'en-US':'fa-IR');
   previousImage.disabled=galleryIndex===0;nextImage.disabled=galleryIndex===galleryButtons.length-1;
   setZoom(false);zoomImage.src=resolvedSource;
   loadOriginalImage(source,zoomImage);
@@ -147,8 +147,9 @@ function showGalleryImage(index){
 previousImage.addEventListener('click',()=>showGalleryImage(galleryIndex-1));
 nextImage.addEventListener('click',()=>showGalleryImage(galleryIndex+1));
 lightbox.addEventListener('keydown',event=>{if(event.altKey||event.ctrlKey||event.metaKey||lightbox.classList.contains('is-zoomed'))return;
-  if(event.key==='ArrowLeft'){event.preventDefault();if(!nextImage.disabled)showGalleryImage(galleryIndex+1)}
-  if(event.key==='ArrowRight'){event.preventDefault();if(!previousImage.disabled)showGalleryImage(galleryIndex-1)}
+  const forwardKey=document.documentElement.dir==='ltr'?'ArrowRight':'ArrowLeft';
+  if(event.key===forwardKey){event.preventDefault();if(!nextImage.disabled)showGalleryImage(galleryIndex+1)}
+  else if(event.key===(forwardKey==='ArrowRight'?'ArrowLeft':'ArrowRight')){event.preventDefault();if(!previousImage.disabled)showGalleryImage(galleryIndex-1)}
 });
 lightbox.addEventListener('close',()=>setZoom(false));
 // A rotating visual prompt never replaces the user's input or accessible field label.

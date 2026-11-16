@@ -765,3 +765,14 @@ html[lang="en"] .language-switcher a { font-family:Montserrat,Arial,sans-serif; 
 .language-control{display:grid;place-items:center;min-inline-size:36px;min-block-size:36px;padding:0 4px;color:inherit;font:500 12px/1 IRANSansX,Arial,sans-serif;text-decoration:none}
 .header-controls :is(a,button):focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 @media(max-width:649px){.header-controls{inset-inline-end:8px;gap:2px}.header-controls .theme-toggle,.language-control{min-inline-size:36px;min-block-size:36px}}
+
+/* English portfolio: mirror reading order without changing the Persian composition. */
+html[lang="en"] :is(#portfolio,#case-dialog,#preview-dialog,#lightbox){direction:ltr;text-align:left}
+html[lang="en"] #portfolio :is(.project-card,.project-copy,.project-name,.project-description){direction:ltr;text-align:left}
+html[lang="en"] #portfolio .project-carousel-track{direction:ltr}
+html[lang="en"] #portfolio .project-carousel-controls svg{transform:scaleX(-1)}
+html[lang="en"] #portfolio .featured-project .project-image{object-position:center right}
+html[lang="en"] #portfolio .featured-project::after{background:linear-gradient(90deg,rgba(16,16,16,.94) 0%,rgba(16,16,16,.85) 45%,rgba(16,16,16,.3) 75%,transparent 100%)}
+html[lang="en"] #preview-dialog :is(.project-intro,.project-intro h2,.project-intro>p){direction:ltr;text-align:left}
+html[lang="en"] #case-dialog :is(.cs-title,.cs-lead,.cs-head,.rich-content,.rich-content p,.trio p,.steps p,.meta,.sw-meta,.palette code,.cs-cta){text-align:left;direction:ltr}
+html[lang="en"] #case-dialog .meta .v{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}

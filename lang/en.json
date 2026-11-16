@@ -140,5 +140,15 @@
   "مشاهدهٔ کیس‌استادی :name": "View the :name case study",
   "خواندن مقاله: :title": "Read the Persian article: :title",
   "جزئیات :title": "About :title",
-  "ورود به بلاگ": "Read the journal"
+  "ورود به بلاگ": "Read the journal",
+  "نمونه‌کار :name، استودیو فلوسی": ":name portfolio project, Flowsee Studio",
+  "پروژه منتخب": "Selected project",
+  "نمونه‌کار": "Portfolio project",
+  "بستن پروژه": "Close project",
+  "مرور پروژه‌ها": "Browse projects",
+  "مشخصات پروژه": "Project details",
+  "بستن تصویر": "Close image",
+  "جابه‌جایی بین تصاویر": "Browse images",
+  "تصویر بزرگ‌شده؛ برای حرکت از کلیدهای جهت استفاده کنید": "Enlarged image; use the arrow keys to move",
+  "مرور نمونه‌کارهای بیشتر": "Browse more projects"
 }
