@@ -314,15 +314,17 @@ HTML,
 
         foreach ($articles as $index => $article) {
             // Deployment may create missing guides, but must preserve editorial changes and dates.
-            BlogPost::firstOrCreate(
+            $coverImage = 'assets/blog-stack-covers/'.$article['slug'].'.webp';
+            $coverAlt = 'تصویر مفهومی '.$article['stack'].' برای راهنمای توسعه';
+            $post = BlogPost::firstOrCreate(
                 ['slug' => $article['slug']],
                 [
                     'blog_category_id' => $category->id,
                     'title' => $article['title'],
                     'excerpt' => $article['excerpt'],
                     'content' => $article['content']."\n".($supplements[$article['slug']] ?? ''),
-                    'cover_image' => 'https://cdn.simpleicons.org/'.$article['icon'].'/'.$article['color'],
-                    'cover_alt' => 'لوگوی '.$article['stack'],
+                    'cover_image' => $coverImage,
+                    'cover_alt' => $coverAlt,
                     'meta_title' => $article['title'].' | مجلهٔ فلوسی',
                     'meta_description' => $article['excerpt'],
                     'is_featured' => false,
@@ -330,6 +332,10 @@ HTML,
                     'published_at' => now()->subDays($index),
                 ],
             );
+
+            if ($post->cover_image !== $coverImage || $post->cover_alt !== $coverAlt) {
+                $post->forceFill(['cover_image' => $coverImage, 'cover_alt' => $coverAlt])->save();
+            }
         }
     }
 }
