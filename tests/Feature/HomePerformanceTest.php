@@ -81,7 +81,7 @@ class HomePerformanceTest extends TestCase
         $this->assertFileExists($sprite);
         $xml = simplexml_load_file($sprite);
         $xml->registerXPathNamespace('svg', 'http://www.w3.org/2000/svg');
-        $this->assertCount(13, $xml->xpath('//svg:symbol'));
+        $this->assertCount(14, $xml->xpath('//svg:symbol'));
     }
 
     public function test_optimized_covers_preserve_uploaded_and_external_media_fallbacks(): void
