@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProjectController::class, 'index'])->name('home');
@@ -30,6 +31,7 @@ Route::get('/product/e-learning', function () {
 
     return view('product.e-learning', compact('pageTitle', 'pageDescription', 'pageUrl', 'structuredData'));
 })->name('product.e-learning');
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 Route::get('/blog-sitemap.xml', [BlogController::class, 'sitemap'])->name('blog.sitemap');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');

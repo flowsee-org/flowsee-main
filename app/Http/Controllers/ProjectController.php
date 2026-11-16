@@ -185,7 +185,16 @@ class ProjectController extends Controller
             ],
         ];
 
-        return view('home', compact('projects', 'projectsData', 'blogPosts', 'stackPosts', 'services', 'serviceIconPaths', 'structuredData'));
+        $isEnglish = app()->getLocale() === 'en';
+        $pageUrl = $isEnglish ? 'https://flowsee.ir/en' : 'https://flowsee.ir/';
+        $pageTitle = $isEnglish ? 'Flowsee Studio | Brand Design & Digital Experiences' : 'استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال';
+        $pageDescription = $isEnglish ? 'Flowsee is a design studio in Iran creating brand identities, digital products and experiences that help businesses grow.' : 'Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.';
+        $structuredData['@graph'][3] = array_merge($structuredData['@graph'][3], [
+            '@id' => $pageUrl.'#webpage', 'url' => $pageUrl, 'name' => $pageTitle,
+            'description' => $pageDescription, 'inLanguage' => $isEnglish ? 'en' : 'fa-IR',
+        ]);
+
+        return view('home', compact('projects', 'projectsData', 'blogPosts', 'stackPosts', 'services', 'serviceIconPaths', 'structuredData', 'pageUrl', 'pageTitle', 'pageDescription'));
     }
 
     /**
@@ -210,6 +219,10 @@ class ProjectController extends Controller
 
         if (! $caseStudy || ! $caseStudy->is_published) {
             abort(404);
+        }
+
+        if (request()->routeIs('projects.show.en')) {
+            return redirect()->route('projects.show', $project->slug, 301);
         }
 
         // Keep the Mapi Shop case study in the homepage portfolio modal.
