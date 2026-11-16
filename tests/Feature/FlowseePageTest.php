@@ -76,9 +76,9 @@ class FlowseePageTest extends TestCase
     public function test_search_engine_files_and_homepage_metadata_are_available(): void
     {
         $this->assertFileExists(public_path('robots.txt'));
-        $this->assertFileExists(public_path('sitemap.xml'));
+        $this->assertFileDoesNotExist(public_path('sitemap.xml'));
         $this->assertStringContainsString('Sitemap: https://flowsee.ir/sitemap.xml', file_get_contents(public_path('robots.txt')));
-        $this->assertStringContainsString('<loc>https://flowsee.ir/</loc>', file_get_contents(public_path('sitemap.xml')));
+        $this->get('/sitemap.xml')->assertOk()->assertSee('<loc>https://flowsee.ir/</loc>', false);
 
         $this->get('/')->assertOk()
             ->assertSee('name="google-site-verification" content="UAQcvYOs7dLeVV987bTILlMz0EU8I0LTdyOlBlKpfeA"', false)
@@ -158,8 +158,8 @@ class FlowseePageTest extends TestCase
             ->assertDontSee('name="email"', false)
             ->assertDontSee('id="phone-hint"', false)
             ->assertDontSee('<select name="service"', false)
-            ->assertSee('<button class="project-card', false)
-            ->assertDontSee('<a class="project-card', false)
+            ->assertSee('<a class="project-card', false)
+            ->assertSee('/projects/ebrahimi"', false)
             ->assertSee('aria-label="مشاهدهٔ کیس‌استادی اکسلوت"', false)
             ->assertSee('مشاهدهٔ کیس‌استادی EBRAHIMI')
             ->assertDontSee('id="articles"', false)

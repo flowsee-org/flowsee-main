@@ -3,10 +3,10 @@
 @push('styles')<link rel="stylesheet" href="{{ asset('assets/css/blog.css') }}?v={{ filemtime(public_path('assets/css/blog.css')) }}">@endpush
 
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false"><defs><symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></symbol><symbol id="i-arrow-ul" viewBox="0 0 24 24"><line x1="17" y1="17" x2="7" y2="7"></line><polyline points="7 17 7 7 17 7"></polyline></symbol><symbol id="i-arrow-down" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></symbol><symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></symbol><symbol id="i-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></symbol></defs></svg>
-<a class="skip-link" href="#main" data-od-id="skip-navigation">رفتن به محتوای اصلی</a>
-<header class="consultation-bar" id="top" data-od-id="consultation-bar"><a class="consultation-call" href="tel:+989109027628" target="_top" aria-label="تماس تلفنی برای {{ __('ui.consultation') }}" data-od-id="free-consultation"><span class="consultation-advice-word">مشاوره</span> <span class="consultation-free-word">رایگان</span></a><button type="button" class="theme-toggle" data-theme-toggle aria-label="فعال‌کردن حالت تاریک" title="فعال‌کردن حالت تاریک" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle class="theme-icon-sun" cx="12" cy="12" r="4"/><path class="theme-icon-sun" d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42 1.42"/><path class="theme-icon-moon" d="M20.2 15.3A8.5 8.5 0 0 1 8.7 3.8 8.5 8.5 0 1 0 20.2 15.3Z"/></svg><span class="sr-only" data-theme-label>حالت تاریک</span></button></header>
+<a class="skip-link" href="#main" data-od-id="skip-navigation">{{ __('رفتن به محتوای اصلی') }}</a>
+<header class="consultation-bar" id="top" data-od-id="consultation-bar"><a class="consultation-call" href="tel:+989109027628" target="_top" aria-label="تماس تلفنی برای {{ __('ui.consultation') }}" data-od-id="free-consultation">{{ __('ui.consultation') }}</a><button type="button" class="theme-toggle" data-theme-toggle aria-label="{{ __('فعال‌کردن حالت تاریک') }}" title="{{ __('فعال‌کردن حالت تاریک') }}" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle class="theme-icon-sun" cx="12" cy="12" r="4"/><path class="theme-icon-sun" d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42 1.42"/><path class="theme-icon-moon" d="M20.2 15.3A8.5 8.5 0 0 1 8.7 3.8 8.5 8.5 0 1 0 20.2 15.3Z"/></svg><span class="sr-only" data-theme-label>{{ __('حالت تاریک') }}</span></button></header>
 <main id="main" data-od-id="main-content">
-<section class="hero container" aria-labelledby="hero-title" data-od-id="hero"><div class="hero-copy"><h1 id="hero-title" data-od-id="hero-title">{!! __('ui.hero_title') !!}</h1><p class="hero-description" data-od-id="hero-description">{{ __('ui.hero_description') }}</p><div class="hero-actions"><button class="button primary" type="button" data-contact="project" data-od-id="start-project">{{ __('ui.start_project') }} </button><a class="quiet-link" href="#portfolio" data-od-id="explore-projects">{{ __('ui.see_projects') }} </a></div><div class="hero-disciplines" aria-label="حوزه‌های فعالیت"><span>هویت بصری</span><span>تجربه دیجیتال</span><span>تولید محتوا</span></div></div><figure class="hero-art" data-od-id="hero-artwork"><div class="art-stage"><picture><source type="image/webp" srcset="/assets/felosi-logo-sculpture-640.webp 640w, /assets/felosi-logo-sculpture-960.webp 960w" sizes="(max-width: 649px) 300px, (max-width: 899px) 280px, 500px"><img class="sculpture hero-logo-glass" src="/assets/felosi-logo-sculpture.png" alt="نشان شیشه‌ای سه‌بعدی فلوسی" width="500" height="500" fetchpriority="high" decoding="async"></picture></div></figure></section>
+<section class="hero container" aria-labelledby="hero-title" data-od-id="hero"><div class="hero-copy"><h1 id="hero-title" data-od-id="hero-title">{!! __('ui.hero_title') !!}</h1><p class="hero-description" data-od-id="hero-description">{{ __('ui.hero_description') }}</p><div class="hero-actions"><button class="button primary" type="button" data-contact="project" data-od-id="start-project">{{ __('ui.start_project') }} </button><a class="quiet-link" href="#portfolio" data-od-id="explore-projects">{{ __('ui.see_projects') }} </a></div><div class="hero-disciplines" aria-label="حوزه‌های فعالیت"><span>{{ __('هویت بصری') }}</span><span>{{ __('تجربه دیجیتال') }}</span><span>{{ __('تولید محتوا') }}</span></div></div><figure class="hero-art" data-od-id="hero-artwork"><div class="art-stage"><picture><source type="image/webp" srcset="/assets/felosi-logo-sculpture-640.webp 640w, /assets/felosi-logo-sculpture-960.webp 960w" sizes="(max-width: 649px) 300px, (max-width: 899px) 280px, 500px"><img class="sculpture hero-logo-glass" src="/assets/felosi-logo-sculpture.png" alt="نشان شیشه‌ای سه‌بعدی فلوسی" width="500" height="500" fetchpriority="high" decoding="async"></picture></div></figure></section>
 
 <div class="container main-stack">
 <section id="portfolio" aria-labelledby="portfolio-title" data-od-id="portfolio">
@@ -18,7 +18,8 @@
 @php($featuredProject = $projects->firstWhere('sort_order', 1) ?: ($projects->firstWhere('is_featured', true) ?: $projects->first()))
 @if($featuredProject)
 @php($project = $featuredProject)
-<button class="project-card featured-project" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? 'مشاهدهٔ کیس‌استادی ' . $project->name : $project->name }}">
+@php($projectLink = $project->has_case_study && $project->caseStudy?->is_published ? ($project->slug === 'mapi-shop' ? route('home', ['case' => $project->slug]) : route('projects.show', $project->slug)) : null)
+<{{ $projectLink ? 'a' : 'button' }} class="project-card featured-project" @if($projectLink) href="{{ $projectLink }}" @else type="button" @endif data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? __('مشاهدهٔ کیس‌استادی :name', ['name' => $project->name]) : $project->name }}">
 <span class="project-visual">
 <img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::previewFor($project->cover_image) }}" @if($previewSrcset = \App\Support\WebsiteMediaUrl::previewSrcsetFor($project->cover_image)) srcset="{{ $previewSrcset }}" sizes="(max-width: 649px) calc(100vw - 40px), (max-width: 899px) 50vw, 1120px" @endif width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async">
 </span>
@@ -26,9 +27,9 @@
 <span class="project-category">{{ $project->service?->title ?? 'پروژه منتخب' }}</span>
 <span class="project-name">{{ $project->name }}</span>
 <span class="project-description">{{ $project->description ?: ($project->caseStudy?->lead ?? $project->service?->description ?? '') }}</span>
-<span class="project-action"><span class="project-action-label">مشاهدهٔ پروژه</span> <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+<span class="project-action"><span class="project-action-label">{{ __('مشاهدهٔ پروژه') }}</span> <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
 </span>
-</button>
+</{{ $projectLink ? 'a' : 'button' }}>
 @endif
 @php($otherProjects = $projects->filter(fn($item) => $item->id !== $featuredProject?->id))
 @if($otherProjects->isNotEmpty())
@@ -36,13 +37,14 @@
 <div class="project-carousel-controls"><span>{{ __('ui.more_projects') }}</span><div><button type="button" data-carousel-step="-1" aria-label="{{ __('ui.previous_project') }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button><button type="button" data-carousel-step="1" aria-label="{{ __('ui.next_project') }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button></div></div>
 <div class="project-carousel-track" id="project-carousel-track" tabindex="0" aria-label="برای {{ __('ui.see_projects') }}ی بیشتر پیمایش کنید">
 @foreach($otherProjects as $project)
-<button class="project-card" type="button" data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? 'مشاهدهٔ کیس‌استادی ' . $project->name : $project->name }}">
+@php($projectLink = $project->has_case_study && $project->caseStudy?->is_published ? ($project->slug === 'mapi-shop' ? route('home', ['case' => $project->slug]) : route('projects.show', $project->slug)) : null)
+<{{ $projectLink ? 'a' : 'button' }} class="project-card" @if($projectLink) href="{{ $projectLink }}" @else type="button" @endif data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? __('مشاهدهٔ کیس‌استادی :name', ['name' => $project->name]) : $project->name }}">
 <span class="project-visual"><img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::previewFor($project->cover_image) }}" @if($previewSrcset = \App\Support\WebsiteMediaUrl::previewSrcsetFor($project->cover_image)) srcset="{{ $previewSrcset }}" sizes="(max-width: 649px) calc(100vw - 40px), (max-width: 899px) 50vw, 1120px" @endif width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async"></span>
 <span class="project-copy">
 <span class="project-category">{{ $project->service?->title ?? 'نمونه‌کار' }}</span>
 <span class="project-name">{{ $project->name }}</span>
 </span>
-</button>
+</{{ $projectLink ? 'a' : 'button' }}>
 @endforeach
 </div>
 </div>
@@ -56,9 +58,9 @@
 </div>
 <div class="service-grid">
 @foreach($services as $service)
-<article class="service-card {{ $service->is_highlighted ? 'highlighted' : '' }}" data-service-card data-service-slug="{{ $service->slug }}" data-service-title="{{ $service->title }}" data-service-description="{{ $service->description }}" data-od-id="service-{{ $service->slug }}" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="service-dialog" aria-label="جزئیات {{ $service->title }}">
-<div class="service-top"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="{{ $serviceIconPaths[$service->slug] ?? $serviceIconPaths['academy'] }}"/></svg></span><h3 class="service-title">{{ $service->title }}</h3></div>
-<p class="service-description">{{ $service->description }}</p>
+<article class="service-card {{ $service->is_highlighted ? 'highlighted' : '' }}" data-service-card data-service-slug="{{ $service->slug }}" data-service-title="{{ __($service->title) }}" data-service-description="{{ __($service->description) }}" data-od-id="service-{{ $service->slug }}" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="service-dialog" aria-label="{{ __('جزئیات :title', ['title' => __($service->title)]) }}">
+<div class="service-top"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="{{ $serviceIconPaths[$service->slug] ?? $serviceIconPaths['academy'] }}"/></svg></span><h3 class="service-title">{{ __($service->title) }}</h3></div>
+<p class="service-description">{{ __($service->description) }}</p>
 </article>
 @endforeach
 </div>
@@ -66,11 +68,11 @@
 
 @if($stackPosts->isNotEmpty())
 <section class="stack-showcase" id="technology-stacks" aria-labelledby="stack-showcase-title">
-<h2 id="stack-showcase-title" class="sr-only">فناوری‌های توسعه</h2>
+<h2 id="stack-showcase-title" class="sr-only">{{ __('فناوری‌های توسعه') }}</h2>
 <ul class="stack-logo-grid">
 @foreach($stackPosts as $post)
 <li>
-<a class="stack-logo-link" data-stack="{{ $post->slug }}" href="{{ route(app()->getLocale() === 'en' ? 'blog.show.en' : 'blog.show', $post->slug) }}" aria-label="خواندن مقاله: {{ $post->title }}" title="{{ $post->cover_alt ?: $post->title }}">
+<a class="stack-logo-link" data-stack="{{ $post->slug }}" href="{{ route('blog.show', $post->slug) }}" aria-label="{{ __('خواندن مقاله: :title', ['title' => $post->title]) }}" title="{{ $post->cover_alt ?: $post->title }}">
 @php($stackSymbol = config('website-media.stack_symbols.'.$post->slug))
 @if($stackSymbol)
 <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="{{ asset(config('website-media.stack_sprite')) }}#{{ $stackSymbol }}"></use></svg>
@@ -85,14 +87,14 @@
 @endif
 
 <section class="home-blog" id="blog" aria-labelledby="home-blog-title">
-<div class="section-heading"><div><span class="eyebrow">مجلهٔ فلوسی</span><h2 id="home-blog-title">ایده‌هایی برای رشد بهتر.</h2></div><a class="portfolio-view-all" href="{{ route(app()->getLocale() === 'en' ? 'blog.index.en' : 'blog.index') }}">{{ __('ui.all_articles') }} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>
-@if($blogPosts->isNotEmpty())<div class="blog-grid home-blog-grid">@foreach($blogPosts as $index => $post)@include('blog._card', ['post' => $post, 'featured' => $index === 0])@endforeach</div>@else<div class="home-blog-empty"><span>دانش، تجربه و طراحی</span><p>مقاله‌های تازهٔ فلوسی به‌زودی در این بخش منتشر می‌شوند.</p><a href="{{ route(app()->getLocale() === 'en' ? 'blog.index.en' : 'blog.index') }}">ورود به {{ __('ui.blog') }} ↗</a></div>@endif
+<div class="section-heading"><div><span class="eyebrow">{{ __('مجلهٔ فلوسی') }}</span><h2 id="home-blog-title">{{ __('ایده‌هایی برای رشد بهتر.') }}</h2></div><a class="portfolio-view-all" href="{{ route('blog.index') }}">{{ __('ui.all_articles') }} <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+@if($blogPosts->isNotEmpty())<div class="blog-grid home-blog-grid">@foreach($blogPosts as $index => $post)@include('blog._card', ['post' => $post, 'featured' => $index === 0])@endforeach</div>@else<div class="home-blog-empty"><span>{{ __('دانش، تجربه و طراحی') }}</span><p>{{ __('مقاله‌های تازهٔ فلوسی به‌زودی در این بخش منتشر می‌شوند.') }}</p><a href="{{ route('blog.index') }}">{{ __('ورود به بلاگ') }} ↗</a></div>@endif
 </section>
 
 <section class="about" id="about" aria-labelledby="about-title" data-od-id="about">
 <div class="about-panel">
 <img class="about-mark" src="/assets/about-flowsee-mark.svg" width="500" height="500" alt="" aria-hidden="true" loading="lazy" decoding="async">
-<div class="about-lead"><span class="eyebrow">{{ __('ui.about_studio') }}</span><h2 id="about-title" data-od-id="about-title">{{ __('ui.about_title') }}</h2><p>فلوسی یک استودیوی طراحی برند و تجربهٔ دیجیتال است. از اولین ایده تا آخرین جزئیات، هویت بصری، تجربهٔ دیجیتال و محتوا را به مسیری منسجم تبدیل می‌کنیم؛ مسیری که به رشد واقعی کسب‌وکار کمک می‌کند.</p></div>
+<div class="about-lead"><span class="eyebrow">{{ __('ui.about_studio') }}</span><h2 id="about-title" data-od-id="about-title">{{ __('ui.about_title') }}</h2><p>{{ __('فلوسی یک استودیوی طراحی برند و تجربهٔ دیجیتال است. از اولین ایده تا آخرین جزئیات، هویت بصری، تجربهٔ دیجیتال و محتوا را به مسیری منسجم تبدیل می‌کنیم؛ مسیری که به رشد واقعی کسب‌وکار کمک می‌کند.') }}</p></div>
 </div>
 </section>
 
@@ -105,9 +107,11 @@
 <img src="/assets/footer-imgUnion.svg" alt="فلوسی" width="92" height="94">
 </a>
 <nav class="footer-nav" aria-label="پیوندهای پایین صفحه" data-od-id="footer-navigation">
-<a href="#portfolio">نمونه‌کارها</a>
-<a href="#services">خدمات</a>
-<a href="{{ route(app()->getLocale() === 'en' ? 'blog.index.en' : 'blog.index') }}">{{ __('ui.blog') }}</a>
+<a href="#portfolio">{{ __('نمونه‌کارها') }}</a>
+<a href="#services">{{ __('خدمات') }}</a>
+<a href="{{ route('campaigns.qazvin-beauty') }}">{{ __('طراحی فروشگاه اینترنتی') }}</a>
+<a href="{{ route('product.e-learning') }}">{{ __('طراحی محصول آموزشی') }}</a>
+<a href="{{ route('blog.index') }}">{{ __('ui.blog') }}</a>
 </nav>
 <div class="socials" aria-label="راه‌های ارتباطی">
 <a class="social social-instagram" href="https://www.instagram.com/flowsee.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام فلوسی"><img src="/assets/footer-imgInstagram1.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>
@@ -122,34 +126,34 @@
 </footer>
 
 <dialog id="service-dialog" class="service-dialog" aria-labelledby="service-dialog-title">
-<div class="dialog-head"><div id="service-dialog-icon" class="service-dialog-icon" aria-hidden="true"></div><h2 id="service-dialog-title"></h2><button type="button" class="close-dialog" data-close aria-label="بستن"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+<div class="dialog-head"><div id="service-dialog-icon" class="service-dialog-icon" aria-hidden="true"></div><h2 id="service-dialog-title"></h2><button type="button" class="close-dialog" data-close aria-label="{{ __('بستن') }}"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
 <p id="service-dialog-description" class="service-dialog-description"></p>
 <ul id="service-dialog-items" class="service-dialog-items" aria-label="جزئیات خدمت"></ul>
-<button class="button primary" type="button" data-service-contact>گفت‌وگو دربارهٔ این خدمت</button>
+<button class="button primary" type="button" data-service-contact>{{ __('گفت‌وگو دربارهٔ این خدمت') }}</button>
 </dialog>
 
 <dialog id="contact-dialog" aria-labelledby="contact-title" data-od-id="project-dialog">
 <div class="dialog-head">
 <h2 id="contact-title" data-od-id="contact-title">{{ __('ui.start_project') }}</h2>
-<button type="button" class="close-dialog" data-close aria-label="بستن" data-od-id="close-project-dialog"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
+<button type="button" class="close-dialog" data-close aria-label="{{ __('بستن') }}" data-od-id="close-project-dialog"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
 </div>
 <div id="contact-form-content">
-<p class="dialog-note">پس از ارسال، اطلاعات پروژه برای پیگیری در پایگاه دادهٔ فلوسی ثبت می‌شود.</p>
+<p class="dialog-note">{{ __('پس از ارسال، اطلاعات پروژه برای پیگیری در پایگاه دادهٔ فلوسی ثبت می‌شود.') }}</p>
 <form id="brief-form" class="form-grid" data-od-id="project-form" autocomplete="off" novalidate>
-<label>نام شما <span class="required-marker" aria-hidden="true">*</span><span class="sr-only">(الزامی)</span>
+<label>{{ __('نام شما') }} <span class="required-marker" aria-hidden="true">*</span><span class="sr-only">{{ __('(الزامی)') }}</span>
 <input name="name" required maxlength="100" data-od-id="brief-name" id="brief-name" aria-describedby="error-name">
 <span class="field-error" id="error-name" hidden aria-live="polite"></span>
 </label>
-<label>شمارهٔ تماس <span class="required-marker" aria-hidden="true">*</span><span class="sr-only">(الزامی)</span>
+<label>{{ __('شمارهٔ تماس') }} <span class="required-marker" aria-hidden="true">*</span><span class="sr-only">{{ __('(الزامی)') }}</span>
 <input type="tel" name="phone" inputmode="tel" dir="ltr" required minlength="7" maxlength="24" aria-describedby="error-phone" data-od-id="brief-phone" id="brief-phone">
 <span class="field-error" id="error-phone" hidden aria-live="polite"></span>
 </label>
 <input type="hidden" name="service" value="consultation" id="brief-service">
-<label class="field-details">درباره پروژه <span class="required-marker" aria-hidden="true">*</span><span class="sr-only">(الزامی)</span>
-<textarea name="details" rows="4" maxlength="5000" required placeholder="پروژهٔ خود را توضیح دهید..." data-od-id="brief-details" aria-describedby="error-details"></textarea>
+<label class="field-details">{{ __('درباره پروژه') }} <span class="required-marker" aria-hidden="true">*</span><span class="sr-only">{{ __('(الزامی)') }}</span>
+<textarea name="details" rows="4" maxlength="5000" required placeholder="{{ __('پروژهٔ خود را توضیح دهید...') }}" data-od-id="brief-details" aria-describedby="error-details"></textarea>
 <span class="field-error" id="error-details" hidden aria-live="polite"></span>
 </label>
-<button class="button primary" type="submit" data-od-id="submit-project">ارسال درخواست</button>
+<button class="button primary" type="submit" data-od-id="submit-project">{{ __('ارسال درخواست') }}</button>
 <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
 </form>
 </div>
@@ -167,26 +171,26 @@
 <path d="m41 64 15 15 31-33" stroke="#075f4a" stroke-opacity=".3" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 3)"/>
 <path d="m41 64 15 15 31-33" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-<h3>درخواست شما ثبت شد</h3>
-<p>پیام شما با موفقیت ارسال شد. ممنون که فلوسی را برای همراهی انتخاب کردید؛ به‌زودی با شما تماس می‌گیریم.</p>
-<button class="button primary" type="button" id="success-close">بستن</button>
+<h3>{{ __('درخواست شما ثبت شد') }}</h3>
+<p>{{ __('پیام شما با موفقیت ارسال شد. ممنون که فلوسی را برای همراهی انتخاب کردید؛ به‌زودی با شما تماس می‌گیریم.') }}</p>
+<button class="button primary" type="button" id="success-close">{{ __('بستن') }}</button>
 </section>
 </dialog>
 
 <dialog id="preview-dialog" class="preview-dialog" aria-labelledby="preview-title" data-od-id="project-preview">
-<div class="project-window-bar" data-od-id="preview-toolbar"><span>منتخب پروژه‌های فلوسی</span><button class="close-dialog" type="button" data-close aria-label="بستن پروژه" data-od-id="close-preview"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+<div class="project-window-bar" data-od-id="preview-toolbar"><span>{{ __('منتخب پروژه‌های فلوسی') }}</span><button class="close-dialog" type="button" data-close aria-label="بستن پروژه" data-od-id="close-preview"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
 <div class="preview-scroll" data-od-id="preview-scroll">
-  <header class="project-intro" data-od-id="preview-intro"><div><span class="eyebrow">طراحی و تجربهٔ دیجیتال</span><h2 id="preview-title" dir="rtl" data-od-id="preview-title"></h2></div><p id="preview-description" data-od-id="preview-description"></p></header>
+  <header class="project-intro" data-od-id="preview-intro"><div><span class="eyebrow">{{ __('طراحی و تجربهٔ دیجیتال') }}</span><h2 id="preview-title" dir="rtl" data-od-id="preview-title"></h2></div><p id="preview-description" data-od-id="preview-description"></p></header>
   <figure class="project-showcase" data-od-id="preview-artwork"><div id="preview-image"></div></figure>
-  <div class="project-window-bottom" data-od-id="preview-bottom"><p>از ایدهٔ شما شروع کنیم.</p><button class="button primary" type="button" data-contact="project" data-od-id="preview-start-project">گفت‌وگو دربارهٔ پروژه</button></div>
+  <div class="project-window-bottom" data-od-id="preview-bottom"><p>{{ __('از ایدهٔ شما شروع کنیم.') }}</p><button class="button primary" type="button" data-contact="project" data-od-id="preview-start-project">{{ __('گفت‌وگو دربارهٔ پروژه') }}</button></div>
 </div>
-<nav class="project-pagination" aria-label="مرور پروژه‌ها" data-od-id="preview-navigation"><button type="button" id="preview-prev" data-od-id="preview-previous">پروژهٔ قبلی</button><span id="preview-position" aria-live="polite" aria-atomic="true"></span><button type="button" id="preview-next" data-od-id="preview-next">پروژهٔ بعدی</button></nav>
+<nav class="project-pagination" aria-label="مرور پروژه‌ها" data-od-id="preview-navigation"><button type="button" id="preview-prev" data-od-id="preview-previous">{{ __('پروژهٔ قبلی') }}</button><span id="preview-position" aria-live="polite" aria-atomic="true"></span><button type="button" id="preview-next" data-od-id="preview-next">{{ __('پروژهٔ بعدی') }}</button></nav>
 </dialog>
 
 <dialog id="case-dialog" class="case-dialog" aria-labelledby="case-dialog-title" data-od-id="case-dialog">
 <div class="case-bar">
 <span class="case-bar-title" id="case-dialog-title" data-od-id="case-dialog-title"></span>
-<button class="close-dialog" type="button" data-close aria-label="بستن" data-od-id="close-case-dialog"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
+<button class="close-dialog" type="button" data-close aria-label="{{ __('بستن') }}" data-od-id="close-case-dialog"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
 </div>
 <div class="case-scroll" data-od-id="case-scroll">
 <article class="case-study" id="case-content">
@@ -197,13 +201,13 @@
 <div class="cs-lead rich-content" id="case-lead"></div>
 </div>
 <ul class="meta" aria-label="مشخصات پروژه">
-<li><span class="k">کارفرما</span><span class="v" id="case-client"></span></li>
-<li><span class="k">حوزه</span><span class="v" id="case-industry"></span></li>
-<li><span class="k">خدمات</span><span class="v" id="case-services"></span></li>
+<li><span class="k">{{ __('کارفرما') }}</span><span class="v" id="case-client"></span></li>
+<li><span class="k">{{ __('حوزه') }}</span><span class="v" id="case-industry"></span></li>
+<li><span class="k">{{ __('خدمات') }}</span><span class="v" id="case-services"></span></li>
 </ul>
 </header>
 <div id="case-body"></div>
-<div class="container"><div class="cs-cta"><div><span class="eyebrow">قدم بعدی</span><h3>پروژهٔ بعدی شما، یک هویت ماندگار.</h3><p>از تحلیل بریف تا توسعهٔ هویت بصری، در کنار شما هستیم.</p></div><div class="cs-actions"><button class="button primary" type="button" data-contact="project" data-od-id="case-start-project">{{ __('ui.start_project') }} <svg class="icon" aria-hidden="true"><use href="#i-arrow-ul"></use></svg></button><a class="quiet-link" href="tel:+989109027628" data-od-id="case-phone">۰۹۱۰۹۰۲۷۶۲۸ <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg></a></div></div></div>
+<div class="container"><div class="cs-cta"><div><span class="eyebrow">{{ __('قدم بعدی') }}</span><h3>{{ __('پروژهٔ بعدی شما، یک هویت ماندگار.') }}</h3><p>{{ __('از تحلیل بریف تا توسعهٔ هویت بصری، در کنار شما هستیم.') }}</p></div><div class="cs-actions"><button class="button primary" type="button" data-contact="project" data-od-id="case-start-project">{{ __('ui.start_project') }} <svg class="icon" aria-hidden="true"><use href="#i-arrow-ul"></use></svg></button><a class="quiet-link" href="tel:+989109027628" data-od-id="case-phone">۰۹۱۰۹۰۲۷۶۲۸ <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg></a></div></div></div>
 </article>
 </div>
 </dialog>
@@ -211,8 +215,8 @@
 <dialog id="lightbox" class="lightbox" aria-labelledby="lightbox-cap" data-od-id="lightbox">
 <div class="dialog-head"><h2 id="lightbox-cap"></h2><button class="close-dialog" type="button" data-close aria-label="بستن تصویر" data-od-id="close-lightbox"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
 <div class="lightbox-tools">
-<div class="gallery-nav" aria-label="جابه‌جایی بین تصاویر"><button type="button" class="gallery-button" id="gallery-prev" data-od-id="gallery-previous">قبلی</button><span id="gallery-count" class="gallery-count" aria-live="polite" aria-atomic="true"></span><button type="button" class="gallery-button" id="gallery-next" data-od-id="gallery-next">بعدی</button></div>
-<button class="zoom-toggle" id="zoom-toggle" type="button" aria-pressed="false" data-od-id="image-zoom-toggle">اندازهٔ واقعی</button>
+<div class="gallery-nav" aria-label="جابه‌جایی بین تصاویر"><button type="button" class="gallery-button" id="gallery-prev" data-od-id="gallery-previous">{{ __('قبلی') }}</button><span id="gallery-count" class="gallery-count" aria-live="polite" aria-atomic="true"></span><button type="button" class="gallery-button" id="gallery-next" data-od-id="gallery-next">{{ __('بعدی') }}</button></div>
+<button class="zoom-toggle" id="zoom-toggle" type="button" aria-pressed="false" data-od-id="image-zoom-toggle">{{ __('اندازهٔ واقعی') }}</button>
 </div>
 <p id="gallery-status" class="gallery-status" role="status" aria-live="polite" hidden></p>
 <div class="lightbox-viewport" id="lightbox-viewport" tabindex="0" aria-label="تصویر بزرگ‌شده؛ برای حرکت از کلیدهای جهت استفاده کنید" data-od-id="image-zoom-viewport"><img id="lightbox-img" width="1920" height="1080" alt=""></div>

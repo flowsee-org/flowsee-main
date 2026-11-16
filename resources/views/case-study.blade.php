@@ -199,7 +199,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
 
   @if($caseStudy->cover_image)
   <figure class="cover" data-od-id="case-cover">
-    <img src="{{ \App\Support\WebsiteMediaUrl::for($caseStudy->cover_image) }}" width="1920" height="1080" alt="{{ $caseStudy->cover_caption ?: 'تصویر اصلی پروژهٔ ' . $caseStudy->title }}" fetchpriority="high" decoding="async">
+    <x-responsive-image :path="$caseStudy->cover_image" :alt="$caseStudy->cover_caption ?: 'تصویر اصلی پروژهٔ ' . $caseStudy->title" fetchpriority="high" />
     @if($caseStudy->cover_caption)
     <figcaption>{{ $caseStudy->cover_caption }}</figcaption>
     @endif
@@ -209,7 +209,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
   @foreach($caseStudy->sections as $section)
   <section class="case-section" id="{{ $section->slug }}" aria-labelledby="{{ $section->slug }}-title">
     @if($section->band_image)
-    <button class="band" type="button" data-lightbox="{{ \App\Support\WebsiteMediaUrl::for($section->band_image) }}" data-caption="{{ $section->band_caption ?: $section->title }}" aria-label="نمایش تصویر بخش {{ $section->title }}"><img src="{{ \App\Support\WebsiteMediaUrl::for($section->band_image) }}" width="1920" height="1080" alt="{{ $section->band_caption ?: 'تصویر بخش ' . $section->title }}" loading="lazy" decoding="async"></button>
+    <button class="band" type="button" data-lightbox="{{ \App\Support\WebsiteMediaUrl::for($section->band_image) }}" data-caption="{{ $section->band_caption ?: $section->title }}" aria-label="نمایش تصویر بخش {{ $section->title }}"><x-responsive-image :path="$section->band_image" :alt="$section->band_caption ?: 'تصویر بخش ' . $section->title" loading="lazy" /></button>
     @endif
     <div class="container inner">
       <div class="sec-head" data-od-id="{{ $section->slug }}-head">
@@ -231,7 +231,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
       @if($section->images->isNotEmpty())
       <div class="fig-grid {{ $section->images->count() == 2 ? 'g2' : 'g3' }}">
         @foreach($section->images as $image)
-        <button class="fig {{ $image->layout == 'full' ? 'wide' : '' }}" type="button" data-lightbox="{{ \App\Support\WebsiteMediaUrl::for($image->path) }}" data-caption="{{ $image->caption ?: ($image->alt ?: $caseStudy->title) }}" aria-label="نمایش {{ $image->caption ?: ($image->alt ?: $caseStudy->title) }}"><img src="{{ \App\Support\WebsiteMediaUrl::for($image->path) }}" width="1920" height="1080" alt="{{ $image->alt ?: ($image->caption ?: 'تصویر پروژهٔ ' . $caseStudy->title) }}" loading="lazy" decoding="async"></button>
+        <button class="fig {{ $image->layout == 'full' ? 'wide' : '' }}" type="button" data-lightbox="{{ \App\Support\WebsiteMediaUrl::for($image->path) }}" data-caption="{{ $image->caption ?: ($image->alt ?: $caseStudy->title) }}" aria-label="نمایش {{ $image->caption ?: ($image->alt ?: $caseStudy->title) }}"><x-responsive-image :path="$image->path" :alt="$image->alt ?: ($image->caption ?: 'تصویر پروژهٔ ' . $caseStudy->title)" loading="lazy" /></button>
         @endforeach
       </div>
       @endif
@@ -256,7 +256,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
   @endif
 
   <figure class="closing-cover" data-od-id="case-thanks">
-    <img src="{{ \App\Support\WebsiteMediaUrl::for($caseStudy->cover_image) }}" width="1920" height="1080" alt="{{ $caseStudy->cover_caption ?: $caseStudy->title }}" loading="lazy" decoding="async">
+    <x-responsive-image :path="$caseStudy->cover_image" :alt="$caseStudy->cover_caption ?: $caseStudy->title" loading="lazy" />
   </figure>
 
   <section class="container" aria-labelledby="cta-title">
@@ -281,7 +281,7 @@ dialog::backdrop{background:oklch(10% .01 240/.62);backdrop-filter:blur(5px)}
 <div class="footer-social-links" aria-label="پروفایل‌ها و موقعیت استودیو فلوسی">
 <a href="https://www.instagram.com/flowsee.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام فلوسی">◎</a>
 <a href="https://x.com/flowseeir" target="_blank" rel="noopener noreferrer" aria-label="ایکس فلوسی">𝕏</a>
-<a href="https://maps.app.goo.gl/kN2kZ9AkS6nGbnoC7" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در گوگل‌مپ"><img src="/assets/google-maps-logo.png" width="28" height="28" alt="" loading="lazy"></a>
+<a href="https://maps.app.goo.gl/kN2kZ9AkS6nGbnoC7" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در گوگل‌مپ"><img src="/assets/google-maps-logo.webp" width="28" height="28" alt="" loading="lazy"></a>
 <a href="https://balad.ir/p/46T1JAasDQclgV" target="_blank" rel="noopener noreferrer" aria-label="موقعیت استودیو فلوسی در بلد"><img src="/assets/balad-logo.png" width="28" height="28" alt="" loading="lazy"></a>
 </div>
 </div>

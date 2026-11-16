@@ -18,12 +18,14 @@ class BlogController extends Controller
         $category = $slug ? $categories->firstWhere('slug', $slug) : null;
         abort_if($slug && ! $category, 404);
 
-        $posts = BlogPost::query()->with('category:id,name,slug')
+        $posts = BlogPost::query()->select(['id', 'blog_category_id', 'title', 'slug', 'excerpt', 'cover_image', 'cover_alt', 'is_featured', 'published_at', 'views'])->with('category:id,name,slug')
             ->where('is_published', true)->whereNotNull('published_at')->where('published_at', '<=', now())
             ->when($category, fn ($query) => $query->where('blog_category_id', $category->id))
             ->orderByDesc('is_featured')->orderByDesc('published_at')->orderByDesc('id')->paginate(9);
 
-        $stories = BlogPost::query()->with('category:id,name,slug')
+        abort_if($posts->currentPage() > $posts->lastPage(), 404);
+
+        $stories = BlogPost::query()->select(['id', 'blog_category_id', 'title', 'slug', 'excerpt', 'cover_image', 'cover_alt', 'is_featured', 'published_at', 'views'])->with('category:id,name,slug')
             ->where('is_published', true)->whereNotNull('published_at')->where('published_at', '<=', now())
             ->when($category, fn ($query) => $query->where('blog_category_id', $category->id));
         $serialize = fn ($items) => $items->map(fn ($post) => [
@@ -52,6 +54,11 @@ class BlogController extends Controller
 
     public function index(Request $request)
     {
+        abort_unless(filter_var($request->query('page', 1), FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]) !== false, 404);
+        abort_if($request->has('category') && ! is_string($request->query('category')), 404);
+        if ($request->routeIs('blog.index.en')) {
+            return redirect()->route('blog.index', $request->only(['category', 'page']), 301);
+        }
         $categories = BlogCategory::query()->orderBy('sort_order')->get();
         $selectedCategory = $request->query('category');
         $category = $selectedCategory
@@ -63,22 +70,29 @@ class BlogController extends Controller
         }
 
         $posts = BlogPost::query()
-            ->with('category')
+            ->select(['id', 'blog_category_id', 'title', 'slug', 'excerpt', 'cover_image', 'cover_alt', 'is_featured', 'published_at', 'views'])
+            ->with('category:id,name,slug')
             ->where('is_published', true)
             ->whereNotNull('published_at')
             ->where('published_at', '<=', now())
             ->when($category, fn ($query) => $query->where('blog_category_id', $category->id))
             ->orderByDesc('is_featured')
             ->orderByDesc('published_at')
+            ->orderByDesc('id')
             ->paginate(9)
-            ->withQueryString();
+            ->appends($request->only('category'));
+        abort_if($posts->currentPage() > $posts->lastPage(), 404);
 
         $pageTitle = $category
             ? $category->name.' | بلاگ استودیو فلوسی'
             : 'بلاگ استودیو فلوسی | ایده‌ها و راهنمای طراحی و رشد';
         $pageDescription = $category?->description
             ?: 'مقاله‌ها، تجربه‌ها و راهنماهای کاربردی استودیو فلوسی دربارهٔ برندینگ، طراحی دیجیتال و بازاریابی.';
-        $pageUrl = 'https://flowsee.ir/blog'.($category ? '?category='.$category->slug : '');
+        $query = array_filter(['category' => $category?->slug, 'page' => $posts->currentPage() > 1 ? $posts->currentPage() : null], fn ($value) => $value !== null);
+        $pageUrl = 'https://flowsee.ir/blog'.($query ? '?'.http_build_query($query) : '');
+        if ($posts->currentPage() > 1) {
+            $pageTitle .= ' | صفحهٔ '.$posts->currentPage();
+        }
         $structuredData = [
             '@context' => 'https://schema.org',
             '@graph' => [
@@ -94,7 +108,7 @@ class BlogController extends Controller
                     'about' => ['@id' => 'https://flowsee.ir/#organization'],
                     'inLanguage' => 'fa-IR',
                     'mainEntity' => ['@type' => 'ItemList', 'itemListElement' => $posts->getCollection()->values()->map(fn (BlogPost $post, int $index) => [
-                        '@type' => 'ListItem', 'position' => $index + 1, 'url' => route('blog.show', $post->slug),
+                        '@type' => 'ListItem', 'position' => ($posts->firstItem() ?? 1) + $index, 'url' => route('blog.show', $post->slug),
                     ])->all()],
                 ],
             ],
@@ -112,6 +126,10 @@ class BlogController extends Controller
             ->whereNotNull('published_at')
             ->where('published_at', '<=', now())
             ->firstOrFail();
+
+        if (request()->routeIs('blog.show.en')) {
+            return redirect()->route('blog.show', $post->slug, 301);
+        }
 
         // Count page requests, not unique people. Do not invent a popularity ranking before visits exist.
         $post->increment('views');
@@ -142,7 +160,7 @@ class BlogController extends Controller
             $attributes = preg_replace("/\\s+id\\s*=\\s*([\"']).*?\\1/i", '', $matches[2]);
             return '<h'.$matches[1].$attributes.' id="'.$id.'">'.$matches[3].'</h'.$matches[1].'>';
         }, $post->content);
-        $post->content = $content ?? $post->content;
+        $post->content = WebsiteMediaUrl::localizeArticleImages($content ?? $post->content);
         $structuredData = [
             '@context' => 'https://schema.org',
             '@graph' => [

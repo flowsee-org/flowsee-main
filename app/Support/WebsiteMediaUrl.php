@@ -6,6 +6,20 @@ use Illuminate\Support\Facades\Storage;
 
 class WebsiteMediaUrl
 {
+    public static function dimensionsFor(?string $path, int $width = 1920, int $height = 1080): array
+    {
+        $key = ltrim((string) parse_url($path ?? '', PHP_URL_PATH), '/');
+
+        return config('website-media.dimensions', [])[$key] ?? [$width, $height];
+    }
+
+    /** Resolve the bundled technology logos in old article HTML without rewriting editor content. */
+    public static function localizeArticleImages(string $content): string
+    {
+        return preg_replace_callback('/(<img\b[^>]*\bsrc=["\'])(https:\/\/cdn\.simpleicons\.org\/[^"\']+)(["\'])/i',
+            fn ($match) => $match[1].self::for($match[2]).$match[3], $content) ?? $content;
+    }
+
     /** Use generated thumbnails only for known public covers; preserve other media URLs. */
     public static function previewFor(?string $path, int $width = 1120): string
     {
@@ -42,6 +56,10 @@ class WebsiteMediaUrl
     {
         if (! $path) {
             return '';
+        }
+
+        if ($local = config('website-media.remote_media', [])[$path] ?? null) {
+            return asset($local);
         }
 
         if (preg_match('#^https?://#i', $path)) {

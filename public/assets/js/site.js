@@ -1,17 +1,18 @@
+function uiText(text){return window.flowseeTranslations?.[text]||text}
 
 const themeToggle=document.querySelector('[data-theme-toggle]'),themeStorageKey='flowsee-theme';
-function applyTheme(theme,persist=false){const next=theme==='dark'?'dark':'light';document.documentElement.dataset.theme=next;if(persist){try{localStorage.setItem(themeStorageKey,next)}catch(error){}}if(themeToggle){const action=next==='dark'?'فعال‌کردن حالت روشن':'فعال‌کردن حالت تاریک';themeToggle.setAttribute('aria-label',action);themeToggle.title=action;themeToggle.setAttribute('aria-pressed',String(next==='dark'));const label=themeToggle.querySelector('[data-theme-label]');if(label)label.textContent=next==='dark'?'حالت روشن':'حالت تاریک'}const themeColor=document.querySelector('meta[name="theme-color"]');if(themeColor)themeColor.content=next==='dark'?'#11151b':'#FE5400'}
+function applyTheme(theme,persist=false){const next=theme==='dark'?'dark':'light';document.documentElement.dataset.theme=next;if(persist){try{localStorage.setItem(themeStorageKey,next)}catch(error){}}if(themeToggle){const action=next==='dark'?uiText('فعال‌کردن حالت روشن'):uiText('فعال‌کردن حالت تاریک');themeToggle.setAttribute('aria-label',action);themeToggle.title=action;themeToggle.setAttribute('aria-pressed',String(next==='dark'));const label=themeToggle.querySelector('[data-theme-label]');if(label)label.textContent=next==='dark'?uiText('حالت روشن'):uiText('حالت تاریک')}const themeColor=document.querySelector('meta[name="theme-color"]');if(themeColor)themeColor.content=next==='dark'?'#11151b':'#FE5400'}
 if(themeToggle){applyTheme(document.documentElement.dataset.theme||'light');themeToggle.addEventListener('click',()=>applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark',true))}
 (()=>{'use strict';
-const services=[{"id":"branding","index":2,"title":"برندسازی و","desc":"طراحی هویت بصری","icon":"img52837428315365567501"},{"id":"marketing","index":1,"title":"سوشال مدیا و","desc":"دیجیتال مارکتینگ","icon":"imgMarketingIconContainer","orange":true},{"id":"uiux","index":0,"title":"توسعه نرم‌افزار و","desc":"طراحی رابط و تجربه کاربری","icon":"imgIconUiux"},{"id":"packaging","index":5,"title":"طراحی، چاپ و","desc":"بسته‌بندی محصول","icon":"imgIconPrint","orange":true},{"id":"video","index":4,"title":"تدوین ویدیو و","desc":"تولید محتوای تبلیغاتی","icon":"imgVideoIconContainer"},{"id":"academy","index":3,"title":"آکادمی، آموزش و","desc":"توسعه سرمایه انسانی","icon":"imgAcademyIconContainer","orange":true}],projects=[{"name":"SHOPERO","asset":"imgShopero1","id":"shopero"},{"name":"IMA MOVIES","asset":"imgIma2","id":"ima"},{"name":"EXLOOT","asset":"imgExloot2","id":"exloot"}],excerpt="با پیشرفت فناوری و تغییرات سریع در سبک زندگی، نیازهای کاربران به خدمات دیجیتال به طور چشمگیری افزایش یافته است. این تحولات به آژانس‌های دیجیتال مارکتینگ این امکان را می‌دهد که به شیوه‌های جدیدی به مشتریان خود خدمات ارائه دهند.";
+const services=[{"id":"branding","index":2,"title":uiText("برندسازی و"),"desc":uiText("طراحی هویت بصری"),"icon":"img52837428315365567501"},{"id":"marketing","index":1,"title":uiText("سوشال مدیا و"),"desc":uiText("دیجیتال مارکتینگ"),"icon":"imgMarketingIconContainer","orange":true},{"id":"uiux","index":0,"title":uiText("توسعه نرم‌افزار و"),"desc":uiText("طراحی رابط و تجربه کاربری"),"icon":"imgIconUiux"},{"id":"packaging","index":5,"title":uiText("طراحی، چاپ و"),"desc":uiText("بسته‌بندی محصول"),"icon":"imgIconPrint","orange":true},{"id":"video","index":4,"title":uiText("تدوین ویدیو و"),"desc":uiText("تولید محتوای تبلیغاتی"),"icon":"imgVideoIconContainer"},{"id":"academy","index":3,"title":uiText("آکادمی، آموزش و"),"desc":uiText("توسعه سرمایه انسانی"),"icon":"imgAcademyIconContainer","orange":true}],projects=[{"name":"SHOPERO","asset":"imgShopero1","id":"shopero"},{"name":"IMA MOVIES","asset":"imgIma2","id":"ima"},{"name":"EXLOOT","asset":"imgExloot2","id":"exloot"}],excerpt="با پیشرفت فناوری و تغییرات سریع در سبک زندگی، نیازهای کاربران به خدمات دیجیتال به طور چشمگیری افزایش یافته است. این تحولات به آژانس‌های دیجیتال مارکتینگ این امکان را می‌دهد که به شیوه‌های جدیدی به مشتریان خود خدمات ارائه دهند.";
 const contact=document.getElementById('contact-dialog'),preview=document.getElementById('preview-dialog'),caseDialog=document.getElementById('case-dialog'),lightbox=document.getElementById('lightbox'),form=document.getElementById('brief-form'),serviceDialog=document.getElementById('service-dialog');
 function showModal(d){if(!d.open)d.showModal();const gap=Math.max(0,window.innerWidth-document.documentElement.clientWidth);document.body.style.overflow='hidden';document.body.style.paddingInlineEnd=gap?gap+'px':''}function openDialog(dialog){document.querySelectorAll('dialog[open]').forEach(d=>{if(d!==dialog)d.close()});showModal(dialog)}
 document.querySelectorAll('dialog').forEach(d=>{d.querySelector('[data-close]').addEventListener('click',()=>d.close());d.addEventListener('close',()=>{if(!document.querySelector('dialog[open]')){document.body.style.overflow='';document.body.style.paddingInlineEnd=''}});d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}})});
 function clearContactForm(){form.reset();document.getElementById('contact-form-content').hidden=false;document.getElementById('form-success').hidden=true;document.getElementById('form-status').textContent='';form.elements.service.value='consultation';for(const name of ['name','phone','details']){const field=form.elements[name];field.setCustomValidity('');field.removeAttribute('aria-invalid');const error=document.getElementById('error-'+name);if(error){error.textContent='';error.hidden=true}}}
-function openContact(mode,service){clearContactForm();document.getElementById('contact-title').textContent=mode==='consultation'?'مشاوره رایگان':'شروع پروژه';if(service)form.elements.service.value=service;else if(mode==='consultation')form.elements.service.value='consultation';openDialog(contact);startPrompt()}
+function openContact(mode,service){clearContactForm();document.getElementById('contact-title').textContent=mode==='consultation'?uiText('مشاوره رایگان'):uiText('شروع پروژه');if(service)form.elements.service.value=service;else if(mode==='consultation')form.elements.service.value='consultation';openDialog(contact);startPrompt()}
 document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',()=>openContact(b.dataset.contact)));
 document.querySelectorAll('[data-service]').forEach(b=>b.addEventListener('click',()=>openContact('project',b.dataset.service)));
-const serviceDetails={branding:['استراتژی و جایگاه‌یابی برند','طراحی لوگو و هویت بصری','راهنمای کاربرد هویت برند'],marketing:['برنامه‌ریزی محتوای شبکه‌های اجتماعی','تولید محتوای تصویری و متنی','مدیریت و بهینه‌سازی حضور اجتماعی'],uiux:['تحقیق و تحلیل نیاز کاربران','طراحی تجربه و رابط کاربری','طراحی نمونهٔ تعاملی و سیستم طراحی'],packaging:['طراحی ساختار و گرافیک بسته‌بندی','آماده‌سازی فایل‌های چاپ','هماهنگی هویت بسته‌بندی با برند'],video:['ایده‌پردازی و سناریونویسی','تدوین ویدیو و موشن‌گرافیک','آماده‌سازی نسخه‌های مناسب شبکه‌های اجتماعی'],academy:['طراحی مسیرهای آموزشی','برگزاری کارگاه‌های کاربردی','توانمندسازی و توسعهٔ تیم']};
+const serviceDetails={branding:[uiText('استراتژی و جایگاه‌یابی برند'),uiText('طراحی لوگو و هویت بصری'),uiText('راهنمای کاربرد هویت برند')],marketing:[uiText('برنامه‌ریزی محتوای شبکه‌های اجتماعی'),uiText('تولید محتوای تصویری و متنی'),uiText('مدیریت و بهینه‌سازی حضور اجتماعی')],uiux:[uiText('تحقیق و تحلیل نیاز کاربران'),uiText('طراحی تجربه و رابط کاربری'),uiText('طراحی نمونهٔ تعاملی و سیستم طراحی')],packaging:[uiText('طراحی ساختار و گرافیک بسته‌بندی'),uiText('آماده‌سازی فایل‌های چاپ'),uiText('هماهنگی هویت بسته‌بندی با برند')],video:[uiText('ایده‌پردازی و سناریونویسی'),uiText('تدوین ویدیو و موشن‌گرافیک'),uiText('آماده‌سازی نسخه‌های مناسب شبکه‌های اجتماعی')],academy:[uiText('طراحی مسیرهای آموزشی'),uiText('برگزاری کارگاه‌های کاربردی'),uiText('توانمندسازی و توسعهٔ تیم')]};
 function openServiceDetails(card){const slug=card.dataset.serviceSlug;document.getElementById('service-dialog-title').textContent=card.dataset.serviceTitle;document.getElementById('service-dialog-description').textContent=card.dataset.serviceDescription;const icon=card.querySelector('.service-icon svg')?.cloneNode(true);const iconContainer=document.getElementById('service-dialog-icon');if(icon&&iconContainer)iconContainer.replaceChildren(icon);document.getElementById('service-dialog-items').replaceChildren(...(serviceDetails[slug]||[]).map(text=>{const item=document.createElement('li'),label=document.createElement('span');label.className='service-detail-label';label.textContent=text;item.append(label);return item}));serviceDialog.dataset.service=slug;openDialog(serviceDialog)}
 document.querySelectorAll('[data-service-card]').forEach(card=>{card.addEventListener('click',()=>openServiceDetails(card));card.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceDetails(card)}})});
 if(serviceDialog)serviceDialog.querySelector('[data-service-contact]').addEventListener('click',()=>{const slug=serviceDialog.dataset.service;serviceDialog.close();openContact('project',slug)});
@@ -49,13 +50,13 @@ const richNode=(className,html)=>{const node=document.createElement("div");node.
 const textNode=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;node.textContent=text||'';return node};
 const imageNode=(src,alt,loading='lazy')=>{const image=document.createElement('img');image.src=src||'';image.alt=alt||'';image.width=1920;image.height=1080;image.loading=loading;image.decoding='async';return image};
 function addCaseImage(container,image,layout='third'){
-  const button=document.createElement('button');button.type='button';button.className='fig'+(layout==='full'?' wide':'');button.dataset.lightbox=image.path||'';button.dataset.caption=image.caption||image.alt||'';button.setAttribute('aria-label','نمایش '+(image.caption||image.alt||'تصویر'));
-  button.append(imageNode(image.path,image.alt||image.caption||'تصویر پروژه'));container.append(button);
+  const button=document.createElement('button');button.type='button';button.className='fig'+(layout==='full'?' wide':'');button.dataset.lightbox=image.path||'';button.dataset.caption=image.caption||image.alt||'';button.setAttribute('aria-label',uiText('نمایش ')+(image.caption||image.alt||uiText('تصویر')));
+  button.append(imageNode(image.path,image.alt||image.caption||uiText('تصویر پروژه')));container.append(button);
 }
 function renderCaseStudy(project){
   const data=project.case_study;if(!data)return;
   document.getElementById('case-dialog-title').textContent=project.name;
-  document.getElementById('case-eyebrow').textContent=data.eyebrow||'کیس‌استادی';
+  document.getElementById('case-eyebrow').textContent=data.eyebrow||uiText('کیس‌استادی');
   document.getElementById('case-title').textContent=data.title||project.name;
   document.getElementById('case-lead').replaceChildren(data.lead?richNode('',data.lead):document.createTextNode(project.description||''));
   document.getElementById('case-client').textContent=data.client_name||'';
@@ -65,15 +66,15 @@ function renderCaseStudy(project){
   if(data.cover_image){const cover=document.createElement('figure');cover.className='cover';cover.append(imageNode(data.cover_image,data.cover_caption||data.title||project.name,'eager'));if(data.cover_caption)cover.append(textNode('figcaption','',data.cover_caption));body.append(cover)}
   for(const section of data.sections||[]){
     const sectionNode=document.createElement('section');sectionNode.className='cs-sec';
-    if(section.band_image){const band=document.createElement('button');band.type='button';band.className='band';band.dataset.lightbox=section.band_image;band.dataset.caption=section.band_caption||section.title;band.setAttribute('aria-label','نمایش تصویر بخش '+section.title);band.append(imageNode(section.band_image,section.band_caption||section.title));sectionNode.append(band)}
+    if(section.band_image){const band=document.createElement('button');band.type='button';band.className='band';band.dataset.lightbox=section.band_image;band.dataset.caption=section.band_caption||section.title;band.setAttribute('aria-label',uiText('نمایش تصویر بخش ')+section.title);band.append(imageNode(section.band_image,section.band_caption||section.title));sectionNode.append(band)}
     const inner=document.createElement('div');inner.className='container';const head=document.createElement('div');head.className='cs-head';
     const eyebrow=textNode('span','eyebrow','');let eyebrowText=section.eyebrow||'';if(section.index_label){const duplicatedPrefix=new RegExp('^\\s*'+section.index_label+'\\s*[·.]?\\s*');eyebrowText=eyebrowText.replace(duplicatedPrefix,'');const index=textNode('span','idx',section.index_label);eyebrow.append(index);eyebrow.append(document.createTextNode(' · '))}eyebrow.append(document.createTextNode(eyebrowText));
     head.append(eyebrow,textNode('h3','',section.title));if(section.lead)head.append(richNode('',section.lead));inner.append(head);
-    if((section.steps||[]).length){const steps=document.createElement('ol');steps.className='steps';steps.setAttribute('aria-label','مراحل پروژه');for(const item of section.steps){const li=document.createElement('li');li.append(textNode('span','n',item.step_number||''),textNode('h4','',item.title),richNode('',item.description));steps.append(li)}inner.append(steps)}
+    if((section.steps||[]).length){const steps=document.createElement('ol');steps.className='steps';steps.setAttribute('aria-label',uiText('مراحل پروژه'));for(const item of section.steps){const li=document.createElement('li');li.append(textNode('span','n',item.step_number||''),textNode('h4','',item.title),richNode('',item.description));steps.append(li)}inner.append(steps)}
     const images=section.images||[];if(images.length){const grid=document.createElement('div');grid.className='fig-grid '+(images.length===2?'g2':'g3');for(const item of images)addCaseImage(grid,item,item.layout);inner.append(grid)}
     sectionNode.append(inner);body.append(sectionNode);
   }
-  if((data.colors||[]).length){const colorSection=document.createElement('section');colorSection.className='cs-sec';const inner=document.createElement('div');inner.className='container';const head=document.createElement('div');head.className='cs-head';head.append(textNode('span','eyebrow','رنگ'),textNode('h3','', 'پالت رنگ برند'));inner.append(head);const palette=document.createElement('ul');palette.className='palette';palette.setAttribute('aria-label','پالت رنگ برند');for(const color of data.colors){const li=document.createElement('li');li.style.setProperty('--sw',color.hex);const swatch=textNode('span','sw','');swatch.setAttribute('aria-hidden','true');const meta=document.createElement('span');meta.className='sw-meta';meta.append(textNode('b','',color.name),textNode('code','',color.hex));li.append(swatch,meta);palette.append(li)}inner.append(palette);colorSection.append(inner);body.append(colorSection)}
+  if((data.colors||[]).length){const colorSection=document.createElement('section');colorSection.className='cs-sec';const inner=document.createElement('div');inner.className='container';const head=document.createElement('div');head.className='cs-head';head.append(textNode('span','eyebrow',uiText('رنگ')),textNode('h3','', uiText('پالت رنگ برند')));inner.append(head);const palette=document.createElement('ul');palette.className='palette';palette.setAttribute('aria-label',uiText('پالت رنگ برند'));for(const color of data.colors){const li=document.createElement('li');li.style.setProperty('--sw',color.hex);const swatch=textNode('span','sw','');swatch.setAttribute('aria-hidden','true');const meta=document.createElement('span');meta.className='sw-meta';meta.append(textNode('b','',color.name),textNode('code','',color.hex));li.append(swatch,meta);palette.append(li)}inner.append(palette);colorSection.append(inner);body.append(colorSection)}
   if(data.cover_image){const closing=document.createElement('figure');closing.className='closing';closing.append(imageNode(data.cover_image,data.cover_caption||data.title||project.name));body.append(closing)}
 }
 function renderProjectPreview(project){
@@ -83,7 +84,7 @@ function renderProjectPreview(project){
   document.getElementById('preview-position').textContent='';document.getElementById('preview-prev').hidden=true;document.getElementById('preview-next').hidden=true;
   openDialog(preview);preview.querySelector('.preview-scroll').scrollTop=0;
 }
-document.querySelectorAll('[data-project-slug]').forEach(button=>button.addEventListener('click',()=>{const project=projectBySlug.get(button.dataset.projectSlug);if(!project)return;if(project.case_study){renderCaseStudy(project);openDialog(caseDialog);caseDialog.querySelector('.case-scroll').scrollTop=0}else renderProjectPreview(project)}));
+document.querySelectorAll('[data-project-slug]').forEach(button=>button.addEventListener('click',event=>{if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;const project=projectBySlug.get(button.dataset.projectSlug);if(!project)return;if(button.tagName==='A')event.preventDefault();if(project.case_study){renderCaseStudy(project);openDialog(caseDialog);caseDialog.querySelector('.case-scroll').scrollTop=0}else renderProjectPreview(project)}));
 const projectTrack=document.getElementById('project-carousel-track');
 if(projectTrack){
   const slides=[...projectTrack.querySelectorAll('.project-card')],controls=[...document.querySelectorAll('[data-carousel-step]')];
@@ -101,11 +102,11 @@ if(projectTrack){
 const requestedCase=new URLSearchParams(window.location.search).get('case');if(requestedCase){const project=projectBySlug.get(requestedCase);if(project?.case_study){renderCaseStudy(project);openDialog(caseDialog)}}
 contact.addEventListener('close',clearContactForm);
 document.getElementById('success-close').addEventListener('click',()=>contact.close());
-form.addEventListener('submit',e=>{e.preventDefault();if(!validateForm())return;const data=Object.fromEntries(new FormData(form));const statusEl=document.getElementById('form-status'),submitButton=form.querySelector('[type="submit"]');statusEl.textContent='در حال ارسال…';submitButton.disabled=true;fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)}).then(async res=>{const body=await res.json().catch(()=>({}));if(res.ok){document.getElementById('contact-form-content').hidden=true;const success=document.getElementById('form-success');success.hidden=false;success.focus();return}if(res.status===429){statusEl.textContent='تعداد درخواست‌ها زیاد است. لطفاً کمی بعد دوباره تلاش کنید.';return}if(res.status===422&&body.errors){const firstError=Object.values(body.errors)[0];statusEl.textContent=Array.isArray(firstError)?firstError[0]:body.message||'لطفاً فیلدهای مشخص‌شده را اصلاح کنید.';return}statusEl.textContent=body.message||'خطایی رخ داد. لطفاً دوباره تلاش کنید.'}).catch(()=>{statusEl.textContent='خطای شبکه. لطفاً اتصال خود را بررسی کنید.'}).finally(()=>{submitButton.disabled=false})});
+form.addEventListener('submit',e=>{e.preventDefault();if(!validateForm())return;const data=Object.fromEntries(new FormData(form));const statusEl=document.getElementById('form-status'),submitButton=form.querySelector('[type="submit"]');statusEl.textContent=uiText('در حال ارسال…');submitButton.disabled=true;fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)}).then(async res=>{const body=await res.json().catch(()=>({}));if(res.ok){document.getElementById('contact-form-content').hidden=true;const success=document.getElementById('form-success');success.hidden=false;success.focus();return}if(res.status===429){statusEl.textContent=uiText('تعداد درخواست‌ها زیاد است. لطفاً کمی بعد دوباره تلاش کنید.');return}if(res.status===422&&body.errors){const firstError=Object.values(body.errors)[0];statusEl.textContent=Array.isArray(firstError)?firstError[0]:body.message||uiText('لطفاً فیلدهای مشخص‌شده را اصلاح کنید.');return}statusEl.textContent=body.message||uiText('خطایی رخ داد. لطفاً دوباره تلاش کنید.')}).catch(()=>{statusEl.textContent=uiText('خطای شبکه. لطفاً اتصال خود را بررسی کنید.')}).finally(()=>{submitButton.disabled=false})});
 
 // Keep the case study open beneath its image viewer, including its scroll position.
 const zoomToggle=document.getElementById('zoom-toggle'),zoomViewport=document.getElementById('lightbox-viewport'),zoomImage=document.getElementById('lightbox-img');
-function setZoom(zoomed){lightbox.classList.toggle('is-zoomed',zoomed);zoomToggle.setAttribute('aria-pressed',String(zoomed));zoomToggle.textContent=zoomed?'نمایش کامل':'اندازهٔ واقعی';zoomViewport.scrollTop=0;zoomViewport.scrollLeft=0}
+function setZoom(zoomed){lightbox.classList.toggle('is-zoomed',zoomed);zoomToggle.setAttribute('aria-pressed',String(zoomed));zoomToggle.textContent=zoomed?uiText('نمایش کامل'):uiText('اندازهٔ واقعی');zoomViewport.scrollTop=0;zoomViewport.scrollLeft=0}
 zoomToggle.addEventListener('click',()=>setZoom(!lightbox.classList.contains('is-zoomed')));
 zoomImage.addEventListener('click',()=>setZoom(!lightbox.classList.contains('is-zoomed')));
 let galleryButtons=[];
@@ -113,7 +114,7 @@ const previousImage=document.getElementById('gallery-prev'),nextImage=document.g
 let galleryIndex=0;
 function imageReady(){imageStatus.hidden=true;zoomViewport.removeAttribute('aria-busy')}
 zoomImage.addEventListener('load',imageReady);
-zoomImage.addEventListener('error',()=>{zoomViewport.removeAttribute('aria-busy');imageStatus.textContent='تصویر بارگذاری نشد. تصویر دیگری را انتخاب کنید یا دوباره این تصویر را باز کنید.';imageStatus.hidden=false});
+zoomImage.addEventListener('error',()=>{zoomViewport.removeAttribute('aria-busy');imageStatus.textContent=uiText('تصویر بارگذاری نشد. تصویر دیگری را انتخاب کنید یا دوباره این تصویر را باز کنید.');imageStatus.hidden=false});
 
 // Always display the embedded preview first; upgrade only after the local original loads.
 function loadOriginalImage(source,target){
@@ -132,7 +133,7 @@ function showGalleryImage(index){
   const button=galleryButtons[galleryIndex],source=button.querySelector('img');
   const resolvedSource=source.currentSrc||source.src;
   source.loading='eager';zoomImage.loading='eager';zoomImage.decoding='async';
-  imageStatus.textContent='در حال بارگذاری تصویر…';imageStatus.hidden=false;zoomViewport.setAttribute('aria-busy','true');
+  imageStatus.textContent=uiText('در حال بارگذاری تصویر…');imageStatus.hidden=false;zoomViewport.setAttribute('aria-busy','true');
   zoomImage.alt=source.alt;zoomImage.width=Number(source.getAttribute('width'));zoomImage.height=Number(source.getAttribute('height'));
   document.getElementById('lightbox-cap').textContent=button.dataset.caption||source.alt;
   imageCount.textContent=(galleryIndex+1).toLocaleString('fa-IR')+' / '+galleryButtons.length.toLocaleString('fa-IR');
@@ -167,20 +168,20 @@ details.addEventListener('input',()=>{syncPrompt();if(details.value)stopPrompt()
 form.elements.service.addEventListener('change',startPrompt);
 contact.addEventListener('close',stopPrompt);reducedMotion.addEventListener('change',startPrompt);syncPrompt();
 function normalizePhone(value){return value.replace(/[۰-۹]/g,c=>String(c.charCodeAt(0)-1776)).replace(/[٠-٩]/g,c=>String(c.charCodeAt(0)-1632)).replace(/[\s()\-]/g,'')}
-function validatePhone(){const value=form.elements.phone.value;const clean=normalizePhone(value);form.elements.phone.setCustomValidity(!value||/^\+?[0-9]{7,15}$/.test(clean)?'':'شمارهٔ تماس معتبر وارد کنید؛ مثلاً ۰۹۱۲۳۴۵۶۷۸۹.')}
+function validatePhone(){const value=form.elements.phone.value;const clean=normalizePhone(value);form.elements.phone.setCustomValidity(!value||/^\+?[0-9]{7,15}$/.test(clean)?'':uiText('شمارهٔ تماس معتبر وارد کنید؛ مثلاً ۰۹۱۲۳۴۵۶۷۸۹.'))}
 form.elements.phone.addEventListener('input',validatePhone);
 
 
 const validatedFields=['name','phone','details'];
 function fieldMessage(field){
   const value=field.value.trim();
-  if(field.name==='name'&&!value)return 'نام خود را وارد کنید.';
+  if(field.name==='name'&&!value)return uiText('نام خود را وارد کنید.');
   if(field.name==='phone'){
-    if(!value)return 'شمارهٔ تماس را وارد کنید.';
-    if(!/^\+?[0-9]{7,15}$/.test(normalizePhone(value)))return 'شمارهٔ تماس معتبر وارد کنید؛ مثلاً ۰۹۱۲۳۴۵۶۷۸۹.';
+    if(!value)return uiText('شمارهٔ تماس را وارد کنید.');
+    if(!/^\+?[0-9]{7,15}$/.test(normalizePhone(value)))return uiText('شمارهٔ تماس معتبر وارد کنید؛ مثلاً ۰۹۱۲۳۴۵۶۷۸۹.');
   }
-  if(field.name==='details'&&!value)return 'توضیح کوتاهی دربارهٔ پروژه بنویسید.';
-  if(field.maxLength>0&&value.length>field.maxLength)return 'متن واردشده بیش از حد طولانی است.';
+  if(field.name==='details'&&!value)return uiText('توضیح کوتاهی دربارهٔ پروژه بنویسید.');
+  if(field.maxLength>0&&value.length>field.maxLength)return uiText('متن واردشده بیش از حد طولانی است.');
   return '';
 }
 function validateField(field){
@@ -192,7 +193,7 @@ function validateField(field){
 }
 function validateForm(){
   const invalid=validatedFields.map(name=>form.elements[name]).filter(field=>!validateField(field));
-  if(invalid.length){document.getElementById('form-status').textContent='لطفاً فیلدهای مشخص‌شده را اصلاح کنید.';invalid[0].focus();return false}
+  if(invalid.length){document.getElementById('form-status').textContent=uiText('لطفاً فیلدهای مشخص‌شده را اصلاح کنید.');invalid[0].focus();return false}
   document.getElementById('form-status').textContent='';return true;
 }
 for(const name of validatedFields){const field=form.elements[name];

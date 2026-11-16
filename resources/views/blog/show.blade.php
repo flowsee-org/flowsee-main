@@ -3,6 +3,7 @@
 @section('meta_description', $pageDescription)
 @section('canonical_url', $pageUrl)
 @section('meta_image', $imageUrl)
+@section('og_type', 'article')
 @section('content')
 @push('styles')<link rel="stylesheet" href="{{ asset('assets/css/blog.css') }}?v={{ filemtime(public_path('assets/css/blog.css')) }}">@endpush
 <a class="skip-link" href="#article-main">رفتن به محتوای اصلی</a>

@@ -13,7 +13,7 @@
         @if($posts->count())<div class="blog-bento">@foreach($posts as $index => $post)@include('blog._card', ['post' => $post, 'featured' => $index === 0 || $index === 3, 'bento' => true])@endforeach</div>
         @else<div class="blog-empty"><span class="blog-empty-mark">F</span><h3>مقاله‌ها به‌زودی منتشر می‌شوند</h3><p>به‌زودی تجربه‌ها و راهنماهای تازهٔ فلوسی را همین‌جا می‌خوانید.</p><a href="/" class="blog-button">بازگشت به صفحهٔ اصلی</a></div>@endif
         @if($posts->count())<section class="blog-latest" aria-labelledby="latest-title"><div class="blog-section-heading"><h2 id="latest-title">تازه‌ترین مقاله‌ها</h2></div><div class="blog-latest-grid">@foreach($posts->getCollection()->sortByDesc('published_at') as $post)@include('blog._card', ['post' => $post, 'featured' => false, 'bento' => false])@endforeach</div></section>@endif
-        @if($posts->hasPages())<nav class="blog-pagination" aria-label="صفحه‌بندی مقاله‌ها">{{ $posts->onEachSide(1)->links('pagination::simple-default') }}</nav>@endif
+        @if($posts->hasPages())<nav class="blog-pagination" aria-label="صفحه‌بندی مقاله‌ها">{{ $posts->onEachSide(1)->links('pagination.blog') }}</nav>@endif
     </section>
 </main>
 <footer class="blog-footer"><a href="/">استودیو فلوسی</a><span>طراحی برای رشد، استراتژی برای ماندگاری.</span><a href="/">صفحهٔ اصلی ↗</a></footer>

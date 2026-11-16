@@ -6,6 +6,9 @@
   <meta name="theme-color" content="#fffaf6">
   <meta name="description" content="{{ $pageDescription }}">
   <link rel="canonical" href="https://flowsee.ir/qazvin-beauty">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:url" content="https://flowsee.ir/qazvin-beauty">
+  <meta name="twitter:card" content="summary_large_image">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fa_IR">
   <meta property="og:site_name" content="استودیو فلوسی">
@@ -14,8 +17,8 @@
   <meta property="og:image" content="https://flowsee.ir/assets/flowsee-social.jpg">
   <title>{{ $pageTitle }}</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="/assets/fonts/IRANSansX-Regular.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="/assets/fonts/IRANSansX-Medium.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/assets/fonts/IRANSansX-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/IRANSansX-Medium.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{ asset('assets/css/qazvin-beauty.css') }}?v={{ filemtime(public_path('assets/css/qazvin-beauty.css')) }}">
   @php
     $campaignStructuredData = [
@@ -36,7 +39,7 @@
       'description' => $pageDescription,
     ];
   @endphp
-  <script type="application/ld+json">{{ Illuminate\Support\Js::encode($campaignStructuredData) }}</script>
+  <script type="application/ld+json">{!! Illuminate\Support\Js::encode($campaignStructuredData) !!}</script>
 </head>
 <body>
   @yield('content')
