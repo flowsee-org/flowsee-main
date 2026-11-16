@@ -31,7 +31,7 @@ class StackPublicationTest extends TestCase
         $this->assertSame('Editor category description', $post->category->fresh()->description);
         $this->assertSame(14, BlogPost::where('blog_category_id', $post->blog_category_id)->count());
         $figma = BlogPost::where('slug', 'figma-guide')->firstOrFail();
-        $this->assertSame('https://cdn.simpleicons.org/figma/f24e1e', $figma->cover_image);
+        $this->assertSame('assets/blog-stack-covers/figma-guide.webp', $figma->cover_image);
         $this->assertStringContainsString('ساختار صفحه‌ها', $figma->content);
     }
 }

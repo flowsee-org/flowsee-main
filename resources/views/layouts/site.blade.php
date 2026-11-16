@@ -74,7 +74,7 @@ try {
     $faPath = $isStackArticle ? route('blog.show', $post->slug) : '';
     $enPath = $isStackArticle ? route('stack-guides.show.en', $post->slug) : 'en';
 @endphp
-@unless(request()->routeIs('home', 'home.en') || $isStackArticle)
+@unless(request()->routeIs('home', 'home.en', 'blog.show', 'stack-guides.show.en', 'blog.show.en') || $isStackArticle)
 <nav class="language-switcher" aria-label="{{ $isEnglish ? 'Language' : 'زبان' }}">
   <a href="{{ url($isEnglish ? $faPath : $enPath) }}" lang="{{ $isEnglish ? 'fa' : 'en' }}">{{ $isEnglish ? __('ui.language_fa') : __('ui.language') }}</a>
 </nav>

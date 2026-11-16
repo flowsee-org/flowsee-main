@@ -4,7 +4,7 @@ return [
     'javascript-guide' => [
         'title' => 'JavaScript: Building Interactive Experiences from Browser to Server',
         'excerpt' => 'A practical guide to choosing JavaScript architecture and building fast, accessible web experiences that remain easy to maintain.',
-        'cover_alt' => 'JavaScript logo and development guide',
+        'cover_alt' => 'Editorial illustration of a browser interaction flowing to a cloud server for JavaScript development',
         'content' => <<<'HTML'
 <figure><img src="https://cdn.simpleicons.org/javascript/f7df1e" alt="JavaScript logo" loading="lazy"><figcaption>The JavaScript mark, featured in this Flowsee engineering guide.</figcaption></figure>
 <h2>From a static page to a live experience</h2><p>JavaScript gives a web page behavior. A menu opens, a form explains an error beside the field, and a product list can be filtered without a full page reload. The browser is only one place where the language runs: Node.js also supports APIs, build tools, command-line utilities, and server-side jobs. That breadth is useful, but it does not make JavaScript the right answer to every problem. Choose it by weighing the product’s needs, the team’s experience, and the cost of keeping the system healthy over time.</p>
@@ -18,7 +18,7 @@ HTML,
     'typescript-guide' => [
         'title' => 'TypeScript: Clear Contracts for JavaScript Projects',
         'excerpt' => 'Learn how TypeScript reduces ambiguity, models real product states, and works with runtime validation at system boundaries.',
-        'cover_alt' => 'TypeScript logo and development guide',
+        'cover_alt' => 'Editorial illustration of typed modules and clear data contracts in a TypeScript project',
         'content' => <<<'HTML'
 <figure><img src="https://cdn.simpleicons.org/typescript/3178c6" alt="TypeScript logo" loading="lazy"><figcaption>The TypeScript mark, featured in this Flowsee engineering guide.</figcaption></figure>
 <h2>Catch uncertainty before the program runs</h2><p>TypeScript checks many assumptions about data and function inputs while code is being built. If a function expects an order date, a type can catch an unrelated value before it reaches production. Early feedback is especially helpful when several people work on an API and its user interface at the same time. The goal is not to annotate every character. The goal is to make important, change-prone boundaries clear enough that the editor and compiler can help the team reason about them.</p>
@@ -32,7 +32,7 @@ HTML,
     'nextjs-guide' => [
         'title' => 'Next.js: Designing Web Experiences with Flexible Rendering',
         'excerpt' => 'A practical look at server rendering, routes, data ownership, and choosing the right boundaries for interactive Next.js pages.',
-        'cover_alt' => 'Next.js logo and development guide',
+        'cover_alt' => 'Editorial illustration of server-rendered page layers meeting an interactive browser in Next.js',
         'content' => <<<'HTML'
 <figure><img src="https://cdn.simpleicons.org/nextdotjs/111111" alt="Next.js logo" loading="lazy"><figcaption>The Next.js mark, featured in this Flowsee engineering guide.</figcaption></figure>
 <h2>One framework, several kinds of page</h2><p>Next.js builds on React and adds routing, server rendering, and production conventions. A public product page may benefit from HTML that is ready before a search crawler or visitor runs client JavaScript. A private dashboard may depend more heavily on browser interactions. The useful part of the framework is being able to choose a rendering approach for each route, instead of forcing every screen into the same pattern. Start from the page’s purpose and audience, then decide which parts need to run on the server or in the browser.</p>
@@ -46,7 +46,7 @@ HTML,
     'go-guide' => [
         'title' => 'Go: Practical Simplicity for Concurrent Services',
         'excerpt' => 'Why Go works well for network services, and how teams can handle concurrency, errors, testing, and operations responsibly.',
-        'cover_alt' => 'Go logo and development guide',
+        'cover_alt' => 'Editorial illustration of parallel service requests flowing through a Go backend',
         'content' => <<<'HTML'
 <figure><img src="https://cdn.simpleicons.org/go/00add8" alt="Go logo" loading="lazy"><figcaption>The Go mark, featured in this Flowsee engineering guide.</figcaption></figure>
 <h2>A focused language for network software</h2><p>Go keeps its language feature set relatively small and includes a strong standard library for network services and command-line tools. Explicit code and quick builds can make projects approachable for a team. Simplicity does not remove architectural choices: package boundaries, data ownership, and error behavior still need design. The practical benefit appears when different developers can read and maintain a service without first decoding unusual patterns. Favor clear, direct code over cleverness that saves a few lines but increases the cost of change.</p>
@@ -60,7 +60,7 @@ HTML,
     'laravel-guide' => [
         'title' => 'Laravel: Building Maintainable Products with the PHP Ecosystem',
         'excerpt' => 'A practical guide to Laravel routing, Eloquent, migrations, authorization, and deployments that preserve editorial data.',
-        'cover_alt' => 'Laravel logo and development guide',
+        'cover_alt' => 'Editorial illustration of request routes and modular application services in Laravel',
         'content' => <<<'HTML'
 <figure><img src="https://cdn.simpleicons.org/laravel/ff2d20" alt="Laravel logo" loading="lazy"><figcaption>The Laravel mark, featured in this Flowsee engineering guide.</figcaption></figure>
 <h2>Use conventions to make intent visible</h2><p>Laravel provides a clear path through routing, validation, controllers, queues, and views. Those conventions help a new teammate find where a request is handled. Keep controllers focused on coordinating work rather than accumulating every business rule. Move reusable domain behavior into a service or model method when it has a real owner, and keep the route list readable. Framework convenience is most useful when the team can still explain what happens from request to response.</p>
@@ -74,7 +74,7 @@ HTML,
     'python-guide' => [
         'title' => 'Python: Readable Tools for Data, Web, and Automation',
         'excerpt' => 'Choose Python for data and web work while keeping environments reproducible, services observable, and performance measured.',
-        'cover_alt' => 'Python logo and development guide',
+        'cover_alt' => 'Editorial illustration of Python data pipelines, a notebook and automation workflows',
         'content' => <<<'HTML'
 <figure><img src="https://cdn.simpleicons.org/python/3776ab" alt="Python logo" loading="lazy"><figcaption>The Python mark, featured in this Flowsee engineering guide.</figcaption></figure>
 <h2>Readability is a long-term tool</h2><p>Python’s straightforward syntax makes it useful for automation, data analysis, web services, and internal tools. Code that reads clearly can be easier to review and change, especially when scripts are used by people who did not write them. Keep functions focused, name intermediate values for the decision they represent, and document surprising assumptions. A short script still deserves a clear input format, a useful failure message, and a safe way to run it again.</p>
@@ -88,7 +88,7 @@ HTML,
     'vuejs-guide' => [
         'title' => 'Vue.js: Reactive Interfaces with a Gradual Structure',
         'excerpt' => 'Learn when Vue fits an interactive product and how to organize components, state, forms, accessibility, and shared UI patterns.',
-        'cover_alt' => 'Vue.js logo and development guide',
+        'cover_alt' => 'Editorial illustration of Vue.js reactive components forming a product interface',
         'content' => <<<'HTML'
 <figure><img src="https://cdn.simpleicons.org/vuedotjs/4fc08d" alt="Vue.js logo" loading="lazy"><figcaption>The Vue.js mark, featured in this Flowsee engineering guide.</figcaption></figure>
 <h2>Start with the interaction you need</h2><p>Vue is designed to make reactive interfaces approachable, from a small interactive area on an existing page to a larger application with routes and shared state. Before choosing a structure, describe what changes when a person uses the page. A search box, checkout flow, and reporting dashboard each have different state and loading needs. Avoid adding a complex global layer to a screen whose data belongs to a single component. Structure should follow the product’s interaction and the team’s likely changes.</p>
@@ -102,7 +102,7 @@ HTML,
     'svelte-guide' => [
         'title' => 'Svelte: Direct Components for Responsive Interfaces',
         'excerpt' => 'Explore Svelte’s compiler approach, state ownership, server rendering, and the practical checks that keep a small bundle maintainable.',
-        'cover_alt' => 'Svelte logo and development guide',
+        'cover_alt' => 'Editorial illustration of a Svelte compiler simplifying interface components',
         'content' => <<<'HTML'
 <figure><img src="https://cdn.simpleicons.org/svelte/ff3e00" alt="Svelte logo" loading="lazy"><figcaption>The Svelte mark, featured in this Flowsee engineering guide.</figcaption></figure>
 <h2>A compiler-centered way to build UI</h2><p>Svelte lets developers describe components in a concise format and compiles much of the framework work into browser code during the build. This can make interactions feel direct and keep runtime overhead modest. A compiler does not automatically guarantee a small or fast product, however. A large editor, charting package, or image can outweigh the framework itself. Evaluate the output that ships, not only the source code that looks simple in the repository.</p>
@@ -116,7 +116,7 @@ HTML,
     'flutter-guide' => [
         'title' => 'Flutter: Creating Cross-Platform Experiences from One Codebase',
         'excerpt' => 'A practical Flutter guide covering widget composition, responsive layouts, native integrations, offline states, and release planning.',
-        'cover_alt' => 'Flutter logo and development guide',
+        'cover_alt' => 'Editorial illustration of a Flutter design system shared across phone, tablet and desktop',
         'content' => <<<'HTML'
 <figure><img src="https://cdn.simpleicons.org/flutter/02569b" alt="Flutter logo" loading="lazy"><figcaption>The Flutter mark, featured in this Flowsee engineering guide.</figcaption></figure>
 <h2>One codebase does not mean one experience</h2><p>Flutter lets a team build interfaces for several platforms from a shared codebase. Shared widgets and product logic can reduce duplication, but users still expect each platform to feel familiar. Keyboard behavior, navigation, permissions, text scaling, and system conventions vary. Define which behaviors should be shared and where a native adaptation improves the experience. A successful cross-platform plan preserves a coherent product while respecting the device people are using.</p>
@@ -130,7 +130,7 @@ HTML,
     'react-guide' => [
         'title' => 'React: Composing Interfaces with State and Testable Components',
         'excerpt' => 'A practical guide to React component design, state ownership, rendering, asynchronous behavior, and tests for growing interfaces.',
-        'cover_alt' => 'React logo and development guide',
+        'cover_alt' => 'Editorial illustration of reusable React components forming a coherent interface',
         'content' => <<<'HTML'
 <figure><img src="https://cdn.simpleicons.org/react/61dafb" alt="React logo" loading="lazy"><figcaption>The React mark, featured in this Flowsee engineering guide.</figcaption></figure>
 <h2>Think in reusable pieces of interface</h2><p>React builds a user interface from components that receive data and describe what should appear. A useful component owns one responsibility, has a clear contract, and can be understood without reading the whole application. Avoid extracting every line into a component; reuse is valuable when it reflects a shared behavior or a clear boundary. Keep business decisions separate enough that they can be tested without depending on how a particular button or card is rendered.</p>
@@ -144,7 +144,7 @@ HTML,
     'livewire-guide' => [
         'title' => 'Livewire: Interactive Web Experiences Powered by Laravel',
         'excerpt' => 'When Livewire simplifies interactive Laravel interfaces, and how to handle requests, component state, authorization, and retries safely.',
-        'cover_alt' => 'Livewire logo and development guide',
+        'cover_alt' => 'Editorial illustration of Livewire synchronizing browser and server interface state',
         'content' => <<<'HTML'
 <figure><img src="https://cdn.simpleicons.org/livewire/4e56a6" alt="Livewire logo" loading="lazy"><figcaption>The Livewire mark, featured in this Flowsee engineering guide.</figcaption></figure>
 <h2>Build interaction without losing Laravel’s conventions</h2><p>Livewire lets a Laravel team create reactive interfaces while keeping much of the application logic in PHP. It can be a productive fit for forms, filters, dashboards, and admin screens where a full client-side application would add more tooling than the feature needs. The server still handles requests, so network latency and request volume become part of the experience. Choose it where the team benefits from server-driven behavior and be deliberate about interactions that need instant local feedback.</p>
@@ -158,7 +158,7 @@ HTML,
     'php-guide' => [
         'title' => 'PHP: From Server Scripts to Maintainable Applications',
         'excerpt' => 'Modern PHP practices for types, Composer, request security, dependency management, and reliable web services.',
-        'cover_alt' => 'PHP logo and development guide',
+        'cover_alt' => 'Editorial illustration of a PHP web request moving through a reliable server stack',
         'content' => <<<'HTML'
 <figure><img src="https://cdn.simpleicons.org/php/777bb4" alt="PHP logo" loading="lazy"><figcaption>The PHP mark, featured in this Flowsee engineering guide.</figcaption></figure>
 <h2>Build on the modern language</h2><p>PHP has grown from a simple scripting language into a capable platform for long-running web applications and APIs. Namespaces, typed properties, enums, and improved error behavior help teams express intent more clearly. Use types to make important contracts visible, but keep abstractions grounded in real product needs. A clean architecture is not a collection of layers by itself; it is a set of boundaries that lets the team change business rules without touching unrelated delivery details.</p>
@@ -172,7 +172,7 @@ HTML,
     'electronjs-guide' => [
         'title' => 'Electron: Building Desktop Applications with Web Technologies',
         'excerpt' => 'Understand Electron’s main and renderer processes, secure IPC, packaging, updates, and the trade-offs of desktop web applications.',
-        'cover_alt' => 'Electron logo and development guide',
+        'cover_alt' => 'Editorial illustration of Electron combining web layers into a desktop application',
         'content' => <<<'HTML'
 <figure><img src="https://cdn.simpleicons.org/electron/47848f" alt="Electron logo" loading="lazy"><figcaption>The Electron mark, featured in this Flowsee engineering guide.</figcaption></figure>
 <h2>Bring web skills to a desktop product</h2><p>Electron combines Chromium with Node.js so a team can build desktop software using web technologies. Sharing frontend skills can shorten development time, and a desktop app can offer local files, menus, and operating system integrations. The trade-off is a larger install and a second set of release responsibilities. Decide whether desktop capabilities solve a real user problem. If the product only needs a web page, packaging a browser may add update and security work without adding meaningful value.</p>
@@ -186,7 +186,7 @@ HTML,
     'figma-guide' => [
         'title' => 'Figma: From Interface Design to a Reliable Developer Handoff',
         'excerpt' => 'A practical guide to design systems, prototyping, team collaboration, accessibility, and handing useful context to developers in Figma.',
-        'cover_alt' => 'Figma logo and design guide',
+        'cover_alt' => 'Editorial illustration of Figma design tokens and components flowing into developer handoff',
         'content' => <<<'HTML'
 <figure><img src="https://cdn.simpleicons.org/figma/f24e1e" alt="Figma logo" loading="lazy"><figcaption>The Figma mark, featured in this Flowsee design guide.</figcaption></figure>
 <h2>Start the file with a product question</h2><p>Figma is more useful when it records product decisions than when it only contains polished screens. Before drawing a page, clarify who will use the experience, what they need to accomplish, and what success looks like. Map the main journey and create a low-detail version to expose unclear steps early. List important roles and states so the design does not describe only an optimistic path. A clear question keeps exploration focused and helps the team tell the difference between a visual preference and a real usability problem.</p>
