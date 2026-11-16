@@ -140,4 +140,8 @@ return [
         '16.jpg' => 'assets/previews/16-4d7f831a',
         'assets/ima-case-study/ima-movies.webp' => 'assets/previews/ima-movies-9fea2842',
         'assets/shopero-case-study/shopero-cover.jpg' => 'assets/previews/shopero-cover-a55794f7',
-        'assets/exloot-case-study/exloot-cover.jpg' => 'assets/previews/exloot-c
+        'assets/exloot-case-study/exloot-cover.jpg' => 'assets/previews/exloot-cover-f9fd8c72',
+        'assets/case-studies/mapi-shop/cover.jpg' => 'assets/previews/cover-ff8d9723',
+        'assets/case-studies/hadisnailline/flyer.jpg' => 'assets/previews/flyer-a5d69964',
+    ],
+];
