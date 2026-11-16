@@ -21,6 +21,7 @@
 <link rel="alternate" hreflang="en" href="{{ url($enPath) }}">
 <link rel="alternate" hreflang="x-default" href="{{ url($faPath) }}">
 @endif
+@yield('alternate_links')
 <meta property="og:type" content="{!! e($__env->yieldContent('og_type', 'website'), false) !!}">
 <meta property="og:locale" content="{{ app()->getLocale() === 'en' ? 'en_US' : 'fa_IR' }}">
 <meta property="og:site_name" content="استودیو فلوسی | Flowsee">
@@ -69,6 +70,9 @@ try {
 <body>
 @php
     $isEnglish = app()->getLocale() === 'en';
+    $isStackArticle = $isStackArticle ?? false;
+    $faPath = $isStackArticle ? route('blog.show', $post->slug) : '';
+    $enPath = $isStackArticle ? route('blog.show.en', $post->slug) : 'en';
 @endphp
 @unless(request()->routeIs('home', 'home.en'))
 <nav class="language-switcher" aria-label="{{ $isEnglish ? 'Language' : 'زبان' }}">

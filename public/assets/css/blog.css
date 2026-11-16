@@ -99,3 +99,13 @@
 [data-theme="dark"] .stack-logo-link[data-stack="nextjs-guide"] :is(img,svg){filter:invert(1)}
 @media(max-width:600px){.stack-logo-grid{width:100%;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.stack-logo-grid>li:nth-last-child(2):nth-child(4n+1){grid-column-start:2}.stack-logo-link{min-height:64px;padding:12px}.stack-logo-link :is(img,svg){width:36px;height:36px}}
 @media(prefers-reduced-motion:reduce){.stack-logo-link{transition:none}}
+
+/* English technology guides follow the English URL and reading direction. */
+html[lang="en"] .article-content,
+html[lang="en"] .article-content :is(h2,h3,h4,p,ul,ol,li,blockquote,table,th,td){direction:ltr;text-align:left}
+html[lang="en"] .article-content h2:before{right:auto;left:0}
+html[lang="en"] .article-content blockquote{border-right:1px solid color-mix(in srgb,var(--accent) 20%,var(--border));border-left:4px solid var(--accent);border-radius:16px 0 0 16px}
+html[lang="en"] .article-content th,html[lang="en"] .article-content td{text-align:left}
+html[lang="en"] .article-aside{border-right:1px solid var(--border);border-left:2px solid var(--accent)}
+html[lang="en"] .article-toc a[data-level="3"]{padding-inline-start:11px;padding-inline-end:22px}
+html[lang="en"] .blog-card-featured-label{right:auto;left:16px}
