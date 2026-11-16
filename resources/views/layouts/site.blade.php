@@ -72,7 +72,7 @@ try {
     $isEnglish = app()->getLocale() === 'en';
     $isStackArticle = $isStackArticle ?? false;
     $faPath = $isStackArticle ? route('blog.show', $post->slug) : '';
-    $enPath = $isStackArticle ? route('blog.show.en', $post->slug) : 'en';
+    $enPath = $isStackArticle ? route('stack-guides.show.en', $post->slug) : 'en';
 @endphp
 @unless(request()->routeIs('home', 'home.en'))
 <nav class="language-switcher" aria-label="{{ $isEnglish ? 'Language' : 'زبان' }}">

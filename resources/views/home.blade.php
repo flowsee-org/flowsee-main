@@ -76,7 +76,7 @@
 <li>
 @php($stackArticle = \App\Support\StackArticleLocalization::translation($post->slug))
 @php($stackTitle = app()->getLocale() === 'en' ? ($stackArticle['title'] ?? $post->title) : $post->title)
-<a class="stack-logo-link" data-stack="{{ $post->slug }}" href="{{ route(app()->getLocale() === 'en' ? 'blog.show.en' : 'blog.show', $post->slug) }}" aria-label="{{ app()->getLocale() === 'en' ? 'Read article: '.$stackTitle : __('خواندن مقاله: :title', ['title' => $stackTitle]) }}" title="{{ app()->getLocale() === 'en' ? ($stackArticle['cover_alt'] ?? $post->cover_alt) : ($post->cover_alt ?: $post->title) }}">
+<a class="stack-logo-link" data-stack="{{ $post->slug }}" href="{{ route(app()->getLocale() === 'en' ? 'stack-guides.show.en' : 'blog.show', $post->slug) }}" aria-label="{{ app()->getLocale() === 'en' ? 'Read article: '.$stackTitle : __('خواندن مقاله: :title', ['title' => $stackTitle]) }}" title="{{ app()->getLocale() === 'en' ? ($stackArticle['cover_alt'] ?? $post->cover_alt) : ($post->cover_alt ?: $post->title) }}">
 @php($stackSymbol = config('website-media.stack_symbols.'.$post->slug))
 @if($stackSymbol)
 <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="{{ asset(config('website-media.stack_sprite')) }}#{{ $stackSymbol }}"></use></svg>

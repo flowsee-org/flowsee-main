@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ProjectController::class, 'index'])->name('home');
 Route::get('/en', [ProjectController::class, 'index'])->name('home.en');
 Route::get('/en/projects/{slug}', [ProjectController::class, 'show'])->name('projects.show.en');
+Route::get('/en/technology-guides/{slug}', [BlogController::class, 'show'])->name('stack-guides.show.en');
 Route::get('/en/blog', [BlogController::class, 'index'])->name('blog.index.en');
 Route::get('/en/blog/{slug}', [BlogController::class, 'show'])->name('blog.show.en');
 Route::view('/qazvin-beauty', 'campaigns.qazvin-beauty', [
