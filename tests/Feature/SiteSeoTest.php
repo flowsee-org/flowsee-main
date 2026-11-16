@@ -50,7 +50,9 @@ class SiteSeoTest extends TestCase
             ->assertSee('Flowsee Studio | Brand Design &amp; Digital Experiences', false)
             ->assertSee('og:locale" content="en_US"', false)
             ->assertSee('Your name')->assertSee('Phone number')->assertSee('About your project')
-            ->assertSee('Send request')->assertSee('Dark mode')->assertSee('flowseeTranslations', false);
+            ->assertSee('Send request')->assertSee('Dark mode')->assertSee('flowseeTranslations', false)
+            ->assertSee('class="header-controls"', false)->assertSee('class="language-control"', false)
+            ->assertDontSee('class="language-switcher"', false);
         foreach (['/', '/en'] as $url) {
             $this->get($url)->assertOk()->assertSee('hreflang="fa"', false)->assertSee('hreflang="en"', false);
         }
@@ -72,8 +74,8 @@ class SiteSeoTest extends TestCase
     public function test_sitemap_tracks_public_case_studies_and_excludes_drafts_and_redirects(): void
     {
         foreach (['published', 'draft', 'inactive', 'mapi-shop'] as $slug) {
-            $project = Project::factory()->create(['slug' => $slug, 'is_active' => $slug !== 'inactive', 'has_case_study' => true]);
-            CaseStudy::create(['project_id' => $project->id, 'slug' => $slug, 'title' => $slug, 'is_published' => $slug !== 'draft']);
+            $project = Project::updateOrCreate(['slug' => $slug], ['name' => $slug, 'is_active' => $slug !== 'inactive', 'has_case_study' => true]);
+            CaseStudy::updateOrCreate(['project_id' => $project->id], ['slug' => $slug, 'title' => $slug, 'is_published' => $slug !== 'draft']);
         }
         $response = $this->get('/sitemap.xml')->assertOk()->assertHeader('Content-Type', 'application/xml; charset=UTF-8')
             ->assertSee('https://flowsee.ir/projects/published')->assertSee('https://flowsee.ir/en')

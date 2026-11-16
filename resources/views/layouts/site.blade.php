@@ -9,8 +9,8 @@
     })(window, document, "clarity", "script", "ywjxxggyxf");
 </script>
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="description" content="{{ $__env->yieldContent('meta_description', $pageDescription ?? 'Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.') }}">
-<link rel="canonical" href="{{ $__env->yieldContent('canonical_url', $pageUrl ?? 'https://flowsee.ir/') }}">
+<meta name="description" content="{!! e($__env->yieldContent('meta_description', $pageDescription ?? 'Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.'), false) !!}">
+<link rel="canonical" href="{!! e($__env->yieldContent('canonical_url', $pageUrl ?? 'https://flowsee.ir/'), false) !!}">
 @php
     $hasTranslation = request()->routeIs('home', 'home.en');
     $faPath = '';
@@ -21,14 +21,14 @@
 <link rel="alternate" hreflang="en" href="{{ url($enPath) }}">
 <link rel="alternate" hreflang="x-default" href="{{ url($faPath) }}">
 @endif
-<meta property="og:type" content="{{ $__env->yieldContent('og_type', 'website') }}">
+<meta property="og:type" content="{!! e($__env->yieldContent('og_type', 'website'), false) !!}">
 <meta property="og:locale" content="{{ app()->getLocale() === 'en' ? 'en_US' : 'fa_IR' }}">
 <meta property="og:site_name" content="استودیو فلوسی | Flowsee">
-<meta property="og:url" content="{{ $__env->yieldContent('canonical_url', $pageUrl ?? 'https://flowsee.ir/') }}">
-<meta property="og:title" content="{{ $__env->yieldContent('meta_title', $pageTitle ?? 'استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال') }}">
-<meta property="og:description" content="{{ $__env->yieldContent('meta_description', $pageDescription ?? 'Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.') }}">
-<meta property="og:image" content="{{ $__env->yieldContent('meta_image', $imageUrl ?? 'https://flowsee.ir/assets/flowsee-social.jpg') }}">
-<meta property="og:image:secure_url" content="{{ $__env->yieldContent('meta_image', $imageUrl ?? 'https://flowsee.ir/assets/flowsee-social.jpg') }}">
+<meta property="og:url" content="{!! e($__env->yieldContent('canonical_url', $pageUrl ?? 'https://flowsee.ir/'), false) !!}">
+<meta property="og:title" content="{!! e($__env->yieldContent('meta_title', $pageTitle ?? 'استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال'), false) !!}">
+<meta property="og:description" content="{!! e($__env->yieldContent('meta_description', $pageDescription ?? 'Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.'), false) !!}">
+<meta property="og:image" content="{!! e($__env->yieldContent('meta_image', $imageUrl ?? 'https://flowsee.ir/assets/flowsee-social.jpg'), false) !!}">
+<meta property="og:image:secure_url" content="{!! e($__env->yieldContent('meta_image', $imageUrl ?? 'https://flowsee.ir/assets/flowsee-social.jpg'), false) !!}">
 @unless(isset($imageUrl))
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
@@ -36,10 +36,10 @@
 @endunless
 <meta property="og:image:alt" content="{{ $post->cover_alt ?? $pageTitle ?? 'استودیو فلوسی؛ طراحی برای رشد و ماندگاری' }}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ $__env->yieldContent('meta_title', $pageTitle ?? 'استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال') }}">
-<meta name="twitter:description" content="{{ $__env->yieldContent('meta_description', $pageDescription ?? 'Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.') }}">
-<meta name="twitter:image" content="{{ $__env->yieldContent('meta_image', $imageUrl ?? 'https://flowsee.ir/assets/flowsee-social.jpg') }}">
-<meta name="theme-color" content="#FE5400"><title>{{ $__env->yieldContent('meta_title', $pageTitle ?? 'استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال') }}</title>
+<meta name="twitter:title" content="{!! e($__env->yieldContent('meta_title', $pageTitle ?? 'استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال'), false) !!}">
+<meta name="twitter:description" content="{!! e($__env->yieldContent('meta_description', $pageDescription ?? 'Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.'), false) !!}">
+<meta name="twitter:image" content="{!! e($__env->yieldContent('meta_image', $imageUrl ?? 'https://flowsee.ir/assets/flowsee-social.jpg'), false) !!}">
+<meta name="theme-color" content="#FE5400"><title>{!! e($__env->yieldContent('meta_title', $pageTitle ?? 'استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال'), false) !!}</title>
 <script>
 try {
   const savedTheme = localStorage.getItem('flowsee-theme');
@@ -70,9 +70,11 @@ try {
 @php
     $isEnglish = app()->getLocale() === 'en';
 @endphp
+@unless(request()->routeIs('home', 'home.en'))
 <nav class="language-switcher" aria-label="{{ $isEnglish ? 'Language' : 'زبان' }}">
   <a href="{{ url($isEnglish ? $faPath : $enPath) }}" lang="{{ $isEnglish ? 'fa' : 'en' }}">{{ $isEnglish ? __('ui.language_fa') : __('ui.language') }}</a>
 </nav>
+@endunless
 @yield('content')
 @if(app()->getLocale() === 'en')<script>window.flowseeTranslations = @json(\Illuminate\Support\Facades\Lang::get('client'));</script>@endif
 @unless(request()->routeIs('product.e-learning'))<script defer src="{{ asset('assets/js/site.js') }}?v={{ filemtime(public_path('assets/js/site.js')) }}"></script>@endunless
