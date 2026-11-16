@@ -109,3 +109,4 @@ html[lang="en"] .article-content th,html[lang="en"] .article-content td{text-ali
 html[lang="en"] .article-aside{border-right:1px solid var(--border);border-left:2px solid var(--accent)}
 html[lang="en"] .article-toc a[data-level="3"]{padding-inline-start:11px;padding-inline-end:22px}
 html[lang="en"] .blog-card-featured-label{right:auto;left:16px}
+.blog-language-link{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:7px 12px;border:1px solid var(--border);border-radius:999px;color:var(--fg);font-size:12px;white-space:nowrap;transition:background .2s,border-color .2s}.blog-language-link:hover{background:var(--surface);border-color:var(--accent)}@media(max-width:600px){.blog-language-link{min-height:34px;padding:6px 9px;font-size:11px}}
