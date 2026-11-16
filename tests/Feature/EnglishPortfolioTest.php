@@ -40,8 +40,8 @@ class EnglishPortfolioTest extends TestCase
         CaseStudyStep::create(['section_id' => $section->id, 'title' => 'تحلیل بریف', 'description' => 'شناخت مخاطب، رقبا و جایگاه برند.', 'step_number' => '۰۱']);
         GalleryImage::create(['section_id' => $section->id, 'path' => '16.jpg', 'caption' => 'مقیاس‌پذیری نشان', 'alt' => 'نشان روی بدنهٔ خودرو']);
         ColorPalette::create(['case_study_id' => $study->id, 'name' => 'سرمه‌ای عمیق', 'hex' => '#012233']);
-        $original = $project->getRawOriginal();
-        $originalStudy = $study->getRawOriginal();
+        $original = $project->fresh()->getRawOriginal();
+        $originalStudy = $study->fresh()->getRawOriginal();
 
         $english = $this->get('/en')->assertOk()->assertSee('Ebrahimi Car Restoration Center')
             ->assertSee('lang="en" dir="ltr" class="case-dialog"', false)
