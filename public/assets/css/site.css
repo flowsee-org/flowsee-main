@@ -767,7 +767,7 @@ html[lang="en"] .language-switcher a { font-family:Montserrat,Arial,sans-serif; 
 @media(max-width:649px){.header-controls{inset-inline-end:8px;gap:2px}.header-controls .theme-toggle,.language-control{min-inline-size:36px;min-block-size:36px}}
 
 /* English portfolio: mirror reading order without changing the Persian composition. */
-html[lang="en"] :is(#portfolio,#case-dialog,#preview-dialog,#lightbox){direction:ltr;text-align:left}
+html[lang="en"] :is(#portfolio,#case-dialog,#preview-dialog,#lightbox){--body:IRANSansX,Arial,sans-serif;font-family:var(--body);direction:ltr;text-align:left}
 html[lang="en"] #portfolio :is(.project-card,.project-copy,.project-name,.project-description){direction:ltr;text-align:left}
 html[lang="en"] #portfolio .project-carousel-track{direction:ltr}
 html[lang="en"] #portfolio .project-carousel-controls svg{transform:scaleX(-1)}
