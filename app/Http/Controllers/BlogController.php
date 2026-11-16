@@ -128,9 +128,14 @@ class BlogController extends Controller
             ->where('published_at', '<=', now())
             ->firstOrFail();
 
+        $legacyEnglishBlogRoute = request()->routeIs('blog.show.en');
         $isEnglish = request()->routeIs('stack-guides.show.en');
         $isStackArticle = $post->category?->slug === 'programming-stacks'
             && StackArticleLocalization::translation($post->slug) !== null;
+
+        if ($legacyEnglishBlogRoute) {
+            return redirect()->route('blog.show', $post->slug, 301);
+        }
 
         if ($isEnglish && ! $isStackArticle) {
             return redirect()->route('blog.show', $post->slug, 301);
