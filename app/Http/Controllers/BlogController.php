@@ -128,9 +128,14 @@ class BlogController extends Controller
             ->where('published_at', '<=', now())
             ->firstOrFail();
 
-        $isEnglish = request()->routeIs('blog.show.en');
+        $legacyEnglishBlogRoute = request()->routeIs('blog.show.en');
+        $isEnglish = request()->routeIs('stack-guides.show.en');
         $isStackArticle = $post->category?->slug === 'programming-stacks'
             && StackArticleLocalization::translation($post->slug) !== null;
+
+        if ($legacyEnglishBlogRoute) {
+            return redirect()->route('blog.show', $post->slug, 301);
+        }
 
         if ($isEnglish && ! $isStackArticle) {
             return redirect()->route('blog.show', $post->slug, 301);
@@ -164,7 +169,7 @@ class BlogController extends Controller
         $pageDescription = $isEnglish
             ? $post->excerpt
             : ($post->meta_description ?: ($post->excerpt ?: (string) str(strip_tags($post->content))->squish()->limit(160)));
-        $pageUrl = route($isEnglish ? 'blog.show.en' : 'blog.show', $post->slug);
+        $pageUrl = route($isEnglish ? 'stack-guides.show.en' : 'blog.show', $post->slug);
         $imageUrl = $post->cover_image ? WebsiteMediaUrl::for($post->cover_image) : 'https://flowsee.ir/assets/flowsee-social.jpg';
         $readingMinutes = max(1, (int) ceil(preg_match_all('/[\pL\pN]+/u', strip_tags($post->content)) / 180));
         $postHeadings = collect();

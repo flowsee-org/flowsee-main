@@ -7,7 +7,7 @@
 @if($isStackArticle)
 @section('alternate_links')
 <link rel="alternate" hreflang="fa" href="{{ route('blog.show', $post->slug) }}">
-<link rel="alternate" hreflang="en" href="{{ route('blog.show.en', $post->slug) }}">
+<link rel="alternate" hreflang="en" href="{{ route('stack-guides.show.en', $post->slug) }}">
 <link rel="alternate" hreflang="x-default" href="{{ route('blog.show', $post->slug) }}">
 @endsection
 @endif
