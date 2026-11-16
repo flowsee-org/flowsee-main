@@ -18,15 +18,16 @@
 @php($featuredProject = $projects->firstWhere('sort_order', 1) ?: ($projects->firstWhere('is_featured', true) ?: $projects->first()))
 @if($featuredProject)
 @php($project = $featuredProject)
+@php($projectCopy = $portfolioCopy[$project->slug])
 @php($projectLink = $project->has_case_study && $project->caseStudy?->is_published ? ($project->slug === 'mapi-shop' ? route('home', ['case' => $project->slug]) : route('projects.show', $project->slug)) : null)
-<{{ $projectLink ? 'a' : 'button' }} class="project-card featured-project" @if($projectLink) href="{{ $projectLink }}" @else type="button" @endif data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? __('مشاهدهٔ کیس‌استادی :name', ['name' => $project->name]) : $project->name }}">
+<{{ $projectLink ? 'a' : 'button' }} class="project-card featured-project" @if($projectLink) href="{{ $projectLink }}" @else type="button" @endif data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? __('مشاهدهٔ کیس‌استادی :name', ['name' => $projectCopy['name']]) : $projectCopy['name'] }}">
 <span class="project-visual">
-<img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::previewFor($project->cover_image) }}" @if($previewSrcset = \App\Support\WebsiteMediaUrl::previewSrcsetFor($project->cover_image)) srcset="{{ $previewSrcset }}" sizes="(max-width: 649px) calc(100vw - 40px), (max-width: 899px) 50vw, 1120px" @endif width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async">
+<img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::previewFor($project->cover_image) }}" @if($previewSrcset = \App\Support\WebsiteMediaUrl::previewSrcsetFor($project->cover_image)) srcset="{{ $previewSrcset }}" sizes="(max-width: 649px) calc(100vw - 40px), (max-width: 899px) 50vw, 1120px" @endif width="1200" height="630" alt="{{ __('نمونه‌کار :name، استودیو فلوسی', ['name' => $projectCopy['name']]) }}" loading="lazy" decoding="async">
 </span>
 <span class="project-copy">
-<span class="project-category">{{ $project->service?->title ?? 'پروژه منتخب' }}</span>
-<span class="project-name">{{ $project->name }}</span>
-<span class="project-description">{{ $project->description ?: ($project->caseStudy?->lead ?? $project->service?->description ?? '') }}</span>
+<span class="project-category">{{ $projectCopy['service'] ?: __('پروژه منتخب') }}</span>
+<span class="project-name">{{ $projectCopy['name'] }}</span>
+<span class="project-description">{{ $projectCopy['description'] ?: ($projectCopy['case_study']['lead'] ?? __($project->service?->description ?? '')) }}</span>
 <span class="project-action"><span class="project-action-label">{{ __('مشاهدهٔ پروژه') }}</span> <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
 </span>
 </{{ $projectLink ? 'a' : 'button' }}>
@@ -35,14 +36,15 @@
 @if($otherProjects->isNotEmpty())
 <div class="project-carousel" role="region" aria-label="{{ __('ui.more_projects') }}">
 <div class="project-carousel-controls"><span>{{ __('ui.more_projects') }}</span><div><button type="button" data-carousel-step="-1" aria-label="{{ __('ui.previous_project') }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button><button type="button" data-carousel-step="1" aria-label="{{ __('ui.next_project') }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button></div></div>
-<div class="project-carousel-track" id="project-carousel-track" tabindex="0" aria-label="برای {{ __('ui.see_projects') }}ی بیشتر پیمایش کنید">
+<div class="project-carousel-track" id="project-carousel-track" tabindex="0" aria-label="{{ __('مرور نمونه‌کارهای بیشتر') }}">
 @foreach($otherProjects as $project)
+@php($projectCopy = $portfolioCopy[$project->slug])
 @php($projectLink = $project->has_case_study && $project->caseStudy?->is_published ? ($project->slug === 'mapi-shop' ? route('home', ['case' => $project->slug]) : route('projects.show', $project->slug)) : null)
-<{{ $projectLink ? 'a' : 'button' }} class="project-card" @if($projectLink) href="{{ $projectLink }}" @else type="button" @endif data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? __('مشاهدهٔ کیس‌استادی :name', ['name' => $project->name]) : $project->name }}">
-<span class="project-visual"><img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::previewFor($project->cover_image) }}" @if($previewSrcset = \App\Support\WebsiteMediaUrl::previewSrcsetFor($project->cover_image)) srcset="{{ $previewSrcset }}" sizes="(max-width: 649px) calc(100vw - 40px), (max-width: 899px) 50vw, 1120px" @endif width="1200" height="630" alt="{{ 'نمونه‌کار ' . $project->name . '، استودیو فلوسی' }}" loading="lazy" decoding="async"></span>
+<{{ $projectLink ? 'a' : 'button' }} class="project-card" @if($projectLink) href="{{ $projectLink }}" @else type="button" @endif data-project-slug="{{ $project->slug }}" data-od-id="project-{{ $project->slug }}" aria-label="{{ $project->has_case_study ? __('مشاهدهٔ کیس‌استادی :name', ['name' => $projectCopy['name']]) : $projectCopy['name'] }}">
+<span class="project-visual"><img class="project-image" src="{{ \App\Support\WebsiteMediaUrl::previewFor($project->cover_image) }}" @if($previewSrcset = \App\Support\WebsiteMediaUrl::previewSrcsetFor($project->cover_image)) srcset="{{ $previewSrcset }}" sizes="(max-width: 649px) calc(100vw - 40px), (max-width: 899px) 50vw, 1120px" @endif width="1200" height="630" alt="{{ __('نمونه‌کار :name، استودیو فلوسی', ['name' => $projectCopy['name']]) }}" loading="lazy" decoding="async"></span>
 <span class="project-copy">
-<span class="project-category">{{ $project->service?->title ?? 'نمونه‌کار' }}</span>
-<span class="project-name">{{ $project->name }}</span>
+<span class="project-category">{{ $projectCopy['service'] ?: __('نمونه‌کار') }}</span>
+<span class="project-name">{{ $projectCopy['name'] }}</span>
 </span>
 </{{ $projectLink ? 'a' : 'button' }}>
 @endforeach
@@ -177,17 +179,17 @@
 </section>
 </dialog>
 
-<dialog id="preview-dialog" class="preview-dialog" aria-labelledby="preview-title" data-od-id="project-preview">
-<div class="project-window-bar" data-od-id="preview-toolbar"><span>{{ __('منتخب پروژه‌های فلوسی') }}</span><button class="close-dialog" type="button" data-close aria-label="بستن پروژه" data-od-id="close-preview"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+<dialog id="preview-dialog" lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() === 'en' ? 'ltr' : 'rtl' }}" class="preview-dialog" aria-labelledby="preview-title" data-od-id="project-preview">
+<div class="project-window-bar" data-od-id="preview-toolbar"><span>{{ __('منتخب پروژه‌های فلوسی') }}</span><button class="close-dialog" type="button" data-close aria-label="{{ __('بستن پروژه') }}" data-od-id="close-preview"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
 <div class="preview-scroll" data-od-id="preview-scroll">
-  <header class="project-intro" data-od-id="preview-intro"><div><span class="eyebrow">{{ __('طراحی و تجربهٔ دیجیتال') }}</span><h2 id="preview-title" dir="rtl" data-od-id="preview-title"></h2></div><p id="preview-description" data-od-id="preview-description"></p></header>
+  <header class="project-intro" data-od-id="preview-intro"><div><span class="eyebrow">{{ __('طراحی و تجربهٔ دیجیتال') }}</span><h2 id="preview-title" dir="{{ app()->getLocale() === 'en' ? 'ltr' : 'rtl' }}" data-od-id="preview-title"></h2></div><p id="preview-description" data-od-id="preview-description"></p></header>
   <figure class="project-showcase" data-od-id="preview-artwork"><div id="preview-image"></div></figure>
   <div class="project-window-bottom" data-od-id="preview-bottom"><p>{{ __('از ایدهٔ شما شروع کنیم.') }}</p><button class="button primary" type="button" data-contact="project" data-od-id="preview-start-project">{{ __('گفت‌وگو دربارهٔ پروژه') }}</button></div>
 </div>
-<nav class="project-pagination" aria-label="مرور پروژه‌ها" data-od-id="preview-navigation"><button type="button" id="preview-prev" data-od-id="preview-previous">{{ __('پروژهٔ قبلی') }}</button><span id="preview-position" aria-live="polite" aria-atomic="true"></span><button type="button" id="preview-next" data-od-id="preview-next">{{ __('پروژهٔ بعدی') }}</button></nav>
+<nav class="project-pagination" aria-label="{{ __('مرور پروژه‌ها') }}" data-od-id="preview-navigation"><button type="button" id="preview-prev" data-od-id="preview-previous">{{ __('پروژهٔ قبلی') }}</button><span id="preview-position" aria-live="polite" aria-atomic="true"></span><button type="button" id="preview-next" data-od-id="preview-next">{{ __('پروژهٔ بعدی') }}</button></nav>
 </dialog>
 
-<dialog id="case-dialog" class="case-dialog" aria-labelledby="case-dialog-title" data-od-id="case-dialog">
+<dialog id="case-dialog" lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() === 'en' ? 'ltr' : 'rtl' }}" class="case-dialog" aria-labelledby="case-dialog-title" data-od-id="case-dialog">
 <div class="case-bar">
 <span class="case-bar-title" id="case-dialog-title" data-od-id="case-dialog-title"></span>
 <button class="close-dialog" type="button" data-close aria-label="{{ __('بستن') }}" data-od-id="close-case-dialog"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
@@ -200,26 +202,26 @@
 <h2 class="cs-title" data-od-id="case-title" id="case-title"></h2>
 <div class="cs-lead rich-content" id="case-lead"></div>
 </div>
-<ul class="meta" aria-label="مشخصات پروژه">
+<ul class="meta" aria-label="{{ __('مشخصات پروژه') }}">
 <li><span class="k">{{ __('کارفرما') }}</span><span class="v" id="case-client"></span></li>
 <li><span class="k">{{ __('حوزه') }}</span><span class="v" id="case-industry"></span></li>
 <li><span class="k">{{ __('خدمات') }}</span><span class="v" id="case-services"></span></li>
 </ul>
 </header>
 <div id="case-body"></div>
-<div class="container"><div class="cs-cta"><div><span class="eyebrow">{{ __('قدم بعدی') }}</span><h3>{{ __('پروژهٔ بعدی شما، یک هویت ماندگار.') }}</h3><p>{{ __('از تحلیل بریف تا توسعهٔ هویت بصری، در کنار شما هستیم.') }}</p></div><div class="cs-actions"><button class="button primary" type="button" data-contact="project" data-od-id="case-start-project">{{ __('ui.start_project') }} <svg class="icon" aria-hidden="true"><use href="#i-arrow-ul"></use></svg></button><a class="quiet-link" href="tel:+989109027628" data-od-id="case-phone">۰۹۱۰۹۰۲۷۶۲۸ <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg></a></div></div></div>
+<div class="container"><div class="cs-cta"><div><span class="eyebrow">{{ __('قدم بعدی') }}</span><h3>{{ __('پروژهٔ بعدی شما، یک هویت ماندگار.') }}</h3><p>{{ __('از تحلیل بریف تا توسعهٔ هویت بصری، در کنار شما هستیم.') }}</p></div><div class="cs-actions"><button class="button primary" type="button" data-contact="project" data-od-id="case-start-project">{{ __('ui.start_project') }} <svg class="icon" aria-hidden="true"><use href="#i-arrow-ul"></use></svg></button><a class="quiet-link" href="tel:+989109027628" data-od-id="case-phone">{{ app()->getLocale() === 'en' ? '09109027628' : '۰۹۱۰۹۰۲۷۶۲۸' }} <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg></a></div></div></div>
 </article>
 </div>
 </dialog>
 
-<dialog id="lightbox" class="lightbox" aria-labelledby="lightbox-cap" data-od-id="lightbox">
-<div class="dialog-head"><h2 id="lightbox-cap"></h2><button class="close-dialog" type="button" data-close aria-label="بستن تصویر" data-od-id="close-lightbox"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
+<dialog id="lightbox" lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() === 'en' ? 'ltr' : 'rtl' }}" class="lightbox" aria-labelledby="lightbox-cap" data-od-id="lightbox">
+<div class="dialog-head"><h2 id="lightbox-cap"></h2><button class="close-dialog" type="button" data-close aria-label="{{ __('بستن تصویر') }}" data-od-id="close-lightbox"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
 <div class="lightbox-tools">
-<div class="gallery-nav" aria-label="جابه‌جایی بین تصاویر"><button type="button" class="gallery-button" id="gallery-prev" data-od-id="gallery-previous">{{ __('قبلی') }}</button><span id="gallery-count" class="gallery-count" aria-live="polite" aria-atomic="true"></span><button type="button" class="gallery-button" id="gallery-next" data-od-id="gallery-next">{{ __('بعدی') }}</button></div>
+<div class="gallery-nav" aria-label="{{ __('جابه‌جایی بین تصاویر') }}"><button type="button" class="gallery-button" id="gallery-prev" data-od-id="gallery-previous">{{ __('قبلی') }}</button><span id="gallery-count" class="gallery-count" aria-live="polite" aria-atomic="true"></span><button type="button" class="gallery-button" id="gallery-next" data-od-id="gallery-next">{{ __('بعدی') }}</button></div>
 <button class="zoom-toggle" id="zoom-toggle" type="button" aria-pressed="false" data-od-id="image-zoom-toggle">{{ __('اندازهٔ واقعی') }}</button>
 </div>
 <p id="gallery-status" class="gallery-status" role="status" aria-live="polite" hidden></p>
-<div class="lightbox-viewport" id="lightbox-viewport" tabindex="0" aria-label="تصویر بزرگ‌شده؛ برای حرکت از کلیدهای جهت استفاده کنید" data-od-id="image-zoom-viewport"><img id="lightbox-img" width="1920" height="1080" alt=""></div>
+<div class="lightbox-viewport" id="lightbox-viewport" tabindex="0" aria-label="{{ __('تصویر بزرگ‌شده؛ برای حرکت از کلیدهای جهت استفاده کنید') }}" data-od-id="image-zoom-viewport"><img id="lightbox-img" width="1920" height="1080" alt=""></div>
 </dialog>
 
 <script>
