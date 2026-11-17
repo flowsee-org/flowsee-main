@@ -227,7 +227,52 @@ class BlogController extends Controller
             'all_articles' => 'همهٔ مقاله‌ها', 'read_article' => 'خواندن مقاله', 'footer_tagline' => 'طراحی برای رشد، استراتژی برای ماندگاری.',
         ];
 
-        return view('blog.show', compact('post', 'relatedPosts', 'postHeadings', 'readingMinutes', 'pageTitle', 'pageDescription', 'pageUrl', 'imageUrl', 'structuredData', 'articleUi', 'isEnglish', 'isStackArticle'));
+        $publishedDate = $isEnglish
+            ? $post->published_at->format('F j, Y')
+            : $this->formatPersianDate($post->published_at);
+
+        return view('blog.show', compact('post', 'relatedPosts', 'postHeadings', 'readingMinutes', 'publishedDate', 'pageTitle', 'pageDescription', 'pageUrl', 'imageUrl', 'structuredData', 'articleUi', 'isEnglish', 'isStackArticle'));
+    }
+
+    private function formatPersianDate($date): string
+    {
+        $gregorianYear = (int) $date->format('Y');
+        $gregorianMonth = (int) $date->format('n');
+        $gregorianDay = (int) $date->format('j');
+        $daysInGregorianMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        $adjustedYear = $gregorianMonth > 2 ? $gregorianYear + 1 : $gregorianYear;
+        $days = 355666 + 365 * $gregorianYear
+            + intdiv($adjustedYear + 3, 4)
+            - intdiv($adjustedYear + 99, 100)
+            + intdiv($adjustedYear + 399, 400)
+            + $gregorianDay;
+
+        for ($month = 0; $month < $gregorianMonth - 1; $month++) {
+            $days += $daysInGregorianMonths[$month];
+        }
+
+        $jalaliYear = -1595 + 33 * intdiv($days, 12053);
+        $days %= 12053;
+        $jalaliYear += 4 * intdiv($days, 1461);
+        $days %= 1461;
+
+        if ($days > 365) {
+            $jalaliYear += intdiv($days - 1, 365);
+            $days = ($days - 1) % 365;
+        }
+
+        if ($days < 186) {
+            $jalaliMonth = 1 + intdiv($days, 31);
+            $jalaliDay = 1 + ($days % 31);
+        } else {
+            $jalaliMonth = 7 + intdiv($days - 186, 30);
+            $jalaliDay = 1 + (($days - 186) % 30);
+        }
+
+        $monthNames = [1 => 'فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
+        $date = $jalaliDay.' '.$monthNames[$jalaliMonth].' '.$jalaliYear;
+
+        return strtr($date, ['0' => '۰', '1' => '۱', '2' => '۲', '3' => '۳', '4' => '۴', '5' => '۵', '6' => '۶', '7' => '۷', '8' => '۸', '9' => '۹']);
     }
 
     public function sitemap()

@@ -113,8 +113,6 @@
 <nav class="footer-nav" aria-label="پیوندهای پایین صفحه" data-od-id="footer-navigation">
 <a href="#portfolio">{{ __('نمونه‌کارها') }}</a>
 <a href="#services">{{ __('خدمات') }}</a>
-<a href="{{ route('campaigns.qazvin-beauty') }}">{{ __('طراحی فروشگاه اینترنتی') }}</a>
-<a href="{{ route('product.e-learning') }}">{{ __('طراحی محصول آموزشی') }}</a>
 <a href="{{ route('blog.index') }}">{{ __('ui.blog') }}</a>
 </nav>
 <div class="socials" aria-label="راه‌های ارتباطی">
