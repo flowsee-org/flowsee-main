@@ -164,3 +164,24 @@ html[lang="en"] .article-header,html[lang="en"] .article-lead{text-align:left}
 html[lang="en"] .article-byline{justify-content:flex-start}
 @media(max-width:700px){.article-header{margin:32px auto 24px}.article-header h1{font-size:clamp(30px,8vw,42px);line-height:1.5}.article-lead{font-size:14px}.article-byline{justify-content:flex-start;gap:8px;margin-top:17px;font-size:11px}.article-byline .article-author-avatar{width:34px;height:34px;flex-basis:34px}.related-posts{margin-top:46px;padding-top:26px}.related-posts .blog-section-heading{align-items:flex-start;gap:14px}.related-posts-intro{font-size:12px}.related-grid{grid-template-columns:1fr;gap:13px}.related-grid .blog-card{display:grid;grid-template-columns:35% minmax(0,1fr);align-items:stretch}.related-grid .blog-card-image{height:100%;min-height:130px;aspect-ratio:auto;border-radius:0 14px 14px 0}.related-grid .blog-card-copy{padding:12px}.blog-footer{margin-top:42px;padding-inline:20px}.blog-footer-inner{grid-template-columns:1fr;gap:18px;padding-block:24px}.blog-footer-links{justify-content:flex-start;gap:12px 18px}.blog-footer-copy{grid-column:auto}}
 html[lang="en"] .related-grid .blog-card-image{border-radius:14px 0 0 14px}
+
+/* Keep article layout aligned with the full cover image and strengthen the reading guide. */
+.blog-article-page .article-shell{max-width:1180px}
+.blog-article-page .article-header{max-width:none;margin:34px auto 26px}
+.blog-article-page .article-header h1{max-width:none;font-size:clamp(29px,3.5vw,43px);line-height:1.48;letter-spacing:-.02em}
+.blog-article-page .article-lead{max-width:920px;margin-inline:0;font-size:16px;line-height:1.9}
+.blog-article-page .article-cover{max-width:none;border-radius:20px}
+.blog-article-page .article-layout{grid-template-columns:minmax(220px,260px) minmax(0,1fr);justify-content:stretch;gap:clamp(28px,4.5vw,60px);margin-top:42px}
+.blog-article-page .article-aside{border:1px solid var(--border);border-radius:14px;background:var(--bg);box-shadow:none;color:var(--fg)}
+.blog-article-page .article-aside-title{padding-bottom:12px;border-bottom:1px solid var(--border);color:var(--fg);font-size:14px}
+.blog-article-page .article-toc a{padding:8px 10px;color:var(--fg);font-size:12px;line-height:1.85}
+.blog-article-page .article-toc a:hover,.blog-article-page .article-toc a.is-active{background:color-mix(in srgb,var(--fg) 7%,var(--bg));color:var(--fg);font-weight:600}
+.blog-site-footer .footer-inner{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:22px;padding-block:42px}
+.blog-site-footer .footer-brand{order:0;align-self:center;width:48px;height:48px;margin:0;justify-content:center}
+.blog-site-footer .footer-brand img{display:block;width:42px;height:auto;animation:none}
+.blog-site-footer .footer-nav{order:1;display:flex;width:auto;max-width:100%;flex-wrap:wrap;justify-content:center;gap:4px 16px;margin:0}
+.blog-site-footer .footer-nav a{min-height:42px;padding:8px 12px;justify-content:center}
+.blog-site-footer .socials{order:2;display:flex;width:auto;max-width:320px;flex:0 1 auto;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin:0 auto;direction:ltr}
+.blog-site-footer .socials .social{width:44px;height:44px;flex:0 0 44px}
+.blog-site-footer .socials .social img{width:22px;height:22px}
+@media(max-width:700px){.blog-article-page .article-header{margin:26px auto 20px}.blog-article-page .article-header h1{font-size:clamp(27px,7.2vw,36px);line-height:1.5}.blog-article-page .article-lead{font-size:14px}.blog-article-page .article-layout{grid-template-columns:1fr;gap:22px;margin-top:30px}.blog-article-page .article-aside{position:static}.blog-site-footer .footer-inner{gap:16px;padding-block:30px}.blog-site-footer .footer-nav{gap:2px 8px}.blog-site-footer .socials{max-width:280px;gap:8px}}
