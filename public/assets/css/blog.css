@@ -87,6 +87,18 @@
 .blog-topbar .header-controls .theme-toggle:hover{transform:none;background:color-mix(in srgb,var(--fg) 10%,transparent)}
 .blog-topbar .header-controls .theme-toggle .icon{width:19px;height:19px}
 @media(max-width:649px){.blog-topbar .header-controls{gap:2px}.blog-topbar .header-controls .theme-toggle,.blog-topbar .header-controls .language-control{width:36px;height:36px}}
+
+/* Blog listing refinements from the homepage review. */
+.blog-topbar nav{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap}
+.blog-card{border-radius:14px;transition:border-color .2s}
+.blog-card:hover{transform:none;border-color:color-mix(in srgb,var(--fg) 42%,var(--border));box-shadow:none;color:var(--fg)}
+.blog-card-meta>span{display:inline-flex;align-items:center;padding:3px 9px;border:1px solid color-mix(in srgb,var(--accent) 24%,var(--border));border-radius:999px;background:color-mix(in srgb,var(--accent) 12%,var(--bg));color:var(--fg);font-weight:600;line-height:1.5}
+.blog-bento-card{border-radius:14px}
+.blog-bento-card .blog-card-meta>span{border-color:rgb(255 255 255 / .22);background:rgb(10 14 20 / .84);color:#fff}
+.blog-bento-card .blog-card-featured-label{border-color:rgb(255 255 255 / .24);background:rgb(10 14 20 / .88);color:#fff}
+.blog-categories{margin-top:20px}
+.blog-pagination{display:flex;justify-content:center;gap:8px;margin-top:30px}
+@media(max-width:760px){.blog-topbar nav{position:static;left:auto;top:auto;transform:none;white-space:normal}}
 /* Theme control shared by the server-rendered and Next.js blog routes. */
 .blog-header-actions{display:flex;align-items:center;gap:14px;flex:none}
 .blog-topbar .blog-theme-toggle{position:static;inset:auto;top:auto;z-index:auto;display:grid;place-items:center;flex:none;width:38px;height:38px;padding:0;border:1px solid var(--border);border-radius:50%;background:transparent;color:var(--fg);transform:none;transition:background .2s,border-color .2s}
