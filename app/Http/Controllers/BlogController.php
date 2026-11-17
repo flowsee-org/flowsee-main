@@ -97,7 +97,7 @@ class BlogController extends Controller
         $structuredData = [
             '@context' => 'https://schema.org',
             '@graph' => [
-                ['@type' => 'Organization', '@id' => 'https://flowsee.ir/#organization', 'name' => 'استودیو فلوسی', 'url' => 'https://flowsee.ir/'],
+                ['@type' => 'Organization', '@id' => 'https://flowsee.ir/#organization', 'name' => 'استودیو فلوسی', 'url' => 'https://flowsee.ir/', 'logo' => ['@type' => 'ImageObject', 'url' => 'https://flowsee.ir/assets/flowsee-author.webp', 'width' => 160, 'height' => 160]],
                 ['@type' => 'WebSite', '@id' => 'https://flowsee.ir/#website', 'url' => 'https://flowsee.ir/', 'name' => 'استودیو فلوسی', 'inLanguage' => 'fa-IR'],
                 [
                     '@type' => 'CollectionPage',
@@ -186,7 +186,7 @@ class BlogController extends Controller
         $structuredData = [
             '@context' => 'https://schema.org',
             '@graph' => [
-                ['@type' => 'Organization', '@id' => 'https://flowsee.ir/#organization', 'name' => 'استودیو فلوسی', 'url' => 'https://flowsee.ir/'],
+                ['@type' => 'Organization', '@id' => 'https://flowsee.ir/#organization', 'name' => 'استودیو فلوسی', 'url' => 'https://flowsee.ir/', 'logo' => ['@type' => 'ImageObject', 'url' => 'https://flowsee.ir/assets/flowsee-author.webp', 'width' => 160, 'height' => 160]],
                 ['@type' => 'WebSite', '@id' => 'https://flowsee.ir/#website', 'url' => 'https://flowsee.ir/', 'name' => 'استودیو فلوسی', 'inLanguage' => 'fa-IR'],
                 ['@type' => 'BreadcrumbList', '@id' => $pageUrl.'#breadcrumb', 'itemListElement' => [
                     ['@type' => 'ListItem', 'position' => 1, 'name' => $isEnglish ? 'Home' : 'خانه', 'item' => $isEnglish ? 'https://flowsee.ir/en' : 'https://flowsee.ir/'],
@@ -216,14 +216,14 @@ class BlogController extends Controller
             'portfolio' => 'Portfolio', 'services' => 'Services', 'language' => 'Language', 'switch_language' => 'فارسی',
             'theme_dark' => 'Switch to dark mode', 'theme_light' => 'Switch to light mode', 'consultation' => 'Free consultation',
             'breadcrumb' => 'Breadcrumb', 'author' => 'Flowsee Studio', 'reading_minutes' => 'min read', 'contents' => 'In this article',
-            'start' => 'Introduction', 'more_in' => 'More in', 'continue_reading' => 'Keep reading', 'same_category' => 'More technology guides',
+            'start' => 'Introduction', 'continue_reading' => 'Keep exploring', 'same_category' => 'Recommended articles', 'related_intro' => 'More practical ideas from the Flowsee journal.',
             'all_articles' => 'All guides', 'read_article' => 'Read article', 'footer_tagline' => 'Design for growth, strategy for longevity.',
         ] : [
             'skip' => 'رفتن به محتوای اصلی', 'brand' => 'استودیو فلوسی', 'home' => 'خانه', 'blog' => 'بلاگ',
             'portfolio' => 'نمونه‌کارها', 'services' => 'خدمات', 'language' => 'زبان', 'switch_language' => 'English',
             'theme_dark' => 'فعال‌کردن حالت تاریک', 'theme_light' => 'فعال‌کردن حالت روشن', 'consultation' => 'مشاوره رایگان',
             'breadcrumb' => 'مسیر صفحه', 'author' => 'استودیو فلوسی', 'reading_minutes' => 'دقیقه مطالعه', 'contents' => 'در این مقاله',
-            'start' => 'شروع مقاله', 'more_in' => 'مطالب بیشتر در', 'continue_reading' => 'ادامهٔ خواندن', 'same_category' => 'از همین دسته',
+            'start' => 'شروع مقاله', 'continue_reading' => 'برای مطالعهٔ بیشتر', 'same_category' => 'مقاله‌های پیشنهادی', 'related_intro' => 'ایده‌های کاربردی بیشتر از مجلهٔ فلوسی.',
             'all_articles' => 'همهٔ مقاله‌ها', 'read_article' => 'خواندن مقاله', 'footer_tagline' => 'طراحی برای رشد، استراتژی برای ماندگاری.',
         ];
 

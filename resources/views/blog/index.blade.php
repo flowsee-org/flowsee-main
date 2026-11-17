@@ -16,5 +16,5 @@
         @if($posts->hasPages())<nav class="blog-pagination" aria-label="صفحه‌بندی مقاله‌ها">{{ $posts->onEachSide(1)->links('pagination.blog') }}</nav>@endif
     </section>
 </main>
-<footer class="blog-footer"><a href="/">استودیو فلوسی</a><span>طراحی برای رشد، استراتژی برای ماندگاری.</span><a href="/">صفحهٔ اصلی ↗</a></footer>
+@include('blog._footer', ['isEnglish' => false])
 @endsection

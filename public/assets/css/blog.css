@@ -130,3 +130,37 @@ html[lang="en"] .article-toc a[data-level="3"]{padding-inline-start:11px;padding
 html[lang="en"] .blog-card-featured-label{right:auto;left:16px}
 .blog-language-link{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:7px 12px;border:1px solid var(--border);border-radius:999px;color:var(--fg);font-size:12px;white-space:nowrap;transition:background .2s,border-color .2s}.blog-language-link:hover{background:var(--surface);border-color:var(--accent)}@media(max-width:600px){.blog-language-link{min-height:34px;padding:6px 9px;font-size:11px}}
 .blog-brand-logo{display:block;width:46px;height:46px;object-fit:contain}.article-cover img{display:block;width:100%;max-height:none;aspect-ratio:1200/630;object-fit:cover}@media(max-width:600px){.blog-topbar{gap:8px;padding-inline:12px}.blog-brand-logo{width:38px;height:38px}.blog-topbar nav{gap:8px;font-size:11px}.blog-header-actions{gap:6px}.blog-top-cta{padding-inline:8px;font-size:10px}.blog-language-link{min-height:32px;padding-inline:8px;font-size:10px}.article-cover img{aspect-ratio:1.55}}@media(max-width:420px){.blog-topbar nav a:nth-child(2){display:none}}
+
+/* Article presentation, image captions and reusable editorial footer */
+.article-header{max-width:920px;margin:44px auto 30px;text-align:start}
+.article-header .blog-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 11px;border:1px solid color-mix(in srgb,var(--accent) 24%,var(--border));border-radius:9px;background:color-mix(in srgb,var(--accent) 5%,var(--bg));color:var(--accent-ink);font-size:12px;font-weight:600}
+.article-header h1{max-width:900px;margin:18px 0 0;font-size:clamp(34px,4.6vw,58px);line-height:1.42;letter-spacing:-.025em;text-wrap:balance}
+.article-lead{max-width:760px;margin:17px 0 0;font-size:clamp(15px,1.6vw,18px);line-height:1.95;text-align:start}
+.article-byline{justify-content:flex-start;flex-wrap:wrap;gap:11px;margin-top:22px;color:var(--muted);font-size:12px}
+.article-byline .article-author-avatar{display:block;width:40px;height:40px;flex:0 0 40px;border:1px solid var(--border);border-radius:50%;object-fit:cover}
+.article-byline .article-author-name{color:var(--fg);font-weight:600}
+.article-byline time,.article-byline .article-reading-time{color:var(--muted);font-weight:400}
+.article-cover figcaption,.article-content figure figcaption{display:none!important}
+.article-content h2:before{display:none!important;content:none!important}
+.related-posts{max-width:1120px;margin-top:70px;padding-top:34px;border-top:1px solid var(--border)}
+.related-posts .blog-section-heading{align-items:flex-end;margin-bottom:24px}
+.related-posts .blog-section-heading h2{margin-top:7px}
+.related-posts-intro{margin:8px 0 0;color:var(--muted);font-size:13px;line-height:1.8}
+.related-grid{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(0,auto);gap:16px}
+.related-grid .blog-card{min-height:0;border-radius:16px}
+.related-grid .blog-card-image{aspect-ratio:16/9;border-radius:15px 15px 0 0}
+.related-grid .blog-card-copy{padding:15px}
+.related-grid .blog-card-title{font-size:17px;line-height:1.65}
+.blog-footer{display:block;margin-top:64px;padding:0 28px;border-top:0;background:var(--surface);color:var(--muted)}
+.blog-footer-inner{display:grid;grid-template-columns:minmax(220px,1fr) auto;align-items:center;gap:22px;max-width:1180px;margin:0 auto;padding:30px 0;border-top:1px solid var(--border)}
+.blog-footer-brand-block p{margin:8px 0 0;font-size:12px;line-height:1.8}
+.blog-footer-brand{display:inline-flex;align-items:center;gap:10px;color:var(--fg);font-size:15px;font-weight:700}
+.blog-footer-brand img{width:36px;height:36px;object-fit:contain}
+.blog-footer-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px 22px}
+.blog-footer-links a{font-size:12px;transition:color .18s ease}
+.blog-footer-links a:hover{color:var(--accent-ink)}
+.blog-footer-copy{grid-column:1/-1;padding-top:13px;border-top:1px solid var(--border);font-size:11px;direction:ltr;text-align:start}
+html[lang="en"] .article-header,html[lang="en"] .article-lead{text-align:left}
+html[lang="en"] .article-byline{justify-content:flex-start}
+@media(max-width:700px){.article-header{margin:32px auto 24px}.article-header h1{font-size:clamp(30px,8vw,42px);line-height:1.5}.article-lead{font-size:14px}.article-byline{justify-content:flex-start;gap:8px;margin-top:17px;font-size:11px}.article-byline .article-author-avatar{width:34px;height:34px;flex-basis:34px}.related-posts{margin-top:46px;padding-top:26px}.related-posts .blog-section-heading{align-items:flex-start;gap:14px}.related-posts-intro{font-size:12px}.related-grid{grid-template-columns:1fr;gap:13px}.related-grid .blog-card{display:grid;grid-template-columns:35% minmax(0,1fr);align-items:stretch}.related-grid .blog-card-image{height:100%;min-height:130px;aspect-ratio:auto;border-radius:0 14px 14px 0}.related-grid .blog-card-copy{padding:12px}.blog-footer{margin-top:42px;padding-inline:20px}.blog-footer-inner{grid-template-columns:1fr;gap:18px;padding-block:24px}.blog-footer-links{justify-content:flex-start;gap:12px 18px}.blog-footer-copy{grid-column:auto}}
+html[lang="en"] .related-grid .blog-card-image{border-radius:14px 0 0 14px}
