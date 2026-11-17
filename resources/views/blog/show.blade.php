@@ -3,6 +3,8 @@
 @section('meta_description', $pageDescription)
 @section('canonical_url', $pageUrl)
 @section('meta_image', $imageUrl)
+@section('meta_image_width', $post->cover_image ? '1200' : '772')
+@section('meta_image_height', $post->cover_image ? '630' : '772')
 @section('og_type', 'article')
 @if($isStackArticle)
 @section('alternate_links')
@@ -32,16 +34,16 @@
                 <span class="blog-eyebrow"><span></span>{{ $isEnglish ? 'Development technologies' : $post->category->name }}</span>
                 <h1>{{ $post->title }}</h1>
                 @if($post->excerpt)<p class="article-lead">{{ $post->excerpt }}</p>@endif
-                <div class="article-byline"><span class="article-author-mark" aria-hidden="true">F</span><span>{{ $articleUi['author'] }}</span><i aria-hidden="true"></i><time datetime="{{ $post->published_at->toDateString() }}">{{ $isEnglish ? $post->published_at->format('F j, Y') : $post->published_at->translatedFormat('j F Y') }}</time><i aria-hidden="true"></i><span>{{ $readingMinutes }} {{ $articleUi['reading_minutes'] }}</span></div>
+                <div class="article-byline"><img class="article-author-avatar" src="{{ asset('assets/flowsee-author.webp') }}" width="40" height="40" alt="" loading="eager" decoding="async"><span class="article-author-name">{{ $articleUi['author'] }}</span><i aria-hidden="true"></i><time datetime="{{ $post->published_at->toDateString() }}">{{ $isEnglish ? $post->published_at->format('F j, Y') : $post->published_at->translatedFormat('j F Y') }}</time><i aria-hidden="true"></i><span class="article-reading-time">{{ $readingMinutes }} {{ $articleUi['reading_minutes'] }}</span></div>
             </header>
             @if($post->cover_image)<figure class="article-cover"><img src="{{ $imageUrl }}" alt="{{ $post->cover_alt ?: $post->title }}" width="1200" height="630" fetchpriority="high" decoding="async"><figcaption><span>{{ $post->cover_alt ?: $post->title }}</span><a href="{{ $technologyUrl }}">{{ $isEnglish ? 'Development technologies' : $post->category->name }} <span aria-hidden="true">↗</span></a></figcaption></figure>@endif
             <div class="article-layout">
-                <aside class="article-aside" aria-label="{{ $articleUi['contents'] }}"><div class="article-aside-title"><span class="article-aside-icon" aria-hidden="true">☰</span><span>{{ $articleUi['contents'] }}</span></div><nav class="article-toc" aria-label="{{ $articleUi['contents'] }}"><a class="is-active" href="#article-content">{{ $articleUi['start'] }}</a>@foreach($postHeadings as $heading)<a data-level="{{ $heading['level'] }}" href="#{{ $heading['id'] }}">{{ $heading['text'] }}</a>@endforeach</nav><a class="article-category-link" href="{{ $technologyUrl }}"><span>{{ $articleUi['more_in'] }}</span><strong>{{ $isEnglish ? 'Development technologies' : $post->category->name }}</strong><span aria-hidden="true">↗</span></a></aside>
+                <aside class="article-aside" aria-label="{{ $articleUi['contents'] }}"><div class="article-aside-title"><span class="article-aside-icon" aria-hidden="true">☰</span><span>{{ $articleUi['contents'] }}</span></div><nav class="article-toc" aria-label="{{ $articleUi['contents'] }}"><a class="is-active" href="#article-content">{{ $articleUi['start'] }}</a>@foreach($postHeadings as $heading)<a data-level="{{ $heading['level'] }}" href="#{{ $heading['id'] }}">{{ $heading['text'] }}</a>@endforeach</nav></aside>
                 <div id="article-content" class="article-content">{!! $post->content !!}</div>
             </div>
         </article>
     </div>
-    @if($relatedPosts->isNotEmpty())<section class="container related-posts"><div class="blog-section-heading"><div><span class="blog-eyebrow"><span></span>{{ $articleUi['continue_reading'] }}</span><h2>{{ $articleUi['same_category'] }}</h2></div><a class="blog-text-link" href="{{ $technologyUrl }}">{{ $articleUi['all_articles'] }} ↗</a></div><div class="blog-grid related-grid">@foreach($relatedPosts as $related)@include('blog._card', ['post' => $related, 'featured' => false])@endforeach</div></section>@endif
+    @if($relatedPosts->isNotEmpty())<section class="container related-posts" aria-labelledby="related-posts-title"><div class="blog-section-heading"><div><span class="blog-eyebrow"><span></span>{{ $articleUi['continue_reading'] }}</span><h2 id="related-posts-title">{{ $articleUi['same_category'] }}</h2><p class="related-posts-intro">{{ $articleUi['related_intro'] }}</p></div><a class="blog-text-link" href="{{ $technologyUrl }}">{{ $articleUi['all_articles'] }} ↗</a></div><div class="blog-grid related-grid">@foreach($relatedPosts as $related)@include('blog._card', ['post' => $related, 'featured' => false])@endforeach</div></section>@endif
 </main>
-<footer class="blog-footer"><a href="{{ $homeUrl }}">{{ $articleUi['brand'] }}</a><span>{{ $articleUi['footer_tagline'] }}</span><a href="{{ $technologyUrl }}">{{ $articleUi['all_articles'] }} ↗</a></footer>
+@include('blog._footer', ['isEnglish' => $isEnglish])
 @endsection

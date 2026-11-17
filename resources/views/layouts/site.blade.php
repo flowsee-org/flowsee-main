@@ -30,16 +30,14 @@
 <meta property="og:description" content="{!! e($__env->yieldContent('meta_description', $pageDescription ?? 'Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.'), false) !!}">
 <meta property="og:image" content="{!! e($__env->yieldContent('meta_image', $imageUrl ?? 'https://flowsee.ir/assets/flowsee-social.jpg'), false) !!}">
 <meta property="og:image:secure_url" content="{!! e($__env->yieldContent('meta_image', $imageUrl ?? 'https://flowsee.ir/assets/flowsee-social.jpg'), false) !!}">
-@unless(isset($imageUrl))
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-@endunless
+<meta property="og:image:width" content="{!! e($__env->yieldContent('meta_image_width', '772'), false) !!}">
+<meta property="og:image:height" content="{!! e($__env->yieldContent('meta_image_height', '772'), false) !!}">
 <meta property="og:image:alt" content="{{ $post->cover_alt ?? $pageTitle ?? 'استودیو فلوسی؛ طراحی برای رشد و ماندگاری' }}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{!! e($__env->yieldContent('meta_title', $pageTitle ?? 'استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال'), false) !!}">
 <meta name="twitter:description" content="{!! e($__env->yieldContent('meta_description', $pageDescription ?? 'Flowsee (استودیو فلوسی)؛ استودیوی طراحی برند و تجربهٔ دیجیتال. طراحی هویت بصری، بازاریابی دیجیتال و توسعهٔ نرم‌افزار.'), false) !!}">
 <meta name="twitter:image" content="{!! e($__env->yieldContent('meta_image', $imageUrl ?? 'https://flowsee.ir/assets/flowsee-social.jpg'), false) !!}">
+<meta name="twitter:image:alt" content="{{ $post->cover_alt ?? $pageTitle ?? 'استودیو فلوسی؛ طراحی برای رشد و ماندگاری' }}">
 <meta name="theme-color" content="#FE5400"><title>{!! e($__env->yieldContent('meta_title', $pageTitle ?? 'استودیو فلوسی (Flowsee) | طراحی برند و تجربهٔ دیجیتال'), false) !!}</title>
 <script>
 try {
@@ -49,7 +47,7 @@ try {
   document.documentElement.dataset.theme = 'light';
 }
 </script>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
 @if(request()->routeIs('home', 'home.en'))
 <link rel="preload" as="image" type="image/webp" href="/assets/felosi-logo-sculpture-640.webp" imagesrcset="/assets/felosi-logo-sculpture-640.webp 640w, /assets/felosi-logo-sculpture-960.webp 960w" imagesizes="(max-width: 649px) 300px, (max-width: 899px) 280px, 500px" fetchpriority="high">
 @endif
