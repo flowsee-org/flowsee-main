@@ -47,7 +47,7 @@ try {
   document.documentElement.dataset.theme = 'light';
 }
 </script>
-<link rel="icon" href="{{ asset('favicon.svg') }}?v={{ filemtime(public_path('favicon.svg')) }}" type="image/svg+xml" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
 @if(request()->routeIs('home', 'home.en'))
 <link rel="preload" as="image" type="image/webp" href="/assets/felosi-logo-sculpture-640.webp" imagesrcset="/assets/felosi-logo-sculpture-640.webp 640w, /assets/felosi-logo-sculpture-960.webp 960w" imagesizes="(max-width: 649px) 300px, (max-width: 899px) 280px, 500px" fetchpriority="high">
 @endif
